@@ -1,0 +1,26 @@
+{
+  "dark_regular": {
+    "max_join_step": 1.4901161193847656e-08,
+    "outer_flat_pixel": 0.20000001788139343,
+    "inner_highlight_pixel": 0.23299239575862885,
+    "passed": true
+  },
+  "dark_tinted": {
+    "max_join_step": 1.4901161193847656e-08,
+    "outer_flat_pixel": 0.20000001788139343,
+    "inner_highlight_pixel": 0.21649621427059174,
+    "passed": true
+  },
+  "light_regular": {
+    "max_join_step": 0.0,
+    "outer_flat_pixel": 0.16100001335144043,
+    "inner_highlight_pixel": 0.23299239575862885,
+    "passed": true
+  },
+  "no_hairline": {
+    "max_join_step": 4.118680953979492e-05,
+    "outer_flat_pixel": 0.4452800154685974,
+    "inner_highlight_pixel": 0.23299239575862885,
+    "passed": true
+  }
+}

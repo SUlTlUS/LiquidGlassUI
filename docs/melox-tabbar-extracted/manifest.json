@@ -1,0 +1,411 @@
+{
+  "repository": "https://github.com/lladlam/MeloX-Android",
+  "commit": "723aa764462386440b76aed5df362dadf63a096f",
+  "originalFiles": [
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/MeloXApp.kt",
+      "sha256": "615fe746895e928b014c4a1158a0d371c306c4f81945d541b4405d021982bade"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXBackdropComponents.kt",
+      "sha256": "4c2fed6a248828d2afd5fc3e9390defb959f9518a829231e039405e6b324a09c"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/player/MeloXIOSMiniPlayer.kt",
+      "sha256": "69d54ab59c784effe76af37d2d1dca078d08c59afe0966b695de923308feefb6"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/player/MeloXPlayerTransitionSpec.kt",
+      "sha256": "7fce0153915853c77997708494a4bbf6df8f45b5f0f88581494b80f051dc9ffc"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/player/MeloXPlayerTransitionKeys.kt",
+      "sha256": "07fb8e8a667c17c0a511a599cc659e7503f06bfe3e25a6d39aca3b5b873f3f8a"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/player/MeloXPlayerUi.kt",
+      "sha256": "32c8d433742cc94ad2dab699599425625b53139d036ca27e901fde8f76b24eb8"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/playback/MeloXAudioReactiveRuntime.kt",
+      "sha256": "0df659e2bcdf3e0e85d10e0b4b5b4298e328e18f5b8b5a13f116b86f4999c4ec"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/player/MeloXIOSNowPlayingSharedHost.kt",
+      "sha256": "4c4e8621b431a8b207c3a52be8b6fa47a3f6f346bfb1a44ee5acdf01a73c315f"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/player/MeloXIOSNowPlayingScene.kt",
+      "sha256": "3fce35bf92f6537622786cfcd19560f5db68225d1b85c8713290148d581fe367"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/player/MeloXNowPlayingCoreControls.kt",
+      "sha256": "a50f59e31db9296126d94a180f2eff0e0984e561536fb7bc9b05cf7d7d386b4f"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/player/MeloXFlowingLightBackdrop.kt",
+      "sha256": "51620cf866f6c57dfcbc5ba7a8175a10e75aa9ae285e3738209bc2f33e99d957"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/player/ArtworkDynamicPalette.kt",
+      "sha256": "8a7d7d0e16f0e0ebab8d3758e8f407977ea22bb80bef4c6a75237f137d4bba1e"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/player/MeloXPlayerInsets.kt",
+      "sha256": "286d503c1b1d76f6b8a8be905de98e40e6667f47fd46f2bdf1211e95125ba0d6"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/layout/MeloXAdaptiveLayout.kt",
+      "sha256": "d190b29fe58acdbde8086719ecf3250d79f97cd9b1df5fbe555e568cc2329dea"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXGlassSafety.kt",
+      "sha256": "75eb4f257bb01e4e2add18b81051500c030d966be9bed76671b1fb7a5daba189"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/glass/BottomBarToneSampler.kt",
+      "sha256": "ef168d803b49d4a49febc1fb9556875be884e6dff87f871d2472f0d6b8b9625f"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/glass/publicdemo/PublicDampedDragAnimation.kt",
+      "sha256": "9c5bd17243c949370d46196779c864d4798023a704a4f57deea0c445dcbbfa2a"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/glass/publicdemo/PublicInteractiveHighlight.kt",
+      "sha256": "71717cc1c904ea3c1196e67e0da2377704adb0cf2dfa74e916f354c08a720195"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/animation/MeloXMotion.kt",
+      "sha256": "91d9e59f23d4f5059269b052ce8c8a1196a992aab2fd01fe4d60410c621271d1"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXSymbol.kt",
+      "sha256": "5440b82b7bf4e5560b409b7a21151258f9cabb298072f3a1f30be986256c98ce"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXGlassTokens.kt",
+      "sha256": "5f10ff449e9b26acbdc6377ad2be8f810ee31702608eb61d6f559a86321bd18d"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/lladlam/melox/ui/theme/MeloXTheme.kt",
+      "sha256": "945257139c84434f6a6986bce5bee54c7c3f4a6e0fe179edf1c5972682593791"
+    },
+    {
+      "path": "android/app/src/main/res/font/sf_pro_subset.ttf",
+      "sha256": "a1437c6761541136922aa9dd5b43bb54f07bc8d161f7f074a11fe96dffd40d30"
+    },
+    {
+      "path": "android/app/src/main/res/font/mi_lan_pro_vf.ttf",
+      "sha256": "15fc7accb0afcbb7cf3bbf776536a37398e552f082bb13af70602bf1d7ed676f"
+    },
+    {
+      "path": "android/app/src/main/res/font/mi_lan_pro.xml",
+      "sha256": "a8bc086bb6c455c9c0b5f4d5b473e1408b7d8de2b2a982e74bf4e0340c5fc67c"
+    },
+    {
+      "path": "android/app/src/main/res/drawable/melox_home_tab.xml",
+      "sha256": "4b081f8cbefe819d5e013a8c9dc24f6b695bd3943e2e0c145dcaa251e1438676"
+    },
+    {
+      "path": "android/app/src/main/res/drawable/ic_melox_brand_gear.xml",
+      "sha256": "db3a4bf678332513e69426ebef69a84fdcc92e0ea105e0d61d33a39eec721c28"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+      "sha256": "5fe37d11ae8921300731a2b3eb325957b8ee1a8fe0d1ffe67c96f1697535bf7e"
+    },
+    {
+      "path": "android/app/src/main/res/values/strings.xml",
+      "sha256": "a9f3a643fd567e30150ab72fb53e97fec82f4f6173792a1a5bd0cc7985e32436"
+    },
+    {
+      "path": "android/app/src/main/res/values-zh-rCN/strings.xml",
+      "sha256": "ffd66a60175b9114ea25789206f714954025ebf59c350c5627a9b6986453c8a8"
+    },
+    {
+      "path": "android/app/src/main/res/values-zh-rTW/strings.xml",
+      "sha256": "7ddbba1ac6d45a8c9e7b9120145790a1915200624b1c954aa5160ce53b97ea78"
+    },
+    {
+      "path": "android/app/src/main/res/values-ja/strings.xml",
+      "sha256": "07190cb6d5e5b71d17e4c51b2dd0ab7815f9912a2a4031ba2be09ebfd0f5bae5"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809"
+    }
+  ],
+  "extractedFiles": [
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/MeloXApp.kt",
+      "sha256": "615fe746895e928b014c4a1158a0d371c306c4f81945d541b4405d021982bade"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXBottomChrome.kt",
+      "sha256": "4ac7388d686e35be565ce5451f0f455b9456aa5b4062d6e889c7de281c00ae90"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/glass/MeloXBackdropComponents.kt",
+      "sha256": "4c2fed6a248828d2afd5fc3e9390defb959f9518a829231e039405e6b324a09c"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXBackdropComponents.kt",
+      "sha256": "cd3b483ac01d213e2edde04b66371222f176e9e9e26e891885691e09b8f493b7"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/player/MeloXIOSMiniPlayer.kt",
+      "sha256": "69d54ab59c784effe76af37d2d1dca078d08c59afe0966b695de923308feefb6"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/MeloXIOSMiniPlayer.kt",
+      "sha256": "ebe22f3c3de64303d978984ae26d5be5ab4fa077802c0e3b8eb926efd6aa8ef7"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/player/MeloXPlayerTransitionSpec.kt",
+      "sha256": "7fce0153915853c77997708494a4bbf6df8f45b5f0f88581494b80f051dc9ffc"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/MeloXPlayerTransitionSpec.kt",
+      "sha256": "93cc03886cd5ccee8040871f7b6e758feca97eaa0a7aec384710aa6609c940e8"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/player/MeloXPlayerTransitionKeys.kt",
+      "sha256": "07fb8e8a667c17c0a511a599cc659e7503f06bfe3e25a6d39aca3b5b873f3f8a"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/MeloXPlayerTransitionKeys.kt",
+      "sha256": "6b045f2587372a9a43c36318301c61a70a3bbdfebba269c698d72c6db8bba132"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/player/MeloXPlayerUi.kt",
+      "sha256": "32c8d433742cc94ad2dab699599425625b53139d036ca27e901fde8f76b24eb8"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/MeloXQueueEntry.kt",
+      "sha256": "800d440a95838212ea0bb620049f60e5cd68c51c85c29e3ed36f0443365e0afc"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/MeloXArtwork.kt",
+      "sha256": "d2f8cd2fe8600e522efe5e281cc07009d9da89d3cfbb25f4a23c61cd00ce9a00"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/playback/MeloXAudioReactiveRuntime.kt",
+      "sha256": "0df659e2bcdf3e0e85d10e0b4b5b4298e328e18f5b8b5a13f116b86f4999c4ec"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/playback/MeloXAudioReactiveSample.kt",
+      "sha256": "2046dccb6d209c68d34964ea365054d82012d5415d4c6854ace31373ff2408b0"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXTabBarScrollState.kt",
+      "sha256": "614bae658fdd3655b4241eef233dc01c0eaf3ce0c9d0a0a59185315656e6eef3"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/MeloXPlayerFractionSpecs.kt",
+      "sha256": "3483bf7976484a21d27af07e57e2d364c289d1bcb02ad51c22840c88075cb48c"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/player/MeloXIOSNowPlayingSharedHost.kt",
+      "sha256": "4c4e8621b431a8b207c3a52be8b6fa47a3f6f346bfb1a44ee5acdf01a73c315f"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/MeloXIOSNowPlayingSharedHost.kt",
+      "sha256": "2f34f8ba05d2b0cbfadabf94a2410e4d36195b0784bd4b0562176b896fbd7f33"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/player/MeloXIOSNowPlayingScene.kt",
+      "sha256": "3fce35bf92f6537622786cfcd19560f5db68225d1b85c8713290148d581fe367"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/player/MeloXNowPlayingCoreControls.kt",
+      "sha256": "a50f59e31db9296126d94a180f2eff0e0984e561536fb7bc9b05cf7d7d386b4f"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/MeloXArtworkSceneParts.kt",
+      "sha256": "f1a44565a10482c6b4ebcb9bb4744037f3d89c15b927c4080a509c6a75644535"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/player/MeloXFlowingLightBackdrop.kt",
+      "sha256": "51620cf866f6c57dfcbc5ba7a8175a10e75aa9ae285e3738209bc2f33e99d957"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/MeloXFlowingLightBackdrop.kt",
+      "sha256": "c6fb4bb499a32c3e948a4ce46d7df4c20368c52de94de599a2193c1f5a64a130"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/player/ArtworkDynamicPalette.kt",
+      "sha256": "8a7d7d0e16f0e0ebab8d3758e8f407977ea22bb80bef4c6a75237f137d4bba1e"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/ArtworkDynamicPalette.kt",
+      "sha256": "e22e23ece4bf0f9b71209bbd4c96d136651dedae1d6ed5bcc662374586a94ec3"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/player/MeloXPlayerInsets.kt",
+      "sha256": "286d503c1b1d76f6b8a8be905de98e40e6667f47fd46f2bdf1211e95125ba0d6"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/MeloXPlayerInsets.kt",
+      "sha256": "07a8e9a142fd636f1e64729c42da2ec3a8fc0c745a159b8974b11dcba5d60783"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/layout/MeloXAdaptiveLayout.kt",
+      "sha256": "d190b29fe58acdbde8086719ecf3250d79f97cd9b1df5fbe555e568cc2329dea"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/layout/MeloXAdaptiveLayout.kt",
+      "sha256": "a958c64097b8cd6d1a52c34f260541829e7dba90c2d5daaeea17d5cbde4c92ee"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/glass/MeloXGlassSafety.kt",
+      "sha256": "75eb4f257bb01e4e2add18b81051500c030d966be9bed76671b1fb7a5daba189"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXGlassSafety.kt",
+      "sha256": "1f66168115018a60602416b8382ed0e59e12e44f963722887620eb562ec8f933"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/glass/BottomBarToneSampler.kt",
+      "sha256": "ef168d803b49d4a49febc1fb9556875be884e6dff87f871d2472f0d6b8b9625f"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/BottomBarToneSampler.kt",
+      "sha256": "db23cf239fa837f6638c6d1f8245536a5b253e622fc06c2e17b1a87b9daf7bb1"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/glass/publicdemo/PublicDampedDragAnimation.kt",
+      "sha256": "9c5bd17243c949370d46196779c864d4798023a704a4f57deea0c445dcbbfa2a"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/publicdemo/PublicDampedDragAnimation.kt",
+      "sha256": "3654aef83fd157ca144c864ecf8676f786c3dffba4c09877d58bece7e59ef0ab"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/glass/publicdemo/PublicInteractiveHighlight.kt",
+      "sha256": "71717cc1c904ea3c1196e67e0da2377704adb0cf2dfa74e916f354c08a720195"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/publicdemo/PublicInteractiveHighlight.kt",
+      "sha256": "1fbcdefe8a8fda76f98a0728431beba0557599664b9fb9739e23ca1f3818fe7d"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/animation/MeloXMotion.kt",
+      "sha256": "91d9e59f23d4f5059269b052ce8c8a1196a992aab2fd01fe4d60410c621271d1"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/animation/MeloXMotion.kt",
+      "sha256": "a9595b647d87ac790cb22f6b7acd59ee924df950c2bd3607410806bb3866786d"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/glass/MeloXSymbol.kt",
+      "sha256": "5440b82b7bf4e5560b409b7a21151258f9cabb298072f3a1f30be986256c98ce"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXSymbol.kt",
+      "sha256": "c98da46e140d3db00dd7526fd939f4d342a54ed4bd1aa8a5b4951cb096b2240c"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/glass/MeloXGlassTokens.kt",
+      "sha256": "5f10ff449e9b26acbdc6377ad2be8f810ee31702608eb61d6f559a86321bd18d"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXSystemColors.kt",
+      "sha256": "a83e941666204ebccd1eb681af853e98f47e1a90f04cb63b07a77d00c4e3ba80"
+    },
+    {
+      "path": "docs/melox-tabbar-extracted/source/ui/theme/MeloXTheme.kt",
+      "sha256": "945257139c84434f6a6986bce5bee54c7c3f4a6e0fe179edf1c5972682593791"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/theme/MeloXTabBarColors.kt",
+      "sha256": "d2d96dc04b1fc86e5b2bbf3cf8454b82b6bcbf6e60262edcf695b9c2294871e0"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/font/sf_pro_subset.ttf",
+      "sha256": "a1437c6761541136922aa9dd5b43bb54f07bc8d161f7f074a11fe96dffd40d30"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/font/mi_lan_pro_vf.ttf",
+      "sha256": "15fc7accb0afcbb7cf3bbf776536a37398e552f082bb13af70602bf1d7ed676f"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/font/mi_lan_pro.xml",
+      "sha256": "a8bc086bb6c455c9c0b5f4d5b473e1408b7d8de2b2a982e74bf4e0340c5fc67c"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/drawable/melox_home_tab.xml",
+      "sha256": "4b081f8cbefe819d5e013a8c9dc24f6b695bd3943e2e0c145dcaa251e1438676"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/drawable/ic_melox_brand_gear.xml",
+      "sha256": "db3a4bf678332513e69426ebef69a84fdcc92e0ea105e0d61d33a39eec721c28"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/drawable-nodpi/melox_demo_artwork.png",
+      "sha256": "5fe37d11ae8921300731a2b3eb325957b8ee1a8fe0d1ffe67c96f1697535bf7e"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/values/melox_tab_titles.xml",
+      "sha256": "dd9cad3967f18b543ceeab0434553a4d0240ff82017e879b4b504f0a545369bf"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/values/melox_player_strings.xml",
+      "sha256": "528d0ecf429293264414d92aec164ecb0e98a95f6f5a4fb922b49d72c8585675"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/values-zh-rCN/melox_tab_titles.xml",
+      "sha256": "b3c31c3fd550ee773941269560d81c94367c4c850dc5e8a89946da5c8876255e"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/values-zh-rCN/melox_player_strings.xml",
+      "sha256": "9b394b1c260c71e4b4a9e8a32ebb32ec16800034254b65ef86bda441f5191809"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/values-zh-rTW/melox_tab_titles.xml",
+      "sha256": "4b8335858b6b010ddf624ae1e025773ef732c28bf0ffa46e9b4e730da7353cba"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/values-zh-rTW/melox_player_strings.xml",
+      "sha256": "4c81fa4de720d35484335e2115dc72552c1d227350b18012d7e3fcf0579b4a39"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/values-ja/melox_tab_titles.xml",
+      "sha256": "c67e2394d9f7d3cf71c35449fb090135323fa7ee2dc39f090a770fc542cbc5d3"
+    },
+    {
+      "path": "melox-tabbar/src/main/res/values-ja/melox_player_strings.xml",
+      "sha256": "752a24ddf8a035025b16bf780013f29d6942eae363b9415f7364fe7db5aa5863"
+    },
+    {
+      "path": "melox-tabbar/LICENSE",
+      "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809"
+    },
+    {
+      "path": "melox-tabbar/LICENSE-AndroidLiquidGlass",
+      "sha256": "0b7759178f26b93b765e59bf33b653f31179e33840a26b919df51544c286934c"
+    },
+    {
+      "path": "melox-tabbar/src/main/resources/META-INF/melox-tabbar/LICENSE",
+      "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809"
+    },
+    {
+      "path": "melox-tabbar/src/main/resources/META-INF/melox-tabbar/LICENSE-AndroidLiquidGlass",
+      "sha256": "0b7759178f26b93b765e59bf33b653f31179e33840a26b919df51544c286934c"
+    },
+    {
+      "path": "melox-tabbar/src/main/resources/META-INF/melox-tabbar/provenance.json",
+      "sha256": "1aa990b15532c66c91a33f923d739cac5bc807752158111679255cce32646ce0"
+    }
+  ],
+  "adaptations": [
+    "Extract chrome and its used glass/color/theme helpers; omit app navigation and playback business code.",
+    "Replace imports; make chrome internal; remove unused MusicSource argument; add optional label/icon providers.",
+    "Expose searchEnabled; separate tab selection semantics from optical tint, and label the compact tab for accessibility. Geometry, shaders and springs are unchanged.",
+    "Remove diagnostics-only crash-store call; preserve hardware gate and finite-value guards.",
+    "Preference runtime is supplied by a per-instance CompositionLocal, not a music-app singleton.",
+    "Mini-player renderer is copied intact except audio runtime is an injected sample callback; media service is replaced by an immutable UI state/callback adapter. Artwork and transition helpers remain original.",
+    "Extract original scroll minimizer and reversible shared-bounds shell/gesture destination. Music services, lyrics/queue scenes and quality overlay are excluded; fullscreen content is a slot with original Artwork scene/transport helpers. Foreground and audio sampling are injected into unchanged FlowingLight renderer.",
+    "Artwork palette HTTP uses a standalone OkHttpClient instead of the app account/DNS singleton; absent audio-analysis load service is idle. Default UI sampling reports playback isPlaying without inventing beat analysis.",
+    "Copied text uses LF; binary resources are byte-identical. Renderer/animation bodies otherwise unchanged."
+  ]
+}

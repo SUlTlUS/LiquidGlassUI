@@ -1,0 +1,131 @@
+// Small AGSL compatibility renderer for devices that reject the full
+// multi-child / radial-profile shader. Keeps the actual goo SDF, bevel,
+// background refraction and tint, but deliberately omits expensive frost
+// atlas, color dispersion, and the 64-direction profile.
+uniform shader uBackdrop;
+uniform float2 uOrigin;
+uniform float2 uPanelSize;
+uniform float4 uTint;
+uniform float4 uOptics;
+uniform float4 uRim;
+uniform float4 uGlow;
+uniform float uRadius;
+uniform float uCornerPower;
+uniform int uNativeClip;
+uniform int uMode;
+uniform int uCount;
+uniform float4 uPill0;
+uniform float4 uPill1;
+uniform float4 uPill2;
+uniform float4 uPill3;
+uniform float4 uPill4;
+uniform float4 uPill5;
+uniform float4 uBlends;
+uniform float uBlendLast;
+uniform int uMorphEnabled;
+uniform int uOutlineEnabled;
+uniform float4 uOutlineRect;
+uniform float uOutlineRadius;
+uniform float4 uMorphPlatter;
+uniform float4 uMorphDroplet;
+uniform float2 uMorphSpec;
+
+float4 pillAt(int i) {
+    if (i == 0) return uPill0;
+    if (i == 1) return uPill1;
+    if (i == 2) return uPill2;
+    if (i == 3) return uPill3;
+    if (i == 4) return uPill4;
+    return uPill5;
+}
+
+float roundedBox(float2 p, float2 center, float2 halfSide,
+                 float radius, float power) {
+    float2 q = abs(p - center) - halfSide + radius;
+    float2 corner = max(q, float2(0.0));
+    float round = pow(pow(corner.x, power) + pow(corner.y, power),
+                      1.0 / power);
+    return round + min(max(q.x, q.y), 0.0) - radius;
+}
+
+float smin(float a, float b, float k) {
+    if (k < .01) return min(a, b);
+    float h = clamp(.5 + .5 * (b - a) / k, 0.0, 1.0);
+    return mix(b, a, h) - k * h * (1.0 - h);
+}
+
+float geometry(float2 p) {
+    if (uOutlineEnabled != 0) {
+        return roundedBox(
+            p, uOutlineRect.xy, uOutlineRect.zw,
+            uOutlineRadius, uCornerPower
+        );
+    }
+    if (uMorphEnabled != 0) {
+        float a = roundedBox(
+            p, uMorphPlatter.xy, uMorphPlatter.zw,
+            uMorphSpec.x, uCornerPower
+        );
+        float b = roundedBox(
+            p, uMorphDroplet.xy, uMorphDroplet.zw,
+            min(uMorphDroplet.z, uMorphDroplet.w), 2.0
+        );
+        return smin(a, b, uMorphSpec.y);
+    }
+    if (uMode < .5 || uCount == 0) {
+        return roundedBox(
+            p, uPanelSize * .5, uPanelSize * .5,
+            uRadius, uCornerPower
+        );
+    }
+    float result = 100000.0;
+    for (int i = 0; i < 6; ++i) {
+        if (i >= uCount) break;
+        float4 pill = pillAt(i);
+        float d = roundedBox(
+            p, pill.xy, pill.zw, min(pill.z, pill.w), 2.0
+        );
+        if (i == 0) result = d;
+        else {
+            float blend = i == 1 ? uBlends.x :
+                i == 2 ? uBlends.y :
+                i == 3 ? uBlends.z :
+                i == 4 ? uBlends.w : uBlendLast;
+            result = smin(result, d, blend);
+        }
+    }
+    return result;
+}
+
+half4 main(float2 p) {
+    float distance = geometry(p);
+    float coverage = uNativeClip != 0 ? 1.0 :
+        1.0 - smoothstep(-.65, .75, distance);
+    if (coverage < .0001) return half4(0.0);
+    float dx = geometry(p + float2(.75, 0.0)) -
+               geometry(p - float2(.75, 0.0));
+    float dy = geometry(p + float2(0.0, .75)) -
+               geometry(p - float2(0.0, .75));
+    float2 normal = normalize(float2(dx, dy) + float2(.00001, .00001));
+    float inset = max(-distance, 0.0);
+    float bevel = max(uOptics.y, 1.0);
+    float edge = 1.0 - clamp(inset / bevel, 0.0, 1.0);
+    float lens = max(uOptics.x, 0.0) * edge * edge * .32;
+    float2 samplePoint = p - normal * lens;
+    half4 scene = uBackdrop.eval(
+        uOrigin + clamp(samplePoint, float2(-128.0), uPanelSize + 128.0)
+    );
+    float sceneAlpha = max(float(scene.a), .001);
+    float3 rgb = float3(scene.rgb) / sceneAlpha;
+    float3 gray = float3(dot(rgb, float3(.2126, .7152, .0722)));
+    rgb = mix(gray, rgb, uOptics.z) * uOptics.w;
+    rgb = mix(rgb, uTint.rgb, clamp(uTint.a, 0.0, 1.0));
+    float rim = exp(-inset / max(uRim.y, 1.0)) *
+        max(uRim.x, 0.0) * .22;
+    float2 g = p - uGlow.xy;
+    float bloom = max(uGlow.z, 0.0) * .05 /
+        (1.0 + dot(g, g) / max(uGlow.w * uGlow.w, 1.0));
+    rgb = clamp(rgb + rim + bloom, 0.0, 1.0);
+    float resultAlpha = coverage * max(sceneAlpha, uTint.a);
+    return half4(half3(rgb * resultAlpha), half(resultAlpha));
+}

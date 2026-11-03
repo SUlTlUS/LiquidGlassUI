@@ -1,0 +1,9 @@
+[submodule "tools/vendor/open-pencil"]
+	path = tools/vendor/open-pencil
+	url = https://github.com/open-pencil/open-pencil.git
+[submodule "vendor/AndroidLiquidGlass"]
+	path = vendor/AndroidLiquidGlass
+	url = https://github.com/Kyant0/AndroidLiquidGlass.git
+[submodule "vendor/ios27-design-system"]
+	path = vendor/ios27-design-system
+	url = https://github.com/seunghan91/ios27-design-system.git

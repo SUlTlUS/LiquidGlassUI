@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-09-14T08:46:49.901Z",
+  "device": "emulator-5556",
+  "passed": [
+    "notification tap opens expanded variant",
+    "system back returns to example catalog",
+    "long press exposes variant navigation",
+    "dismiss variant menu keeps the same scene",
+    "simulated Face ID transitions to success"
+  ],
+  "scope": "Navigation smoke only. No slider, toggle, text-entry or visual-parity acceptance."
+}

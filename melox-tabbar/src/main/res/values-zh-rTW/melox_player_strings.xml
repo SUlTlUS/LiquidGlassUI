@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="player_now_playing">正在播放</string>
+    <string name="player_artwork">專輯封面</string>
+    <string name="player_artwork_default">預設專輯封面</string>
+</resources>

@@ -1,0 +1,248 @@
+{
+  "upstream": "https://github.com/Kyant0/AndroidLiquidGlass",
+  "comparedHead": "65ab177e90e5c1d8c62e70cf7755841982da65f6",
+  "mergedCommit": "7c37be469afe478071f5107b8613158ca3b8b43d",
+  "frameworkChanges": [
+    {
+      "kind": "ios27-dock-edge-correction",
+      "date": "2026-11-03",
+      "files": [
+        {
+          "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/DrawBackdropModifier.kt",
+          "baselineSha256": "9acc0d8e8bcf7729c5018aebb635c19a56385b092a4a818444ea94b49c7134e9",
+          "mergedSha256": "e678522beecfa8bb0653ca1868f83e2fb2ef02f7d2bfed70c97eb492d9b029cf"
+        },
+        {
+          "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidBottomTabs.kt",
+          "baselineSha256": "d95428312022488d4132fcfffbc3d5bd7de014781e7a3ff1e4c0ccdd379bd079",
+          "mergedSha256": "ffe0e1126bbb531fbb59081abe3011d129e38aabaee51808e7aa6f9cfc6e3156"
+        }
+      ],
+      "notes": "docs/ios27/dock-popup-correction.md"
+    },
+    {
+      "date": "2026-11-03",
+      "kind": "user-authorized-ios27-dock-popup-correction",
+      "files": [
+        "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidBottomTabs.kt"
+      ],
+      "baselineSha256": "4c9c1530db1488c54f437888665a3c68dfbf88af0b6b25bd755e03a2c52681cb",
+      "mergedSha256": "d95428312022488d4132fcfffbc3d5bd7de014781e7a3ff1e4c0ccdd379bd079",
+      "reason": "User explicitly requested iOS 26 dock body + iOS 27 highlight; add a default-null lighting extension only.",
+      "manifest": "docs/ios27/merge-manifest.json",
+      "notes": "docs/ios27/dock-popup-correction.md"
+    },
+    {
+      "date": "2026-11-03",
+      "kind": "user-requested-native-ios27-examples",
+      "reason": "Replace the two copied source demo screens with seven Sketch-native examples using the existing catalog, page scaffold, tokens and results. User owns physical-device acceptance; this revision performs code/build validation only.",
+      "manifest": "docs/ios27/merge-manifest.json",
+      "notes": "docs/ios27/README.md",
+      "validation": "docs/ios27/validation.md"
+    },
+    {
+      "date": "2026-11-03",
+      "kind": "user-authorized-ios27-mechanism-import",
+      "source": "C:/IDE/Android/liquidglass27",
+      "standard": "iOS 27",
+      "preservedStandard": "iOS 26",
+      "reason": "Import every non-demo mechanism, shader, regression test and supporting generator; retain existing runtime as iOS 26, share Sketch optics, and expose explicit API-gated standard entry points.",
+      "manifest": "docs/ios27/merge-manifest.json",
+      "notes": "docs/ios27/README.md",
+      "validation": "docs/ios27/validation.md"
+    },
+    {
+      "date": "2026-10-30",
+      "kind": "user-authorized-local-change",
+      "files": [
+        "liquidglass/src/main/java/dev/liquidglass/rendering/GyroscopeHighlight.kt",
+        "liquidglass/src/main/java/dev/liquidglass/rendering/GyroscopeHighlightMath.kt",
+        "liquidglass/src/test/java/dev/liquidglass/rendering/GyroscopeHighlightMathTest.kt",
+        "tools/glass-panel-corners.test.mjs",
+        "docs/gyroscope-highlight.md"
+      ],
+      "source": "C:/IDE/Android/liquidtab/common/src/main/java/io/github/offlineglass/hook/GlassHostLayout.kt",
+      "sourceSha256": "1c0f86a00ae214ea6688119910926be95a29b77e1d976311d19979813359508b",
+      "reason": "Port BloomTiltTracker, display rotation mapping and BLOOM_STROKE_DUAL_SHADER from LiquidTab into liquidglass_sketch; shared listener and lifecycle cleanup",
+      "notes": "docs/gyroscope-highlight.md"
+    },
+    {
+      "date": "2026-10-28",
+      "kind": "host-font-size-optimization",
+      "files": [
+        "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXTabBar.kt"
+      ],
+      "reason": "Evaluate the original font only when requested, allowing hosts that explicitly pass the system font to remove the unused Mi font with R8/resource shrinking. Preserve original default typography for other callers.",
+      "baselineSha256": "B6BA9612B46D3196A514BF61BAE2B4E6662BD2A8DE377EB1746515C244B62C94",
+      "mergedSha256": "35371606E48438C3D9D7FAA8BA0CFA6C9FA6818506F9EC8DD3FBED1F532035FC",
+      "notes": "EPD NFC Probe 0.10.6 host passes FontFamily.SansSerif; glass geometry and animation unchanged."
+    },
+    {
+      "date": "2026-10-23",
+      "kind": "host-component-api-change",
+      "files": [
+        "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27SplitSearchTabBar.kt"
+      ],
+      "reason": "Expose optional searchEnabled for the EPD write action; default true preserves existing callers. Pass disabled semantics and suppress click/drag while disabled; preserve glass rendering sources.",
+      "baselineSha256": "DEB9F96913B671E351B4B2F167E2F38C65C7E293A00AB53D1032F8CFAA31DA9D",
+      "mergedSha256": "C03C425AED26D9D4A9FB27E93426AA707D867F8E1BE9B2844F3CDC3F12B35298",
+      "notes": "docs/tabbar-split-material.md"
+    },
+    {
+      "date": "2026-10-17",
+      "kind": "user-authorized-local-change",
+      "files": [
+        "liquidglass/src/test/java/dev/liquidglass/ios27/GlassPanelCornersTest.kt",
+        "tools/glass-panel-corners.test.mjs",
+        "docs/glass-panel-corners.md",
+        "docs/glass-backdrop-integration.md"
+      ],
+      "reason": "Regression checks and integration notes for the user-authorized two-file shared glass corner rendering fix; preserve authored geometry, material, clipping and shadows",
+      "notes": "docs/glass-panel-corners.md"
+    },
+    {
+      "date": "2026-10-13",
+      "kind": "user-authorized-local-change",
+      "files": [
+        "liquidglass/src/main/java/dev/liquidglass/coloros17/ColorOs17ComponentCatalog.kt",
+        "liquidglass/src/main/java/dev/liquidglass/coloros17/ColorOs17SettingsComponents.kt",
+        "liquidglass/src/main/AndroidManifest.xml",
+        "liquidglass/src/test/java/dev/liquidglass/coloros17/ColorOs17ComponentCatalogTest.kt",
+        "sample/src/main/java/dev/liquidglass/sample/ColorOs17ExamplePage.kt",
+        "sample/src/main/java/dev/liquidglass/sample/IphoneExamples.kt",
+        "tools/ExtractColorOs17Resources.java",
+        "tools/index-coloros17-components.mjs",
+        "tools/coloros17-components.test.mjs",
+        "docs/coloros17-components.md",
+        "docs/coloros17-extracted/settings-17.0.0/component-index.json"
+      ],
+      "reason": "Extract unchanged Settings 17.0.0 COUI references and call installed platform-signed Settings classes/resources only on ColorOS 17; mirror example categories without implementing substitute components or changing existing glass visuals",
+      "notes": "docs/coloros17-components.md"
+    },
+    {
+      "date": "2026-10-12",
+      "kind": "user-authorized-local-change",
+      "files": [
+        "liquidglass/src/main/java/dev/liquidglass/components/ColorOs17BlurPolicy.kt",
+        "liquidglass/src/main/java/dev/liquidglass/components/ColorOs17ProgressiveBlur.kt",
+        "sample/src/main/java/dev/liquidglass/sample/ExamplePageScaffold.kt",
+        "sample/src/main/java/dev/liquidglass/sample/MainActivity.kt",
+        "sample/src/main/java/dev/liquidglass/sample/IphoneExamples.kt",
+        "sample/src/main/java/dev/liquidglass/sample/NativeExamplePage.kt",
+        "sample/src/main/java/dev/liquidglass/sample/ListeningModeExamplePage.kt",
+        "sample/src/main/java/dev/liquidglass/sample/MeloXTabBarExamplePage.kt",
+        "liquidglass/src/test/java/dev/liquidglass/components/ColorOs17BlurPolicyTest.kt",
+        "tools/coloros17-progressive-blur.test.mjs",
+        "docs/coloros17-progressive-blur.md"
+      ],
+      "reason": "Align the Settings APK overlay integration: inherit actual page background, bound coverage to the host AppBar plus 8/24dp, use the 30dp scroll reveal threshold and fade the native View separately from blur radius; preserve source parameters and glass components",
+      "notes": "docs/coloros17-progressive-blur.md"
+    },
+    {
+      "date": "2026-10-11",
+      "kind": "user-authorized-local-change",
+      "files": [
+        "liquidglass/src/main/java/dev/liquidglass/components/ColorOs17BlurPolicy.kt",
+        "liquidglass/src/main/java/dev/liquidglass/components/ColorOs17ProgressiveBlur.kt",
+        "sample/src/main/java/dev/liquidglass/sample/ExamplePageScaffold.kt",
+        "liquidglass/src/test/java/dev/liquidglass/components/ColorOs17BlurPolicyTest.kt",
+        "tools/coloros17-progressive-blur.test.mjs",
+        "docs/coloros17-progressive-blur.md"
+      ],
+      "reason": "Select the Settings APK's vendor gradient background effect only on detected ColorOS 17 with accessible Oplus APIs; retain Compose fallback, sibling-layer sampling safety and existing toolbar geometry",
+      "notes": "docs/coloros17-progressive-blur.md"
+    },
+    {
+      "date": "2026-10-09",
+      "kind": "user-authorized-local-change",
+      "files": [
+        "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27InteractiveControls.kt",
+        "docs/native-framework-examples.md",
+        "tools/figma-reader/native-framework.test.mjs"
+      ],
+      "reason": "Allow Theme settings to hide visual switch state text with showStateText=false; preserve the original three-argument API, default text, toggle animation, callbacks and accessibility semantics",
+      "baselineSha256": "1CC56566B535603796182E67CD8070A1E150C3E439BD7839C83F90973C6A6502",
+      "mergedSha256": "EB2B855D65BFAF2790B3823D15878949DBF63E67C14185870278BD73D7BD7832",
+      "notes": "docs/native-framework-examples.md"
+    },
+    {
+      "date": "2026-10-08",
+      "kind": "user-authorized-local-change",
+      "files": [
+        "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27PressFeedback.kt",
+        "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27Lists.kt"
+      ],
+      "reason": "Use press events to show short-tap feedback immediately, fade release over 120 ms, and clear cancellation; integrate the shared modifier into ordinary list rows",
+      "notes": "docs/pressed-feedback.md"
+    }
+  ],
+  "files": [
+    {
+      "path": "backdrop/Shaders.kt",
+      "kind": "user-authorized-local-change",
+      "reason": "User approved fixing shared modal corner artifacts: select the correct quadrant using centeredCoord in both refraction and both highlight shaders instead of uncentered positive coordinates",
+      "baseline": "b6dc5d07a1a2d52c3b444e5f68f37e9330f6f3ddbc25b5aff43cbcd377fe1ae7",
+      "beforeThisChange": "b6dc5d07a1a2d52c3b444e5f68f37e9330f6f3ddbc25b5aff43cbcd377fe1ae7",
+      "merged": "4a181f802e3c91553a55b7616fd708ebb625d40667f220b5315477d0cb0dcf36",
+      "notes": "Only four radiusAt arguments changed; preserved original extraction and all material parameters. See docs/glass-panel-corners.md."
+    },
+    {
+      "path": "backdrop/highlight/HighlightModifier.kt",
+      "kind": "user-authorized-local-change",
+      "reason": "User approved fixing shared modal corner artifacts: pass the original innerShape to the highlight shader so CornerBasedShape radii are retained; preserve the cached wrapper for outline clipping; Port LiquidTab gyroscope-driven dual-light edge highlight into this project, preserving existing outline and backdrop integration",
+      "baseline": "e8d264cb67aed09de06161271be13cde550c0be9b4d829a86b8f98c33bcf6d2e",
+      "beforeThisChange": "65e6758ea46fd405eb196a5af2347a863dad51f988990ee6765623736472dc53",
+      "merged": "5dc16a8ad96a27a8be0691a3ae23a941a3f7e5fbc906f611f93deb91b4872f80",
+      "notes": "Gyroscope defaults enabled for HighlightStyle.Default; opt out with followDeviceTilt=false. Retains prior innerShape corner fix. See docs/gyroscope-highlight.md.",
+      "previousMerged": "65e6758ea46fd405eb196a5af2347a863dad51f988990ee6765623736472dc53"
+    },
+    {
+      "path": "ui/commom/ProgressiveBlurContent.kt",
+      "kind": "user-authorized-local-change",
+      "reason": "User requested replacing the top progressive blur on ColorOS 17 with the extracted Settings system API; preserve the existing 16dp Compose blur and alpha mask as fallback",
+      "baseline": "07e81385f123ca8cc243ff68ad7c8d0e4c76e7f4fd5e1ab1341a255e901856f7",
+      "beforeThisChange": "470aa7d6ba56d12df0dc148a0dded8f147cb842557224fb3643af0735a816503",
+      "previousMerged": "9211464fd9c6aaa58d3d2900d1fdf228e5c987f3ea316590f4109614306b86ac",
+      "merged": "ef4850974d462d2bac3e8c89373934fa3ae5c8e9df3a94f00e3aed97513b0518",
+      "notes": "Inherited pre-task 16dp blur and smoothstep mask are retained, not attributed to this task. Preserved extraction baseline and pre-task snapshot remain unchanged. See docs/coloros17-progressive-blur.md."
+    },
+    {
+      "path": "catalog/components/LiquidSlider.kt",
+      "kind": "user-authorized-local-change",
+      "reason": "1.0.11 endpoint bounds plus 1.0.10 idle dual shadow; pressed optical effects preserved",
+      "baseline": "48d9fa68dd97db17e7fb0aaae76b88078f97ec48c3a927778bff10de2dcfbff9",
+      "merged": "4a0489d52c9d2ebc64f375de97936085a246bf8ea8368f6e57379f44ebcf9183"
+    },
+    {
+      "path": "backdrop/DrawBackdropModifier.kt",
+      "baseline": "95e80b24af447e24afd736a2d92b650514ff3f4973f9e0389c2faa5e62388462",
+      "merged": "e678522beecfa8bb0653ca1868f83e2fb2ef02f7d2bfed70c97eb492d9b029cf",
+      "beforeDockEdgeChange": "9acc0d8e8bcf7729c5018aebb635c19a56385b092a4a818444ea94b49c7134e9",
+      "reason": "Isolate optional iOS 27 material highlight from exterior shadow and inverse backdrop transform; keep iOS 26 defaults."
+    },
+    {
+      "path": "backdrop/backdrops/LayerBackdropModifier.kt",
+      "baseline": "19a2465ada3c84cfafb40cd34feb2cdacf8e787b1e40a71af469b059eade0670",
+      "merged": "271e91e76804049fbb3c01dfa62024a505bbfbb0192c808caa3f49ed8575cb14"
+    },
+    {
+      "path": "catalog/components/LiquidBottomTabs.kt",
+      "kind": "user-authorized-local-change",
+      "reason": "Isolate optional iOS 27 material highlight from exterior shadow and inverse backdrop transform; keep iOS 26 defaults.",
+      "baseline": "1756ff3de4c3385aaa2d883be08b754c04dacfa2895f97bfc7ff3e6c70aa8c1d",
+      "merged": "ffe0e1126bbb531fbb59081abe3011d129e38aabaee51808e7aa6f9cfc6e3156",
+      "beforeDockPopupChange": "4c9c1530db1488c54f437888665a3c68dfbf88af0b6b25bd755e03a2c52681cb",
+      "beforeDockEdgeChange": "d95428312022488d4132fcfffbc3d5bd7de014781e7a3ff1e4c0ccdd379bd079"
+    },
+    {
+      "path": "backdrop/highlight/HighlightStyle.kt",
+      "baseline": "f1c30720dd148b7e9331752d5d11e39c04572d1d538f1672aa9c5a52f890893d",
+      "previousMerged": "f1c30720dd148b7e9331752d5d11e39c04572d1d538f1672aa9c5a52f890893d",
+      "beforeThisChange": "f1c30720dd148b7e9331752d5d11e39c04572d1d538f1672aa9c5a52f890893d",
+      "merged": "9e17ef75af36c9586c13f54027839054bb1e23a22fd7c531e5133f556479af1a",
+      "kind": "user-authorized-local-change",
+      "reason": "Port LiquidTab gyroscope-driven dual-light edge highlight into this project, preserving existing outline and backdrop integration",
+      "notes": "Gyroscope defaults enabled for HighlightStyle.Default; opt out with followDeviceTilt=false. Retains prior innerShape corner fix. See docs/gyroscope-highlight.md."
+    }
+  ]
+}

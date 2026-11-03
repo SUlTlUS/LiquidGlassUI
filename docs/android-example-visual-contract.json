@@ -1,0 +1,35 @@
+{
+  "visual": {
+    "sample/src/main/java/dev/liquidglass/sample/ExamplePageScaffold.kt": "ab1f53735767977642dc7517cbe0d67abb51cde70672acaef93f0584d7626c76",
+    "sample/src/main/java/dev/liquidglass/sample/NativeExamplePage.kt": "c7f1d80a4a082ffa0fd443dd91dd12f935b111500e090a596ffa2acb8e993174",
+    "sample/src/main/java/dev/liquidglass/sample/Ios27ExampleComponents.kt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sample/src/main/java/dev/liquidglass/sample/FullWidthListExample.kt": "edcb4708b3115e5adc9fa97bd4fe53034f80c3ddce59af39c9a9c38f056080d3",
+    "sample/src/main/java/dev/liquidglass/sample/Ios27PickerExample.kt": "730805344f93b014e3106734a20668a73cb4a69ba7f36fb02a19acb8f21a4e2e",
+    "sample/src/main/java/dev/liquidglass/sample/Ios27StepperExample.kt": "091ce5ac72d415cb1321fb9033c535098f8406153c854a2651b3de94b2806cea",
+    "sample/src/main/java/dev/liquidglass/sample/Ios27TextFieldsExample.kt": "3d900e0d04e8d0b06225fe106ac11a8d45ac7a9785884c24ba2a672424ef1e9f",
+    "sample/src/main/java/dev/liquidglass/sample/Ios27ColorPickerDialog.kt": "240f3b7c3149c261dd2344ea03854aef8115a7befb7f9b3ccee9bffef00ca184",
+    "sample/src/main/java/dev/liquidglass/sample/Ios27ColorPickerSheetSurface.kt": "ada1978b9e0db035f3d902d985ca0b0f23b76539035c4b0b0ced23e2698997c8",
+    "sample/src/main/java/dev/liquidglass/sample/Ios27AlertExample.kt": "41d1069fb975c8e6ffaab6be3d7dd423ba5bef4d67ed126797a7e8159f45389c",
+    "sample/src/main/java/dev/liquidglass/sample/Ios27ActionSheetExample.kt": "8d050c4e636b014cef64a8ac9007ca376d0ead9907dde120693d25cbe0436ec1",
+    "sample/src/main/java/dev/liquidglass/sample/Ios27ActivityViewExample.kt": "dfe09b34d32d4a59775bd13040b20aef0e0c1b924f511d6ace4f26e011d59fbf",
+    "sample/src/main/java/dev/liquidglass/sample/Ios27MenuExamples.kt": "eb5c3a32d396a9417b1cb6ebe4f7cc5af9b8a1269dd61e8f260b9a9a3cd40766",
+    "sample/src/main/java/dev/liquidglass/sample/Ios27SheetsModal.kt": "9c0ab67261292a7a4ec9b58ab0f1d589395fe2596528823e322fd92d7b891db1",
+    "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27Lists.kt": "aeebd798799731371f8625616f56f44d77050235d7d604eb2b674ff64be56824",
+    "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27InteractiveControls.kt": "cdc7a657cca78b7054a27b17d13bd4560402ba706e2ed754887eec795669da12"
+  },
+  "unchanged": {
+    "AGENTS.md": "763d2e0e71785304988a67de3adf039d52a8b85998aa3e8a09ca1f21acaad1a2",
+    "docs/figma-page-adaptation.md": "87a4f998a34b27c86771ddb3daafc11ba919170ed67928437b39f72029d0f8f1",
+    "docs/ios27-page-adaptation.md": "39d418559ac338440049c93a4f21728912873e69477e6831436cad577021112e",
+    "docs/glass-backdrop-integration.md": "d3704f902e358fc9f92581f288359a9305e723028ed464126e407b739de5ed08",
+    "docs/listening-mode-selector.md": "fc6ff564e62a8e1f937381fa35a1f14ac2b4b733ea07daacfb756e66f122cd22",
+    "docs/melox-tabbar.md": "793c4b5e59ec3ddb0b13f0c23d49417a5db674c0743639159309552ea7183d6a",
+    "docs/native-framework-examples.md": "b1a4f595b1b027e30e5515ac69c584141f6a7b2eae7206fbd90356e7b1eb46d9",
+    "docs/liquid-glass-merged-files.json": "fba237c3fde98b68d8c38d5e33ee1e996790559c60f705442e15e023134e4246"
+  },
+  "trees": {
+    "liquidglass/src/main/java/com/zeaze/tianyinwallpaper": "2ce9a7be8e99c06426c0dba23d46d57fe3457943887ba80add222c2962bc4e1b",
+    "docs/liquid-glass-extracted/source": "1ed710a37cb80cabf891d2b688d02cd2fbce2a11fc4f27551bf14e098e5c0ca0",
+    "sample/src/main/assets/iphone-examples": "131e9f31ae533d184c4b73080c89565a9d5b1242317afb49b6b60bf52fbbabed"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "device": "192.168.1.148:45149",
+  "sdk": 37,
+  "apkSha256": "ef888552cd76793aa6a924cb6e8fe7c43782cf86b8e4ea84b72b153c737b1338",
+  "passed": [
+    "cold start remains alive"
+  ],
+  "completed": false,
+  "visualAcceptance": "pending user review",
+  "failure": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(dump().includes('使用说明'))\n"
+}

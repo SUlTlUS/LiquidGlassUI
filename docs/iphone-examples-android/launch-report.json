@@ -1,0 +1,394 @@
+[
+  {
+    "key": "12740-23997",
+    "category": "Toolbars - Top",
+    "variant": "Type=Title 2 Line Left",
+    "pid": "10923",
+    "drawn": true
+  },
+  {
+    "key": "12740-24005",
+    "category": "Toolbars - Top",
+    "variant": "Type=Title 2 Line",
+    "pid": "10991",
+    "drawn": true
+  },
+  {
+    "key": "12740-24013",
+    "category": "Toolbars - Top",
+    "variant": "Type=Large Title",
+    "pid": "11053",
+    "drawn": true
+  },
+  {
+    "key": "12740-24021",
+    "category": "Toolbars - Top",
+    "variant": "Type=Compact Large Title",
+    "pid": "11114",
+    "drawn": true
+  },
+  {
+    "key": "12740-24029",
+    "category": "Toolbars - Top",
+    "variant": "Type=Default",
+    "pid": "11175",
+    "drawn": true
+  },
+  {
+    "key": "12740-35194",
+    "category": "Text Fields",
+    "variant": "Default",
+    "pid": "11236",
+    "drawn": true
+  },
+  {
+    "key": "12740-24039",
+    "category": "Toolbars - Bottom",
+    "variant": "Type=Search",
+    "pid": "11298",
+    "drawn": true
+  },
+  {
+    "key": "12740-24048",
+    "category": "Toolbars - Bottom",
+    "variant": "Type=Symbols",
+    "pid": "11359",
+    "drawn": true
+  },
+  {
+    "key": "12740-24062",
+    "category": "Toolbars - Bottom",
+    "variant": "Type=Text",
+    "pid": "11423",
+    "drawn": true
+  },
+  {
+    "key": "12740-35193",
+    "category": "Toggles (Switches)",
+    "variant": "Default",
+    "pid": "11484",
+    "drawn": true
+  },
+  {
+    "key": "12740-24077",
+    "category": "Tab Bar",
+    "variant": "Split Search=False",
+    "pid": "11546",
+    "drawn": true
+  },
+  {
+    "key": "12740-24086",
+    "category": "Tab Bar",
+    "variant": "Split Search=True",
+    "pid": "11607",
+    "drawn": true
+  },
+  {
+    "key": "12740-35186",
+    "category": "Slider",
+    "variant": "Default",
+    "pid": "11668",
+    "drawn": true
+  },
+  {
+    "key": "12740-35192",
+    "category": "Steppers",
+    "variant": "Default",
+    "pid": "11728",
+    "drawn": true
+  },
+  {
+    "key": "12740-24098",
+    "category": "Sheets (Modals)",
+    "variant": "Type=Fullscreen",
+    "pid": "11790",
+    "drawn": true
+  },
+  {
+    "key": "12740-24110",
+    "category": "Sheets (Modals)",
+    "variant": "Type=Fullscreen Stack",
+    "pid": "11855",
+    "drawn": true
+  },
+  {
+    "key": "12740-24122",
+    "category": "Sheets (Modals)",
+    "variant": "Type=Inspector",
+    "pid": "11917",
+    "drawn": true
+  },
+  {
+    "key": "12740-24135",
+    "category": "Picker",
+    "variant": "Type=Inline",
+    "pid": "11977",
+    "drawn": true
+  },
+  {
+    "key": "12740-24143",
+    "category": "Picker",
+    "variant": "Type=Compact",
+    "pid": "12038",
+    "drawn": true
+  },
+  {
+    "key": "12740-24157",
+    "category": "Menus",
+    "variant": "Type=Edit Medium",
+    "pid": "12098",
+    "drawn": true
+  },
+  {
+    "key": "12740-24173",
+    "category": "Menus",
+    "variant": "Type=Menu",
+    "pid": "12159",
+    "drawn": true
+  },
+  {
+    "key": "12740-24203",
+    "category": "List",
+    "variant": "Type=Inset",
+    "pid": "12221",
+    "drawn": true
+  },
+  {
+    "key": "12740-24224",
+    "category": "List",
+    "variant": "Type=Full Width",
+    "pid": "12286",
+    "drawn": true
+  },
+  {
+    "key": "12740-24239",
+    "category": "List",
+    "variant": "Type=Full Width + Section Headers",
+    "pid": "12346",
+    "drawn": true
+  },
+  {
+    "key": "12740-24269",
+    "category": "Keyboard",
+    "variant": "Type=Lowercase",
+    "pid": "12407",
+    "drawn": true
+  },
+  {
+    "key": "12740-24284",
+    "category": "Keyboard",
+    "variant": "Type=Uppercase",
+    "pid": "12468",
+    "drawn": true
+  },
+  {
+    "key": "12740-24299",
+    "category": "Keyboard",
+    "variant": "Type=Punctuation",
+    "pid": "12531",
+    "drawn": true
+  },
+  {
+    "key": "12740-24314",
+    "category": "Keyboard",
+    "variant": "Type=Numberic",
+    "pid": "12594",
+    "drawn": true
+  },
+  {
+    "key": "12740-24329",
+    "category": "Keyboard",
+    "variant": "Type=Find",
+    "pid": "12656",
+    "drawn": true
+  },
+  {
+    "key": "12740-24340",
+    "category": "Keyboard",
+    "variant": "Type=Find and Replace",
+    "pid": "12721",
+    "drawn": true
+  },
+  {
+    "key": "12740-24351",
+    "category": "Keyboard",
+    "variant": "Type=Email",
+    "pid": "12782",
+    "drawn": true
+  },
+  {
+    "key": "12740-24360",
+    "category": "Keyboard",
+    "variant": "Type=Web Search",
+    "pid": "12843",
+    "drawn": true
+  },
+  {
+    "key": "12740-24371",
+    "category": "Keyboard",
+    "variant": "Type=URL",
+    "pid": "12903",
+    "drawn": true
+  },
+  {
+    "key": "12740-24382",
+    "category": "Keyboard",
+    "variant": "Type=Number Pad",
+    "pid": "12963",
+    "drawn": true
+  },
+  {
+    "key": "12740-24391",
+    "category": "Keyboard",
+    "variant": "Type=Emoji",
+    "pid": "13024",
+    "drawn": true
+  },
+  {
+    "key": "12740-24401",
+    "category": "Face ID",
+    "variant": "State=Authenticating",
+    "pid": "13085",
+    "drawn": true
+  },
+  {
+    "key": "12740-24409",
+    "category": "Face ID",
+    "variant": "State=Success",
+    "pid": "13147",
+    "drawn": true
+  },
+  {
+    "key": "12740-24418",
+    "category": "Notifications",
+    "variant": "Expanded=True",
+    "pid": "13209",
+    "drawn": true
+  },
+  {
+    "key": "12740-24428",
+    "category": "Notifications",
+    "variant": "Expanded=False",
+    "pid": "13271",
+    "drawn": true
+  },
+  {
+    "key": "12740-24439",
+    "category": "Empty States",
+    "variant": "Config=Title and Subtitle",
+    "pid": "13333",
+    "drawn": true
+  },
+  {
+    "key": "12740-24450",
+    "category": "Empty States",
+    "variant": "Config=Symbol in Circle",
+    "pid": "13394",
+    "drawn": true
+  },
+  {
+    "key": "12740-24462",
+    "category": "Empty States",
+    "variant": "Config=Large Symbol",
+    "pid": "13457",
+    "drawn": true
+  },
+  {
+    "key": "12740-35191",
+    "category": "Lock Screen",
+    "variant": "Default",
+    "pid": "13524",
+    "drawn": true
+  },
+  {
+    "key": "12740-35183",
+    "category": "Context Menu",
+    "variant": "Default",
+    "pid": "13588",
+    "drawn": true
+  },
+  {
+    "key": "12740-24471",
+    "category": "Home Screen Widgets",
+    "variant": "Size=Small",
+    "pid": "13649",
+    "drawn": true
+  },
+  {
+    "key": "12740-24474",
+    "category": "Home Screen Widgets",
+    "variant": "Size=Medium",
+    "pid": "13715",
+    "drawn": true
+  },
+  {
+    "key": "12740-24477",
+    "category": "Home Screen Widgets",
+    "variant": "Size=Large",
+    "pid": "13777",
+    "drawn": true
+  },
+  {
+    "key": "12740-24480",
+    "category": "Home Screen Widgets",
+    "variant": "Size=XL",
+    "pid": "13839",
+    "drawn": true
+  },
+  {
+    "key": "12740-35184",
+    "category": "Color Picker",
+    "variant": "Default",
+    "pid": "13902",
+    "drawn": true
+  },
+  {
+    "key": "12740-35187",
+    "category": "Home Screen Quick Actions",
+    "variant": "Default",
+    "pid": "13963",
+    "drawn": true
+  },
+  {
+    "key": "12740-35185",
+    "category": "Action Sheet",
+    "variant": "Default",
+    "pid": "14028",
+    "drawn": true
+  },
+  {
+    "key": "12740-35189",
+    "category": "Home Screen",
+    "variant": "Default",
+    "pid": "14088",
+    "drawn": true
+  },
+  {
+    "key": "12740-24488",
+    "category": "Alert",
+    "variant": "Type=Side-by-side",
+    "pid": "14149",
+    "drawn": true
+  },
+  {
+    "key": "12740-24497",
+    "category": "Alert",
+    "variant": "Type=Stacked",
+    "pid": "14210",
+    "drawn": true
+  },
+  {
+    "key": "12740-35188",
+    "category": "Control Center",
+    "variant": "Default",
+    "pid": "14276",
+    "drawn": true
+  },
+  {
+    "key": "12740-35190",
+    "category": "Activity View",
+    "variant": "Default",
+    "pid": "14338",
+    "drawn": true
+  }
+]

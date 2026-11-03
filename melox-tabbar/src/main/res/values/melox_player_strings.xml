@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="player_now_playing">Now playing</string>
+    <string name="player_artwork">Album artwork</string>
+    <string name="player_artwork_default">Default album artwork</string>
+</resources>

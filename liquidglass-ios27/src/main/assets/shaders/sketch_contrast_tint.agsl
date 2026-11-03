@@ -1,0 +1,45 @@
+// Material tint/contrast, NOT a highlight shader.
+// FlClash liquid_glass.frag samples 5 points and increases tint coverage only
+// if the background luminance clashes with the tint. This samples Sketch's
+// already recorded, blurred optical layer at the same five positions.
+// Limitation: it uses Sketch's post-blur scene, rather than FlClash's raw atlas.
+uniform shader uContent;
+uniform float2 uSize;
+uniform float4 uTint;
+uniform float uContrast;
+
+float luminance(float3 c) {
+    return dot(c, float3(.2126, .7152, .0722));
+}
+
+half4 main(float2 p) {
+    half4 sample = uContent.eval(p);
+    if (uTint.a <= 0.0 && abs(uContrast) <= .00001) {
+        return sample;
+    }
+    float clash = 0.0;
+    if (abs(uContrast) > .00001) {
+        // FlClash: center + four samples at 0.4 / 1.6 times half size.
+        half4 avg = uContent.eval(uSize * float2(.5, .5));
+        avg += uContent.eval(uSize * float2(.2, .3));
+        avg += uContent.eval(uSize * float2(.8, .3));
+        avg += uContent.eval(uSize * float2(.2, .7));
+        avg += uContent.eval(uSize * float2(.8, .7));
+        avg *= half(.2);
+        float3 straight = float3(avg.rgb) / max(float(avg.a), .0001);
+        float behindLuma = luminance(straight);
+        clash = clamp(
+            (sign(uContrast) * (luminance(uTint.rgb) - behindLuma) - .3) / .5,
+            0.0, 1.0
+        );
+    }
+    float cover = clamp(
+        uTint.a + (1.0 - uTint.a) * clash * abs(uContrast),
+        0.0, 1.0
+    );
+    float outAlpha = float(sample.a) * (1.0 - cover) + cover;
+    float3 outRGB = float3(sample.rgb) * (1.0 - cover) +
+        uTint.rgb * cover;
+    return half4(half3(clamp(outRGB, float3(0.0), float3(outAlpha))),
+        half(outAlpha));
+}

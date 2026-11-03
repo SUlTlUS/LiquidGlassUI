@@ -1,0 +1,314 @@
+// FlClash control rim separated from its optical material pass.
+// Control terms are copied from flclash_glass.agsl / liquid_glass.frag.
+// Sketch owns uContent (blur, lens, vibrancy). No second refraction is drawn.
+uniform shader uContent;
+uniform float2 uPanelSize;
+uniform float uRadius;
+uniform float uDensity;
+uniform float4 uCornerAlong;
+uniform float4 uCornerAcross;
+uniform float4 uCornerCenters;
+uniform float4 uPillCurves[6];
+uniform float2 uPillCenters[6];
+uniform float4 uRim;       // strength, width, tail, focus
+uniform float uRimAdded;
+uniform float3 uEdge;      // hairline, side hairline, unused
+uniform float4 uGlow;      // local glow center, intensity, radius
+uniform float uGlowWash;
+uniform float uRefraction;
+uniform int uMorphEnabled;
+uniform float4 uMorphPlatter;
+uniform float4 uMorphDroplet;
+uniform float2 uMorphSpec;
+uniform int uOutlineEnabled;
+uniform float4 uOutlineRect;
+uniform float uOutlineRadius;
+uniform int uCount;
+uniform float4 uPill0;
+uniform float4 uPill1;
+uniform float4 uPill2;
+uniform float4 uPill3;
+uniform float4 uPill4;
+uniform float4 uPill5;
+uniform float4 uBlends;
+uniform float uBlendLast;
+uniform int uProfileEnabled;
+uniform float2 uProfileCenter;
+// Dock specialization raises these together; other controls keep source resolution.
+const int PROFILE_PACKS = 16;
+const float PROFILE_SAMPLES = 64.0;
+uniform float4 uProfile[16];
+
+float4 pillAt(int i) {
+    if (i == 0) return uPill0;
+    if (i == 1) return uPill1;
+    if (i == 2) return uPill2;
+    if (i == 3) return uPill3;
+    if (i == 4) return uPill4;
+    return uPill5;
+}
+
+// RuntimeShader requires constant array indices inside helper functions.
+float4 pillCurveAt(int i) {
+    if (i == 0) return uPillCurves[0];
+    if (i == 1) return uPillCurves[1];
+    if (i == 2) return uPillCurves[2];
+    if (i == 3) return uPillCurves[3];
+    if (i == 4) return uPillCurves[4];
+    return uPillCurves[5];
+}
+
+float2 pillCenterAt(int i) {
+    if (i == 0) return uPillCenters[0];
+    if (i == 1) return uPillCenters[1];
+    if (i == 2) return uPillCenters[2];
+    if (i == 3) return uPillCenters[3];
+    if (i == 4) return uPillCenters[4];
+    return uPillCenters[5];
+}
+
+float roundedBoxDistance(float2 p, float2 center, float2 halfSize,
+                         float radius) {
+    float2 q = abs(p - center) - halfSize + radius;
+    return length(max(q, float2(0.0))) + min(max(q.x, q.y), 0.0) - radius;
+}
+
+float2 roundedBoxNormal(float2 p, float2 center, float2 halfSize,
+                        float radius) {
+    float2 offset = p - center;
+    float2 q = abs(offset) - halfSize + radius;
+    float2 outward;
+    if (q.x > 0.0 && q.y > 0.0) {
+        outward = normalize(q);
+    } else {
+        outward = q.x > q.y ? float2(1.0, 0.0) : float2(0.0, 1.0);
+    }
+    return outward * float2(offset.x < 0.0 ? -1.0 : 1.0,
+                            offset.y < 0.0 ? -1.0 : 1.0);
+}
+
+// Flutter fits each RSuperellipse corner with two superellipse/circle octants.
+// Its narrow rim follows that edge, while the normal and long tail retain
+// the circular rounded-box field used by liquid_glass.frag.
+float octantInset(float2 point, float a, float4 curve, float2 center) {
+    float2 fromCenter = point - center;
+    float2 toJoint = curve.yz - center;
+    if (toJoint.x * fromCenter.y < toJoint.y * fromCenter.x) {
+        return curve.w - length(fromCenter);
+    }
+    float n = curve.x;
+    float2 s = max(point, float2(0.0)) / a;
+    float major = max(max(s.x, s.y), .0001);
+    float norm = major * pow(1.0 + pow(min(s.x, s.y) / major, n), 1.0 / n);
+    float2 slope = pow(s / norm, float2(n - 1.0));
+    return a * (1.0 - norm) / max(length(slope), .0001);
+}
+
+float cornerInset(float2 p, float2 halfSize) {
+    float2 q = abs(p);
+    if (uCornerAlong.x < 2.0) {
+        return min(halfSize.x - q.x, halfSize.y - q.y);
+    }
+    float c = halfSize.x - halfSize.y;
+    if (q.y + c >= q.x) {
+        return octantInset(float2(q.x, q.y + c), halfSize.x,
+                           uCornerAlong, uCornerCenters.xy);
+    }
+    return octantInset(float2(q.y, q.x - c), halfSize.y,
+                       uCornerAcross, uCornerCenters.zw);
+}
+
+float pillInset(float2 p, float4 pill, int index) {
+    float2 q = abs(p - pill.xy);
+    float2 halfSize = pill.zw;
+    if (halfSize.y > halfSize.x) {
+        q = q.yx;
+        halfSize = halfSize.yx;
+    }
+    float c = halfSize.x - halfSize.y;
+    if (q.y + c < q.x) return halfSize.y - length(q - float2(c, 0.0));
+    return octantInset(float2(q.x, q.y + c), halfSize.x,
+                       pillCurveAt(index), pillCenterAt(index));
+}
+
+float smoothMinimum(float a, float b, float k) {
+    if (k < .01) return min(a, b);
+    float h = clamp(.5 + .5 * (b - a) / k, 0.0, 1.0);
+    return mix(b, a, h) - k * h * (1.0 - h);
+}
+
+void addTurn(float u, float index, float radius, inout float2 sum) {
+    float x = u - index;
+    x -= PROFILE_SAMPLES * floor(x / PROFILE_SAMPLES + .5);
+    float d = abs(x);
+    if (d >= 2.0) return;
+    float2 weight = d < 1.0
+        ? float2((1.5 * d - 2.5) * d * d + 1.0,
+                 (4.5 * d - 5.0) * d)
+        : float2(((-.5 * d + 2.5) * d - 4.0) * d + 2.0,
+                 (-1.5 * d + 5.0) * d - 4.0);
+    sum += radius * float2(weight.x, weight.y * sign(x));
+}
+
+void profileGeometry(float2 point, out float distance, out float2 normal) {
+    float2 p = point - uProfileCenter;
+    float len = max(length(p), .001);
+    float angle = atan(p.y, p.x) / 6.28318530718;
+    float u = (angle - floor(angle)) * PROFILE_SAMPLES;
+    float2 sum = float2(0.0);
+    for (int i = 0; i < PROFILE_PACKS; ++i) {
+        float4 radii = uProfile[i];
+        float index = float(i) * 4.0;
+        addTurn(u, index, radii.x, sum);
+        addTurn(u, index + 1.0, radii.y, sum);
+        addTurn(u, index + 2.0, radii.z, sum);
+        addTurn(u, index + 3.0, radii.w, sum);
+    }
+    float reach = max(sum.x, .001);
+    float slope = sum.y * PROFILE_SAMPLES / 6.28318530718 / reach;
+    float2 radial = p / len;
+    float2 gradient = radial - slope * float2(-radial.y, radial.x);
+    float stretch = max(length(gradient), .0001);
+    distance = (len - reach) / stretch;
+    normal = gradient / stretch;
+}
+
+void rimGeometry(float2 p, float traced, out float distance,
+                 out float2 normal, out float edge) {
+    // FlClash uses gooGeometry BEFORE its radial outline path, not after.
+    // The lens and rim therefore use identical smooth-min Goo normals.
+    if (uMorphEnabled != 0) {
+        float2 a = uMorphPlatter.xy;
+        float2 b = uMorphDroplet.xy;
+        float ar = min(uMorphSpec.x, min(uMorphPlatter.z, uMorphPlatter.w));
+        float br = min(uMorphDroplet.z, uMorphDroplet.w);
+        float da = roundedBoxDistance(p, a, uMorphPlatter.zw, ar);
+        float db = roundedBoxDistance(p, b, uMorphDroplet.zw, br);
+        float2 na = roundedBoxNormal(p, a, uMorphPlatter.zw, ar);
+        float2 nb = roundedBoxNormal(p, b, uMorphDroplet.zw, br);
+        float k = uMorphSpec.y;
+        float h = k < .01 ? (da <= db ? 1.0 : 0.0) :
+                         clamp(.5 + .5 * (db - da) / k, 0.0, 1.0);
+        distance = smoothMinimum(da, db, k);
+        float2 n = mix(nb, na, h);
+        normal = dot(n, n) > .00001 ? normalize(n) : na;
+        float lost = 0.0;
+        if (db < da && traced > 0.0 && -db < traced + 1.0 + .03 * br) {
+            lost = max(-db - pillInset(p, uMorphDroplet, 1), 0.0);
+        }
+        edge = max(-distance - max(lost - (min(da, db) - distance), 0.0), 0.0);
+        return;
+    }
+    if (uCount > 0) {
+        float d = 100000.0;
+        float2 n = float2(0.0, 1.0);
+        float nearest = 100000.0;
+        float lost = 0.0;
+        for (int i = 0; i < 6; ++i) {
+            if (i >= uCount) break;
+            float4 pill = pillAt(i);
+            float r = min(pill.z, pill.w);
+            float next = roundedBoxDistance(p, pill.xy, pill.zw, r);
+            float2 nextNormal = roundedBoxNormal(p, pill.xy, pill.zw, r);
+            if (next < nearest) {
+                nearest = next;
+                lost = 0.0;
+                if (traced > 0.0 && -next < traced + 1.0 + .03 * r) {
+                    lost = max(-next - pillInset(p, pill, i), 0.0);
+                }
+            }
+            if (i == 0) {
+                d = next;
+                n = nextNormal;
+            } else {
+                float k = i == 1 ? uBlends.x :
+                          i == 2 ? uBlends.y :
+                          i == 3 ? uBlends.z :
+                          i == 4 ? uBlends.w : uBlendLast;
+                float h = k < .01 ? (d <= next ? 1.0 : 0.0) :
+                             clamp(.5 + .5 * (next - d) / k, 0.0, 1.0);
+                float2 mixedNormal = mix(nextNormal, n, h);
+                n = dot(mixedNormal, mixedNormal) > .00001 ?
+                    normalize(mixedNormal) : n;
+                d = smoothMinimum(d, next, k);
+            }
+        }
+        distance = d;
+        normal = n;
+        edge = max(-d - max(lost - (nearest - d), 0.0), 0.0);
+        return;
+    }
+    if (uProfileEnabled != 0) {
+        profileGeometry(p, distance, normal);
+        edge = max(-distance, 0.0);
+        return;
+    }
+    float2 center = uPanelSize * .5;
+    float2 halfSize = center;
+    float radius = uRadius;
+    if (uOutlineEnabled != 0) {
+        center = uOutlineRect.xy;
+        halfSize = uOutlineRect.zw;
+        radius = uOutlineRadius;
+    }
+    distance = roundedBoxDistance(p, center, halfSize, radius);
+    normal = roundedBoxNormal(p, center, halfSize, radius);
+    edge = max(-distance, 0.0);
+    if (traced > 0.0 && edge < traced + 1.0 + .03 * radius) {
+        edge = max(cornerInset(p - center, halfSize), 0.0);
+    }
+}
+
+half4 main(float2 p) {
+    half4 source = uContent.eval(p);
+    float a = float(source.a);
+    if (a < .00001) return source;
+
+    float d;
+    float2 normal;
+    float edge;
+    float traced = .67 * uDensity + uRim.y;
+    rimGeometry(p, traced, d, normal, edge);
+    float inset = max(-d, 0.0);
+    // The same ordinary FlClash facing/band/tail/focus expression.
+    float facing;
+    if (uRefraction < 0.0) {
+        facing = smoothstep(.65, .95, abs(normal.y));
+    } else {
+        float rise2 = normal.y * normal.y;
+        float rise4 = rise2 * rise2;
+        float rise16 = rise4 * rise4 * rise4 * rise4;
+        facing = mix(rise2,
+                     .5 * rise2 * abs(normal.y) * (1.0 + rise16),
+                     uRim.w);
+    }
+    float inner = max(edge - .67 * uDensity, 0.0);
+    float band = clamp(1.0 - inner / max(uRim.y, .001), 0.0, 1.0);
+    float tail = clamp(1.0 - max(inset - .67 * uDensity, 0.0) /
+                       max(4.5 * uDensity, .001), 0.0, 1.0);
+    float shine = min(uRim.x * facing * mix(band, tail, uRim.z), 1.0);
+
+    float3 rgb = float3(source.rgb);
+    rgb += (float3(a) - (1.0 - uRimAdded) * rgb) * shine;
+
+    // The original hairline darkens the scene sample, but uContent is the
+    // already-refracted Sketch material. Apply the SAME shape/strength
+    // directly to that material; do not read back or refract a second time.
+    float line = clamp((.67 * uDensity - edge) + .5, 0.0, 1.0);
+    float darken = mix(uEdge.x, uEdge.y, pow(abs(normal.x), 3.0));
+    // The line replaces the rim even where its directional darkening is zero.
+    // Testing `darken` here leaves a bright strip across a dark pill's flat
+    // top/bottom, then abruptly removes it as soon as the normal tilts.
+    if ((uEdge.x > 0.0 || uEdge.y > 0.0) && line > 0.0) {
+        float3 under = float3(source.rgb);
+        float3 reduced = max(under - float3(.298) * a, .22 * under);
+        rgb = mix(rgb, mix(under, reduced, darken), line);
+    }
+
+    float2 offset = p - uGlow.xy;
+    float glow = uGlow.z * mix(exp(-dot(offset, offset) /
+                              max(uGlow.w * uGlow.w, 1.0)), 1.0, uGlowWash);
+    rgb += float3(glow * a);
+
+    return half4(half3(clamp(rgb, float3(0.0), float3(a))), half(a));
+}

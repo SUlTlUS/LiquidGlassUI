@@ -1,0 +1,172 @@
+// Geometry-aware FlClash refraction for Sketch's sampled background.
+// Goo uses the original smooth-min field; ordinary/outlined panes use the
+// matching rounded rectangle field. All use a single optical pass.
+// It does not draw highlights, edges, tint or an additional glass surface.
+uniform shader uContent;
+uniform float2 uSize;
+uniform float2 uOptics;     // FlClash refraction / bevel, in physical px
+uniform float uDispersion;  // FlClash channel separation in physical px
+uniform float uEndShade;    // Side shading in 3px falloff, before tint
+uniform float uDensity;
+uniform float uRadius;
+uniform int uOutlineEnabled;
+uniform float4 uOutlineRect;
+uniform float uOutlineRadius;
+uniform float uCornerPower;
+uniform int uMorphEnabled;
+uniform float4 uMorphPlatter;
+uniform float4 uMorphDroplet;
+uniform float2 uMorphSpec;
+uniform int uCount;
+uniform float4 uPill0;
+uniform float4 uPill1;
+uniform float4 uPill2;
+uniform float4 uPill3;
+uniform float4 uPill4;
+uniform float4 uPill5;
+uniform float4 uBlends;
+uniform float uBlendLast;
+
+float4 pillAt(int i) {
+    if (i == 0) return uPill0;
+    if (i == 1) return uPill1;
+    if (i == 2) return uPill2;
+    if (i == 3) return uPill3;
+    if (i == 4) return uPill4;
+    return uPill5;
+}
+
+float roundedBoxPower(float2 p, float2 center, float2 halfSize,
+                      float radius, float power) {
+    float2 q = abs(p - center) - halfSize + radius;
+    float2 outside = max(q, float2(0.0));
+    float corner = pow(pow(outside.x, power) + pow(outside.y, power),
+                       1.0 / power);
+    return corner + min(max(q.x, q.y), 0.0) - radius;
+}
+float2 roundedBoxNormal(float2 p, float2 center, float2 halfSize,
+                        float radius, float power) {
+    float2 off = p - center;
+    float2 q = abs(off) - halfSize + radius;
+    float2 n;
+    if (q.x > 0.0 && q.y > 0.0) {
+        float2 v = pow(q, float2(power - 1.0));
+        n = v / max(length(v), .00001);
+    } else {
+        n = q.x > q.y ? float2(1.0, 0.0) : float2(0.0, 1.0);
+    }
+    return n * float2(off.x < 0.0 ? -1.0 : 1.0,
+                       off.y < 0.0 ? -1.0 : 1.0);
+}
+float smoothMinimum(float a, float b, float k) {
+    if (k < .01) return min(a, b);
+    float h = clamp(.5 + .5 * (b - a) / k, 0.0, 1.0);
+    return mix(b, a, h) - k * h * (1.0 - h);
+}
+void gooGeometry(float2 p, out float distance, out float2 normal) {
+    if (uMorphEnabled != 0) {
+        float2 a = uMorphPlatter.xy;
+        float2 b = uMorphDroplet.xy;
+        float ar = uMorphSpec.x;
+        float br = min(uMorphDroplet.z, uMorphDroplet.w);
+        float da = roundedBoxPower(p, a, uMorphPlatter.zw, ar, uCornerPower);
+        float db = roundedBoxPower(p, b, uMorphDroplet.zw, br, 2.0);
+        float2 na = roundedBoxNormal(p, a, uMorphPlatter.zw, ar, uCornerPower);
+        float2 nb = roundedBoxNormal(p, b, uMorphDroplet.zw, br, 2.0);
+        float k = uMorphSpec.y;
+        float h = k < .01 ? (da <= db ? 1.0 : 0.0) :
+                       clamp(.5 + .5 * (db - da) / k, 0.0, 1.0);
+        distance = smoothMinimum(da, db, k);
+        float2 blended = mix(nb, na, h);
+        normal = dot(blended, blended) > .00001 ? normalize(blended) : na;
+        return;
+    }
+    if (uCount <= 0) {
+        float2 center = uOutlineEnabled != 0 ? uOutlineRect.xy : uSize * .5;
+        float2 halfSize = uOutlineEnabled != 0 ? uOutlineRect.zw : uSize * .5;
+        float radius = uOutlineEnabled != 0 ? uOutlineRadius : uRadius;
+        radius = min(radius, min(halfSize.x, halfSize.y));
+        distance = roundedBoxPower(p, center, halfSize, radius, uCornerPower);
+        normal = roundedBoxNormal(p, center, halfSize, radius, uCornerPower);
+        return;
+    }
+    float d = 100000.0;
+    float2 n = float2(0.0, 1.0);
+    for (int i = 0; i < 6; ++i) {
+        if (i >= uCount) break;
+        float4 pill = pillAt(i);
+        float r = min(pill.z, pill.w);
+        float next = roundedBoxPower(p, pill.xy, pill.zw, r, 2.0);
+        float2 nextNormal = roundedBoxNormal(p, pill.xy, pill.zw, r, 2.0);
+        if (i == 0) {
+            d = next;
+            n = nextNormal;
+        } else {
+            float k = i == 1 ? uBlends.x :
+                      i == 2 ? uBlends.y :
+                      i == 3 ? uBlends.z :
+                      i == 4 ? uBlends.w : uBlendLast;
+            float h = k < .01 ? (d <= next ? 1.0 : 0.0) :
+                       clamp(.5 + .5 * (next - d) / k, 0.0, 1.0);
+            float2 blended = mix(nextNormal, n, h);
+            n = dot(blended, blended) > .00001 ? normalize(blended) : n;
+            d = smoothMinimum(d, next, k);
+        }
+    }
+    distance = d;
+    normal = n;
+}
+half4 opticalSample(float2 uv) {
+    return uContent.eval(clamp(uv, float2(.5),
+        max(float2(.5), uSize - float2(.5))));
+}
+half4 main(float2 p) {
+    // Sketch owns background/blur. FlClash controls the geometry, optical
+    // shift, and chromatic splitting, including its Lens (negative shift).
+    if (abs(uOptics.x) <= .00001 && uDispersion <= .00001)
+        return opticalSample(p);
+    float distance;
+    float2 normal;
+    gooGeometry(p, distance, normal);
+    float inset = max(-distance, 0.0);
+    float halfMinor = uMorphEnabled != 0
+        ? min(uMorphPlatter.z, uMorphPlatter.w)
+        : uOutlineEnabled != 0
+            ? min(uOutlineRect.z, uOutlineRect.w)
+            : min(uSize.x, uSize.y) * .5;
+    halfMinor = max(halfMinor, .001);
+    float bevel = max(min(uOptics.y, halfMinor * .5), .001);
+    float rise = 1.0 - clamp(inset / bevel, 0.0, 1.0);
+    float2 shift;
+    if (uOptics.x < 0.0) {
+        // Raised lens: its strongest outward reading is inside the rim,
+        // then falls back to zero toward the pane center.
+        shift = normal * -uOptics.x * smoothstep(0.0, bevel, inset)
+            * (1.0 - smoothstep(bevel, halfMinor, inset));
+    } else {
+        // Circular bevel: same depth curve and half-minor clamp as FlClash.
+        float depth = min(uOptics.x, halfMinor)
+            * (1.0 - sqrt(max(1.0 - rise * rise, 0.0)));
+        shift = -normal * depth;
+    }
+    half4 base = opticalSample(p + shift);
+    // Original FlClash chromatic parting: offset along swapped normal.
+    // Strongest at the rim, fades from 7dp to 10dp, preserving max alpha.
+    float hold = 7.0 * uDensity;
+    float reach = 10.0 * uDensity;
+    if (uDispersion > 0.0 && inset < reach) {
+        float part = uDispersion * .5 *
+            (0.6 + 0.4 * abs(normal.y) *
+                max(1.0 - inset / max(hold, .001), 0.0)) *
+            (1.0 - smoothstep(hold, reach, inset));
+        float2 offset = normal.yx * part;
+        half4 red = opticalSample(p + shift + offset);
+        half4 blue = opticalSample(p + shift - offset);
+        base = half4(red.r, base.g, blue.b,
+                     max(base.a, max(red.a, blue.a)));
+    }
+    // FlClash liquid_glass.frag: color *= 1 - uLight.z *
+    // abs(normal.x) * exp(-inset / kEndShade), kEndShade = 3px.
+    float side = 1.0 - uEndShade * abs(normal.x) * exp(-inset / 3.0);
+    return half4(base.rgb * half(clamp(side, 0.0, 1.0)), base.a);
+}

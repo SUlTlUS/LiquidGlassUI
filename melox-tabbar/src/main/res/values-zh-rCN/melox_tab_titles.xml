@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tab_home">首页</string>
+    <string name="tab_explore">发现</string>
+    <string name="tab_library">音乐库</string>
+    <string name="tab_podcasts">播客</string>
+    <string name="tab_downloads">下载</string>
+    <string name="tab_cloud">云盘</string>
+    <string name="tab_settings">设置</string>
+    <string name="tab_search">搜索</string>
+</resources>

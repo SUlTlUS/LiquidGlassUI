@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tab_home">ホーム</string>
+    <string name="tab_explore">見つける</string>
+    <string name="tab_library">ライブラリ</string>
+    <string name="tab_podcasts">ポッドキャスト</string>
+    <string name="tab_downloads">ダウンロード</string>
+    <string name="tab_cloud">クラウド</string>
+    <string name="tab_settings">設定</string>
+    <string name="tab_search">検索</string>
+</resources>

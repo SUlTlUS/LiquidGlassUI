@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="player_now_playing">再生中</string>
+    <string name="player_artwork">アルバムアート</string>
+    <string name="player_artwork_default">デフォルトのアルバムアート</string>
+</resources>

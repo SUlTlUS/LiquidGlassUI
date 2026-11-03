@@ -1,0 +1,273 @@
+{
+  "date": "2026-11-03",
+  "revision": "Dock outline uses 256 rays and denser native path sampling; other controls retain 64 rays",
+  "build": {
+    "result": "passed",
+    "tasks": [
+      "sample:assembleDebug"
+    ],
+    "log": "build-ios27-dock-outline-final.log",
+    "qqSending": "excluded"
+  },
+  "tests": {
+    "status": "not_run",
+    "reason": "User requested no testing; no unit/lint/static/shader/device tests executed"
+  },
+  "device": {
+    "serial": "192.168.1.148:45149",
+    "installation": "success (adb install -r returned Success)",
+    "launched": false,
+    "interactions": "not_run",
+    "visualAcceptance": "pending user"
+  },
+  "artifacts": [
+    {
+      "path": "dist/ios27-dock-outline-20261103/LiquidGlassSketch-ios27-dock-outline-debug.apk",
+      "bytes": 47536098,
+      "sha256": "d534959300788916e5b014e33521bdbf1cbe70951ceced24837d11c43ec89d18"
+    }
+  ],
+  "previousDockRimRevision": {
+    "date": "2026-11-03",
+    "revision": "Dock hidden reference rim removed; indicator side hairline follows press progress",
+    "build": {
+      "result": "passed",
+      "tasks": [
+        "sample:assembleDebug"
+      ],
+      "qqSending": "excluded",
+      "log": "build-ios27-dock-rim-final.log"
+    },
+    "unitTests": {
+      "status": "not_run",
+      "reason": "User explicitly requested no tests"
+    },
+    "lint": {
+      "status": "not_run",
+      "reason": "User explicitly requested no tests"
+    },
+    "device": {
+      "serial": "192.168.1.148:45149",
+      "installation": "success (adb install -r; streamed install returned Success)",
+      "launched": false,
+      "interactions": "not_run",
+      "visualAcceptance": "pending user"
+    },
+    "artifacts": [
+      {
+        "path": "dist/ios27-dock-rim-20261103/LiquidGlassSketch-ios27-dock-rim-debug.apk",
+        "bytes": 47536098,
+        "sha256": "daee3beb2e534dc42d1ca24c27899d9f2b724f0e97a539fbc79764d529fea481"
+      }
+    ],
+    "previousVerifiedGooRevision": {
+      "date": "2026-11-03",
+      "nativeStaticTests": {
+        "tests": 32,
+        "pass": 15,
+        "fail": 17,
+        "baselineFailureNames": [
+          "full-width list uses edge-to-edge rows and remains interactive",
+          "source-extracted navigation and accessory indicators are centralized",
+          "secondary list uses the Examples/List inset geometry",
+          "Examples/List inset is entered through the reusable example component",
+          "category secondary pages use Toolbars - Top large-title geometry while List inset keeps its own chrome",
+          "alerts use the reusable glass dialog and fixed capsule actions",
+          "text fields show four source states and share clear behavior with alerts",
+          "all live application text inputs use the reusable example field",
+          "action sheet uses the source-sized top-end LiquidDialog instead of the generic bottom sheet",
+          "activity view uses the full-width scrolling share sheet and native actions",
+          "toolbar glyphs are content of the animated LiquidButton, not sibling overlays",
+          "tab bar host uses reusable LiquidBottomTab primitives",
+          "sheets modal host preserves the three source variants and safe glass layering",
+          "menus use source-sized glass panels and keep menu actions native",
+          "empty states use source variants, native glyphs and exact action geometry",
+          "picker variants use the date-calendar layout and keep both actions interactive",
+          "click feedback masks follow the visible control shapes"
+        ],
+        "sameFailuresBeforeAndAfter": true,
+        "baselineMethod": "Reconstructed only the two modified sample files and verified bytes against premerge SHA-256; all other test inputs unchanged.",
+        "currentRevisionSameFailures": true
+      },
+      "unitTests": {
+        "liquidglass": {
+          "tests": 68,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "liquidglass-ios27": {
+          "tests": 341,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "ios27Lint": {
+        "error": 0,
+        "warning": 18,
+        "information": 0
+      },
+      "sampleLint": {
+        "error": 0,
+        "warning": 102,
+        "information": 0
+      },
+      "build": {
+        "result": "passed",
+        "tasks": [
+          "verifyLiquidGlassSpec",
+          "liquidglass:testDebugUnitTest",
+          "liquidglass-ios27:testDebugUnitTest",
+          "liquidglass-ios27:lintDebug",
+          "sample:lintDebug",
+          "sample:assembleDebug",
+          "verifyDebugArtifacts"
+        ],
+        "qqSending": "excluded",
+        "sourceManifest": "passed",
+        "log": "build-ios27-goo-final.log",
+        "signatureV2": "passed",
+        "alignment16KiB": "passed",
+        "sourceDemoClassesAbsentFromApk": true
+      },
+      "device": {
+        "preliminaryBuild": "installed and cold-started on PLQ110 (API 37); navigation test incomplete, external overlay/foreground interference observed",
+        "api24to32": "not tested",
+        "visualAcceptance": "pending user",
+        "previousRevision": "Final APK installed successfully on PLQ110 via adb install -r; not launched or interaction-tested after the final update.",
+        "currentRevision": "Not installed or operated; Goo grouping, callbacks and popup hide/restore await user acceptance."
+      },
+      "artifacts": [
+        {
+          "path": "dist/ios27-goo-buttons-20261103/liquidglass-ios26-debug.aar",
+          "bytes": 827968,
+          "sha256": "1bbfce0b923e38aaa326702646a34a15561363ed13be4361ca6e8a71c04104e8"
+        },
+        {
+          "path": "dist/ios27-goo-buttons-20261103/liquidglass-ios27-debug.aar",
+          "bytes": 1272637,
+          "sha256": "1a8c3ddddd4fa00f7bb3938f72b71794083979e8344d4f833de97b2695d1532b"
+        },
+        {
+          "path": "dist/ios27-goo-buttons-20261103/LiquidGlassSketch-ios27-goo-buttons-debug.apk",
+          "bytes": 47536098,
+          "sha256": "bcae9a3fb7a27ef9d83e3605825cc96b6bb5bf59e6bb51ffc8279590d2bf6f35"
+        }
+      ],
+      "dependencyResolution": {
+        "composeUi": "1.12.0",
+        "composeFoundation": "1.12.0",
+        "material3": "1.4.0",
+        "forcedVersionsAdded": false
+      },
+      "mechanismParity": "67 imported mechanisms match the source after API annotation normalization. GlassPopup.kt and GlassControls.kt carry user-requested corrections; added Goo group/dock/transform helpers tracked separately.",
+      "revision": "Ordinary glass buttons support Goo groups, including icon/text/tinted and popup sources",
+      "previousRevisionArtifacts": [
+        {
+          "path": "dist/ios27-merge-20261103/LiquidGlassSketch-ios26-ios27-debug.apk",
+          "bytes": 47477203,
+          "sha256": "03fc453d9fe7eb5ca6aaaac550551e6da633e182ef72096ae99e64d2c39182ca"
+        },
+        {
+          "path": "dist/ios27-merge-20261103/liquidglass-ios27-debug.aar",
+          "bytes": 1227404,
+          "sha256": "21dc0de487c8961bb7ecfd6274663d3a4c5cd4a3f5bc91e25c34f63d948df52a"
+        },
+        {
+          "path": "dist/ios27-merge-20261103/liquidglass-ios26-debug.aar",
+          "bytes": 824262,
+          "sha256": "f5843e083cbd25f955ea2be1c6f0a8667c193cfd117a7b2b9f0d687c7cbe13f0"
+        }
+      ],
+      "nativeExampleChecks": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "scope": "Static integration boundaries only; no device interactions executed"
+      },
+      "previousNativeExamplesArtifacts": [
+        {
+          "path": "dist/ios27-native-examples-20261103/liquidglass-ios26-debug.aar",
+          "bytes": 824262,
+          "sha256": "f5843e083cbd25f955ea2be1c6f0a8667c193cfd117a7b2b9f0d687c7cbe13f0"
+        },
+        {
+          "path": "dist/ios27-native-examples-20261103/liquidglass-ios27-debug.aar",
+          "bytes": 1227403,
+          "sha256": "61a822ac40598595177d487889f9362e1536224829b8f7eda30159092c9113c9"
+        },
+        {
+          "path": "dist/ios27-native-examples-20261103/LiquidGlassSketch-ios27-native-examples-debug.apk",
+          "bytes": 47525096,
+          "sha256": "c7adb2efabe8700d00f3be0e275884e64ce9c4951ca3576bcff5075d91128e1e"
+        }
+      ],
+      "legacyRuntime": {
+        "frozenBaselines": 86,
+        "unchangedFiles": 84,
+        "reviewedChanges": [
+          "LiquidBottomTabs.kt: material-only hook",
+          "DrawBackdropModifier.kt: default-null surfaceLayerBlock after shadows"
+        ]
+      },
+      "newRegressionTests": {
+        "PopupPresentationTest": 8,
+        "Ios27DockBodyTest": 3,
+        "result": "passed",
+        "GooButtonGroupTest": 6
+      },
+      "previousDockPopupArtifacts": [
+        {
+          "path": "dist/ios27-dock-popup-20261103/liquidglass-ios26-debug.aar",
+          "bytes": 826871,
+          "sha256": "0755acaa4ed05308774fae72ef81e78b6f60e534cf1376c6c6a91297d8c0443c"
+        },
+        {
+          "path": "dist/ios27-dock-popup-20261103/liquidglass-ios27-debug.aar",
+          "bytes": 1247224,
+          "sha256": "64262c5e53947546a96e331ebc51b047f18eb7112aefff8babdc51a192afb326"
+        },
+        {
+          "path": "dist/ios27-dock-popup-20261103/LiquidGlassSketch-ios27-dock-popup-debug.apk",
+          "bytes": 47525123,
+          "sha256": "a6aaf9acc644164d83f22f92fb32dcdb17214589ae0b4abfc746317ee0a94965"
+        }
+      ],
+      "previousPopupTextArtifacts": [
+        {
+          "path": "dist/ios27-popup-text-20261103/liquidglass-ios26-debug.aar",
+          "bytes": 826871,
+          "sha256": "0755acaa4ed05308774fae72ef81e78b6f60e534cf1376c6c6a91297d8c0443c"
+        },
+        {
+          "path": "dist/ios27-popup-text-20261103/liquidglass-ios27-debug.aar",
+          "bytes": 1247722,
+          "sha256": "c56a72a11b121587008d2088c571b0424475ea514151e6263a947270c9e37ada"
+        },
+        {
+          "path": "dist/ios27-popup-text-20261103/LiquidGlassSketch-ios27-popup-text-debug.apk",
+          "bytes": 47525123,
+          "sha256": "1fffa7c3e68579e7a93ff30d96170f605db296aad309f43666d5e45de9b79606"
+        }
+      ],
+      "previousDockEdgeArtifacts": [
+        {
+          "path": "dist/ios27-dock-edge-20261103/liquidglass-ios26-debug.aar",
+          "bytes": 827968,
+          "sha256": "1bbfce0b923e38aaa326702646a34a15561363ed13be4361ca6e8a71c04104e8"
+        },
+        {
+          "path": "dist/ios27-dock-edge-20261103/liquidglass-ios27-debug.aar",
+          "bytes": 1247737,
+          "sha256": "c36fe4344ea98ee9cf6011f1ca5e913e23c23e6691201b0f71726e332de9270e"
+        },
+        {
+          "path": "dist/ios27-dock-edge-20261103/LiquidGlassSketch-ios27-dock-edge-debug.apk",
+          "bytes": 47525055,
+          "sha256": "df0e6e8e0d9d31090518bfa5218a7328a2649ade4f6f45739399727d4861a621"
+        }
+      ]
+    }
+  }
+}

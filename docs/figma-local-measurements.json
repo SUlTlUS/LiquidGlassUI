@@ -1,0 +1,702 @@
+{
+  "canvasSha256": "acb3ada760098b83b5e073143b8f3bafd7e99847c3c6ad994770178c0bd97434",
+  "nodeCount": 510,
+  "colors": {
+    "Backgrounds (Grouped)/Primary": {
+      "light": {
+        "r": 0.9490196108818054,
+        "g": 0.9490196108818054,
+        "b": 0.9686274528503418,
+        "a": 1
+      },
+      "dark": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 1
+      }
+    },
+    "Subcomponent Fill": {},
+    "Subcomponent Stroke": {},
+    "Backgrounds/Primary": {
+      "light": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "dark": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 1
+      }
+    },
+    "Component Fill": {},
+    "Component Stroke": {},
+    "Separators/Vibrant": {
+      "light": {
+        "r": 0.9019607901573181,
+        "g": 0.9019607901573181,
+        "b": 0.9019607901573181,
+        "a": 1
+      },
+      "dark": {
+        "r": 0.10196078568696976,
+        "g": 0.10196078568696976,
+        "b": 0.10196078568696976,
+        "a": 1
+      }
+    },
+    "Labels/Secondary": {
+      "light": {
+        "r": 0.23529411852359772,
+        "g": 0.23529411852359772,
+        "b": 0.26274511218070984,
+        "a": 0.6000000238418579
+      },
+      "dark": {
+        "r": 0.9215686321258545,
+        "g": 0.9215686321258545,
+        "b": 0.9607843160629272,
+        "a": 0.699999988079071
+      }
+    },
+    "Fills/Primary": {
+      "light": {
+        "r": 0.47058823704719543,
+        "g": 0.47058823704719543,
+        "b": 0.47058823704719543,
+        "a": 0.20000000298023224
+      },
+      "dark": {
+        "r": 0.47058823704719543,
+        "g": 0.47058823704719543,
+        "b": 0.501960813999176,
+        "a": 0.36000001430511475
+      }
+    },
+    "Accents/Blue": {
+      "light": {
+        "r": 0,
+        "g": 0.5333333611488342,
+        "b": 1,
+        "a": 1
+      },
+      "dark": {
+        "r": 0,
+        "g": 0.5686274766921997,
+        "b": 1,
+        "a": 1
+      }
+    },
+    "Labels/Quaternary": {
+      "light": {
+        "r": 0.23529411852359772,
+        "g": 0.23529411852359772,
+        "b": 0.26274511218070984,
+        "a": 0.18000000715255737
+      },
+      "dark": {
+        "r": 0.9215686321258545,
+        "g": 0.9215686321258545,
+        "b": 0.9607843160629272,
+        "a": 0.1599999964237213
+      }
+    },
+    "Labels - Vibrant/Primary": {
+      "light": {
+        "r": 0.10196078568696976,
+        "g": 0.10196078568696976,
+        "b": 0.10196078568696976,
+        "a": 1
+      },
+      "dark": {
+        "r": 0.9607843160629272,
+        "g": 0.9607843160629272,
+        "b": 0.9607843160629272,
+        "a": 1
+      }
+    },
+    "Fills/Tertiary": {
+      "light": {
+        "r": 0.4627451002597809,
+        "g": 0.4627451002597809,
+        "b": 0.501960813999176,
+        "a": 0.11999999731779099
+      },
+      "dark": {
+        "r": 0.4627451002597809,
+        "g": 0.4627451002597809,
+        "b": 0.501960813999176,
+        "a": 0.23999999463558197
+      }
+    },
+    "Fills/Quaternary": {
+      "light": {
+        "r": 0.45490196347236633,
+        "g": 0.45490196347236633,
+        "b": 0.501960813999176,
+        "a": 0.07999999821186066
+      },
+      "dark": {
+        "r": 0.4627451002597809,
+        "g": 0.4627451002597809,
+        "b": 0.501960813999176,
+        "a": 0.18000000715255737
+      }
+    },
+    "Labels - Vibrant - Controls/Tertiary": {
+      "light": {
+        "r": 0.7490196228027344,
+        "g": 0.7490196228027344,
+        "b": 0.7490196228027344,
+        "a": 1
+      },
+      "dark": {
+        "r": 0.250980406999588,
+        "g": 0.250980406999588,
+        "b": 0.250980406999588,
+        "a": 1
+      }
+    },
+    "Labels - Vibrant - Controls/Primary": {
+      "light": {
+        "r": 0.10196078568696976,
+        "g": 0.10196078568696976,
+        "b": 0.10196078568696976,
+        "a": 1
+      },
+      "dark": {
+        "r": 0.9607843160629272,
+        "g": 0.9607843160629272,
+        "b": 0.9607843160629272,
+        "a": 1
+      }
+    },
+    "Labels - Vibrant/Secondary": {
+      "light": {
+        "r": 0.4470588266849518,
+        "g": 0.4470588266849518,
+        "b": 0.4470588266849518,
+        "a": 1
+      },
+      "dark": {
+        "r": 0.5411764979362488,
+        "g": 0.5411764979362488,
+        "b": 0.5411764979362488,
+        "a": 1
+      }
+    },
+    "Labels/Primary": {
+      "light": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 1
+      },
+      "dark": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": "1:770",
+      "parent": "0:1",
+      "name": "Examples/Slider",
+      "type": "FRAME",
+      "size": {
+        "x": 402,
+        "y": 874
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": -182,
+        "m10": 0,
+        "m11": 1,
+        "m12": -437
+      },
+      "layout": {},
+      "fills": []
+    },
+    {
+      "id": "1:771",
+      "parent": "1:770",
+      "name": "Screen",
+      "type": "FRAME",
+      "size": {
+        "x": 402,
+        "y": 874
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 0
+      },
+      "cornerRadius": 40,
+      "layout": {
+        "stackMode": "VERTICAL",
+        "stackHorizontalPadding": 16,
+        "stackVerticalPadding": 116,
+        "stackPrimarySizing": "FIXED",
+        "stackPrimaryAlignItems": "CENTER",
+        "stackCounterAlignItems": "CENTER",
+        "stackPaddingRight": 16,
+        "stackPaddingBottom": 10
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.9490196108818054,
+            "g": 0.9490196108818054,
+            "b": 0.9686274528503418,
+            "a": 1
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "1:772",
+      "parent": "1:771",
+      "name": "Scroll Edge Effect - Top",
+      "type": "INSTANCE",
+      "size": {
+        "x": 402,
+        "y": 116
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 0
+      },
+      "layout": {
+        "stackPositioning": "ABSOLUTE"
+      },
+      "separators": []
+    },
+    {
+      "id": "1:773",
+      "parent": "1:771",
+      "name": "Content Area",
+      "type": "FRAME",
+      "size": {
+        "x": 370,
+        "y": 748
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 16,
+        "m10": 0,
+        "m11": 1,
+        "m12": 116
+      },
+      "layout": {
+        "stackMode": "VERTICAL",
+        "stackSpacing": 10,
+        "stackVerticalPadding": 10,
+        "stackPrimarySizing": "FIXED",
+        "stackChildPrimaryGrow": 1,
+        "stackPaddingBottom": 10,
+        "stackChildAlignSelf": "STRETCH"
+      }
+    },
+    {
+      "id": "1:774",
+      "parent": "1:773",
+      "name": "Grouped List",
+      "type": "FRAME",
+      "size": {
+        "x": 370,
+        "y": 156
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 10
+      },
+      "cornerRadius": 26,
+      "layout": {
+        "stackMode": "VERTICAL",
+        "stackCounterAlignItems": "CENTER",
+        "stackChildAlignSelf": "STRETCH"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "1:775",
+      "parent": "1:774",
+      "name": "Sliders",
+      "type": "INSTANCE",
+      "size": {
+        "x": 370,
+        "y": 52
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 0
+      },
+      "layout": {
+        "stackMode": "VERTICAL",
+        "stackHorizontalPadding": 16,
+        "stackPrimarySizing": "FIXED",
+        "stackPrimaryAlignItems": "CENTER",
+        "stackPaddingRight": 16,
+        "stackPaddingBottom": 1,
+        "stackChildAlignSelf": "STRETCH"
+      },
+      "separators": [
+        {
+          "size": {
+            "x": 338,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "1:776",
+      "parent": "1:774",
+      "name": "Sliders",
+      "type": "INSTANCE",
+      "size": {
+        "x": 370,
+        "y": 52
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 52
+      },
+      "layout": {
+        "stackMode": "VERTICAL",
+        "stackHorizontalPadding": 16,
+        "stackPrimarySizing": "FIXED",
+        "stackCounterAlignItems": "CENTER",
+        "stackPaddingRight": 16,
+        "stackPaddingBottom": 1,
+        "stackChildAlignSelf": "STRETCH"
+      },
+      "separators": [
+        {
+          "size": {
+            "x": 338,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "1:777",
+      "parent": "1:774",
+      "name": "Sliders",
+      "type": "INSTANCE",
+      "size": {
+        "x": 370,
+        "y": 52
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 104
+      },
+      "layout": {
+        "stackMode": "VERTICAL",
+        "stackHorizontalPadding": 16,
+        "stackPrimarySizing": "FIXED",
+        "stackCounterAlignItems": "CENTER",
+        "stackPaddingRight": 16,
+        "stackPaddingBottom": 1,
+        "stackChildAlignSelf": "STRETCH"
+      },
+      "separators": [
+        {
+          "size": {
+            "x": 338,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "1:778",
+      "parent": "1:773",
+      "name": "Grouped List",
+      "type": "FRAME",
+      "size": {
+        "x": 370,
+        "y": 156
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 176
+      },
+      "cornerRadius": 26,
+      "layout": {
+        "stackMode": "VERTICAL",
+        "stackCounterAlignItems": "CENTER",
+        "stackChildAlignSelf": "STRETCH"
+      },
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          },
+          "opacity": 1
+        }
+      ]
+    },
+    {
+      "id": "1:779",
+      "parent": "1:778",
+      "name": "Sliders",
+      "type": "INSTANCE",
+      "size": {
+        "x": 370,
+        "y": 52
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 0
+      },
+      "layout": {
+        "stackMode": "VERTICAL",
+        "stackHorizontalPadding": 16,
+        "stackPrimarySizing": "FIXED",
+        "stackPrimaryAlignItems": "CENTER",
+        "stackPaddingRight": 16,
+        "stackPaddingBottom": 1,
+        "stackChildAlignSelf": "STRETCH"
+      },
+      "separators": [
+        {
+          "size": {
+            "x": 338,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "1:780",
+      "parent": "1:778",
+      "name": "Sliders",
+      "type": "INSTANCE",
+      "size": {
+        "x": 370,
+        "y": 52
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 52
+      },
+      "layout": {
+        "stackMode": "VERTICAL",
+        "stackHorizontalPadding": 16,
+        "stackPrimarySizing": "FIXED",
+        "stackCounterAlignItems": "CENTER",
+        "stackPaddingRight": 16,
+        "stackPaddingBottom": 1,
+        "stackChildAlignSelf": "STRETCH"
+      },
+      "separators": [
+        {
+          "size": {
+            "x": 338,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "1:781",
+      "parent": "1:778",
+      "name": "Sliders",
+      "type": "INSTANCE",
+      "size": {
+        "x": 370,
+        "y": 52
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 104
+      },
+      "layout": {
+        "stackMode": "VERTICAL",
+        "stackHorizontalPadding": 16,
+        "stackPrimarySizing": "FIXED",
+        "stackCounterAlignItems": "CENTER",
+        "stackPaddingRight": 16,
+        "stackPaddingBottom": 1,
+        "stackChildAlignSelf": "STRETCH"
+      },
+      "separators": [
+        {
+          "size": {
+            "x": 338,
+            "y": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "1:782",
+      "parent": "1:770",
+      "name": "Toolbar - Top",
+      "type": "INSTANCE",
+      "size": {
+        "x": 402,
+        "y": 54
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 62
+      },
+      "layout": {
+        "stackMode": "HORIZONTAL",
+        "stackHorizontalPadding": 16,
+        "stackPrimarySizing": "FIXED",
+        "stackPrimaryAlignItems": "SPACE_EVENLY",
+        "stackPaddingRight": 16,
+        "stackPaddingBottom": 10,
+        "stackCounterSizing": "RESIZE_TO_FIT_WITH_IMPLICIT_SIZE"
+      },
+      "separators": []
+    },
+    {
+      "id": "1:783",
+      "parent": "1:770",
+      "name": "Home Indicator",
+      "type": "INSTANCE",
+      "size": {
+        "x": 402,
+        "y": 34
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 840
+      },
+      "layout": {
+        "stackMode": "VERTICAL",
+        "stackPrimarySizing": "FIXED",
+        "stackPrimaryAlignItems": "MAX",
+        "stackCounterAlignItems": "CENTER",
+        "stackPaddingBottom": 8
+      },
+      "separators": []
+    },
+    {
+      "id": "1:784",
+      "parent": "1:770",
+      "name": "Status bar - iPhone",
+      "type": "INSTANCE",
+      "size": {
+        "x": 402,
+        "y": 62
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 3.637978807091713e-12,
+        "m10": 0,
+        "m11": 1,
+        "m12": 0
+      },
+      "layout": {
+        "stackMode": "HORIZONTAL",
+        "stackHorizontalPadding": 9,
+        "stackVerticalPadding": 2.3329999446868896,
+        "stackPrimarySizing": "FIXED",
+        "stackPrimaryAlignItems": "CENTER",
+        "stackCounterAlignItems": "CENTER",
+        "stackPaddingRight": 9
+      },
+      "separators": []
+    },
+    {
+      "id": "1:785",
+      "parent": "1:770",
+      "name": "Bezel",
+      "type": "INSTANCE",
+      "size": {
+        "x": 402,
+        "y": 874
+      },
+      "transform": {
+        "m00": 1,
+        "m01": 0,
+        "m02": 0,
+        "m10": 0,
+        "m11": 1,
+        "m12": 0
+      },
+      "layout": {},
+      "separators": []
+    }
+  ]
+}

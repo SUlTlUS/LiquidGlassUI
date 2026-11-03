@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/lladlam/MeloX-Android",
+  "commit": "723aa764462386440b76aed5df362dadf63a096f",
+  "sourceLicense": "GPL-3.0",
+  "helpers": "AndroidLiquidGlass/BiliNext Apache-2.0 (see source notices)",
+  "bundledThirdPartyFontRedistributionAuthorization": "not verified; see docs/melox-tabbar.md before distribution"
+}

@@ -1,0 +1,599 @@
+// Compose/AGSL adaptation of FlClash shaders/liquid_glass.frag (GPL-3.0).
+// All positions, blur widths and refraction depths below are physical pixels.
+// One atlas input contains the full-resolution raw scene and up to three
+// reduced-resolution frosted tiles. Missing tiles use the original Vogel disc.
+uniform shader uBackdrop;
+uniform float2 uAtlasRawSize;
+uniform float4 uAtlasRawSlot; // atlas origin xy, source scene origin zw
+uniform float4 uAtlasBand0; // tile origin xy, scene-to-tile scale zw
+uniform float4 uAtlasBand1;
+uniform float4 uAtlasBand2;
+uniform float4 uAtlasBandScene0; // scene origin xy, scene width/height zw
+uniform float4 uAtlasBandScene1;
+uniform float4 uAtlasBandScene2;
+uniform float4 uAtlasSigmas; // preblurred physical-pixel sigmas, 0 = absent
+uniform float2 uOrigin;
+uniform float4 uSceneBasis; // local X axis xy, local Y axis zw in scene pixels
+uniform float2 uPanelSize;
+uniform float4 uTint;
+uniform float4 uVeil;        // straight-alpha cover of omitted capture layers
+uniform int uNativeClip;     // native Path owns AA; do not AA twice
+// FlClash 64-turn radial profile of the EXACT CPU-drawn Path. Only enabled
+// for outlines with a single ray intersection from their chosen center.
+uniform int uProfileEnabled;
+uniform float2 uProfileCenter;
+uniform float4 uProfile[16];
+uniform float4 uOptics;       // refraction, bevel, saturation, brightness
+uniform float4 uFrost;        // blur, haze, hazeBlur, dispersion
+uniform float4 uRim;          // strength, width, tail, focus
+uniform float2 uRimExtra;     // share added rather than screened, edge frost
+uniform float4 uMenuRim;      // side line, corner line, flat line, added shine
+uniform float4 uRimBounds;    // platter center xy and half size zw
+uniform float4 uShineTurns0;  // eight angles from the top, in radians
+uniform float4 uShineTurns1;
+uniform float4 uShineLit0;    // directional brightness at each turn
+uniform float4 uShineLit1;
+uniform float uDensity;       // physical pixels per dp
+uniform float uContrast;      // tint opacity compensation vs backdrop luma
+uniform float4 uContrastRegion; // center xy, extent zw
+uniform float4 uEdge;         // hairline, hairlineSide, end shade, unused
+uniform float4 uGlow;         // x, y, strength, reach
+uniform float uGlowWash;
+uniform float uRadius;
+uniform float uCornerPower;
+// Flutter Impeller ComputeOctant fit: curve(n, Jx, Jy, arc radius)
+// and the two circular-arc centers for a uniform-radius RSuperellipse.
+uniform float4 uCornerAlong;
+uniform float4 uCornerAcross;
+uniform float4 uCornerCenters;
+uniform int uMorphEnabled;
+uniform int uOutlineEnabled;
+uniform float4 uOutlineRect; // independent menu-card silhouette, center and halves
+uniform float uOutlineRadius;
+uniform float4 uMorphPlatter;
+uniform float4 uMorphDroplet;
+uniform float2 uMorphSpec; // platter radius and pair smooth-min blend
+uniform float uMode;
+uniform int uCount;
+uniform float4 uPill0;
+uniform float4 uPill1;
+uniform float4 uPill2;
+uniform float4 uPill3;
+uniform float4 uPill4;
+uniform float4 uPill5;
+uniform float4 uBlends;
+uniform float uBlendLast;
+uniform int uFrostTaps;
+
+float4 pillAt(int i) {
+    if (i == 0) return uPill0;
+    if (i == 1) return uPill1;
+    if (i == 2) return uPill2;
+    if (i == 3) return uPill3;
+    if (i == 4) return uPill4;
+    return uPill5;
+}
+
+float roundedBoxPower(float2 p, float2 center, float2 halfSide,
+                      float radius, float exponent) {
+    float2 q = abs(p - center) - halfSide + radius;
+    float2 corner = max(q, float2(0.0));
+    float extent = pow(
+        pow(corner.x, exponent) + pow(corner.y, exponent),
+        1.0 / exponent
+    );
+    return extent + min(max(q.x, q.y), 0.0) - radius;
+}
+
+float roundedBox(float2 p, float2 center, float2 halfSide, float radius) {
+    return roundedBoxPower(
+        p, center, halfSide, radius,
+        uMode > .5 ? 2.0 : uCornerPower
+    );
+}
+
+float smoothMinimum(float a, float b, float k) {
+    if (k < .01) return min(a, b);
+    float h = clamp(.5 + .5 * (b - a) / k, 0.0, 1.0);
+    return mix(b, a, h) - k * h * (1.0 - h);
+}
+
+// FlClash gooGeometry blends each shape's own outward normal rather
+// than differentiating the final field over two device pixels. This
+// keeps refraction and lighting stable through a thin, moving neck.
+float2 roundedBoxNormal(float2 p, float2 center, float2 halfSide,
+                        float radius, float exponent) {
+    float2 delta = p - center;
+    float2 q = abs(delta) - halfSide + radius;
+    float2 outward;
+    if (q.x > 0.0 && q.y > 0.0) {
+        float2 grad = pow(q, float2(exponent - 1.0));
+        outward = grad / max(length(grad), .00001);
+    } else {
+        outward = q.x > q.y ? float2(1.0, 0.0) : float2(0.0, 1.0);
+    }
+    float2 signs = float2(delta.x >= 0.0 ? 1.0 : -1.0,
+                          delta.y >= 0.0 ? 1.0 : -1.0);
+    return outward * signs;
+}
+
+// FlClash's octantInset/cornerInset: superellipse joined to a circular
+// arc. Only used for the thin control-rim boundary, never to change the
+// existing bevel/refraction distance or any optical strength parameters.
+float octantInset(float2 point, float side, float4 curve, float2 center) {
+    float2 relative = point - center;
+    float2 joint = curve.yz - center;
+    if (joint.x * relative.y < joint.y * relative.x) {
+        return curve.w - length(relative);
+    }
+    float n = curve.x;
+    float2 normalized = max(point, float2(0.0)) / max(side, .0001);
+    float major = max(max(normalized.x, normalized.y), .0001);
+    float norm = major * pow(
+        1.0 + pow(min(normalized.x, normalized.y) / major, n),
+        1.0 / n
+    );
+    float2 slope = pow(normalized / max(norm, .0001), float2(n - 1.0));
+    return side * (1.0 - norm) / max(length(slope), .0001);
+}
+
+float cornerInset(float2 point, float2 halfSize) {
+    float2 q = abs(point);
+    if (uCornerAlong.x < 2.0) {
+        return min(halfSize.x - q.x, halfSize.y - q.y);
+    }
+    float difference = halfSize.x - halfSize.y;
+    if (q.y + difference >= q.x) {
+        return octantInset(float2(q.x, q.y + difference),
+                           halfSize.x, uCornerAlong, uCornerCenters.xy);
+    }
+    return octantInset(float2(q.y, q.x - difference),
+                       halfSize.y, uCornerAcross, uCornerCenters.zw);
+}
+
+// Direct port of FlClash addTurn() and outlineGeometry(). In particular,
+// the uniform profile uses the source's STATIC sixteen vec4 lookups instead
+// of dynamic indexing, and calculates the same Catmull-Rom slope used to
+// orient its rim bands and the refracted scene.
+void addProfileTurn(float u, float index, float radius, inout float2 sum) {
+    float x = u - index;
+    x -= 64.0 * floor(x / 64.0 + .5);
+    float d = abs(x);
+    if (d >= 2.0) return;
+    float2 weight = d < 1.0
+        ? float2((1.5 * d - 2.5) * d * d + 1.0,
+                 (4.5 * d - 5.0) * d)
+        : float2(((-.5 * d + 2.5) * d - 4.0) * d + 2.0,
+                 (-1.5 * d + 5.0) * d - 4.0);
+    sum += radius * float2(weight.x, weight.y * sign(x));
+}
+
+void profileGeometry(float2 point, out float distance, out float2 normal) {
+    float2 p = point - uProfileCenter;
+    float len = max(length(p), .001);
+    float turn = atan(p.y, p.x) / 6.28318530718;
+    float u = (turn - floor(turn)) * 64.0;
+    float2 sum = float2(0.0);
+    for (int i = 0; i < 16; ++i) {
+        float4 radii = uProfile[i];
+        float index = float(i) * 4.0;
+        addProfileTurn(u, index, radii.x, sum);
+        addProfileTurn(u, index + 1.0, radii.y, sum);
+        addProfileTurn(u, index + 2.0, radii.z, sum);
+        addProfileTurn(u, index + 3.0, radii.w, sum);
+    }
+    float reach = max(sum.x, .001);
+    float slope = sum.y * 64.0 / 6.28318530718 / reach;
+    float2 radial = p / len;
+    float2 gradient = radial - slope * float2(-radial.y, radial.x);
+    float stretch = max(length(gradient), .0001);
+    distance = (len - reach) / stretch;
+    normal = gradient / stretch;
+}
+
+float2 morphNormal(float2 p) {
+    float2 a = uMorphPlatter.xy;
+    float2 b = uMorphDroplet.xy;
+    float ar = uMorphSpec.x;
+    float br = min(uMorphDroplet.z, uMorphDroplet.w);
+    float da = roundedBox(p, a, uMorphPlatter.zw, ar);
+    // The source button is circular: the traveling droplet has power 2,
+    // whereas the full-size menu begins at power 3.5. They cannot share
+    // one exponent or the circle will visibly jump at the final handoff.
+    float db = roundedBoxPower(p, b, uMorphDroplet.zw, br, 2.0);
+    float2 na = roundedBoxNormal(p, a, uMorphPlatter.zw, ar, uCornerPower);
+    float2 nb = roundedBoxNormal(p, b, uMorphDroplet.zw, br, 2.0);
+    float k = uMorphSpec.y;
+    float h = k < .01 ? (da <= db ? 1.0 : 0.0)
+                       : clamp(.5 + .5 * (db - da) / k, 0.0, 1.0);
+    float2 n = mix(nb, na, h);
+    return dot(n, n) > .00001 ? normalize(n) : na;
+}
+
+float geometry(float2 p) {
+    if (uProfileEnabled != 0) {
+        float distance;
+        float2 normal;
+        profileGeometry(p, distance, normal);
+        return distance;
+    }
+    if (uOutlineEnabled != 0) {
+        return roundedBox(p, uOutlineRect.xy, uOutlineRect.zw, uOutlineRadius);
+    }
+    if (uMorphEnabled != 0) {
+        float platterDistance = roundedBox(
+            p, uMorphPlatter.xy, uMorphPlatter.zw, uMorphSpec.x
+        );
+        float pillRadius = min(uMorphDroplet.z, uMorphDroplet.w);
+        float dropletDistance = roundedBoxPower(
+            p, uMorphDroplet.xy, uMorphDroplet.zw, pillRadius, 2.0
+        );
+        return smoothMinimum(platterDistance, dropletDistance, uMorphSpec.y);
+    }
+    if (uMode < .5 || uCount == 0) {
+        return roundedBox(p, uPanelSize * .5, uPanelSize * .5, uRadius);
+    }
+    float d = 100000.0;
+    for (int i = 0; i < 6; ++i) {
+        if (i >= uCount) break;
+        float4 pill = pillAt(i);
+        float r = min(pill.z, pill.w);
+        float di = roundedBox(p, pill.xy, pill.zw, r);
+        if (i == 0) d = di;
+        else {
+            float k = i == 1 ? uBlends.x :
+                      i == 2 ? uBlends.y :
+                      i == 3 ? uBlends.z :
+                      i == 4 ? uBlends.w : uBlendLast;
+            d = smoothMinimum(d, di, k);
+        }
+    }
+    return d;
+}
+
+float2 sampleScenePoint(float2 p) {
+    float2 local = clamp(p, float2(-256.0), uPanelSize + 256.0);
+    return uOrigin + uSceneBasis.xy * local.x + uSceneBasis.zw * local.y;
+}
+
+half4 sampleBackground(float2 p) {
+    float2 sceneAt = sampleScenePoint(p);
+    float2 sampleAt = uAtlasRawSlot.xy + sceneAt - uAtlasRawSlot.zw;
+    float2 start = uAtlasRawSlot.xy + float2(.5);
+    float2 end = uAtlasRawSlot.xy + uAtlasRawSize - float2(.5);
+    return uBackdrop.eval(clamp(sampleAt, start, max(start, end)));
+}
+
+half4 sampleFrostBand(float2 p, int band) {
+    if (band < 0) return sampleBackground(p);
+    float4 tile = band == 0 ? uAtlasBand0 :
+                  (band == 1 ? uAtlasBand1 : uAtlasBand2);
+    float4 scene = band == 0 ? uAtlasBandScene0 :
+                   (band == 1 ? uAtlasBandScene1 : uAtlasBandScene2);
+    float2 sceneAt = sampleScenePoint(p);
+    float2 start = tile.xy;
+    float2 end = tile.xy + scene.zw * tile.zw;
+    float2 sampleAt = clamp(start + (sceneAt - scene.xy) * tile.zw,
+                            start + float2(.5),
+                            max(start + float2(.5), end - float2(.5)));
+    return uBackdrop.eval(sampleAt);
+}
+
+// FlClash's veiled(color): both operands are premultiplied. Apply after
+// frost/haze so the veil is not blurred into a colored halo at pane edges.
+half4 veiled(half4 color) {
+    return color * half(1.0 - uVeil.a) +
+        half4(uVeil.rgb * uVeil.a, uVeil.a);
+}
+
+// Mirror sampleBehind from the original: low-frost panes use a four-corner
+// luma probe to avoid single-pixel text flicker in contrast compensation.
+half4 sampleBehind(float2 p) {
+    if (uFrost.y > .0001 || uFrost.x >= 8.0 * uDensity) {
+        return sampleBackground(p);
+    }
+    float blur = uFrost.x;
+    return .25 * (
+        sampleBackground(p + float2(blur, blur)) +
+        sampleBackground(p + float2(-blur, -blur)) +
+        sampleBackground(p + float2(blur, -blur)) +
+        sampleBackground(p + float2(-blur, blur))
+    );
+}
+
+// Select the strongest cached Gaussian sigma no greater than the target.
+// The remaining variance is sampled using FlClash's original Vogel disc.
+half4 frosted(float2 p, float blur) {
+    int band = -1;
+    float cached = 0.0;
+    if (uAtlasSigmas.x > 0.0 && uAtlasSigmas.x <= blur) {
+        band = 0;
+        cached = uAtlasSigmas.x;
+    }
+    if (uAtlasSigmas.y > cached && uAtlasSigmas.y <= blur) {
+        band = 1;
+        cached = uAtlasSigmas.y;
+    }
+    if (uAtlasSigmas.z > cached && uAtlasSigmas.z <= blur) {
+        band = 2;
+        cached = uAtlasSigmas.z;
+    }
+    float sigma = sqrt(max(blur * blur - cached * cached, 0.0));
+    float reach = max(sigma - .5, 0.0) * 2.07846096908;
+    if (reach <= .0) return sampleFrostBand(p, band);
+    int taps = sigma <= 2.0 ? 16 : (sigma <= 3.5 ? 32 : uFrostTaps);
+    taps = int(clamp(float(taps), 1.0, 64.0));
+    float ratio = reach / max(sigma, .001);
+    float falloff = .5 * ratio * ratio;
+    float decay = exp(-falloff / float(taps));
+    float weight = sqrt(decay);
+    float2 ray = float2(1.0, 0.0);
+    const float2 turn = float2(-.737368878, .675490294);
+    half4 sum = half4(0.0);
+    float total = 0.0;
+    for (int i = 0; i < 64; ++i) {
+        if (i >= taps) break;
+        float spread = sqrt((float(i) + .5) / float(taps));
+        sum += sampleFrostBand(p + ray * reach * spread, band) * half(weight);
+        total += weight;
+        weight *= decay;
+        ray = float2(ray.x * turn.x - ray.y * turn.y,
+                     ray.x * turn.y + ray.y * turn.x);
+    }
+    return sum / half(max(total, .0001));
+}
+
+// FlClash LiquidGlassRim: the menu glow is nine *thin bands*, not a
+// uniform stroke. Average the overlapping band energy across a physical
+// pixel, so it stays delicate and stable at fractional display densities.
+float shineOverlap(float a, float b, float begin, float end) {
+    return max(min(b, end) - max(a, begin), 0.0);
+}
+
+float shineAcross(float inset) {
+    float dp = inset / max(uDensity, 0.001);
+    float halfPixel = 0.5 / max(uDensity, 0.001);
+    float a = max(dp - halfPixel, 0.0);
+    float b = dp + halfPixel;
+    float sum =
+        shineOverlap(a, b, 0.0, .333333333) +
+        .70 * shineOverlap(a, b, .333333333, .666666667) +
+        .47 * shineOverlap(a, b, .666666667, 1.0) +
+        .18 * shineOverlap(a, b, 1.0, 1.666666667) +
+        .12 * shineOverlap(a, b, 1.666666667, 2.333333333) +
+        .085 * shineOverlap(a, b, 2.333333333, 3.0) +
+        .065 * shineOverlap(a, b, 3.0, 3.666666667) +
+        .045 * shineOverlap(a, b, 3.666666667, 4.333333333) +
+        .035 * shineOverlap(a, b, 4.333333333, 5.0);
+    return sum / max(b - a, .0001);
+}
+
+// The original eight angular anchors distribute shine across the top and
+// bottom, soften it around the rounded ends and extinguish it at the sides.
+float shineAround(float turn) {
+    float4 next0 = float4(uShineTurns0.yzw, uShineTurns1.x);
+    float3 next1 = uShineTurns1.yzw;
+    float4 rise0 = float4(uShineLit0.yzw, uShineLit1.x) - uShineLit0;
+    float3 rise1 = uShineLit1.yzw - uShineLit1.xyz;
+    float4 progress0 = clamp(
+        (turn - uShineTurns0) / max(next0 - uShineTurns0, float4(.00001)),
+        float4(0.0), float4(1.0)
+    );
+    float3 progress1 = clamp(
+        (float3(turn) - uShineTurns1.xyz) /
+            max(next1 - uShineTurns1.xyz, float3(.00001)),
+        float3(0.0), float3(1.0)
+    );
+    return max(uShineLit0.x + dot(rise0, progress0) +
+        dot(rise1, progress1), 0.0);
+}
+
+float menuLineStrength(float x) {
+    float halfW = max(uRimBounds.z, 0.001);
+    float shortest = min(uRimBounds.z, uRimBounds.w);
+    float radius = min(
+        uOutlineEnabled != 0 ? uOutlineRadius :
+        (uMorphEnabled != 0 ? uMorphSpec.x : uRadius),
+        shortest
+    );
+    float across = min(radius / (2.0 * halfW), .4);
+    float fraction = clamp(
+        (x - (uRimBounds.x - halfW)) / (halfW * 2.0), 0.0, 1.0
+    );
+    float fromSide = min(fraction, 1.0 - fraction);
+    float firstStop = max(across * .25, .0001);
+    float between = mix(
+        uMenuRim.x, uMenuRim.y,
+        clamp(fromSide / firstStop, 0.0, 1.0)
+    );
+    return mix(
+        between, uMenuRim.z,
+        clamp((fromSide - firstStop) / max(across - firstStop, .0001),
+              0.0, 1.0)
+    );
+}
+
+half4 main(float2 p) {
+    float d;
+    float2 normal;
+    if (uProfileEnabled != 0) {
+        // One profile calculation provides both the matching CPU edge
+        // distance and its normal, avoiding any secondary approximation.
+        profileGeometry(p, d, normal);
+    } else {
+        d = geometry(p);
+        if (uMorphEnabled != 0 && uOutlineEnabled == 0) {
+            normal = morphNormal(p);
+        } else if (uOutlineEnabled != 0) {
+            normal = roundedBoxNormal(
+                p, uOutlineRect.xy, uOutlineRect.zw,
+                uOutlineRadius, uCornerPower
+            );
+        } else if (uMode < .5 || uCount == 0) {
+            normal = roundedBoxNormal(
+                p, uPanelSize * .5, uPanelSize * .5, uRadius, uCornerPower
+            );
+        } else {
+            float dx = geometry(p + float2(1.0, 0.0)) -
+                geometry(p - float2(1.0, 0.0));
+            float dy = geometry(p + float2(0.0, 1.0)) -
+                geometry(p - float2(0.0, 1.0));
+            float2 derivative = float2(dx, dy);
+            normal = length(derivative) > .001 ?
+                normalize(derivative) : float2(0.0, -1.0);
+        }
+    }
+    // CPU Path clipping already performs edge coverage. Applying shader
+    // smoothstep again would halve the antialiasing twice.
+    float coverage = uNativeClip != 0
+        ? 1.0 : 1.0 - smoothstep(-.75, .75, d);
+    if (coverage < .0001) return half4(0.0);
+    float inset = max(-d, 0.0);
+    // Keep the FlClash rounded-box distance for lens/refraction, but use
+    // the engine's RSuperellipse curve for the subpixel rim/hairline when
+    // the pane has a regular, uniform corner radius.
+    float edgeInset = inset;
+    if (uProfileEnabled == 0 && uMorphEnabled == 0 &&
+        uOutlineEnabled == 0 && uMode < .5 &&
+        uCornerAlong.x >= 2.0
+    ) {
+        edgeInset = max(cornerInset(p - uPanelSize * .5,
+                                    uPanelSize * .5), 0.0);
+    }
+    float minor = uOutlineEnabled != 0
+        ? min(uOutlineRect.z, uOutlineRect.w)
+        : uMorphEnabled != 0
+            ? min(uMorphPlatter.z, uMorphPlatter.w)
+            : min(uPanelSize.x, uPanelSize.y) * .5;
+    float bevel = max(min(uOptics.y, minor * .5), .001);
+    float rise = 1.0 - clamp(inset / bevel, 0.0, 1.0);
+
+    float2 shift;
+    if (uOptics.x < 0.0) {
+        shift = normal * -uOptics.x * smoothstep(0.0, bevel, inset)
+            * (1.0 - smoothstep(bevel, minor, inset));
+    } else {
+        float depth = min(uOptics.x, minor) *
+            (1.0 - sqrt(max(1.0 - rise * rise, 0.0)));
+        shift = -normal * depth;
+    }
+
+    // Beveled lenses increase local blur toward the refracting edge.
+    float frost = uFrost.x + uRimExtra.y * rise * rise;
+    half4 base = frosted(p + shift, frost);
+    if (uFrost.y > 0.0) {
+        base = mix(base, frosted(p + shift, uFrost.z), uFrost.y);
+    }
+    if (uFrost.w > 0.0 && inset < 10.0 * uDensity) {
+        float hold = 7.0 * uDensity;
+        float reach = 10.0 * uDensity;
+        float part = uFrost.w * .5 *
+            (0.6 + 0.4 * abs(normal.y) *
+                max(1.0 - inset / max(hold, .001), 0.0)) *
+            (1.0 - smoothstep(hold, reach, inset));
+        half4 red = frosted(p + shift + normal.yx * part, frost);
+        half4 blue = frosted(p + shift - normal.yx * part, frost);
+        base = half4(red.r, base.g, blue.b, max(base.a, max(red.a, blue.a)));
+    }
+
+    // The source applies its veil AFTER refraction and haze, BEFORE
+    // unpremultiplication. The same veil is used in the contrast probe and
+    // the dark hairline's original background sample.
+    base = veiled(base);
+    float alpha = float(base.a);
+    float3 color = float3(base.rgb) / max(alpha, .0001);
+    const float3 luma = float3(.2126, .7152, .0722);
+    float gray = dot(color, luma);
+    color = mix(float3(gray), color, uOptics.z) * uOptics.w;
+    color *= 1.0 - uEdge.z * abs(normal.x) * exp(-inset / 3.0);
+
+    // The original uGlow.w is the style contrast. Five low-frequency
+    // background samples stop tint from collapsing to white/gray behind text.
+    float clash = 0.0;
+    if (abs(uContrast) > .0001) {
+        float2 center = uContrastRegion.xy;
+        float2 spread = uContrastRegion.zw;
+        half4 behind = sampleBehind(center);
+        behind += sampleBehind(center + spread * float2(-.3, -.2));
+        behind += sampleBehind(center + spread * float2( .3, -.2));
+        behind += sampleBehind(center + spread * float2(-.3,  .2));
+        behind += sampleBehind(center + spread * float2( .3,  .2));
+        behind = veiled(behind * .2);
+        float behindLuma = dot(
+            float3(behind.rgb) / max(float(behind.a), .0001), luma
+        );
+        clash = clamp(
+            (sign(uContrast) * (dot(uTint.rgb, luma) - behindLuma) - .3) / .5,
+            0.0, 1.0
+        );
+    }
+    float cover = clamp(
+        uTint.a + (1.0 - uTint.a) * clash * abs(uContrast), 0.0, 1.0
+    );
+    float coverageGlass = alpha * (1.0 - cover) + cover;
+    float3 glass = color * alpha * (1.0 - cover) + uTint.rgb * cover;
+
+    // The ordinary rim and the menu/alert rim are deliberately independent.
+    // On controls, light is concentrated on the horizontal glass shoulders:
+    // squared normal for tab-bar ends and focused 16th-power at button tips.
+    float facing;
+    if (uOptics.x < 0.0) {
+        facing = smoothstep(.65, .95, abs(normal.y));
+    } else {
+        float rise2 = normal.y * normal.y;
+        float rise4 = rise2 * rise2;
+        float rise16 = rise4 * rise4 * rise4 * rise4;
+        facing = mix(
+            rise2,
+            .5 * rise2 * abs(normal.y) * (1.0 + rise16),
+            uRim.w
+        );
+    }
+    float inner = max(edgeInset - .67 * uDensity, 0.0);
+    float band = clamp(1.0 - inner / max(uRim.y, .001), 0.0, 1.0);
+    float tail = clamp(
+        1.0 - inner / max(4.5 * uDensity, .001), 0.0, 1.0
+    );
+    float shine = min(uRim.x * facing *
+        mix(band, tail, uRim.z), 1.0);
+    // The 'added' fraction lifts both light and dark backgrounds; screening
+    // the entire band toward white otherwise makes pale glass look plastic.
+    glass += (float3(coverageGlass) -
+        (1.0 - uRimExtra.x) * glass) * shine;
+
+    // Keep the narrow dark hairline tied to the original backdrop, not the
+    // tinted glass. Its side/corner/flat weighting follows UIKit's rim line.
+    float line = clamp(
+        (.67 * uDensity - edgeInset) + .5, 0.0, 1.0
+    );
+    float darken = mix(uEdge.x, uEdge.y, pow(abs(normal.x), 3.0));
+    darken = max(darken, menuLineStrength(p.x));
+    if ((uEdge.x > 0.0 || uEdge.y > 0.0 ||
+         max(uMenuRim.x, max(uMenuRim.y, uMenuRim.z)) > 0.0) && line > 0.0) {
+        half4 behind = veiled(sampleBackground(p));
+        float3 under = float3(behind.rgb);
+        float3 reduced = max(under - float3(.298) * float(behind.a), .22 * under);
+        glass = mix(
+            glass, mix(under, reduced, clamp(darken, 0.0, 1.0)), line
+        );
+        coverageGlass = mix(coverageGlass, float(behind.a), line);
+    }
+
+    // A separate additive nine-band rim for menus and alerts.
+    if (uMenuRim.w > 0.0 && edgeInset < 5.0 * uDensity + 1.0) {
+        float2 relative = p - uRimBounds.xy;
+        float turn = atan(abs(relative.x), abs(relative.y));
+        glass += float3(coverageGlass * shineAround(turn) * shineAcross(edgeInset));
+    }
+    float2 glowOffset = p - uGlow.xy;
+    float glow = uGlow.z * mix(exp(-dot(glowOffset, glowOffset) /
+        max(uGlow.w * uGlow.w, 1.0)), 1.0, uGlowWash);
+    glass += float3(glow * coverageGlass);
+    // Keep premultiplied RGB within alpha before applying geometrical
+    // edge coverage; avoid a second alpha multiply on translucent captures.
+    glass = min(max(glass, float3(0.0)), float3(coverageGlass));
+    return half4(
+        half3(glass * coverage),
+        half(coverageGlass * coverage)
+    );
+}

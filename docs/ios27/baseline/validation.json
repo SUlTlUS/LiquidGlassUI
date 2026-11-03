@@ -1,0 +1,87 @@
+{
+  "apk": "liquidglass27-retained-rendering-debug.apk",
+  "sha256": "6C785851D1F2347247C95A20797B681216E1767B35AC0DE8119EA10BA4B7C925",
+  "tests": {
+    "tests": 324,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "Warning": 22,
+    "Hint": 1
+  },
+  "buildSuccessful": true,
+  "shadersUnchanged": {
+    "assets/shaders/flclash_glass_compat.agsl": true,
+    "assets/shaders/sketch_contrast_tint.agsl": true,
+    "assets/shaders/sketch_goo_lens.agsl": true,
+    "assets/shaders/flclash_control_highlight.agsl": true,
+    "assets/shaders/flclash_glass.agsl": true
+  },
+  "device": "PLQ110 / 192.168.1.148:36935",
+  "unprofiledFrames": {
+    "before-menu": {
+      "frames": 328,
+      "janky": 36,
+      "jankPercent": 10.98,
+      "p50": 17,
+      "p95": 44,
+      "p99": 77
+    },
+    "phase-menu": {
+      "frames": 359,
+      "janky": 13,
+      "jankPercent": 3.62,
+      "p50": 13,
+      "p95": 30,
+      "p99": 53
+    },
+    "final-menu": {
+      "frames": 362,
+      "janky": 12,
+      "jankPercent": 3.31,
+      "p50": 13,
+      "p95": 30,
+      "p99": 57
+    },
+    "final-repeat-menu": {
+      "frames": 362,
+      "janky": 12,
+      "jankPercent": 3.31,
+      "p50": 13,
+      "p95": 29,
+      "p99": 48
+    },
+    "final-goo-goo": {
+      "frames": 450,
+      "janky": 3,
+      "jankPercent": 0.67,
+      "p50": 12,
+      "p95": 17,
+      "p99": 22
+    },
+    "final-dock-dock": {
+      "frames": 413,
+      "janky": 9,
+      "jankPercent": 2.18,
+      "p50": 13,
+      "p95": 24,
+      "p99": 31
+    }
+  },
+  "runtimeErrors": {
+    "routes-logcat.txt": [],
+    "final-menu-logcat.txt": [],
+    "final-goo-logcat.txt": [],
+    "final-dock-logcat.txt": []
+  },
+  "routeChecksCompleted": true,
+  "visualAcceptance": "pending_user",
+  "emulatorUsed": false,
+  "limits": [
+    "Debug short runs, no fixed device/compiler conditions",
+    "No adjacent Goo/dock baseline",
+    "Profiled frame data excluded from speedup evaluation"
+  ]
+}

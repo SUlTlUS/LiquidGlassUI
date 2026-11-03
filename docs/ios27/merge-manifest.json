@@ -1,0 +1,1772 @@
+{
+  "date": "2026-11-03",
+  "sourceRoot": "C:\\IDE\\Android\\liquidglass27",
+  "sourceThread": "01a19d01-dc94-7ab2-bbda-e8bab39d7447",
+  "sourceStandard": "iOS 27",
+  "legacyStandard": "iOS 26",
+  "files": [
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/ConicCubicFitter.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/ConicCubicFitter.kt",
+      "baselineSha256": "4867fe9799f0a5a8de6633d926a24b5af8f4d3726d4fd1f4625efcb04666986a",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "4867fe9799f0a5a8de6633d926a24b5af8f4d3726d4fd1f4625efcb04666986a"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/FlClashAlertMotion.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashAlertMotion.kt",
+      "baselineSha256": "abb89bf4e3487c85895b521749539583991e822a403a078bfd74252df6b97dc7",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "abb89bf4e3487c85895b521749539583991e822a403a078bfd74252df6b97dc7"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/FlClashContrastTint.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashContrastTint.kt",
+      "baselineSha256": "ffdf3738640a441f0ad480ca2ba5a4340359fa91d78acd6c6e82a5dba91a015a",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "ffdf3738640a441f0ad480ca2ba5a4340359fa91d78acd6c6e82a5dba91a015a"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/FlClashControlHighlight.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashControlHighlight.kt",
+      "baselineSha256": "ffe9f82a85c449e4a28766493fb313e0e2e1f1272c4497ce7baaff779d085162",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "36c892f91018810abcde7d4aa0c61f4a33a7fc5b91d9fe11681c2a88c38c0b77"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/FlClashDockMotion.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashDockMotion.kt",
+      "baselineSha256": "f2e4631f2ac44ad624bcefa39ab73699681b34c914bf29343339af5cf8dcc9c7",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "f2e4631f2ac44ad624bcefa39ab73699681b34c914bf29343339af5cf8dcc9c7"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/FlClashElasticMotion.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashElasticMotion.kt",
+      "baselineSha256": "1e94f6a94395d441402488c53599582974ae59671a8b166feee6a685eacd2000",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "1e94f6a94395d441402488c53599582974ae59671a8b166feee6a685eacd2000"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/FlClashHazeEffect.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashHazeEffect.kt",
+      "baselineSha256": "8f70133aa5a7c0f264b7f32975c1ba98986d2f6f28efd490d5ffefdf58a973ed",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "5615fabc629b4efcdef40f312ffec5566e313ad5747ca6a69d6c430732a221b6"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/FlClashMenuSprings.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashMenuSprings.kt",
+      "baselineSha256": "5c74153c503976805b0d07307879ec192671a681aaa443fa44484db7e16cab92",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "5c74153c503976805b0d07307879ec192671a681aaa443fa44484db7e16cab92"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/FlClashPopupRouteMotion.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashPopupRouteMotion.kt",
+      "baselineSha256": "1eb8ffd35e80502491064fd3fa4da1654d8114c13984084ba68db364bd24bebc",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "1eb8ffd35e80502491064fd3fa4da1654d8114c13984084ba68db364bd24bebc"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/FlutterRSuperellipse.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlutterRSuperellipse.kt",
+      "baselineSha256": "d522b183de19c480ecf7792f644c89d537671146822bed9b1b21cb265556cbc9",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "d522b183de19c480ecf7792f644c89d537671146822bed9b1b21cb265556cbc9"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassBackdropBlur.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassBackdropBlur.kt",
+      "baselineSha256": "887c9e405d4a7ab80a557205039e9746cee9bc89db46001fb1777a66611257f3",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "887c9e405d4a7ab80a557205039e9746cee9bc89db46001fb1777a66611257f3"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassCapturePlanner.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassCapturePlanner.kt",
+      "baselineSha256": "7c6e0e1c753899bc448e24ee2fca2be61f9b4411591fc5eac1120f12574ff96f",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "7c6e0e1c753899bc448e24ee2fca2be61f9b4411591fc5eac1120f12574ff96f"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassCaptureRoot.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassCaptureRoot.kt",
+      "baselineSha256": "87c897dae9eeb009b4f8db6885b9ec51cb21fe1b49cc043c5d6e944f36f02dd8",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "87c897dae9eeb009b4f8db6885b9ec51cb21fe1b49cc043c5d6e944f36f02dd8"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassCombinedAtlas.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassCombinedAtlas.kt",
+      "baselineSha256": "62f7c760ad1fbf9de5b6ccdb73e9c8ee26ae39497e3ba1995e2f7c6208f39a55",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "76372a1fb409f9284d76d8157b17d20f9d8ee080752ebeca765c08d80cd25fb2"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassControlFallback.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassControlFallback.kt",
+      "baselineSha256": "6a287ec78533f4d3a737d4990112538d42ab4822b53a9575491205b33fb4642c",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "6a287ec78533f4d3a737d4990112538d42ab4822b53a9575491205b33fb4642c"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassControls.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassControls.kt",
+      "baselineSha256": "aa7a085d87aaf3c7e4456e0905c2544de2d2eb77ad6b223a3cea6847d908ed06",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "537cde61815c6b1c79064d12a60d494d365c29764f9bea8ebecb8e6006582f50"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassCornerCurveCache.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassCornerCurveCache.kt",
+      "baselineSha256": "fee5baddfca797dbcba2072401036720bdda5502abd99f0fc480591875d7e2a6",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "fee5baddfca797dbcba2072401036720bdda5502abd99f0fc480591875d7e2a6"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassDialog.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassDialog.kt",
+      "baselineSha256": "e5205774e024a8be86b6e8f7f7259bb28faf832854a9e358639b788c36598b57",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "ced4359fbd6bbff82dbf5249b97ddaab02814a42cbca3d509c6a797e212a1ed7"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassDock.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassDock.kt",
+      "baselineSha256": "317dcc26893fe66d0e06cc85f21de75cb8676fe3cea63efa508659354c8fac25",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "d08067de9bdc1b8cf170d8a9edab497efe50c92d7f7c20b77e313acf6ad010ee"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassGeometry.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassGeometry.kt",
+      "baselineSha256": "ee530baa7b45dbf64b4b1164496e11a54f24a5bd8c878e17ab04aa43f26adb8f",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "ee530baa7b45dbf64b4b1164496e11a54f24a5bd8c878e17ab04aa43f26adb8f"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassGlyph.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassGlyph.kt",
+      "baselineSha256": "a842df4a550b026c089fb2dcadf7ef7e6bc1050cea6c66a16fd7a8fced60713d",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "a842df4a550b026c089fb2dcadf7ef7e6bc1050cea6c66a16fd7a8fced60713d"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassGlyphs.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassGlyphs.kt",
+      "baselineSha256": "c359041dfb686d181b20ab06119b112db95f8c7ac533420c4143151d9f3ea0b7",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "c359041dfb686d181b20ab06119b112db95f8c7ac533420c4143151d9f3ea0b7"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassGpuFrostAtlas.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassGpuFrostAtlas.kt",
+      "baselineSha256": "ce0819d18d9b130b24ff7eef2db87076a6dfbd35b1c677c2dbf5c3415d1cdad8",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "ce0819d18d9b130b24ff7eef2db87076a6dfbd35b1c677c2dbf5c3415d1cdad8"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassGpuResidentAtlas.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassGpuResidentAtlas.kt",
+      "baselineSha256": "b72bea53aab82b882f3f286c7034cf44beb569b6dcf66c582e5cf9a5ea91b0ef",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "afb8e97461bd8f0f916e7e5b599ae8eadc898539d5d2744686e713677bc5dc9a"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassMenu.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassMenu.kt",
+      "baselineSha256": "55f082a6376026b4d6bbf6169b544c13ba224081e84b4e56e288920cbe6360ae",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "f5825859a0c0d22afc40ae3018366b8272723cb7b50a2694b415ba376803687a"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassMenuGestures.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassMenuGestures.kt",
+      "baselineSha256": "9427abaaa2fafc002884d607f79f47d16e07c8c66d856a39f6b3f6ce9fbd9c64",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "9427abaaa2fafc002884d607f79f47d16e07c8c66d856a39f6b3f6ce9fbd9c64"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassMenuRim.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassMenuRim.kt",
+      "baselineSha256": "0f54fbfff6f75826bbc755ac9f899b3929695d452986f404daf4fe41d44a4f50",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "b3867560ea04dae23efbff149f0527c661950a6ab2d7b856a03015514bc1b474"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassMenuRimPaths.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassMenuRimPaths.kt",
+      "baselineSha256": "3d26e496f49eee4a188d16662b0f45fb0755037a5a64f686417ff9ee88e57318",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "3d26e496f49eee4a188d16662b0f45fb0755037a5a64f686417ff9ee88e57318"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassMorphGlyphs.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassMorphGlyphs.kt",
+      "baselineSha256": "10dd0c3198da4cab175922f6f96ed2ce1f26ac1626e70fa2620d73848c4b09e7",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "10dd0c3198da4cab175922f6f96ed2ce1f26ac1626e70fa2620d73848c4b09e7"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassPanelPress.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassPanelPress.kt",
+      "baselineSha256": "a8fd2e711672331c4389650a1afb9229bd36f08d014faf7ff63f6dd6ac49960b",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "a8fd2e711672331c4389650a1afb9229bd36f08d014faf7ff63f6dd6ac49960b"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassPopup.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassPopup.kt",
+      "baselineSha256": "2f70279b060b5a61dfe5b1042e0560774a98a80e8f2ebc552e68b1630c15d7b8",
+      "reason": "API annotations and user-authorized popup correction: shared menu surface/corners/light and uniform content transforms.",
+      "mergedSha256": "933d877d519e0f9854c2f1bbb2fa1a17e9c820c82d903630ddb042442fa6185b"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassPopupAnchor.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassPopupAnchor.kt",
+      "baselineSha256": "5863b731267775e06c9b9bb3b62b59a66b5cebb93c79e7e756c07ef062177195",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "5863b731267775e06c9b9bb3b62b59a66b5cebb93c79e7e756c07ef062177195"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassPopupValueText.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassPopupValueText.kt",
+      "baselineSha256": "5ffdbe71c1dfad0d6b508e40526458707786a66362f4a0ef111479436f7005e0",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "5ffdbe71c1dfad0d6b508e40526458707786a66362f4a0ef111479436f7005e0"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassRadialProfile.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassRadialProfile.kt",
+      "baselineSha256": "56a187f1f689a284b8ae89d29a3fabdbb8c67cf34990b8f90356e07fe3756a56",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "caa275f1196b702058b7a5819b5dcf249c48031e2175f306557ff4c593ceea11"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassRenderer.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassRenderer.kt",
+      "baselineSha256": "f71e77943111635c8bd1ab878c7d4bd41eb5544d6d646995c1f0de8361328f55",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "e215d6e23c4e6490a225af6472857ed7291acdcf01f3c40b1cec31025262739d"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassScene.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassScene.kt",
+      "baselineSha256": "6c3b3ca1e7298b88a3d47654d21be3c9620be6745205d0de12d0d37e24363f8e",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "5c3c3207e237083d93011bbcbc64928d5e411f96edc1db33e6f9682920fbc9b9"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassShaderPrograms.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassShaderPrograms.kt",
+      "baselineSha256": "a00fa6b799e35b2216d69b823532cb5e5784c7f5c95a4bef89dee3a31eb54c34",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "56f75d349aae7e6980589ed1e969beae89d45c68c2f590566fd57f4a3f845c3b"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassStyle.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassStyle.kt",
+      "baselineSha256": "506d5f7525ea91822f6868077e41e08748f426069b75787f0cb718ac0a71ec49",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "506d5f7525ea91822f6868077e41e08748f426069b75787f0cb718ac0a71ec49"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassSubmenu.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassSubmenu.kt",
+      "baselineSha256": "3250017154b9003b444dc3d0602009a907bd1a8a30eeb89934aa1ce4a89aef62",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "e0234352b96e81827f7115569c7e6e0c5e5983fac1b8b992b155e7e6cf61e9ef"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassTheme.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassTheme.kt",
+      "baselineSha256": "052294a42e8a73bcd1918c93f2e244cf8b1e5e683c8dce19277d2f3fdc0cedff",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "052294a42e8a73bcd1918c93f2e244cf8b1e5e683c8dce19277d2f3fdc0cedff"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GlassTouchBounds.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassTouchBounds.kt",
+      "baselineSha256": "e9cfbc5bb5494d1954060baf4ee7a78c559e34fe3dd5d068c5b9f3e72c4abb06",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "e9cfbc5bb5494d1954060baf4ee7a78c559e34fe3dd5d068c5b9f3e72c4abb06"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GooPairOutline.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GooPairOutline.kt",
+      "baselineSha256": "5f073270b577006a45105b6d00bb02eea0bada2de06d232116474cd9964a5bcc",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "5f073270b577006a45105b6d00bb02eea0bada2de06d232116474cd9964a5bcc"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GooRowOutline.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GooRowOutline.kt",
+      "baselineSha256": "4210bd68a156d2900a12f5b9f0f18ef0f434eea67458db0ffe4540c03d179281",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "4210bd68a156d2900a12f5b9f0f18ef0f434eea67458db0ffe4540c03d179281"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/GooRowPathCache.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GooRowPathCache.kt",
+      "baselineSha256": "eb39574057fde857e3cd2d5e7257ab2356bd77ddfc75dc96de48d0fe56824b83",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "eb39574057fde857e3cd2d5e7257ab2356bd77ddfc75dc96de48d0fe56824b83"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuCardShadow.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuCardShadow.kt",
+      "baselineSha256": "e71a56e5819c599eb98cfbe87a696e9f97ea9581bf1c6607496ef71de1dcb353",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "e71a56e5819c599eb98cfbe87a696e9f97ea9581bf1c6607496ef71de1dcb353"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuContentRows.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuContentRows.kt",
+      "baselineSha256": "8018247d0cbade7dc0f0aa899d89540a1dd8b7336afd1f1e87c35b04380a5bb4",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "8018247d0cbade7dc0f0aa899d89540a1dd8b7336afd1f1e87c35b04380a5bb4"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuElasticTransform.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuElasticTransform.kt",
+      "baselineSha256": "15fbab9534f5c16f71122ff6c3f5166438137a3671443032a7f1505355cfa95a",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "15fbab9534f5c16f71122ff6c3f5166438137a3671443032a7f1505355cfa95a"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuFoldPressGeometry.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuFoldPressGeometry.kt",
+      "baselineSha256": "c46931e1baa7f36754ef5aea99306a0a4c2ee07795b814d622364105d8e54cc4",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "c46931e1baa7f36754ef5aea99306a0a4c2ee07795b814d622364105d8e54cc4"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuFoldPressHandoff.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuFoldPressHandoff.kt",
+      "baselineSha256": "769b4b2475067951424ddfd56517e790fe0e80431767fd759e7de355e0b752b4",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "769b4b2475067951424ddfd56517e790fe0e80431767fd759e7de355e0b752b4"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuGestureArena.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuGestureArena.kt",
+      "baselineSha256": "deb09ff49d687123ea969f9a85134d96e945b96ecd45644c3e80b23d06a991db",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "deb09ff49d687123ea969f9a85134d96e945b96ecd45644c3e80b23d06a991db"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuItemContent.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuItemContent.kt",
+      "baselineSha256": "eb130f0b60fb5435d4028ce7c23cb20f59ea11bfc764878b5a7f292164d00b9d",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "eb130f0b60fb5435d4028ce7c23cb20f59ea11bfc764878b5a7f292164d00b9d"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuLabelWidthCache.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuLabelWidthCache.kt",
+      "baselineSha256": "d5294b96894334114f5f36f5efcd352d03f30999edf3a9100fd65c5401bc73dc",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "d5294b96894334114f5f36f5efcd352d03f30999edf3a9100fd65c5401bc73dc"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuLayerMotion.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuLayerMotion.kt",
+      "baselineSha256": "88354794fcb95c452b279bf33c22764daf5641261559376a262bc6eb4a9720cb",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "88354794fcb95c452b279bf33c22764daf5641261559376a262bc6eb4a9720cb"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuLazyRows.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuLazyRows.kt",
+      "baselineSha256": "a08f66179bb0c241d8959df1e1be83ecb98ecf50383a00b08857fd3955c6f1df",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "a08f66179bb0c241d8959df1e1be83ecb98ecf50383a00b08857fd3955c6f1df"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuMorphMomentum.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuMorphMomentum.kt",
+      "baselineSha256": "a91b910dd9f66405af1e027abb3b5103bcbf28f8a14b5dc90261e143d905f7ed",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "a91b910dd9f66405af1e027abb3b5103bcbf28f8a14b5dc90261e143d905f7ed"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuPopupPlacement.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuPopupPlacement.kt",
+      "baselineSha256": "b407e15bfa75b2c454893c2ac9a8e6775b236080ca4c0419682c55a9edaa3068",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "b407e15bfa75b2c454893c2ac9a8e6775b236080ca4c0419682c55a9edaa3068"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuPressedMaskMorph.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuPressedMaskMorph.kt",
+      "baselineSha256": "7f5493fd86edd6fec066f2bfb58c40ab9e553fb88f00e4ec2e4fa48cc3d09901",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "7f5493fd86edd6fec066f2bfb58c40ab9e553fb88f00e4ec2e4fa48cc3d09901"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuRetargetSpring.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuRetargetSpring.kt",
+      "baselineSha256": "4c7b936bccd26708fc9ecf0d0e8b495d1797000829a8ea4a62801613db9900d9",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "4c7b936bccd26708fc9ecf0d0e8b495d1797000829a8ea4a62801613db9900d9"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuRouteState.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuRouteState.kt",
+      "baselineSha256": "2e19b745286b32b50680fddb2cf4c8646a04b014f06fe2c4411e2742f164faa7",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "2e19b745286b32b50680fddb2cf4c8646a04b014f06fe2c4411e2742f164faa7"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuScrollConflator.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuScrollConflator.kt",
+      "baselineSha256": "7f431bc742f5d744c3ef7988a660261ab48927fa553c86ef18965f25cf879a98",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "7f431bc742f5d744c3ef7988a660261ab48927fa553c86ef18965f25cf879a98"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/MenuSectionDecoration.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuSectionDecoration.kt",
+      "baselineSha256": "376923c0b6ee65e3d3128a6fe89f2dce4f82515ab3874477cb1891471382b7c7",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "376923c0b6ee65e3d3128a6fe89f2dce4f82515ab3874477cb1891471382b7c7"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/NestedMenuMotionJobs.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/NestedMenuMotionJobs.kt",
+      "baselineSha256": "04ecb19a00032f70dd4315a0c007be75d3d37cb577d140c241afbfed8cadfd71",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "04ecb19a00032f70dd4315a0c007be75d3d37cb577d140c241afbfed8cadfd71"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/SketchGlassBridge.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SketchGlassBridge.kt",
+      "baselineSha256": "0c63606a7e1ce508a7afc742ff0e5a966c96df4101e8e9a72558998330334cb0",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "0a4ef8f3bc7a36814e9fc65b1009d218c01b47ffa5370f23bb73924162e038c1"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/SketchGooRefraction.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SketchGooRefraction.kt",
+      "baselineSha256": "a0423e99642b8f31231d9cf70603a5461389f1966e4125b114b44a7b0d4b3545",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "a0423e99642b8f31231d9cf70603a5461389f1966e4125b114b44a7b0d4b3545"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/SketchLayerOrder.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SketchLayerOrder.kt",
+      "baselineSha256": "8149fc01eb4ff82cb5023f856ad773fd59b36a070fe1c40126e5d2d5a61cd53c",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "8149fc01eb4ff82cb5023f856ad773fd59b36a070fe1c40126e5d2d5a61cd53c"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/SketchMaterialCache.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SketchMaterialCache.kt",
+      "baselineSha256": "832118c6d3efc1642ec2f205178587c47bee33ad9cc97a31d56ac9c0a1f23b1d",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "832118c6d3efc1642ec2f205178587c47bee33ad9cc97a31d56ac9c0a1f23b1d"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/SketchMenuRootSurface.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SketchMenuRootSurface.kt",
+      "baselineSha256": "fc9e3433f5b33ac5f586110f1dc477b87c97fcda5e425d834ae52422b6c566d6",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "9261b10024f13d7a0f9f2a3d28e738ea345097cf90e17fbfaac4cbec79e3471d"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/SketchOpticalInputs.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SketchOpticalInputs.kt",
+      "baselineSha256": "d796e8d48446ef440c7d7be96df6d0b21c2047a4802cc7d352e6a8046b50dea4",
+      "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
+      "mergedSha256": "d796e8d48446ef440c7d7be96df6d0b21c2047a4802cc7d352e6a8046b50dea4"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/glass/SourceContentPolicy.kt",
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SourceContentPolicy.kt",
+      "baselineSha256": "29ab72dbea8c5683e2206b806869e60f7d2c9ab1547af54686c232aaf9ef0c21",
+      "reason": "Original internal visibility restored after removing copied demo UI; implementation unchanged.",
+      "mergedSha256": "29ab72dbea8c5683e2206b806869e60f7d2c9ab1547af54686c232aaf9ef0c21"
+    },
+    {
+      "source": "app/src/main/assets/shaders/flclash_control_highlight.agsl",
+      "path": "liquidglass-ios27/src/main/assets/shaders/flclash_control_highlight.agsl",
+      "baselineSha256": "d92b5364afb9525014133c30a3bb731d0df156be689db688e5333b4a86357420",
+      "reason": "Import complete non-demo iOS 27 mechanism, shader and regression coverage.",
+      "mergedSha256": "cf4aa8e52354b48754c0d9edc79cd67fcadbb437b5784eb8f68b37c9ed6345c1"
+    },
+    {
+      "source": "app/src/main/assets/shaders/flclash_glass.agsl",
+      "path": "liquidglass-ios27/src/main/assets/shaders/flclash_glass.agsl",
+      "baselineSha256": "d7cce62a4a31d2e44329e7929cac494d9dc4d7dc89754bf59eac5e7aead673ba",
+      "reason": "Import complete non-demo iOS 27 mechanism, shader and regression coverage.",
+      "mergedSha256": "d7cce62a4a31d2e44329e7929cac494d9dc4d7dc89754bf59eac5e7aead673ba"
+    },
+    {
+      "source": "app/src/main/assets/shaders/flclash_glass_compat.agsl",
+      "path": "liquidglass-ios27/src/main/assets/shaders/flclash_glass_compat.agsl",
+      "baselineSha256": "2575ce22333ba87feb19566f70ee4e5ba657207533dabe37db3fc82b4408bc35",
+      "reason": "Import complete non-demo iOS 27 mechanism, shader and regression coverage.",
+      "mergedSha256": "2575ce22333ba87feb19566f70ee4e5ba657207533dabe37db3fc82b4408bc35"
+    },
+    {
+      "source": "app/src/main/assets/shaders/sketch_contrast_tint.agsl",
+      "path": "liquidglass-ios27/src/main/assets/shaders/sketch_contrast_tint.agsl",
+      "baselineSha256": "fb232c1659cf919c9ac8cd6ce7c473c5792d4ce22ba623c9c9b6bb05c1b84483",
+      "reason": "Import complete non-demo iOS 27 mechanism, shader and regression coverage.",
+      "mergedSha256": "fb232c1659cf919c9ac8cd6ce7c473c5792d4ce22ba623c9c9b6bb05c1b84483"
+    },
+    {
+      "source": "app/src/main/assets/shaders/sketch_goo_lens.agsl",
+      "path": "liquidglass-ios27/src/main/assets/shaders/sketch_goo_lens.agsl",
+      "baselineSha256": "d53858978adf128106d5189ce4aad564230cb4fdfd2bac6df953964ede394fb0",
+      "reason": "Import complete non-demo iOS 27 mechanism, shader and regression coverage.",
+      "mergedSha256": "d53858978adf128106d5189ce4aad564230cb4fdfd2bac6df953964ede394fb0"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/ConicCubicFitterTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/ConicCubicFitterTest.kt",
+      "baselineSha256": "03f9c8c2791ce806ca1aac9fe97d11f31bc58894bf314efe95d112bfbdd5c9db",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "03f9c8c2791ce806ca1aac9fe97d11f31bc58894bf314efe95d112bfbdd5c9db"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/FlClashAlertMotionTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashAlertMotionTest.kt",
+      "baselineSha256": "6d2fb4c60f004ad37a38dd9c9f6771fa32f1d877bb8e2e119aeb4529c1cd3a15",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "6d2fb4c60f004ad37a38dd9c9f6771fa32f1d877bb8e2e119aeb4529c1cd3a15"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/FlClashDockMotionTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashDockMotionTest.kt",
+      "baselineSha256": "294e8a59b0a496dffe0259c4cc7b33471d028be807348cad7aad5f3073bd5900",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "294e8a59b0a496dffe0259c4cc7b33471d028be807348cad7aad5f3073bd5900"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/FlClashElasticMotionTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashElasticMotionTest.kt",
+      "baselineSha256": "c40ec47081686cae8da38349e4a887780f8d2e14b0f329ece70d9e9360492261",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "c40ec47081686cae8da38349e4a887780f8d2e14b0f329ece70d9e9360492261"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/FlClashHeaderPressTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashHeaderPressTest.kt",
+      "baselineSha256": "a738a4e9524e033649085cc717f2574fbf79f63e148ac40ac0b88ca15fb72347",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "a738a4e9524e033649085cc717f2574fbf79f63e148ac40ac0b88ca15fb72347"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/FlClashMenuItemParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashMenuItemParityTest.kt",
+      "baselineSha256": "cd4b77990ca7587fc213c81609e1ad0d0a2e31c61e38de49a4e884babb2ec7b4",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "cd4b77990ca7587fc213c81609e1ad0d0a2e31c61e38de49a4e884babb2ec7b4"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/FlClashMenuSpringsTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashMenuSpringsTest.kt",
+      "baselineSha256": "d673e56c9d5437ec0d8bb8e76c74296705788668d5236faefe029ec641566cd3",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "d673e56c9d5437ec0d8bb8e76c74296705788668d5236faefe029ec641566cd3"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/FlClashSubmenuMotionVisualParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashSubmenuMotionVisualParityTest.kt",
+      "baselineSha256": "f2c956a02497b2bac907a7fac64d3bc8fc5255997d38e7b4c487a23c431cde5f",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "f2c956a02497b2bac907a7fac64d3bc8fc5255997d38e7b4c487a23c431cde5f"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/FlutterRSuperellipseFitTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlutterRSuperellipseFitTest.kt",
+      "baselineSha256": "7d2ac0c81bbe3512815fb672b04a8c050b369f16cd43292baa6a1c0e3cafff01",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "7d2ac0c81bbe3512815fb672b04a8c050b369f16cd43292baa6a1c0e3cafff01"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GlassCapturePlannerTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassCapturePlannerTest.kt",
+      "baselineSha256": "bed4d40014c417fe0b1c65782bb1299f73a7d8c6bbd3b408e4b4adabddc2e80e",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "bed4d40014c417fe0b1c65782bb1299f73a7d8c6bbd3b408e4b4adabddc2e80e"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GlassCarriedPressTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassCarriedPressTest.kt",
+      "baselineSha256": "ab761f46e01132d793f3c9ebb4ec1fffed8bdffe0c8a06547819931b5f8e5e03",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "ab761f46e01132d793f3c9ebb4ec1fffed8bdffe0c8a06547819931b5f8e5e03"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GlassCompletionTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassCompletionTest.kt",
+      "baselineSha256": "b72e40ea128771490a7558b12c620cc97e8dec6a9eb2d9e1e197682b8278ad2e",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "b72e40ea128771490a7558b12c620cc97e8dec6a9eb2d9e1e197682b8278ad2e"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GlassCornerCurveCacheTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassCornerCurveCacheTest.kt",
+      "baselineSha256": "e48eda13bfa41a4493fa1205aca994571ce5c96a6651c31c63eab896a8627f21",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "e48eda13bfa41a4493fa1205aca994571ce5c96a6651c31c63eab896a8627f21"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GlassGeometryTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassGeometryTest.kt",
+      "baselineSha256": "a7d9232877933f01b50436b8316679804cceef5bba8b679ce7c0e303f5368358",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "a7d9232877933f01b50436b8316679804cceef5bba8b679ce7c0e303f5368358"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GlassGpuAtlasStatsTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassGpuAtlasStatsTest.kt",
+      "baselineSha256": "8ca1af87bd87ab7d5cb5eba04e81c25aa26ade50113c8fecb2265bcc31a4437e",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "8ca1af87bd87ab7d5cb5eba04e81c25aa26ade50113c8fecb2265bcc31a4437e"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GlassHighlightStyleTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassHighlightStyleTest.kt",
+      "baselineSha256": "e38286af215f74f7b366bae353af744b16a08fa85d8329c5aef8dc1c58dda5c7",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "e38286af215f74f7b366bae353af744b16a08fa85d8329c5aef8dc1c58dda5c7"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GlassMenuGestureHitTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassMenuGestureHitTest.kt",
+      "baselineSha256": "99df19bc6002024328b10bc05664ff4b3b700eb4713b5ff6bcdfc355b0f4303d",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "99df19bc6002024328b10bc05664ff4b3b700eb4713b5ff6bcdfc355b0f4303d"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GlassMenuNestedOpeningTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassMenuNestedOpeningTest.kt",
+      "baselineSha256": "3f3f866e9d402b3fa7c9d97ccf8bbc9d4035da5c6a55f4319ec4b2b7ecb4094d",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "3f3f866e9d402b3fa7c9d97ccf8bbc9d4035da5c6a55f4319ec4b2b7ecb4094d"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GlassMenuPlacementTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassMenuPlacementTest.kt",
+      "baselineSha256": "441cb4e2e5e51df24c1049fad75b3d0280d4b3cceecd5135e23b8bdaac626978",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "441cb4e2e5e51df24c1049fad75b3d0280d4b3cceecd5135e23b8bdaac626978"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GlassMenuReturnContinuityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassMenuReturnContinuityTest.kt",
+      "baselineSha256": "a72f1fd708112f17ca2be8d2bba1b8d39112df2fdf6db7b0aac7477d2780f5d0",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "a72f1fd708112f17ca2be8d2bba1b8d39112df2fdf6db7b0aac7477d2780f5d0"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GlassMenuTopLevelActivationTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassMenuTopLevelActivationTest.kt",
+      "baselineSha256": "87df3fd2d188619e42a3f389d82d3da473a75276108d080e165f40eda1cc8305",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "87df3fd2d188619e42a3f389d82d3da473a75276108d080e165f40eda1cc8305"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GooDistanceLengthTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GooDistanceLengthTest.kt",
+      "baselineSha256": "346adb10757ee972f48c2c95185c20c03d21a68da190a6091c8c301a52db522c",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "346adb10757ee972f48c2c95185c20c03d21a68da190a6091c8c301a52db522c"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GooGeometrySlotsTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GooGeometrySlotsTest.kt",
+      "baselineSha256": "ebb797af7f6cc666f924c7eba5d0cfde9f4bb180596a09c48605ee9b135eb894",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "a8c3b48614acb0574a8666daee9049623d14f51268c0a15b339befde16f941dc"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GooOpticsParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GooOpticsParityTest.kt",
+      "baselineSha256": "a4fa330a99321cbc455cfd2214cb07ad6f12724c62a93c3dbf12476ea60406e4",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "5ce464d7bfe89dde11d2526e346e5c582b63c4fcb63a2ac832866e385c4bc07d"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/GooRefractionAlignmentTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GooRefractionAlignmentTest.kt",
+      "baselineSha256": "bb9511de647011c530b89d525ed26ff226f293149f54207792c8bf814f8c4853",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "12000d437de190d0bbf66903da92fe325031c38fa89dcf6d8f0b9bec992ddcb9"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuAnimationParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuAnimationParityTest.kt",
+      "baselineSha256": "ebd9cab48559daa32bff56ec65f8c6d1e457b069b2fe0a2aa35e41af1f47677b",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "94550cd3793bc32a234b0a34f30e0754c46e0a196d8a259fada01738af9ec684"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuDragDismissParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuDragDismissParityTest.kt",
+      "baselineSha256": "bf3e59f765c9fd7fe083f60398dda76b814eab847fc06512e5c207f420e92077",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "bf3e59f765c9fd7fe083f60398dda76b814eab847fc06512e5c207f420e92077"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuDragReleaseParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuDragReleaseParityTest.kt",
+      "baselineSha256": "26f9d3e84cf8ee782411b65c4b29010ca51c6a72003810be35f7ec6d640cb90f",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "26f9d3e84cf8ee782411b65c4b29010ca51c6a72003810be35f7ec6d640cb90f"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuDrawPhaseGeometryTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuDrawPhaseGeometryTest.kt",
+      "baselineSha256": "2b7ff6d74f956793646e138431aa622e6068d6e87930fb7ca3b6505ae6d35d73",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "2b7ff6d74f956793646e138431aa622e6068d6e87930fb7ca3b6505ae6d35d73"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuEdgeBounceTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuEdgeBounceTest.kt",
+      "baselineSha256": "04259714e7ad8919021dafec0b4749b420a4e113210142a8618acb1e5ad0ce2f",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "04259714e7ad8919021dafec0b4749b420a4e113210142a8618acb1e5ad0ce2f"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuElasticFullParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuElasticFullParityTest.kt",
+      "baselineSha256": "d36381699e56668e5331d482b4ccc9aded033bb48327242a1e36dfc7541d2c65",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "d36381699e56668e5331d482b4ccc9aded033bb48327242a1e36dfc7541d2c65"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuElasticPressTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuElasticPressTest.kt",
+      "baselineSha256": "e97fce8b644ce58ab1914b3bd42e0f58004e40669ae8dfed7305f4da5da3f258",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "e97fce8b644ce58ab1914b3bd42e0f58004e40669ae8dfed7305f4da5da3f258"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuFoldPressGeometryTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuFoldPressGeometryTest.kt",
+      "baselineSha256": "6c19bbdbcdaffe91563642ca9e1f3d85d52b6aecfd882dd3b80eaa12e12a4dfd",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "6c19bbdbcdaffe91563642ca9e1f3d85d52b6aecfd882dd3b80eaa12e12a4dfd"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuFoldPressHandoffTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuFoldPressHandoffTest.kt",
+      "baselineSha256": "91c4d4779376541d908234cdeec5f42a3882bf381364c0046fb6f179bfb3b49f",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "91c4d4779376541d908234cdeec5f42a3882bf381364c0046fb6f179bfb3b49f"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuGestureArenaParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuGestureArenaParityTest.kt",
+      "baselineSha256": "357c10d326c54d99984232fcbfc1f546c5b3fb16d6ff8a1ebb71a48232dc9e7e",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "357c10d326c54d99984232fcbfc1f546c5b3fb16d6ff8a1ebb71a48232dc9e7e"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuLabelWidthCacheTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuLabelWidthCacheTest.kt",
+      "baselineSha256": "7dc86de6f9e877a8d30f7b73c5c00c711d737c5de386d746d3a92de82e1ddcca",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "7dc86de6f9e877a8d30f7b73c5c00c711d737c5de386d746d3a92de82e1ddcca"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuLazyRowsParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuLazyRowsParityTest.kt",
+      "baselineSha256": "ff14b06cd06ee9ac4dda3fd4b60296d950904f1488211cc9a5b9c1e899648420",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "ff14b06cd06ee9ac4dda3fd4b60296d950904f1488211cc9a5b9c1e899648420"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuMorphMomentumTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuMorphMomentumTest.kt",
+      "baselineSha256": "cbe3aabef98c4a5defa132ae34aec101e161f5bfcc93c11e27a94b7dc92d49c9",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "cbe3aabef98c4a5defa132ae34aec101e161f5bfcc93c11e27a94b7dc92d49c9"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuOpenFirstFrameTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuOpenFirstFrameTest.kt",
+      "baselineSha256": "e98312f5b693f08cbe8a5573740f225e878fba9eb2f3ffc81a509430efe7b9e1",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "e98312f5b693f08cbe8a5573740f225e878fba9eb2f3ffc81a509430efe7b9e1"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuOpenPerformanceTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuOpenPerformanceTest.kt",
+      "baselineSha256": "49faaf771a14698f156e7cd15e56ec40acb7e1438dac2a6cde8ccd836ab31848",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "49faaf771a14698f156e7cd15e56ec40acb7e1438dac2a6cde8ccd836ab31848"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuParentDimParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuParentDimParityTest.kt",
+      "baselineSha256": "2c6a06934d708cd2df59c04d33512adfddb47f0a800401dd1a355a7a3fa8f547",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "2c6a06934d708cd2df59c04d33512adfddb47f0a800401dd1a355a7a3fa8f547"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuPopupPlacementParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuPopupPlacementParityTest.kt",
+      "baselineSha256": "04b14f1a8a0390addc125440c92e1b422dee5ac167f1daeda003445ac0e32f60",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "04b14f1a8a0390addc125440c92e1b422dee5ac167f1daeda003445ac0e32f60"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuPressedMaskMorphTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuPressedMaskMorphTest.kt",
+      "baselineSha256": "eb27fb286ff9e7570b0e702cb321ffb5b594163e0040b807228aa97041188e9a",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "eb27fb286ff9e7570b0e702cb321ffb5b594163e0040b807228aa97041188e9a"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuRimAndGooShadowParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuRimAndGooShadowParityTest.kt",
+      "baselineSha256": "7bbc8fbfe84cd5be306c883410cbbb3a93d2dfed01d23aa59ebda862bdf015a3",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "7bbc8fbfe84cd5be306c883410cbbb3a93d2dfed01d23aa59ebda862bdf015a3"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuRootShadowContinuityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuRootShadowContinuityTest.kt",
+      "baselineSha256": "0ba697f9fc0d4ce56d032a36aa5b044315133532a8e73d364ec4500bd99491f0",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "0ba697f9fc0d4ce56d032a36aa5b044315133532a8e73d364ec4500bd99491f0"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuScrollConflatorTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuScrollConflatorTest.kt",
+      "baselineSha256": "607176da3c259940ae06d0980aa905ec6ff35a2733d99b6493d48097e2844f0d",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "607176da3c259940ae06d0980aa905ec6ff35a2733d99b6493d48097e2844f0d"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuSectionParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuSectionParityTest.kt",
+      "baselineSha256": "be79fa0cc4aed7bdccf461a36df9f95dfc27c1bdf3c65a8dc21b7165fcc8de34",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "be79fa0cc4aed7bdccf461a36df9f95dfc27c1bdf3c65a8dc21b7165fcc8de34"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuSpringSettlingDiagnosticTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuSpringSettlingDiagnosticTest.kt",
+      "baselineSha256": "1bbeae816003e6c6d2cff35bf5513946c7e4e51557b9cf7fbd5e905c298027dc",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "1bbeae816003e6c6d2cff35bf5513946c7e4e51557b9cf7fbd5e905c298027dc"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/MenuSubtitleGlyphParityTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuSubtitleGlyphParityTest.kt",
+      "baselineSha256": "2d470826ed8b1c971b70977743a8ebfabafa20298759729c4ead1cf57f0b7341",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "2d470826ed8b1c971b70977743a8ebfabafa20298759729c4ead1cf57f0b7341"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/NestedMenuMotionJobsTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/NestedMenuMotionJobsTest.kt",
+      "baselineSha256": "6fff86f88c764e0c964f9f1ed2331afe8fbe0bf77d2a0c79c3cdf42bc58e7174",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "6fff86f88c764e0c964f9f1ed2331afe8fbe0bf77d2a0c79c3cdf42bc58e7174"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/PopupValueTextAndCheckedSemanticsTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/PopupValueTextAndCheckedSemanticsTest.kt",
+      "baselineSha256": "0c05a33d84f070a90e5c2e395a6bdf38bf64cbbb616d75e5ce8fa7f36f77d7cb",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "0c05a33d84f070a90e5c2e395a6bdf38bf64cbbb616d75e5ce8fa7f36f77d7cb"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/SketchFrostContrastTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/SketchFrostContrastTest.kt",
+      "baselineSha256": "d9aac03fd5cda44627508aa62dbb74ddf9b9fb8ceb362ef3a9dc453f4dcf7db1",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "f7657ed19ac042aee56da8109f635ddab0233c6202e0f6e4f005f579bb5437bb"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/SketchGlassBridgeTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/SketchGlassBridgeTest.kt",
+      "baselineSha256": "d200f25560109f7c2c180fb4c096f3f5ef96e2ec361e13b76eceab3fe020149a",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "d200f25560109f7c2c180fb4c096f3f5ef96e2ec361e13b76eceab3fe020149a"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/SketchLayerOrderTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/SketchLayerOrderTest.kt",
+      "baselineSha256": "0d443979c190b011607f7062148cfbd0df1b3c2ac2078638bfbbb39d890586d1",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "0d443979c190b011607f7062148cfbd0df1b3c2ac2078638bfbbb39d890586d1"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/SketchOpticalInputsTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/SketchOpticalInputsTest.kt",
+      "baselineSha256": "19c867a80d4a3bfc9bacf66342327e0d3253cae938ac4af965a5b98e040f6547",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "19c867a80d4a3bfc9bacf66342327e0d3253cae938ac4af965a5b98e040f6547"
+    },
+    {
+      "source": "app/src/test/java/dev/liquidglass27/glass/SourceContentPolicyTest.kt",
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/SourceContentPolicyTest.kt",
+      "baselineSha256": "3071e2c0e4ddb947f8272726c51df698559c0ec67f20fe401de7d01ccc2636bc",
+      "reason": "Preserve all upstream regression coverage; adapt app fallback paths to liquidglass-ios27 only.",
+      "mergedSha256": "3071e2c0e4ddb947f8272726c51df698559c0ec67f20fe401de7d01ccc2636bc"
+    },
+    {
+      "source": "FlClash/LICENSE",
+      "path": "liquidglass-ios27/LICENSE",
+      "baselineSha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+      "reason": "Preserve provenance, generator input, validation tools and source evidence (not target acceptance).",
+      "mergedSha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809"
+    },
+    {
+      "source": "FlClash/lib/ui/icons/app_glyphs.dart",
+      "path": "tools/ios27/reference/app_glyphs.dart",
+      "baselineSha256": "31ab82fc5bafa390634e88f6520c0c28a4d8ade179db0d009a1a205d0ff09501",
+      "reason": "Preserve provenance, generator input, validation tools and source evidence (not target acceptance).",
+      "mergedSha256": "31ab82fc5bafa390634e88f6520c0c28a4d8ade179db0d009a1a205d0ff09501"
+    },
+    {
+      "source": "LICENSE",
+      "path": "docs/ios27/source-LICENSE",
+      "baselineSha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+      "reason": "Preserve provenance, generator input, validation tools and source evidence (not target acceptance).",
+      "mergedSha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809"
+    },
+    {
+      "source": "README.md",
+      "path": "docs/ios27/source-README.md",
+      "baselineSha256": "0578d519b07b9049e1e3e07b18c13e57aa50da13ef3ecec00b645112dda89ad2",
+      "reason": "Preserve provenance, generator input, validation tools and source evidence (not target acceptance).",
+      "mergedSha256": "0578d519b07b9049e1e3e07b18c13e57aa50da13ef3ecec00b645112dda89ad2"
+    },
+    {
+      "source": "docs/merge-into-liquidglass-sketch.md",
+      "path": "docs/ios27/source-merge-guide.md",
+      "baselineSha256": "2c9e7d7add34ba94ae3edf601cc5a03ff076f3d0424fe276d05b0af4ccc9a797",
+      "reason": "Preserve provenance, generator input, validation tools and source evidence (not target acceptance).",
+      "mergedSha256": "2c9e7d7add34ba94ae3edf601cc5a03ff076f3d0424fe276d05b0af4ccc9a797"
+    },
+    {
+      "source": "docs/verification-2026-11-03.md",
+      "path": "docs/ios27/source-verification-2026-11-03.md",
+      "baselineSha256": "1d44160275bf86ce497067ec17f14f1b665579cea28ae134091ba185a9950058",
+      "reason": "Preserve provenance, generator input, validation tools and source evidence (not target acceptance).",
+      "mergedSha256": "1d44160275bf86ce497067ec17f14f1b665579cea28ae134091ba185a9950058"
+    },
+    {
+      "source": "docs/flclash_popup_port_coverage_2026-11-02.md",
+      "path": "docs/ios27/source-popup-coverage.md",
+      "baselineSha256": "6b645c2399818c0dbff085fc19b2bb90d83118c68f0f2a1d47483fe25dd0db60",
+      "reason": "Preserve provenance, generator input, validation tools and source evidence (not target acceptance).",
+      "mergedSha256": "6b645c2399818c0dbff085fc19b2bb90d83118c68f0f2a1d47483fe25dd0db60"
+    },
+    {
+      "source": "plan.md",
+      "path": "docs/ios27/source-plan.md",
+      "baselineSha256": "c7533fa536225a2b5a688efe2bf19c09233e069e5c3cbc7e903fcbb9743df13e",
+      "reason": "Preserve provenance, generator input, validation tools and source evidence (not target acceptance).",
+      "mergedSha256": "c7533fa536225a2b5a688efe2bf19c09233e069e5c3cbc7e903fcbb9743df13e"
+    },
+    {
+      "source": "artifacts/20261103-retained-rendering/validation.json",
+      "path": "docs/ios27/baseline/validation.json",
+      "baselineSha256": "7e4ead35a729f2aeff0c1b65514e93e9e8254433c80bdecd21c9066dd79060a0",
+      "reason": "Preserve provenance, generator input, validation tools and source evidence (not target acceptance).",
+      "mergedSha256": "7e4ead35a729f2aeff0c1b65514e93e9e8254433c80bdecd21c9066dd79060a0"
+    },
+    {
+      "source": "artifacts/20261103-retained-rendering/README.md",
+      "path": "docs/ios27/baseline/README.md",
+      "baselineSha256": "5fb0c66145a76baed8d002cd1326d552b2b226872f299578c2c16de4ed66f720",
+      "reason": "Preserve provenance, generator input, validation tools and source evidence (not target acceptance).",
+      "mergedSha256": "5fb0c66145a76baed8d002cd1326d552b2b226872f299578c2c16de4ed66f720"
+    },
+    {
+      "source": "tools/generate_glass_glyphs.py",
+      "path": "tools/ios27/generate_glass_glyphs.py",
+      "baselineSha256": "b0f7549069df985b55b93f111351583ba43546a03c8a89705cebeaf7222cb19f",
+      "reason": "Preserve provenance, generator input, validation tools and source evidence (not target acceptance).",
+      "mergedSha256": "ee01eff01e7f20ac6d6c384a7849be7d9336195c62a5c3d9cfc8e3001bec1744"
+    },
+    {
+      "source": "tools/check_control_highlight.py",
+      "path": "tools/ios27/check_control_highlight.py",
+      "baselineSha256": "55538724e8161063e83a6b004667385752b7cbe2d4263b2f7c9cd8fbdcd86c76",
+      "reason": "Preserve provenance, generator input, validation tools and source evidence (not target acceptance).",
+      "mergedSha256": "5e1b0dc883e91fbdc759e6ecc082162fa99b1ae902358e639d81f9d5b2e88527"
+    }
+  ],
+  "modifiedExisting": [
+    {
+      "path": "settings.gradle.kts",
+      "baselineSha256": "5dce5857888b3bef7d2e1652fde4f33f28a980edab98bb5948ee49a27a974b30",
+      "mergedSha256": "0b3a7f3ef575c9b84c0e909e3bc66e06938fe7cbdd7732d890205da3fb5e7f94"
+    },
+    {
+      "path": "build.gradle.kts",
+      "baselineSha256": "97c3be6a703e0cff68170ea73e010eec24d4ec0cb41660d6753243461b396dce",
+      "mergedSha256": "783fa80e457dc58c6207148028b97295a884517e3023838b3357991fba8ca3e6"
+    },
+    {
+      "path": "sample/build.gradle.kts",
+      "baselineSha256": "703c64856133799e75ba8b8b3d5b03dcf3143c655985e958115f3eab3afc4456",
+      "mergedSha256": "77f3792d2c95e237b140b4d24c149162a8684c8db89fa32071cbd2c20d57f5a1"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/MainActivity.kt",
+      "baselineSha256": "e2f372b3ee91abc379146ece8ecc845c253feda1d42f240b82a75509aafd4670",
+      "mergedSha256": "ba396c33f570b9b7ddb28fbf52e911c0aad6ba97597c69356f2a47e508bccdc1"
+    },
+    {
+      "path": "tools/verify-android-artifacts.ps1",
+      "baselineSha256": "5c85947a966a3c78d61b516baac2015e37951ca182b6ba3a4bef622c8be7ebb2",
+      "mergedSha256": "95d4aecac9c0a87a273d31fccb928b97ba4f22130f78bbe01cde57fe7798a795"
+    },
+    {
+      "path": "README.md",
+      "baselineSha256": "85281ce5e6a0352039b478ca3add78249a18855b62c5af47b1852b99a53d9443",
+      "mergedSha256": "56ef58d24e1ab7936776994c0f485e5e80715066604365ea5cc9f76fd55c1f06"
+    },
+    {
+      "path": "AGENTS.md",
+      "baselineSha256": "763d2e0e71785304988a67de3adf039d52a8b85998aa3e8a09ca1f21acaad1a2",
+      "mergedSha256": "c9d98ed9854b16ddef93acdc1d5b4a672cee592d7cd959b144a67db9a4858b2d"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/IphoneExamples.kt",
+      "baselineSha256": "130bfb57943198883f349dba6b1d34d4ca1e7670066ce0884fc091a249703d83",
+      "mergedSha256": "db464e09c8022cfc2b121d95f7f5c7e7103e762634386a6299a7bb71db73fa0f"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27ControlCenterScene.kt",
+      "baselineSha256": "dc877df555563e6578393939851fd738669b39d38a5c2279dd49e10ffac14623",
+      "reason": "Remove unused BoxWithConstraints scope reported by sample lint; retain same full-size layout.",
+      "mergedSha256": "43d8deb75275630ad970e1d94a015232e209a251de38c13a2e069f7f78c93125"
+    }
+  ],
+  "legacyRuntime": [
+    {
+      "path": "liquidglass/src/main/AndroidManifest.xml",
+      "sha256": "3e2191f10c0b8d6b9ecb0f908f0ed25ed6e7017db14f60b8e8850080ee4f6055"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/Backdrop.kt",
+      "sha256": "656dee9b6ef7c3b0b83f8a47ea3534e060d2146b6e130d3644cc8595a8bc7aea"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/BackdropEffectScope.kt",
+      "sha256": "c76b1e67cdb4a9059d27da4830d954274d6c9a389e7d5be25c35949d0a9d37f9"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/backdrops/Backdrop.kt",
+      "sha256": "26bb2f884461545caf4b76a445d8d11ed10b8c64aaaad529615614fc25e506b8"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/backdrops/CanvasBackdrop.kt",
+      "sha256": "2d771f9afc2ab4c124b3286853749423008e82e204db6ee89e252352ea72d20f"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/backdrops/CombinedBackdrop.kt",
+      "sha256": "07b79cfeb8832d484644f1ebccb16807dc5ac1d5361a53d24b775373f5db60de"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/backdrops/EmptyBackdrop.kt",
+      "sha256": "cff50ece42018665124f0438be37123e6f865acedb51348871fecd2b6d59340f"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/backdrops/LayerBackdrop.kt",
+      "sha256": "6e158d606a3b52f9b07fad3dc2cf3090ae3c50df8058ff2e17f6f5d59847f363"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/backdrops/LayerBackdropModifier.kt",
+      "sha256": "271e91e76804049fbb3c01dfa62024a505bbfbb0192c808caa3f49ed8575cb14"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/DrawBackdropModifier.kt",
+      "sha256": "9acc0d8e8bcf7729c5018aebb635c19a56385b092a4a818444ea94b49c7134e9"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/effects/Blur.kt",
+      "sha256": "40fab8510c55c893dd12b7969f1232ebf2f8d4d5e7ef17ec6fd44009e996327b"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/effects/ColorFilter.kt",
+      "sha256": "1df7f6b99785d1a19445063e865e7cad22e535c63fb5b5f1c61521923e6a3814"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/effects/Lens.kt",
+      "sha256": "af025cf7dc6a28c08d8fcad452213ad717cee5f7d4e30c00f9bf3b7d65b4b198"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/effects/RuntimeShaderEffect.kt",
+      "sha256": "c79e4fc0a72ee86afe75047e7960c695f4bd2be6175a33c1f5fe7c929d5b03d0"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/highlight/Highlight.kt",
+      "sha256": "f0aa1e6ac75ec68074fc875161aa39b1f5cddaca366cc16f39541206452ceeef"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/highlight/HighlightModifier.kt",
+      "sha256": "5dc16a8ad96a27a8be0691a3ae23a941a3f7e5fbc906f611f93deb91b4872f80"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/highlight/HighlightStyle.kt",
+      "sha256": "9e17ef75af36c9586c13f54027839054bb1e23a22fd7c531e5133f556479af1a"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/highlight/RenderEffect.kt",
+      "sha256": "5cd0f9a31e764ba6de1fe1644c502fe776a540806d6b01fc06b7360a8d13d909"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/InverseLayerScope.kt",
+      "sha256": "f06c4328151c0b64c66d9ce76cb6af9a4a44c3216f56d77438f8399299f42379"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/LayerRecorder.kt",
+      "sha256": "203f7d4d8a76d8df59f4ff1f673ce244d51f6b6f5a520e1c1ae1f823f0225d7d"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/Outline.kt",
+      "sha256": "97f3ffb80a0565ea6e1c55da401eaf23bd41f81e6853efdb43f1e494c0c71aba"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/RuntimeShaderCache.kt",
+      "sha256": "aa2880d3f6520ad5f565fc8fc7d5f6f47202bc9dd4cd83d3f57f266319681a78"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/Shaders.kt",
+      "sha256": "4a181f802e3c91553a55b7616fd708ebb625d40667f220b5315477d0cb0dcf36"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/shadow/InnerShadow.kt",
+      "sha256": "67980d4f949bb0e7879867a84784229fdb0eb400949ad206fd4ee8b86e92b3af"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/shadow/InnerShadowModifier.kt",
+      "sha256": "e3b8905efea8bcdc2ed91d004f4dbdc02eb1a14c39b71cdcfaefeac503115190"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/shadow/Shadow.kt",
+      "sha256": "9a5ad1461d6f99b86d9c72dc76dc892e900ed0dfbf7a170acf8e180c8422ba54"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/shadow/ShadowModifier.kt",
+      "sha256": "f58dfd96cb39ef6556b6e28e1dc74e68a10ae6c7b1189b4da40af2ab02f0c8e6"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/ShapeProvider.kt",
+      "sha256": "01d4bd9c8c1d06ad7c079e9e98ab2044d19fdfdaf18c02b91f5d2679db0c013e"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidBottomTab.kt",
+      "sha256": "f7d29033dbf7714bf7a60e6b3a0f7cfbcf51705d9f52c25a687a06589a73cf89"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidBottomTabs.kt",
+      "sha256": "4c9c1530db1488c54f437888665a3c68dfbf88af0b6b25bd755e03a2c52681cb"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidButton.kt",
+      "sha256": "01705f9080a67ac36727ce858c9c1b8406aeba44b368f8629da52d904200b826"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidButtonCore.kt",
+      "sha256": "85c716d3f55e3d7f9d8d1202f08bca6cdb662a081275c1a97f8cc8cea8845cdf"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidButtonGroup.kt",
+      "sha256": "5e38820955d65ed790ce9d975c4afeb7dcd62a24c35f2d25ccca4f336000761b"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidGlassStyles.kt",
+      "sha256": "d81faf4e324f69e280653c6796e3c5f3daa76c85d33c4c0f193f3cd90448e195"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidSegmentedSelector.kt",
+      "sha256": "a3351085da7db0336f4b8b7b0d031fd8532eb92adac438fd9e9bf79645b0d2d8"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidSlider.kt",
+      "sha256": "4a0489d52c9d2ebc64f375de97936085a246bf8ea8368f6e57379f44ebcf9183"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidToggle.kt",
+      "sha256": "cb97bff21ebfcc6b7dd1defd03c07f06388a7e136eedcdd4f0815a3a37efa9c0"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/PlainFallbackControls.kt",
+      "sha256": "59d5a96cc085bf433b1a6cfbd26a9c1eabf4409a65458e9186c9b722cffd2b8e"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/StripedGlass.kt",
+      "sha256": "30f595dd617b61ce45328c4273448adaa166d5f70f062e0299203dd9897cb9a6"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/AdaptiveLuminanceGlass.kt",
+      "sha256": "d986df725b7be9481aad3e24b5f0947d4a37fdf1d51f0f3cb414caa672db0184"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/DampedDragAnimation.kt",
+      "sha256": "dbed25224a1cefbe4b8ddf2905b7020a1cc8e012dd235dbfee090f473489f1db"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/DragGestureInspector.kt",
+      "sha256": "4e10f6706e4b341a1fbd06c1d1df8fe6809d81de2f1b608601ef33a912efb401"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/InteractiveHighlight.kt",
+      "sha256": "75bc0b25a2ac4c183f78487a3fcb35dbd662eb1563208cddbeab848776377080"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/LiquidMorph.kt",
+      "sha256": "8f0641702f1b776361ca525aab9e1b2926acde4774ecd112794892293d070779"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/ProgressConverter.kt",
+      "sha256": "3e121ccee0bef0e92ddf85a3b0832c9c8c0e60198eeb2761c283f215ce5365df"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/SdfShader.kt",
+      "sha256": "d7bdae61e00212547b50b2bca47d585d6aee18d8daf9cc3b4fa63992a68f696e"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/UISensor.kt",
+      "sha256": "68eb7018da79eeedaaf89154dfa406fed47fede09bbc56369825c5a9927fe9f7"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/ui/commom/ProgressiveBlurContent.kt",
+      "sha256": "ef4850974d462d2bac3e8c89373934fa3ae5c8e9df3a94f00e3aed97513b0518"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/utils/LiquidGlassPrefs.kt",
+      "sha256": "69d475ab91c13d00d1fcc7d6a74b00f2ee35a8739ef905fbb30627b1013a7a08"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/coloros17/ColorOs17ComponentCatalog.kt",
+      "sha256": "fd6b33da70d469efb773c1fa8d75fb2932fd419c27c7bd84a4bbb60741c6cc4c"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/coloros17/ColorOs17MaterialOwners.kt",
+      "sha256": "5e1f80ea001b7e181359d9d9f212563646bc9c64c381ab8fc574c2087d3a832e"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/coloros17/ColorOs17SettingsComponents.kt",
+      "sha256": "10d20848de2c90efe83d81fc91c8f7974ea8b7458e5ce37fd38451942c88c7ca"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/coloros17/ColorOs17SliderBinding.kt",
+      "sha256": "175d58232d9520608941d2bce452de790143189e50f8c2218e92b31223a1e1d0"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/components/ColorOs17BlurPolicy.kt",
+      "sha256": "70bf15cc2353609c056d6510e6cf8d6effbc12a34bdac4af20d7da3d609a1113"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/components/ColorOs17ProgressiveBlur.kt",
+      "sha256": "9e8c39745712a9e37f2b56b6b062fff5c3f0583c6685ac5cc244e74490cb5244"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/components/ListeningModeSelector.kt",
+      "sha256": "9745118e79f30a938b0120e0daadffa6e206916ff1da02dc6e28c2f6ebbb9316"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27AndroidBehavior.kt",
+      "sha256": "2f019d3f46f7bd056db479365d73ee876cddab54ea38456eb81366c3170855d6"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27DisclosureIndicator.kt",
+      "sha256": "ff62f0ecf6a2be14b8eddaa17db1cb0c25b9e74448c965bb1d970d9c7e4a84e6"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27InteractiveControls.kt",
+      "sha256": "eb2b855d65bfaf2790b3823d15878949dbf63e67c14185870278bd73d7bd7832"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27ListPressMask.kt",
+      "sha256": "dbf24bb84601012b70e79a79772cf511ae46c5aaf2bd24be6dfeceb78e51e9c2"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27Lists.kt",
+      "sha256": "52e8df6af1fc8c140f5cedcc4da8e3057f6873edc0396fa7cfd5d541dc158b8e"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27ListTypography.kt",
+      "sha256": "d29cb267f7c5bb6e7d1b8b62a3bca12248e4ca625b2e81bbc5fe609b319d8561"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27PageTheme.kt",
+      "sha256": "f5c71653ea4ae41d2d92c5a91bac953d8c69d141990269ca4a0c8bfda0b8a735"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27PressFeedback.kt",
+      "sha256": "d76bcbec4b1adea85442b9764b18501d7882e38edfe8613f3b8b06faaa056b5f"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27SplitSearchTabBar.kt",
+      "sha256": "c03c425aed26d9d4a9fb27e93426aa707d867f8e1be9b2844f3cdc3f12b35298"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27Tokens.kt",
+      "sha256": "d2e418ac27bb9c0ff66d6f61f659ea4d12543934eb7c81f862b6d5921345503f"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27WindowDensity.kt",
+      "sha256": "e066141b7c5ba57c410c67d99c038ef4fe20450af56bcf716ff94532fae6f3c3"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/LiquidDialog.kt",
+      "sha256": "729ff130393877d698e26ca2e628fc2286e9b23e5a360731090a42e799dd7f95"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/LiquidMorph.kt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/rendering/GyroscopeHighlight.kt",
+      "sha256": "a828d137f78ab52d6cb5f9504be43bee6a6fa03f06992f059e8a1676d7359e7a"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/rendering/GyroscopeHighlightMath.kt",
+      "sha256": "0721790eca5a005155466a4c96f6e4a65df352c6d7d8c15925f4089f70b65b59"
+    },
+    {
+      "path": "liquidglass/src/test/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidSliderPositionTest.kt",
+      "sha256": "d29d86e572e016f60d710ed2c8c364fae69b6772b0073ce54f23d84a4bf07ea3"
+    },
+    {
+      "path": "liquidglass/src/test/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidSliderShadowTest.kt",
+      "sha256": "ca6bf1de58b42fbf60eff84ed1399e79aefd78eee10dddbc5d6b1dc2e872ea0b"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/coloros17/ColorOs17ComponentCatalogTest.kt",
+      "sha256": "ba4716e853c49ecc6fad7d9c2c04b1aa353d1226d9d2b3a94c0abd47b1214c79"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/coloros17/ColorOs17MaterialOwnersTest.kt",
+      "sha256": "b82a7f45f8fb16f12446f3754552aff24a96689c36c5ce7a51e6a2521c6d0ce9"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/coloros17/ColorOs17SliderBindingTest.kt",
+      "sha256": "498c1406315835c34962b6feb29901471fa303679b2afd5f14deb72d0af072ad"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/components/ColorOs17BlurPolicyTest.kt",
+      "sha256": "11d7e6c9bba174c45f617ccff82544a69480291e15232c9b0f3df38479d29bb8"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/components/ListeningModeSelectorTest.kt",
+      "sha256": "d7636d98c6d79b16d45fff9cce825c45e0c08025ffd7ec808f3f49fce8084b2f"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/ios27/GlassPanelCornersTest.kt",
+      "sha256": "c51e606d387133aa927021897f961a6f8b41a2895d2d9efe1cd820d8c741afa8"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/ios27/Ios27AndroidBehaviorTest.kt",
+      "sha256": "e2b7f37af3f9199016d30beb8a8a825064e500aed57beb8d6c56e00e93f9a1e8"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/ios27/Ios27ListPressMaskTest.kt",
+      "sha256": "e65ca57210b155b6e1ce318e151272e58a0015580efc7d91aa5a1224f32e2dc3"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/ios27/Ios27ListTypographyTest.kt",
+      "sha256": "65f837ddb61dd17826b30737932116221cd525eef55bee8c27255224c00526e1"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/ios27/Ios27PageThemeTest.kt",
+      "sha256": "6c97a29dacc1afda1a18a3397df44fcec1cd7da2dae2ab82fc76b6e398e35a37"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/ios27/Ios27SplitSearchTabBarTest.kt",
+      "sha256": "99dc91e4e7b540da2cfba3a337353f4d5dff258cb064ca4a7434a1dc7ccb1fad"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/ios27/Ios27WindowDensityTest.kt",
+      "sha256": "e033f6ac7d128726d754c443af397972e8abc47904801e70c3df74de7dac3595"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/rendering/GyroscopeHighlightMathTest.kt",
+      "sha256": "e678b629cb06a70a6b6f6224aac4a480c61e7596ee95c3dfb2f802f06849d675"
+    }
+  ],
+  "demoFiles": [],
+  "addedFiles": [
+    {
+      "path": "liquidglass-ios27/build.gradle.kts",
+      "baselineSha256": null,
+      "mergedSha256": "de78aeaf19f533d56965ae73590a8adba91616ccb441b3f951b066b13b32e451",
+      "reason": "New standard boundary, host integration, provenance or migration validation."
+    },
+    {
+      "path": "liquidglass-ios27/src/main/AndroidManifest.xml",
+      "baselineSha256": null,
+      "mergedSha256": "571f2735faf5e857752ee057ac8ef63425576a721616c60b86ee5d4c0a2d682f",
+      "reason": "New standard boundary, host integration, provenance or migration validation."
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/Ios27Glass.kt",
+      "baselineSha256": null,
+      "mergedSha256": "5e919cc1b07259caff4e2abe224f36116d6cb863a844a5b9bb7ffc624206bdad",
+      "reason": "New standard boundary, host integration, provenance or migration validation."
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/standard/LiquidGlassStandard.kt",
+      "baselineSha256": null,
+      "mergedSha256": "97cfdce0b39f26d6afcedeecb986386aebde71a1565636b0901f2fa9290e0948",
+      "reason": "New standard boundary, host integration, provenance or migration validation."
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/standard/LiquidGlassStandardTest.kt",
+      "baselineSha256": null,
+      "mergedSha256": "52547f2b9acd78ce5ca7b596640c4654bb47eae7b5aad057718379e9a836a655",
+      "reason": "New standard boundary, host integration, provenance or migration validation."
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27StandardDock.kt",
+      "baselineSha256": null,
+      "mergedSha256": "8cd0554145e2ce412c0ba19f2d14d9e826a60fabb06d205ceab56d8dfe7ea8ad",
+      "reason": "New standard boundary, host integration, provenance or migration validation."
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27MechanismExamplePage.kt",
+      "baselineSha256": null,
+      "mergedSha256": "2ded313f5ee554b7cd58b3012976c3a9ee383a08306f8c5e7e454bbd1062d287",
+      "reason": "New standard boundary, host integration, provenance or migration validation."
+    },
+    {
+      "path": "tools/verify-ios27-merge.mjs",
+      "baselineSha256": null,
+      "mergedSha256": "6bcc6377898d3ca44f39eb63f3bac41469f75b88a8d2a7c9bbcd2363653c7172",
+      "reason": "New standard boundary, host integration, provenance or migration validation."
+    },
+    {
+      "path": "tools/ios27/check-standard-device.mjs",
+      "baselineSha256": null,
+      "mergedSha256": "bb10596b9135a6ad239037ec26430083cc4aaa18a9de1c15d691101e60d7ad1f",
+      "reason": "New standard boundary, host integration, provenance or migration validation."
+    },
+    {
+      "path": "tools/ios27/check-examples-device.mjs",
+      "baselineSha256": null,
+      "mergedSha256": "3489147566ac0bbc9c9c3443fbbc8b361cdd94771672ec7f98ad08a8a5994a9b",
+      "reason": "New standard boundary, host integration, provenance or migration validation."
+    },
+    {
+      "path": "docs/ios27/README.md",
+      "baselineSha256": null,
+      "mergedSha256": "d865f4200c50ad73d520a53a5cb32eb75d5ceb2bdb00fe5c576b89b877d51ce7",
+      "reason": "New standard boundary, host integration, provenance or migration validation."
+    },
+    {
+      "path": "docs/ios27/provenance.md",
+      "baselineSha256": null,
+      "mergedSha256": "e80ae4c6ecab300486aeb3a3d4f4d3a4a81cefb0cb0f99d6fc85418003635aae",
+      "reason": "New standard boundary, host integration, provenance or migration validation."
+    },
+    {
+      "path": "docs/ios27/validation.md",
+      "baselineSha256": null,
+      "mergedSha256": "200a4ece0180d18c98597b2db4669aa7158143328dada98b421e63737b8fc840",
+      "reason": "Record target-project results and explicit unverified device boundaries."
+    },
+    {
+      "path": "docs/ios27/verification-results.json",
+      "baselineSha256": null,
+      "mergedSha256": "c13a623e3490fc64781deba820fa6ffa7a3d1040083638695c7f8f2a4f23a963",
+      "reason": "Record target-project results and explicit unverified device boundaries."
+    },
+    {
+      "path": "docs/ios27/shader-validation.json",
+      "baselineSha256": null,
+      "mergedSha256": "044ca9756c2614ca784ad17c59f0f3a1d00336d38ae319e026a762c852af7f38",
+      "reason": "Record target-project results and explicit unverified device boundaries."
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27NativeExamples.kt",
+      "baselineSha256": null,
+      "mergedSha256": "d74d50714958e4400e2c04f435f48d693c5c1ef27cd8084fde64ac01e973c46f",
+      "reason": "Host-native component examples and integration boundary regression checks."
+    },
+    {
+      "path": "tools/ios27/native-examples.test.mjs",
+      "baselineSha256": null,
+      "mergedSha256": "80182aac2efc572d05e5a9834ebe49c02bcc1e96d0616b93258e38c60a883c0b",
+      "reason": "Host-native component examples and integration boundary regression checks."
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/Ios27NavigationDock.kt",
+      "baselineSha256": null,
+      "mergedSha256": "fcc1d6b8ab94a40ee67c789a46e0a228b168e87843cdc5ad94834febe3f4c696",
+      "reason": "User-authorized dock/popup correction, regression tests or documentation."
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/PopupContentTransform.kt",
+      "baselineSha256": null,
+      "mergedSha256": "8c6bff2a5194b02ab1eb6496d13a438d4bbf65f345005be0bfaa5f90591557c5",
+      "reason": "User-authorized dock/popup correction, regression tests or documentation."
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/PopupPresentationTest.kt",
+      "baselineSha256": null,
+      "mergedSha256": "68fe7c69275ddfe35f93dc2fc5fcd3e9217709dd3c07acc986f6dcb8e8f6d793",
+      "reason": "User-authorized dock/popup correction, regression tests or documentation."
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/Ios27DockBodyTest.kt",
+      "baselineSha256": null,
+      "mergedSha256": "a30156c75fc291c77a291553ff98e1a5fe07c4d3aae3baf1a3b1d486cacaf941",
+      "reason": "User-authorized dock/popup correction, regression tests or documentation."
+    },
+    {
+      "path": "docs/ios27/dock-popup-correction.md",
+      "baselineSha256": null,
+      "mergedSha256": "39e4c126cef15973e7e7286bedf9fb234a08314124ba385f948cf06a9ffd6bed",
+      "reason": "User-authorized dock/popup correction, regression tests or documentation."
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GooButtonGroup.kt",
+      "mergedSha256": "4b8d42b84bc97cd49fc5a0c597e0674eeaa1dc0cab939f84f4bd262c9c2fc0de",
+      "reason": "Generic Goo button groups and physical grouping regression coverage"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GooButtonGroupTest.kt",
+      "mergedSha256": "597e801e6aca1816d963aaca1e06df3b73cebf0f8cc46a3b15365db5c1e57484",
+      "reason": "Generic Goo button groups and physical grouping regression coverage"
+    },
+    {
+      "path": "PUBLISHING.md",
+      "mergedSha256": "16614d1fd033d1980fc30592874bfdf4e91a877a18e68809093b0bcc8caad7d0",
+      "reason": "GitHub publication and pinned upstream repositories"
+    },
+    {
+      "path": ".gitmodules",
+      "mergedSha256": "f8ad19a75dd8c759c67fd84f8f2dc35a1e067c219127abcd738d654d3e94c15a",
+      "reason": "GitHub publication and pinned upstream repositories"
+    }
+  ],
+  "nativeExamplesRevision": {
+    "date": "2026-11-03",
+    "reason": "User requested examples integrated with current Sketch pages, not copied source demo UI.",
+    "previousMergedHashes": [
+      {
+        "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SourceContentPolicy.kt",
+        "sha256": "6770de5242a7ba251bcbd1be5cecbcf36ede34ed131de175e03d233d44cea857"
+      },
+      {
+        "path": "tools/verify-android-artifacts.ps1",
+        "sha256": "9bdf91427e5447e340f40b14e6e743981b28a4707f61f0003b8cae6dbc82c9c5"
+      },
+      {
+        "path": "README.md",
+        "sha256": "ebe387d6cae6d23f079d4107b91d34135d157cb60728527fe37b66aea5c697b3"
+      },
+      {
+        "path": "AGENTS.md",
+        "sha256": "3d3cb7e7779f6ed7935b56262c5421665a70a4aa460d71af8b4859c898c0a9db"
+      },
+      {
+        "path": "sample/src/main/java/dev/liquidglass/sample/IphoneExamples.kt",
+        "sha256": "03fe6466ae6535983999b2516da56c72c508458c512b613ff5cda93835550b41"
+      },
+      {
+        "path": "sample/src/main/java/dev/liquidglass/sample/Ios27MechanismExamplePage.kt",
+        "sha256": "b7d4483330187b69d46a503ddb3e81b38ce91796da69fa1ec26b1123fd9ada90"
+      },
+      {
+        "path": "tools/verify-ios27-merge.mjs",
+        "sha256": "8dc86661b738c7f5ca4ec76119b42d985987a68386509b9df8232b339db970ea"
+      },
+      {
+        "path": "tools/ios27/check-examples-device.mjs",
+        "sha256": "39eae2e91f216a50cce3209eece2f43f0126264a99f39e22e9157a3d559bbfe7"
+      },
+      {
+        "path": "docs/ios27/README.md",
+        "sha256": "90d864a8361a96d61e4a4aae0c678d4b5d36abf821bac55c2e7f5cbbc6e89326"
+      },
+      {
+        "path": "docs/ios27/provenance.md",
+        "sha256": "40ccc866ec27de4fdbce932536fee981c614cbc77fa36f24a28fed21dee83d40"
+      },
+      {
+        "path": "docs/ios27/validation.md",
+        "sha256": "e4922c59d12749b7646816672c1b43b67925a01ead1e836a4d51a50f5bedb28e"
+      },
+      {
+        "path": "docs/ios27/verification-results.json",
+        "sha256": "6cb7e98b55dc21062b0d279469cf7db93d242bca4baa6693b731727514641311"
+      }
+    ]
+  },
+  "removedDemoFiles": [
+    {
+      "source": "app/src/main/java/dev/liquidglass27/demo/GlassShowcase.kt",
+      "path": "sample/src/main/java/dev/liquidglass27/demo/GlassShowcase.kt",
+      "baselineSha256": "4324ec995cb3188b664b1c01791abf207113a156f3122cc6cb53797d84aeea02",
+      "reason": "User follow-up explicitly requests iOS 27 demonstrations; host them in the existing sample, consuming the shared mechanism module.",
+      "mergedSha256": "ada94a891274cc59eba97da6c31a842effc2d61fd7f7c15d5febd96d4c11d431"
+    },
+    {
+      "source": "app/src/main/java/dev/liquidglass27/demo/GlassVerificationPage.kt",
+      "path": "sample/src/main/java/dev/liquidglass27/demo/GlassVerificationPage.kt",
+      "baselineSha256": "404040907a0d2e861f149b9d3188c11365d1699e2c87cae6869c73f7a434243e",
+      "reason": "User follow-up explicitly requests iOS 27 demonstrations; host them in the existing sample, consuming the shared mechanism module.",
+      "mergedSha256": "b3546310cca927a4112f4cf9152699c5cd8707a538301f4cf64b0bfc33ea6338"
+    }
+  ],
+  "reviewedLegacyChanges": [
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidBottomTabs.kt",
+      "baselineSha256": "4c9c1530db1488c54f437888665a3c68dfbf88af0b6b25bd755e03a2c52681cb",
+      "mergedSha256": "ffe0e1126bbb531fbb59081abe3011d129e38aabaee51808e7aa6f9cfc6e3156",
+      "date": "2026-11-03",
+      "authorization": "27的底栏，改用26的主体+27的高光",
+      "reason": "Optional surface-layer hook, default null; reuses iOS 26 body with iOS 27 lighting without a reverse dependency."
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/DrawBackdropModifier.kt",
+      "baselineSha256": "9acc0d8e8bcf7729c5018aebb635c19a56385b092a4a818444ea94b49c7134e9",
+      "authorization": "User reported incorrect iOS 27 dock with screenshot",
+      "reason": "Optional material-only effect layer; default rendering unchanged",
+      "mergedSha256": "e678522beecfa8bb0653ca1868f83e2fb2ef02f7d2bfed70c97eb492d9b029cf"
+    }
+  ],
+  "dockPopupRevision": {
+    "date": "2026-11-03",
+    "reason": "User-requested iOS 26 dock body + iOS 27 light; popup menu corner/light parity and undistorted text.",
+    "previousMergedHashes": [
+      {
+        "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassPopup.kt",
+        "sha256": "cdc62ca713dce0a2353e3908390904c652f99e6ec4d5d6d850577e59aac26291"
+      },
+      {
+        "path": "tools/verify-android-artifacts.ps1",
+        "sha256": "2c0eb61872b47ddb5c64a3b40e489714673ab1434adcfbec5cc6abb2f35775c1"
+      },
+      {
+        "path": "AGENTS.md",
+        "sha256": "b95a425f2c9afd6c83c3895030d344dec060aac7eace0a398add30da394fa54a"
+      },
+      {
+        "path": "sample/src/main/java/dev/liquidglass/sample/Ios27StandardDock.kt",
+        "sha256": "960ffadbd60ac4e001fded47b2580bc0645f4944cfb2ec0a4d837955606f3a3e"
+      },
+      {
+        "path": "tools/verify-ios27-merge.mjs",
+        "sha256": "a4443f061b8c2b4d8004cf46c9112fca471858d9ab3995b682b17b36bf4fcab7"
+      },
+      {
+        "path": "docs/ios27/README.md",
+        "sha256": "b82dd4c677e60ad4008da3036de1c324dad47ad2abbc3f5b282c2c863c3ca04b"
+      },
+      {
+        "path": "docs/ios27/provenance.md",
+        "sha256": "468b1bc2e0f3cad845abea0e86a05045a88c654aea6a301c62c9b9994620e226"
+      },
+      {
+        "path": "sample/src/main/java/dev/liquidglass/sample/Ios27NativeExamples.kt",
+        "sha256": "b408fc7922dc651f0a1342f39971d9678fc9d1f1d72917d08bf85c706c370170"
+      },
+      {
+        "path": "tools/ios27/native-examples.test.mjs",
+        "sha256": "bd178bf7f0c21f35475be295dc4bdf8aa4da8e8521044bfc63fa5e93d22afeb1"
+      },
+      {
+        "path": "docs/ios27/validation.md",
+        "sha256": "ac3366048681f9e254d0acfca66df88b96f4f9874073dbab9ebe9139812f5800"
+      },
+      {
+        "path": "docs/ios27/verification-results.json",
+        "sha256": "332364a72ae38e651a48c068b6ebf7771afe8d1e0d75e35a3de71bf410f1d4ce"
+      },
+      {
+        "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/PopupContentTransform.kt",
+        "sha256": "f87ff1929d846f5ec57a2b150eae90151edf8d5a2e9b72a25e68b2e221924630"
+      },
+      {
+        "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/PopupPresentationTest.kt",
+        "sha256": "54caae0c1cf40d292bb6a377ad6bb1b97bc7b826a36db60c528b91d5f4089c20"
+      },
+      {
+        "path": "docs/ios27/dock-popup-correction.md",
+        "sha256": "767847c411e0934d9045e53d335bec9ba30864ef165e343db3e8587b2f66c794"
+      }
+    ]
+  },
+  "popupTextRevision": {
+    "reason": "Fix foreground padding capture and source-button scale handoff after animation",
+    "previousMergedHashes": [
+      {
+        "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassPopup.kt",
+        "sha256": "5b16f7af50f2ef503a5af4aa9574373c0e3b988c9206c53872086b85e9139856"
+      },
+      {
+        "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/PopupContentTransform.kt",
+        "sha256": "f87ff1929d846f5ec57a2b150eae90151edf8d5a2e9b72a25e68b2e221924630"
+      },
+      {
+        "path": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/PopupPresentationTest.kt",
+        "sha256": "54caae0c1cf40d292bb6a377ad6bb1b97bc7b826a36db60c528b91d5f4089c20"
+      }
+    ]
+  },
+  "dockEdgeRevision": {
+    "reason": "User screenshot: rectangular shadow and displaced dock highlight; isolate material effect from shadow and inverse sampling",
+    "previousMergedHashes": {
+      "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/DrawBackdropModifier.kt": "9acc0d8e8bcf7729c5018aebb635c19a56385b092a4a818444ea94b49c7134e9",
+      "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidBottomTabs.kt": "d95428312022488d4132fcfffbc3d5bd7de014781e7a3ff1e4c0ccdd379bd079"
+    }
+  },
+  "gooButtonsRevision": {
+    "reason": "User requested Goo support for all buttons; reusable group for ordinary ElasticGlassButton content and popup sources",
+    "previousMergedHashes": {
+      "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassControls.kt": "6288d9771b4fe1bf098a8a6f7a1ae853877f7a26014fd0cce01d85faeef8c788",
+      "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassPopup.kt": "e5ed16b12c4661c3b3e2b70d187cfb777cf98a30cbd62ecae13c36b8d822a577",
+      "AGENTS.md": "4e520810045fb455a5fce56263537d583edb163b4a66bad12fefbb1cee2de953",
+      "docs/ios27/README.md": "1452c0206098abc22065fe14105d063e03f13a23f55f3555b802f45b07ae7d34",
+      "sample/src/main/java/dev/liquidglass/sample/Ios27NativeExamples.kt": "f9c2f99a8190d8fbedf1af0088dc448d07968d1f46e2be4a35655499b55cf548",
+      "tools/verify-android-artifacts.ps1": "080d7dd3a74ca113a5c85f8231de8e9fbbb44e760bf9eaa0d0d8fdac278ed15c",
+      "docs/ios27/provenance.md": "18c389cb1198b9fa634501d7a370cb9a649504c472f55ecaa79508ca244db7b5",
+      "docs/ios27/validation.md": "a22fa4495efedbcd45fabfaf6db6187e3b7fae8fffce28025e27556317b7cef0",
+      "docs/ios27/verification-results.json": "b30de19d97e684ef281614ddd12b1313482e9a9d38ed2b26a719cb23bd0b4e47"
+    }
+  },
+  "dockRimRevision": {
+    "reason": "Second user screenshot: hidden reference highlight sampled into indicator; side hairline remains at rest",
+    "previousMergedHashes": {
+      "docs/ios27/validation.md": "9cf8e203996806c42ac1cdc0bc6553f9fb1e88435ba362e84bc1417588773235",
+      "docs/ios27/verification-results.json": "b6abd33edb41c238744fe7a40b52b56d34f4ce2ee2a299b5589565777b087d9e",
+      "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/Ios27NavigationDock.kt": "e921bd4e27e08587798878719ecdb69c6c2f5f27ddf15c83cd48ce6b40551a88",
+      "docs/ios27/dock-popup-correction.md": "bba3e026782a14d7da7560c717285e0fca44d13e4bfd0f90579a8c740719ebe7"
+    },
+    "tests": "Not run at user request"
+  },
+  "dockOutlineRevision": {
+    "reason": "User reported uneven outer dock rim; specialize dock native-path profile at 256 rays",
+    "tests": "Not run per user request",
+    "previousMergedHashes": {
+      "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashControlHighlight.kt": "f1c6ab1e7beba9e6b2a6b7a68cba4378901c884ef9191077dff043e7b12eb549",
+      "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassRadialProfile.kt": "56a187f1f689a284b8ae89d29a3fabdbb8c67cf34990b8f90356e07fe3756a56",
+      "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassShaderPrograms.kt": "edccc5f50a57ba349111b73d4d8efdbf06853e64cd3e37a48fa59ffed0e453fd",
+      "liquidglass-ios27/src/main/assets/shaders/flclash_control_highlight.agsl": "d92b5364afb9525014133c30a3bb731d0df156be689db688e5333b4a86357420",
+      "docs/ios27/provenance.md": "b887776c753c36e6b38fcb7848612b8bb76626ce8dfd496fce23083782d06538",
+      "docs/ios27/validation.md": "20f72e3e003afc5a005483a3987ac853263646760f3c520c592caff81a087b0b",
+      "docs/ios27/verification-results.json": "c97379d0a49d34040823d599029dd52f407498e3e6b492a4d0ad9641071b89c6",
+      "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/Ios27NavigationDock.kt": "07693afbcc5c3b3fd5aaf942677e726879248aa6508776f350289a79dcc82749",
+      "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/Ios27DockBodyTest.kt": "24530b005396a268507c687e3ee2faf322e38af67d88b34a033b91476b9bf285",
+      "docs/ios27/dock-popup-correction.md": "1bc1dd6769ba3cb3467f1ebfb4cabf3a3a84b6defc2606932282d8381fa6370c"
+    }
+  },
+  "githubPublication": {
+    "reason": "Initial GitHub source snapshot; omit local generated outputs and add reproducible checkout instructions",
+    "sourceWorkspaceCommit": "8d16a14ef7c2701ffb1a4a3b7f2c2b64bd9b88c3",
+    "previousMergedHashes": {
+      "README.md": "b2daa1894b18fde0744552f8c82b57eaf1dca7ca19e82f93a730c10a05e966de"
+    }
+  }
+}
