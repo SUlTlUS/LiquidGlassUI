@@ -15,10 +15,17 @@ import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.GraphicsLayerScope
 import androidx.compose.ui.graphics.isSpecified
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
@@ -39,6 +46,11 @@ import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.tanh
+import dev.liquidglass.rendering.LocalLiquidButtonFusion
+import dev.liquidglass.rendering.LiquidButtonFusionMaterial
+import dev.liquidglass.rendering.LocalGlassButtonLighting
+import dev.liquidglass.rendering.LocalGlassButtonMotion
+import com.zeaze.tianyinwallpaper.backdrop.highlight.Highlight
 
 @Composable
 internal fun LiquidButtonCore(
@@ -58,47 +70,56 @@ internal fun LiquidButtonCore(
     iconTint: Color,
     iconOffsetX: Dp,
     iconOffsetY: Dp,
-    content: (@Composable RowScope.() -> Unit)?
+    content: (@Composable RowScope.() -> Unit)?,
+    enabled: Boolean = true,
 ) {
     val animationScope = rememberCoroutineScope()
+    val motion = LocalGlassButtonMotion.current
     val interactiveHighlight = remember(animationScope) {
         InteractiveHighlight(animationScope = animationScope)
     }
+    var buttonSize by remember { mutableStateOf(IntSize.Zero) }
+    val buttonDensity = LocalDensity.current.density
+    val customFrame = motion?.transform(buttonSize.width.toFloat(), buttonSize.height.toFloat(),
+        buttonDensity, interactiveHighlight.pressProgress, interactiveHighlight.offset,
+        style.pressedExpansion.value * buttonDensity, style.dragInitialDerivative)
+    val lighting = LocalGlassButtonLighting.current?.invoke(customFrame?.contour)
+    val fusion = LocalLiquidButtonFusion.current?.invoke(
+        LiquidButtonFusionMaterial(backdrop, style, tint, surfaceColor, luminanceState, customFrame?.effect))
 
     Row(
         modifier
+            .onSizeChanged { buttonSize = it }
+            .then(fusion?.modifier ?: Modifier)
             .drawBackdrop(
                 backdrop = backdrop,
-                shape = { Capsule() },
+                shape = { customFrame?.contour ?: Capsule() },
+                highlight = if (lighting == null) ({ Highlight.Default }) else null,
+                surfaceLayerBlock = lighting,
                 effects = {
-                    luminanceState?.let { state ->
-                        colorControls(
-                            brightness = state.brightness,
-                            contrast = state.contrast,
-                            saturation = state.saturation
-                        )
-                    } ?: vibrancy()
+                    if (!style.preserveBackdropColors) {
+                        luminanceState?.let { state ->
+                            colorControls(
+                                brightness = state.brightness,
+                                contrast = state.contrast,
+                                saturation = state.saturation
+                            )
+                        } ?: vibrancy()
+                    }
                     blur(style.blurRadius.toPx())
                     lens(style.lensRadiusX.toPx(), style.lensRadiusY.toPx())
                 },
-                layerBlock = if (isInteractive) {
+                layerBlock = if (isInteractive && enabled) {
                     {
-                        val width = size.width
-                        val height = size.height
                         val progress = interactiveHighlight.pressProgress
-                        val scale = lerp(1f, 1f + style.pressedExpansion.toPx() / size.height, progress)
-                        val maxOffset = size.minDimension
-                        val offset = interactiveHighlight.offset
-                        translationX = maxOffset * tanh(style.dragInitialDerivative * offset.x / maxOffset)
-                        translationY = maxOffset * tanh(style.dragInitialDerivative * offset.y / maxOffset)
-                        val maxDragScale = style.pressedExpansion.toPx() / size.height
-                        val offsetAngle = atan2(offset.y, offset.x)
-                        scaleX = scale +
-                            maxDragScale * abs(cos(offsetAngle) * offset.x / size.maxDimension) *
-                            (width / height).fastCoerceAtMost(1f)
-                        scaleY = scale +
-                            maxDragScale * abs(sin(offsetAngle) * offset.y / size.maxDimension) *
-                            (height / width).fastCoerceAtMost(1f)
+                        val custom = customFrame
+                        if (custom != null) {
+                            scaleX = custom.scaleX; scaleY = custom.scaleY
+                            translationX = custom.offset.x; translationY = custom.offset.y
+                        } else {
+                            applyDefaultButtonTransform(interactiveHighlight, style)
+                        }
+                        fusion?.onTransform?.invoke(scaleX, scaleY, translationX, translationY, custom?.press ?: progress)
                     }
                 } else null,
                 onDrawSurface = {
@@ -110,13 +131,14 @@ internal fun LiquidButtonCore(
                 }
             )
             .clickable(
+                enabled = enabled,
                 interactionSource = null,
                 indication = if (isInteractive) null else LocalIndication.current,
                 role = Role.Button,
                 onClick = onClick
             )
             .then(
-                if (isInteractive) {
+                if (isInteractive && enabled) {
                     Modifier.then(interactiveHighlight.modifier).then(interactiveHighlight.gestureModifier)
                 } else Modifier
             )
@@ -135,4 +157,24 @@ internal fun LiquidButtonCore(
             )
         }
     }
+}
+
+/** Standalone core controls retain their original motion without a theme injection. */
+internal fun GraphicsLayerScope.applyDefaultButtonTransform(
+    highlight: InteractiveHighlight,
+    style: LiquidButtonStyle,
+) {
+    val width = size.width
+    val height = size.height
+    val scale = lerp(1f, 1f + style.pressedExpansion.toPx() / height, highlight.pressProgress)
+    val maxOffset = size.minDimension
+    val offset = highlight.offset
+    translationX = maxOffset * tanh(style.dragInitialDerivative * offset.x / maxOffset)
+    translationY = maxOffset * tanh(style.dragInitialDerivative * offset.y / maxOffset)
+    val maxDragScale = style.pressedExpansion.toPx() / height
+    val angle = atan2(offset.y, offset.x)
+    scaleX = scale + maxDragScale * abs(cos(angle) * offset.x / size.maxDimension) *
+        (width / height).fastCoerceAtMost(1f)
+    scaleY = scale + maxDragScale * abs(sin(angle) * offset.y / size.maxDimension) *
+        (height / width).fastCoerceAtMost(1f)
 }

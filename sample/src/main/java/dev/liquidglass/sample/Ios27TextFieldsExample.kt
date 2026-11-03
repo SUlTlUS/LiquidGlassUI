@@ -26,6 +26,12 @@ import androidx.compose.foundation.text.contextmenu.provider.TextContextMenuData
 import androidx.compose.foundation.text.contextmenu.provider.TextContextMenuProvider
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.TextRange
+import dev.liquidglass.*
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -120,104 +126,61 @@ private fun Ios27SelectionContextMenu(
     colors: Ios27PageColors,
     dark: Boolean,
     backdrop: Backdrop?,
+    visible: Boolean,
+    onHidden: () -> Unit,
 ) {
-    val data = request.dataProvider.data()
-    val items = data.components.filterIsInstance<TextContextMenuItem>()
-    val cut = items.firstOrNull { it.key == TextContextMenuKeys.CutKey }
-    val copy = items.firstOrNull { it.key == TextContextMenuKeys.CopyKey }
-    val paste = items.firstOrNull { it.key == TextContextMenuKeys.PasteKey }
-    val selectAll = items.firstOrNull { it.key == TextContextMenuKeys.SelectAllKey }
-    val autofill = items.firstOrNull { it.key == TextContextMenuKeys.AutofillKey }
-    var expandedMenu by remember(request.session) { mutableStateOf(false) }
-    val bounds = request.dataProvider.contentBounds(hostCoordinates)
-    val anchor = request.dataProvider.position(hostCoordinates)
-    val density = androidx.compose.ui.platform.LocalDensity.current
-    val compactMenuWidthPx = with(density) { 238.dp.roundToPx() }
-    val expandedMenuWidthPx = with(density) { 250.dp.roundToPx() }
-    val expandedMenuHeightPx = with(density) { 338.dp.roundToPx() }
-    // Both source variants share the same top-left origin: selection y=136..156,
-    // menu y=180. Reserve the expanded footprint from the start so opening "more"
-    // never causes the compact menu to jump to a different side or recenter.
-    val gapPx = with(density) { 24.dp.roundToPx() }
-    val marginPx = with(density) { 8.dp.roundToPx() }
-    val hostWidth = hostCoordinates.size.width
-    val hostHeight = hostCoordinates.size.height
-
-    val desiredX = if (bounds != Rect.Zero && bounds.width > 0f) {
-        ((bounds.left + bounds.right) / 2f - compactMenuWidthPx / 2f).roundToInt()
-    } else {
-        (anchor.x - compactMenuWidthPx / 2f).roundToInt()
+    val items = remember(request) { request.dataProvider.data().components.filterIsInstance<TextContextMenuItem>() }
+    val bounds = remember(request) { request.dataProvider.contentBounds(hostCoordinates) }
+    val point = remember(request) { request.dataProvider.position(hostCoordinates) }
+    val anchor = if (bounds.width > 0 && bounds.height > 0) bounds
+        else Rect(point.x, point.y, point.x + 1f, point.y + 1f)
+    val popup = rememberGlassPopupState<Unit>()
+    val focus = LocalFocusManager.current
+    var invokedAction by remember(request.session) { mutableStateOf(false) }
+    var moreOpen by remember(request.session) { mutableStateOf(false) }
+    var moreMounted by remember(request.session) { mutableStateOf(false) }
+    var moreAnchor by remember { mutableStateOf(anchor) }
+    val primary = items.filter { it.key == TextContextMenuKeys.CutKey ||
+        it.key == TextContextMenuKeys.CopyKey || it.key == TextContextMenuKeys.PasteKey }
+    val more = items.filter { it !in primary }
+    fun invoke(item: TextContextMenuItem) {
+        invokedAction = true
+        moreOpen = false
+        item.onClick(request.session)
+        popup.dismiss()
     }
-    val belowY = if (bounds != Rect.Zero) {
-        (bounds.bottom + gapPx).roundToInt()
-    } else {
-        (anchor.y + gapPx).roundToInt()
+    LaunchedEffect(request.session) { popup.open() }
+    LaunchedEffect(visible) { if (!visible) { moreOpen = false; popup.dismiss() } }
+    LaunchedEffect(popup.expanded, popup.mounted) {
+        if (popup.mounted && !popup.expanded && !invokedAction) focus.clearFocus(force = true)
     }
-    val expandedAboveY = if (bounds != Rect.Zero) {
-        (bounds.top - expandedMenuHeightPx - gapPx).roundToInt()
-    } else {
-        (anchor.y - expandedMenuHeightPx - gapPx).roundToInt()
-    }
-    val maxX = (hostWidth - expandedMenuWidthPx - marginPx).coerceAtLeast(marginPx)
-    val maxExpandedY = (hostHeight - expandedMenuHeightPx - marginPx).coerceAtLeast(marginPx)
-    val stableY = when {
-        belowY <= maxExpandedY -> belowY
-        expandedAboveY >= marginPx -> expandedAboveY
-        else -> belowY.coerceIn(marginPx, maxExpandedY)
-    }
-    val menuOffset = IntOffset(
-        x = desiredX.coerceIn(marginPx, maxX),
-        y = stableY,
-    )
-    val cutAction = cut?.let { item ->
-        {
-            item.onClick(request.session)
-            request.session.close()
+    Ios26ModalScope(backdrop, dark) {
+    dev.liquidglass.GlassMenuMaterialScope {
+        GlassPopup(popup, remember(anchor) { GlassPopupAnchor(anchor) }, dark,
+            properties = GlassPopupProperties(modal = true, focusable = false, returnIntoSource = false),
+            placement = GlassMenuPlacement.BelowPoint, avoid = anchor,
+            title = "文字操作", onResult = { request.session.close(); onHidden() }) {
+            Row(Modifier.width(238.dp).height(44.dp), verticalAlignment = Alignment.CenterVertically) {
+                primary.forEach { item ->
+                    Box(Modifier.weight(1f).fillMaxHeight().clickable { invoke(item) },
+                        contentAlignment = Alignment.Center) {
+                        Text(item.label.toString(), color = colors.label, style = Ios27Tokens.Type.Body)
+                    }
+                }
+                if (more.isNotEmpty()) Box(Modifier.width(44.dp).fillMaxHeight()
+                    .onGloballyPositioned { moreAnchor = hostCoordinates.localBoundingBoxOf(it, clipBounds = false) }
+                    .clickable { moreMounted = true; moreOpen = true }, contentAlignment = Alignment.Center) {
+                    Text("›", color = colors.label, style = Ios27Tokens.Type.Title2)
+                }
+            }
         }
+        if (moreMounted) GlassMorphMenu(moreOpen, moreAnchor,
+            more.map { item -> GlassMenuAction(item.label.toString()) { invoke(item) } }, dark,
+            onDismiss = { moreOpen = false }, onReturnComplete = { moreMounted = false },
+            placement = GlassMenuPlacement.BelowAnchorStart,
+            highlightStyle = currentGlassHighlight(), returnIntoSource = false,
+            properties = GlassPopupProperties(modal = true, focusable = false))
     }
-    val copyAction = copy?.let { item ->
-        {
-            item.onClick(request.session)
-            request.session.close()
-        }
-    }
-    val pasteAction = paste?.let { item ->
-        {
-            item.onClick(request.session)
-            request.session.close()
-        }
-    }
-    val selectAllAction = selectAll?.let { item ->
-        {
-            item.onClick(request.session)
-            request.session.close()
-        }
-    }
-    val autofillAction = autofill?.let { item ->
-        {
-            item.onClick(request.session)
-            request.session.close()
-        }
-    }
-
-    Box(
-        Modifier
-            .offset { menuOffset }
-            .zIndex(1000f),
-    ) {
-        Ios27QweaLiquidSelectionMenu(
-            expanded = expandedMenu,
-            colors = colors,
-            dark = dark,
-            onCut = cutAction,
-            onCopy = copyAction,
-            onPaste = pasteAction,
-            onSelectAll = selectAllAction,
-            onAutofill = autofillAction,
-            onExpand = { expandedMenu = true },
-            onDismiss = { request.session.close() },
-            backdrop = backdrop,
-        )
     }
 }
 
@@ -230,9 +193,13 @@ internal fun Ios27TextContextMenuHost(
     content: @Composable () -> Unit,
 ) {
     var request by remember { mutableStateOf<Ios27TextContextMenuRequest?>(null) }
+    var closing by remember { mutableStateOf(false) }
     var hostCoordinates by remember { mutableStateOf<LayoutCoordinates?>(null) }
     val provider = remember {
-        Ios27TextContextMenuProvider { nextRequest -> request = nextRequest }
+        Ios27TextContextMenuProvider { nextRequest ->
+            if (nextRequest != null) { request = nextRequest; closing = false }
+            else closing = true
+        }
     }
 
     Box(
@@ -253,6 +220,8 @@ internal fun Ios27TextContextMenuHost(
                 colors = colors,
                 dark = dark,
                 backdrop = backdrop,
+                visible = !closing,
+                onHidden = { if (request === activeRequest) request = null },
             )
         }
     }
@@ -266,12 +235,15 @@ internal fun Ios27MenuEditablePage(
 ) {
     val colors = LocalIos27PageColors.current
     val textStyle = Ios27Tokens.Type.Body.copy(color = colors.label)
+    var field by remember { mutableStateOf(TextFieldValue(value)) }
+    SideEffect { if (field.text != value) field = field.copy(text = value, selection = TextRange(value.length)) }
 
     BasicTextField(
-        value = value,
-        onValueChange = onValueChange,
+        value = field,
+        onValueChange = { field = it; if (it.text != value) onValueChange(it.text) },
         modifier = modifier
             .fillMaxSize()
+            .onFocusChanged { if (!it.isFocused) field = field.copy(selection = TextRange(field.selection.end)) }
             .padding(start = 16.dp, end = 16.dp, top = 20.dp, bottom = 20.dp)
             .semantics { contentDescription = "整页可编辑文本" },
         singleLine = false,

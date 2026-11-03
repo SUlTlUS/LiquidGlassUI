@@ -1,0 +1,458 @@
+{
+  "device": "192.168.1.247:40085",
+  "checkedAt": "2026-09-15T15:20:36.859Z",
+  "apkSha256": "44fb2f5e86a0db980976c4e1e1c9de1f246eb1405f30ea0f656828f02a49d725",
+  "completed": true,
+  "expected": 56,
+  "note": "Similarity = percentage of pixels with max RGB delta <=24 against local FigmaSceneView. Includes system bars; blank background can inflate scores. Not official Figma fidelity or interaction acceptance.",
+  "results": [
+    {
+      "key": "12740-35188",
+      "category": "Control Center",
+      "variant": "Default",
+      "meanDiff": 155.67,
+      "changedPercent": 88.8,
+      "similarity": 11.2
+    },
+    {
+      "key": "12740-24428",
+      "category": "Notifications",
+      "variant": "Expanded=False",
+      "meanDiff": 138.26,
+      "changedPercent": 88.39,
+      "similarity": 11.61
+    },
+    {
+      "key": "12740-35191",
+      "category": "Lock Screen",
+      "variant": "Default",
+      "meanDiff": 112.22,
+      "changedPercent": 87.65,
+      "similarity": 12.35
+    },
+    {
+      "key": "12740-35184",
+      "category": "Color Picker",
+      "variant": "Default",
+      "meanDiff": 91.89,
+      "changedPercent": 86.68,
+      "similarity": 13.32
+    },
+    {
+      "key": "12740-35185",
+      "category": "Action Sheet",
+      "variant": "Default",
+      "meanDiff": 36.91,
+      "changedPercent": 85.79,
+      "similarity": 14.21
+    },
+    {
+      "key": "12740-24098",
+      "category": "Sheets (Modals)",
+      "variant": "Type=Fullscreen",
+      "meanDiff": 34.62,
+      "changedPercent": 85.54,
+      "similarity": 14.46
+    },
+    {
+      "key": "12740-24488",
+      "category": "Alert",
+      "variant": "Type=Side-by-side",
+      "meanDiff": 40.15,
+      "changedPercent": 85.04,
+      "similarity": 14.96
+    },
+    {
+      "key": "12740-24497",
+      "category": "Alert",
+      "variant": "Type=Stacked",
+      "meanDiff": 44.23,
+      "changedPercent": 83.98,
+      "similarity": 16.02
+    },
+    {
+      "key": "12740-24418",
+      "category": "Notifications",
+      "variant": "Expanded=True",
+      "meanDiff": 121.35,
+      "changedPercent": 83.56,
+      "similarity": 16.44
+    },
+    {
+      "key": "12740-24391",
+      "category": "Keyboard",
+      "variant": "Type=Emoji",
+      "meanDiff": 29.46,
+      "changedPercent": 11.07,
+      "similarity": 88.93
+    },
+    {
+      "key": "12740-24135",
+      "category": "Picker",
+      "variant": "Type=Inline",
+      "meanDiff": 11.91,
+      "changedPercent": 11.04,
+      "similarity": 88.96
+    },
+    {
+      "key": "12740-35190",
+      "category": "Activity View",
+      "variant": "Default",
+      "meanDiff": 27.13,
+      "changedPercent": 10.87,
+      "similarity": 89.13
+    },
+    {
+      "key": "12740-24224",
+      "category": "List",
+      "variant": "Type=Full Width",
+      "meanDiff": 12.86,
+      "changedPercent": 8.5,
+      "similarity": 91.5
+    },
+    {
+      "key": "12740-24462",
+      "category": "Empty States",
+      "variant": "Config=Large Symbol",
+      "meanDiff": 26.38,
+      "changedPercent": 7.25,
+      "similarity": 92.75
+    },
+    {
+      "key": "12740-24450",
+      "category": "Empty States",
+      "variant": "Config=Symbol in Circle",
+      "meanDiff": 23.44,
+      "changedPercent": 6.6,
+      "similarity": 93.4
+    },
+    {
+      "key": "12740-24439",
+      "category": "Empty States",
+      "variant": "Config=Title and Subtitle",
+      "meanDiff": 25.23,
+      "changedPercent": 6.56,
+      "similarity": 93.44
+    },
+    {
+      "key": "12740-24086",
+      "category": "Tab Bar",
+      "variant": "Split Search=True",
+      "meanDiff": 9.99,
+      "changedPercent": 6,
+      "similarity": 94
+    },
+    {
+      "key": "12740-24203",
+      "category": "List",
+      "variant": "Type=Inset",
+      "meanDiff": 9.42,
+      "changedPercent": 5.55,
+      "similarity": 94.45
+    },
+    {
+      "key": "12740-24110",
+      "category": "Sheets (Modals)",
+      "variant": "Type=Fullscreen Stack",
+      "meanDiff": 21.73,
+      "changedPercent": 5.54,
+      "similarity": 94.46
+    },
+    {
+      "key": "12740-24239",
+      "category": "List",
+      "variant": "Type=Full Width + Section Headers",
+      "meanDiff": 10.83,
+      "changedPercent": 5.53,
+      "similarity": 94.47
+    },
+    {
+      "key": "12740-24077",
+      "category": "Tab Bar",
+      "variant": "Split Search=False",
+      "meanDiff": 9.57,
+      "changedPercent": 5.32,
+      "similarity": 94.68
+    },
+    {
+      "key": "12740-24340",
+      "category": "Keyboard",
+      "variant": "Type=Find and Replace",
+      "meanDiff": 17.66,
+      "changedPercent": 4.45,
+      "similarity": 95.55
+    },
+    {
+      "key": "12740-24048",
+      "category": "Toolbars - Bottom",
+      "variant": "Type=Symbols",
+      "meanDiff": 15.28,
+      "changedPercent": 4.06,
+      "similarity": 95.94
+    },
+    {
+      "key": "12740-24360",
+      "category": "Keyboard",
+      "variant": "Type=Web Search",
+      "meanDiff": 18.55,
+      "changedPercent": 3.99,
+      "similarity": 96.01
+    },
+    {
+      "key": "12740-24173",
+      "category": "Menus",
+      "variant": "Type=Menu",
+      "meanDiff": 17.33,
+      "changedPercent": 3.85,
+      "similarity": 96.15
+    },
+    {
+      "key": "12740-24039",
+      "category": "Toolbars - Bottom",
+      "variant": "Type=Search",
+      "meanDiff": 13.93,
+      "changedPercent": 3.58,
+      "similarity": 96.42
+    },
+    {
+      "key": "12740-24062",
+      "category": "Toolbars - Bottom",
+      "variant": "Type=Text",
+      "meanDiff": 14.14,
+      "changedPercent": 3.57,
+      "similarity": 96.43
+    },
+    {
+      "key": "12740-24284",
+      "category": "Keyboard",
+      "variant": "Type=Uppercase",
+      "meanDiff": 17.77,
+      "changedPercent": 3.5,
+      "similarity": 96.5
+    },
+    {
+      "key": "12740-24157",
+      "category": "Menus",
+      "variant": "Type=Edit Medium",
+      "meanDiff": 15.15,
+      "changedPercent": 3.48,
+      "similarity": 96.52
+    },
+    {
+      "key": "12740-24269",
+      "category": "Keyboard",
+      "variant": "Type=Lowercase",
+      "meanDiff": 17.42,
+      "changedPercent": 3.32,
+      "similarity": 96.68
+    },
+    {
+      "key": "12740-24299",
+      "category": "Keyboard",
+      "variant": "Type=Punctuation",
+      "meanDiff": 16.57,
+      "changedPercent": 2.96,
+      "similarity": 97.04
+    },
+    {
+      "key": "12740-35183",
+      "category": "Context Menu",
+      "variant": "Default",
+      "meanDiff": 15.26,
+      "changedPercent": 2.88,
+      "similarity": 97.12
+    },
+    {
+      "key": "12740-24351",
+      "category": "Keyboard",
+      "variant": "Type=Email",
+      "meanDiff": 16.54,
+      "changedPercent": 2.86,
+      "similarity": 97.14
+    },
+    {
+      "key": "12740-24382",
+      "category": "Keyboard",
+      "variant": "Type=Number Pad",
+      "meanDiff": 16.45,
+      "changedPercent": 2.81,
+      "similarity": 97.19
+    },
+    {
+      "key": "12740-24314",
+      "category": "Keyboard",
+      "variant": "Type=Numberic",
+      "meanDiff": 15.9,
+      "changedPercent": 2.61,
+      "similarity": 97.39
+    },
+    {
+      "key": "12740-24143",
+      "category": "Picker",
+      "variant": "Type=Compact",
+      "meanDiff": 9.86,
+      "changedPercent": 2.56,
+      "similarity": 97.44
+    },
+    {
+      "key": "12740-24329",
+      "category": "Keyboard",
+      "variant": "Type=Find",
+      "meanDiff": 15.51,
+      "changedPercent": 2.51,
+      "similarity": 97.49
+    },
+    {
+      "key": "12740-24371",
+      "category": "Keyboard",
+      "variant": "Type=URL",
+      "meanDiff": 15.36,
+      "changedPercent": 2.44,
+      "similarity": 97.56
+    },
+    {
+      "key": "12740-24021",
+      "category": "Toolbars - Top",
+      "variant": "Type=Compact Large Title",
+      "meanDiff": 15.99,
+      "changedPercent": 2.39,
+      "similarity": 97.61
+    },
+    {
+      "key": "12740-24122",
+      "category": "Sheets (Modals)",
+      "variant": "Type=Inspector",
+      "meanDiff": 15.82,
+      "changedPercent": 2.16,
+      "similarity": 97.84
+    },
+    {
+      "key": "12740-35187",
+      "category": "Home Screen Quick Actions",
+      "variant": "Default",
+      "meanDiff": 5.41,
+      "changedPercent": 2.16,
+      "similarity": 97.84
+    },
+    {
+      "key": "12740-24401",
+      "category": "Face ID",
+      "variant": "State=Authenticating",
+      "meanDiff": 14.51,
+      "changedPercent": 1.83,
+      "similarity": 98.17
+    },
+    {
+      "key": "12740-24409",
+      "category": "Face ID",
+      "variant": "State=Success",
+      "meanDiff": 14.47,
+      "changedPercent": 1.79,
+      "similarity": 98.21
+    },
+    {
+      "key": "12740-35194",
+      "category": "Text Fields",
+      "variant": "Default",
+      "meanDiff": 2.61,
+      "changedPercent": 1.65,
+      "similarity": 98.35
+    },
+    {
+      "key": "12740-24013",
+      "category": "Toolbars - Top",
+      "variant": "Type=Large Title",
+      "meanDiff": 14.86,
+      "changedPercent": 1.64,
+      "similarity": 98.36
+    },
+    {
+      "key": "12740-24474",
+      "category": "Home Screen Widgets",
+      "variant": "Size=Medium",
+      "meanDiff": 2.69,
+      "changedPercent": 1.63,
+      "similarity": 98.37
+    },
+    {
+      "key": "12740-24471",
+      "category": "Home Screen Widgets",
+      "variant": "Size=Small",
+      "meanDiff": 2.63,
+      "changedPercent": 1.59,
+      "similarity": 98.41
+    },
+    {
+      "key": "12740-35186",
+      "category": "Slider",
+      "variant": "Default",
+      "meanDiff": 1.66,
+      "changedPercent": 1.53,
+      "similarity": 98.47
+    },
+    {
+      "key": "12740-35189",
+      "category": "Home Screen",
+      "variant": "Default",
+      "meanDiff": 2.46,
+      "changedPercent": 1.42,
+      "similarity": 98.58
+    },
+    {
+      "key": "12740-24477",
+      "category": "Home Screen Widgets",
+      "variant": "Size=Large",
+      "meanDiff": 2.87,
+      "changedPercent": 1.4,
+      "similarity": 98.6
+    },
+    {
+      "key": "12740-24029",
+      "category": "Toolbars - Top",
+      "variant": "Type=Default",
+      "meanDiff": 13.79,
+      "changedPercent": 1.23,
+      "similarity": 98.77
+    },
+    {
+      "key": "12740-24480",
+      "category": "Home Screen Widgets",
+      "variant": "Size=XL",
+      "meanDiff": 2.89,
+      "changedPercent": 1.05,
+      "similarity": 98.95
+    },
+    {
+      "key": "12740-35193",
+      "category": "Toggles (Switches)",
+      "variant": "Default",
+      "meanDiff": 1.03,
+      "changedPercent": 0.82,
+      "similarity": 99.18
+    },
+    {
+      "key": "12740-23997",
+      "category": "Toolbars - Top",
+      "variant": "Type=Title 2 Line Left",
+      "meanDiff": 13.3,
+      "changedPercent": 0.78,
+      "similarity": 99.22
+    },
+    {
+      "key": "12740-24005",
+      "category": "Toolbars - Top",
+      "variant": "Type=Title 2 Line",
+      "meanDiff": 13.06,
+      "changedPercent": 0.65,
+      "similarity": 99.35
+    },
+    {
+      "key": "12740-35192",
+      "category": "Steppers",
+      "variant": "Default",
+      "meanDiff": 0.57,
+      "changedPercent": 0.21,
+      "similarity": 99.79
+    }
+  ]
+}

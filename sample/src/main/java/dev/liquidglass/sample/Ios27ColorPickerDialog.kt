@@ -501,6 +501,7 @@ internal fun Ios27ColorPickerDialog(
     onSwatchSelected: (Int) -> Unit,
     onOpacityChange: (Float) -> Unit,
     onDismiss: () -> Unit,
+    visible: Boolean = true,
 ) {
     val swatches = pickerSwatches(dark)
     val leadingToolbarGlyph = rememberSceneSubtreeText(file, "Leading Button")
@@ -522,6 +523,7 @@ internal fun Ios27ColorPickerDialog(
     val dimColor = Color(0xFF29293A).copy(alpha = if (dark) 0.52f else 0.23f)
 
     Ios27BottomSheetDialog(
+        visible = visible,
         backdrop = backdrop,
         dark = dark,
         height = 599.dp,

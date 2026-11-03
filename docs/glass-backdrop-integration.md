@@ -1,5 +1,11 @@
 # Inline 与 Popup 液态玻璃接入方法
 
+## 嵌套玻璃的按压变换（2026-11-03）
+
+Popup 内按钮的来源由底层页面与 Popup 表面组成，两者的祖先变换不同。使用 `dev.liquidglass.rendering.rememberTransformAwareBackdrop` 分别包装每个 `LayerBackdrop`，再组合；按来源局部坐标到按钮局部坐标的完整二维仿射变换绘制，包含按钮按压与父面板缩放。不要在组合结果外只补偿一次缩放，也不要重复应用已有 `layerBlock` 的逆变换。原 `LayerBackdrop` 默认行为不变。
+
+26 的 Fullscreen / Inspector 导出完成折射、颜色处理的面板材质，排除面板高光、阴影与交互内容。按钮作为兄弟层读取此来源，并显式使用 `LiquidButtonStyle.preserveBackdropColors=true` 跳过二次颜色处理（包括 vibrancy），保留独立模糊、折射、高光、阴影与原按压反馈。该选项默认 false，仅在这两个 26 玻璃页面启用；融合连接处遵循同一颜色策略。不要录制包含按钮的整个面板，也不要通过白色/黑色覆盖层补偿亮差。按钮保持 44dp 尺寸；27 模态按钮和纯色 Fullscreen Stack 保持原方案。实际视觉效果仍以用户验收为准。
+
 适用于本项目日期与时间 Inline、Color Picker Popup、Menus / Context Menu、底部工具栏和需要透出背景图片的新页面。先复用现有玻璃实现，再配置宿主采样层。不要重写玻璃着色器。
 
 背景图片选择属于宿主设置页操作，不属于 Toolbar 玻璃组件本身。设置页统一复用 `rememberPopupBackground`，图片绘制在各示例所读取的页面 `LayerBackdrop` 内；示例页面不再分散放置选择/移除按钮，工具栏仍保持独立的 `LiquidButton` 玻璃按钮和原稿几何。

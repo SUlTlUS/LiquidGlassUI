@@ -1,6 +1,7 @@
 package dev.liquidglass.sample
 
-import android.os.Build
+import dev.liquidglass.*
+
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -40,12 +41,12 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.WindowInsets
 import com.zeaze.tianyinwallpaper.backdrop.Backdrop
 import com.zeaze.tianyinwallpaper.backdrop.backdrops.rememberCanvasBackdrop
-import com.zeaze.tianyinwallpaper.catalog.components.LiquidButton
+import dev.liquidglass.GlassButton
 import dev.liquidglass.ios27.Ios27DisclosureIndicator
 import dev.liquidglass.ios27.Ios27DisclosureVariant
 import dev.liquidglass.ios27.Ios27PageColors
 import dev.liquidglass.ios27.Ios27Tokens
-import dev.liquidglass.ios27.LiquidDialogLayer
+import dev.liquidglass.sample.Ios26ModalLayer as LiquidDialogLayer
 import dev.liquidglass.ios27.ios27PressedClickable
 import dev.liquidglass.ios27.ios27AndroidPane
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -61,6 +62,7 @@ internal fun Ios27ActivityViewExample(
     thumbnail: ImageBitmap?,
     onAction: (String) -> Unit,
     onDismiss: () -> Unit,
+    visible: Boolean = true,
 ) {
     val scroll = rememberScrollState()
     val sourceThumbnail = rememberSceneImage("63f9f677c21872ea31ed121ae185e6dae2e6248e")
@@ -70,26 +72,22 @@ internal fun Ios27ActivityViewExample(
     val actionSurface = Color(0xFF787880).copy(alpha = if (dark) 0.20f else 0.10f)
     // Inline glass belongs to the share sheet, not to the page behind it.
     // Sampling the lower page leaks wallpaper colors through the sheet buttons.
-    val buttonBackdrop = rememberCanvasBackdrop { drawRect(surface) }
+    val buttonBackdrop = com.zeaze.tianyinwallpaper.backdrop.backdrops.rememberLayerBackdrop()
     var collaborate by rememberSaveable { mutableStateOf(false) }
     BoxWithConstraints(Modifier.fillMaxSize()) {
         val sheetTop = WindowInsets.safeDrawing.asPaddingValues().calculateTopPadding()
         val sheetHeight = (maxHeight - sheetTop).coerceAtLeast(1.dp)
         LiquidDialogLayer(
-            // Activity View's source Sheet is opaque. It has no Glass Effect,
-            // no refraction and no highlight rim; only a plain fill + shadow.
-            backdrop = null,
+            solidSurface = true,
+            transition = dev.liquidglass.GlassModalTransition.BottomSheet,
+            visible = visible,
+            // Shared 27 modal pane; toolbar buttons read only its exported material.
+            backdrop = backdrop,
+            exportedBackdrop = buttonBackdrop,
             onDismissRequest = onDismiss,
             panelModifier = Modifier.ios27AndroidPane("分享面板", onDismiss)
                 .width(402.dp)
-                .height(sheetHeight)
-                .shadow(
-                    elevation = 75.dp,
-                    shape = ActivitySheetShape,
-                    clip = false,
-                    ambientColor = Color.Black.copy(alpha = 0.18f),
-                    spotColor = Color.Black.copy(alpha = 0.18f),
-                ),
+                .height(sheetHeight),
             alignment = Alignment.TopCenter,
             // Share the exact runtime top origin with the lower page toolbar,
             // then extend the sheet to the available bottom edge.
@@ -159,7 +157,7 @@ internal fun Ios27ActivityViewExample(
                     ActivityGlassButton(
                         backdrop = buttonBackdrop,
                         modifier = Modifier.offset(x = 108.dp, y = 79.dp).size(152.dp, 34.dp),
-                        buttonHeight = 34.dp,
+                        height = 34.dp,
                         surfaceColor = actionSurface,
                         description = "Collaborate",
                         onClick = {
@@ -225,7 +223,7 @@ internal fun Ios27ActivityViewExample(
                     ActivityGlassButton(
                         backdrop = buttonBackdrop,
                         modifier = Modifier.offset(x = 342.dp, y = 16.dp).size(44.dp),
-                        buttonHeight = 44.dp,
+                        height = 44.dp,
                         surfaceColor = actionSurface,
                         description = "关闭分享面板",
                         onClick = onDismiss,
@@ -553,7 +551,7 @@ private fun ActivityActionsList(
         ActivityGlassButton(
             backdrop = backdrop,
             modifier = Modifier.offset(x = 131.5.dp, y = 354.dp).size(139.dp, 50.dp),
-            buttonHeight = 50.dp,
+            height = 50.dp,
             surfaceColor = actionSurface,
             description = "Edit Actions",
             onClick = { onAction("Edit Actions") },
@@ -571,25 +569,25 @@ private fun ActivityActionsList(
 private fun ActivityGlassButton(
     backdrop: Backdrop?,
     modifier: Modifier,
-    buttonHeight: androidx.compose.ui.unit.Dp,
+    height: androidx.compose.ui.unit.Dp,
     surfaceColor: Color,
     description: String,
     onClick: () -> Unit,
     content: @Composable RowScope.() -> Unit,
 ) {
-    if (backdrop != null && Build.VERSION.SDK_INT >= 33) {
-        LiquidButton(
+    if (backdrop != null) {
+        GlassButton(
             onClick = onClick,
             backdrop = backdrop,
             modifier = modifier.semantics { contentDescription = description },
             surfaceColor = surfaceColor,
-            buttonHeight = buttonHeight,
+            height = height,
             contentPadding = PaddingValues(0.dp),
             content = content,
         )
     } else {
         Row(
-            modifier = modifier.height(buttonHeight)
+            modifier = modifier.height(height)
                 .background(surfaceColor, CircleShape)
                 .ios27PressedClickable(
                     shape = CircleShape,

@@ -1,7 +1,6 @@
 package com.zeaze.tianyinwallpaper.backdrop.effects
 
 import android.graphics.RenderEffect
-import android.os.Build
 import androidx.annotation.FloatRange
 import androidx.compose.foundation.shape.AbsoluteRoundedCornerShape
 import androidx.compose.foundation.shape.CornerBasedShape
@@ -21,7 +20,6 @@ fun BackdropEffectScope.lens(
     depthEffect: Boolean = false,
     chromaticAberration: Boolean = false
 ) {
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return
     if (refractionHeight <= 0f || refractionAmount <= 0f) return
 
     if (padding > 0f) {

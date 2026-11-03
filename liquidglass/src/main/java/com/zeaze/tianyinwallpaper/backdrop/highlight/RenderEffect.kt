@@ -1,12 +1,9 @@
 package com.zeaze.tianyinwallpaper.backdrop.highlight
 
 import android.graphics.RenderEffect
-import android.os.Build
 import com.zeaze.tianyinwallpaper.backdrop.BackdropEffectScope
 
 fun BackdropEffectScope.effect(effect: RenderEffect) {
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
-
     val currentEffect = renderEffect
     renderEffect =
         if (currentEffect != null) {
@@ -17,7 +14,5 @@ fun BackdropEffectScope.effect(effect: RenderEffect) {
 }
 
 fun BackdropEffectScope.effect(effect: androidx.compose.ui.graphics.RenderEffect) {
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
-
     effect(effect.asAndroidRenderEffect())
 }

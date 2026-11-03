@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.*
 import android.view.MotionEvent
 import android.view.View
-import android.os.Build
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -243,7 +242,7 @@ internal class FigmaSceneView(context: Context) : View(context) {
         // to invisibility. Only trust opacity when the color itself is fully opaque.
         val fillOpacity = if (Color.alpha(paint.color) == 255) p.f("opacity", 1f) else 1f
         paint.alpha = (Color.alpha(paint.color) * fillOpacity * alpha).toInt().coerceIn(0, 255)
-        if (Build.VERSION.SDK_INT >= 29) paint.blendMode = when (p.optString("blendMode")) {
+        paint.blendMode = when (p.optString("blendMode")) {
             "LINEAR_DODGE" -> BlendMode.PLUS
             "MULTIPLY", "LINEAR_BURN" -> BlendMode.MULTIPLY
             "SCREEN" -> BlendMode.SCREEN

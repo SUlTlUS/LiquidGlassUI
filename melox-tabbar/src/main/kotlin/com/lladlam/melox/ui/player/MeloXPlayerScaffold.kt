@@ -24,7 +24,7 @@ internal val LocalMeloXAudioSampler = staticCompositionLocalOf<(String?) -> Melo
 }
 
 /** Original app's two-way player transition host. Put the supplied miniPlayer
- * into MeloXTabBarScaffold.miniPlayer; it must remain outside the background capture.
+ * into GlassTabBarScaffold.player; it must remain outside the background capture.
  * This extracts the Artwork transition, not accounts/lyrics/network playback.
  */
 @OptIn(ExperimentalSharedTransitionApi::class)

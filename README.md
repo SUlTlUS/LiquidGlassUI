@@ -1,42 +1,183 @@
-# Tianyin LiquidGlass / iOS 26 与 iOS 27
+# LiquidGlass UI
 
-2026-11-03：现有实现保留为 **iOS 26**，`liquidglass27` 的全部非演示机制已纳入独立 **iOS 27** 库 `:liquidglass-ios27`。包含 69 个原机制文件、5 个 shader、多级菜单、Popup、弹窗、Goo、Dock、主题/图标及配套缓存。“手机示例 → iOS 27”提供七个融入现有框架的组件示例，沿用当前导航、页面配色、分组与返回方式，不搬入源项目的整页演示。现有 sample 的导航可在“设置 → 玻璃标准”切换，旧组件示例按 iOS 26 保留。旧 `Ios27*` 名称保留兼容，标准区分与 API 入口见 [iOS 26 / iOS 27 接入说明](docs/ios27/README.md)。
+面向 Android 13 及以上版本的 Jetpack Compose 液态玻璃组件库，提供 iOS 26 / 27 风格的材质、高光、按钮运动，以及按钮融合、标签栏、菜单、Popup 和模态组件。使用原生 Android 渲染，无需 Flutter 运行时。
 
-本次验证与尚待真机验收的边界见 [合并验证记录](docs/ios27/validation.md)。以下旧版本记录中的 iOS 27 命名为历史页面/Figma 名称，不表示本次新增机制。
+公开 API 统一位于 `dev.liquidglass`，当前库版本为 **2.0.1**。
 
-新增 MeloX 原版 TabBar 独立组件与示例页：组件 → MeloX TabBar → 原版交互。直接提取原版三层玻璃、拖动水珠、独立搜索、滚动收缩和明暗采样；播放器补回原宿主的共享封面/玻璃壳转场、可逆拖拽与弹簧回弹。不替换现有底栏，接入和来源见 [MeloX TabBar 说明](docs/melox-tabbar.md)。
+## 组件能力
 
-1.0.19 将手机示例的默认入口接入现有框架：真实滑块、开关、步进器、输入、菜单和面板，原稿另设对照入口。复用方法与验证范围见 [可操作框架示例](docs/native-framework-examples.md)。仍在逐步对齐原稿布局，不代表全套像素验收完成。
+| 类别 | 主要入口 |
+| --- | --- |
+| 主题与效果 | `GlassTheme`、`GlassStandard`、`GlassEffects`、`GlassEffectScope` |
+| 背景采样 | `GlassScene`、`GlassBackdropProvider` |
+| 按钮与融合 | `GlassButton`、`GlassButtonGroup` |
+| 开关与滑块 | `GlassSwitch`、`GlassSlider` |
+| 标签栏 | `GlassTabBar`、`GlassTabBarScaffold`、`GlassTab` |
+| 标签栏布局与预设 | `GlassTabBarLayout`、`GlassTabBarDefaults`、`GlassTabBarPreset` |
+| 多级菜单 | `GlassMorphMenu`、`GlassMenuAction` |
+| Popup | `GlassPopup`、`rememberGlassPopupState`、`GlassPopupSourceContent` |
+| 模态、对话框与输入 | `GlassModal`、`GlassDialog`、`GlassDialogTextField` |
 
-1.0.18 新增“组件 → 手机示例库”：已接入全套 iPhone Examples 的 56 个原稿变体，并修复颜色变量、字形与遮罩渲染。当前仍有真实玻璃效果和交互待接入，**不能视为全部像素级验收完成**。代码入口、验证方法及未完成项见 [手机示例实现说明](docs/iphone-examples.md)。下方为早期版本记录。
+标签栏支持紧凑布局、收缩、独立操作按钮和播放器插槽，默认使用 MeloX 材质预设。开关、滑块及底栏交互共用实现，材质与高光可独立选择。
 
-修改前先阅读项目强制规范：[AGENTS.md](AGENTS.md)。其中固定了玻璃源码边界、背景采样防递归、Figma 配色用途、分隔线规则、Slider 阴影与端点规则，以及必须执行的校验命令。
+## 快速接入
 
-框架接入、页面组件、Backdrop、Dialog、玻璃动画和常见问题见：[LiquidGlass 框架使用说明](docs/framework-usage-guide.md)。
+### 1. 生成本地 Maven 仓库
 
-TabBar 的酷安参考配置命名为[酷安参数](docs/coolapk-parameters.md)，包含 APK 提取数值、现有字段映射和接入示例。
+在本仓库根目录运行：
 
-当前 1.0.11：修正 Slider 停止时把手超出轨道的问题，左右端点改为把手实体边缘与轨道对齐；保留 1.0.10 双层阴影。新增端点、RTL 和越界回归测试。以下为历史版本说明。
+```powershell
+.\gradlew.bat packageLibrary --no-daemon --console=plain
+```
 
-当前 1.0.10：经用户授权，仅调整 Slider 静止态为原稿双层阴影，按下后渐变回原拖拽态阴影。45 个文件原样、2 个上游修复、1 个本地阴影修改，旧提取快照仍保留。[阴影修改记录](docs/slider-shadow-1.0.10.md)。以下为历史版本说明。
+产物位于 `dist/maven/`，包含 AAR、源码及传递依赖元数据。请将整个 Maven 目录交付给消费者项目；顶层 AAR 不内嵌其余两个库，不能只复制一个 AAR。
 
-当前玻璃同步版本 1.0.9：保留本地定制，合入上游 `7c37be4` 的两处布局坐标引用清理修复。旧提取快照没有覆盖，46 个文件原样保留、2 个文件按合并清单校验；详见 [本次融合记录](docs/upstream-merge-2026-09-13.md)。下方 1.0.8 为页面样式版本记录。
+### 2. 添加依赖
 
-当前 1.0.8：普通深色页面恢复 #1C1C1E 分组底色；滑块参考页单独使用原稿黑色填充。分隔线只在行间显示，玻璃组件保持原样。详见下方 Figma 适配说明。
+在消费者项目的 `settings.gradle.kts` 中添加生成的仓库路径：
 
-新增：[Figma 页面适配与复用说明（1.0.5）](docs/figma-page-adaptation.md)。已读取本地 Untitled.fig，按实际节点采用 26dp 分组圆角、10dp 组间距，加入两组三条滑块演示。只调整页面层，保留全部原始玻璃源码。
+```kotlin
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("path/to/dist/maven") }
+    }
+}
+```
 
-- [原样代码包与复用说明](docs/liquid-glass-extracted/README.md)
-- [完整实现指南](docs/liquid-glass-implementation-guide.md)
-- [上游同步说明](docs/liquid-glass-sync.md)
-- [iOS 27 页面与列表适配说明](docs/ios27-page-adaptation.md)
+在应用模块启用 Compose，设置 `minSdk = 33`，并添加依赖：
 
-原始代码位于 `docs/liquid-glass-extracted/source/`，运行代码位于 `liquidglass/src/main/java/com/zeaze/tianyinwallpaper/`，共 48 个 Kotlin 文件（原有 47 个，加上补齐的顶部 `ProgressiveBlurContent.kt`）。保留原包名；目前 46 个文件与原提取一致，2 个底层文件合入已记录的上游修复，均通过 SHA-256 校验。
+```kotlin
+android {
+    defaultConfig { minSdk = 33 }
+    buildFeatures { compose = true }
+}
 
-`liquidglass` 是可构建 Android library，`sample` 是外围页面/列表的演示宿主。iOS27 参考只用于页面底色、列表行、分组、文字、间距和可访问性；LiquidButton、LiquidSlider、LiquidToggle、LiquidBottomTabs 等玻璃组件的源码、默认参数、着色器、折射和交互没有被改写。
+dependencies {
+    implementation("dev.liquidglass:liquidglass-ui:2.0.1")
+}
+```
 
-构建：`gradlew.bat :liquidglass:assembleDebug :liquidglass:testDebugUnitTest :sample:assembleDebug`。
+消费者项目还需配置 Compose 编译器插件及兼容的 Kotlin、Compose 和 Java 工具链。本仓库使用的版本见下方构建环境；仓库内宿主直接依赖 `project(":liquidglass-ios27")`。
 
-`sample:assembleDebug` 会自动检查 AAR 的 classes.jar 及 APK DEX 类定义，防止遗漏运行时代码。[启动闪退与校验记录](docs/startup-crash-2026-09-12.md)。
+### 3. 提供背景与控件
 
-首次获取源码与构建说明见 [PUBLISHING.md](PUBLISHING.md)。请使用 `--recurse-submodules` 克隆，构建时排除 `:sample:sendDebugApkToQQ`。
+以下示例放在 Composable 函数中，`BackgroundContent()` 替换为应用自身的图片或页面背景：
+
+```kotlin
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Text
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import dev.liquidglass.*
+
+var checked by rememberSaveable { mutableStateOf(false) }
+var value by rememberSaveable { mutableFloatStateOf(0.5f) }
+
+GlassTheme(standard = GlassStandard.Ios27) {
+    GlassScene(
+        modifier = Modifier.fillMaxSize(),
+        background = { BackgroundContent() },
+    ) {
+        Column(
+            modifier = Modifier.padding(24.dp),
+            verticalArrangement = Arrangement.spacedBy(20.dp),
+        ) {
+            GlassButton(onClick = { checked = !checked }) { Text("切换") }
+            GlassSwitch(checked = checked, onCheckedChange = { checked = it })
+            GlassSlider(value = value, onValueChange = { value = it })
+        }
+    }
+}
+```
+
+开关和滑块的业务状态由调用者持有。已有独立背景采样层时，可使用 `GlassBackdropProvider(backdrop) { ... }` 接入。
+
+**采样层级必须独立。** `GlassScene` 只录制背景，玻璃控件位于兄弟层；不要让控件采样包含自身的录制层，否则可能触发递归渲染和崩溃。图片背景、行内控件及 Popup 的接入方式见[背景采样规范](docs/glass-backdrop-integration.md)。
+
+## 选择标准与效果
+
+`GlassTheme(standard = ...)` 切换整体标准。`GlassEffects` 可分别指定材质、高光与按钮拖拽效果，三项为 `null` 时跟随整体标准：
+
+```kotlin
+GlassTheme(
+    standard = GlassStandard.Ios26,
+    effects = GlassEffects(
+        highlight = GlassStandard.Ios27,
+        buttonDragEffect = GlassStandard.Ios27,
+        limitButtonDrag = false,
+    ),
+) {
+    GlassButton(onClick = {}) { Text("打开") }
+}
+```
+
+上例使用 26 材质、27 高光与按钮运动，并关闭附加拖拽限制。
+
+- **按钮轮廓**：26 拉伸原始轮廓；27 按实时尺寸重画轮廓。轮廓随按钮拖拽效果切换，独立于材质。
+- **拖拽限制**：`limitButtonDrag` 默认 `true`，同时作用于两种按钮效果；关闭后取消附加距离衰减和绘制余量限制。
+- **局部覆盖**：使用 `GlassEffectScope`，通过 `LocalGlassEffects.current.copy(...)` 保留当前其他设置。
+- **浮层动画**：菜单、Popup、子菜单与模态共用 27 动画，不读取按钮拖拽效果。
+
+完整参数、标签栏示例和旧 API 迁移表见[组件库指南](docs/component-library.md)。2.0.1 的输入框参数见[输入组件接入说明](docs/toscreen-input-2.0.1.md)。
+
+## 构建示例应用
+
+当前仓库构建环境：
+
+| 项目 | 配置 |
+| --- | --- |
+| Android 最低版本 | Android 13 / API 33 |
+| Android SDK | compileSdk 37 |
+| JDK / JVM 目标 | 21 |
+| Gradle Wrapper | 9.7.1 |
+| Android Gradle Plugin | 9.3.1 |
+| Kotlin Compose 插件 | 2.4.10 |
+| Compose BOM（UI / 导航模块） | 2026.06.00 |
+
+配置本机 Android SDK 路径后，在仓库根目录运行：
+
+```powershell
+# 示例 APK
+.\gradlew.bat :sample:assembleDebug --no-daemon --console=plain
+
+# 本地 Maven 分发仓库
+.\gradlew.bat packageLibrary --no-daemon --console=plain
+```
+
+示例 APK 位于 `sample/build/outputs/apk/debug/sample-debug.apk`。普通构建和打包不会自动发送文件或操作手机。
+
+示例应用提供按钮、标签栏、Popup、多级菜单及主题等演示，设置页可切换整体标准和单项效果。构建成功仅说明产物生成完成，交互手感、背景采样和视觉效果仍需在设备上验收。
+
+## 目录结构
+
+```text
+liquidglass/         共享光学核心与基础控件
+melox-tabbar/        复用核心的标签栏渲染与交互
+liquidglass-ios27/   公开组件 API、主题及 iOS 27 机制
+sample/             示例应用
+docs/               接入说明、来源快照、审计与截图
+tools/              可复用的提取、生成和检查工具
+vendor/             上游来源
+dist/maven/         生成的本地 Maven 仓库
+.tmp/               临时输出（不提交）
+```
+
+高层 UI 模块依赖导航模块与核心，导航模块依赖核心。三个发布坐标分别为 `liquidglass-ui`、`liquidglass-navigation`、`liquidglass-core`，由 Maven 元数据传递依赖，共享同一套光学核心。
+
+模块名与历史文件名保留部分来源标记；新代码以 `dev.liquidglass` 的公开入口为准。临时产物和目录归属约定见[临时输出说明](tools/TEMP_OUTPUTS.md)。
+
+## 文档与许可
+
+- [组件库接入、参数与迁移](docs/component-library.md)
+- [背景采样集成](docs/glass-backdrop-integration.md)
+- [iOS 26 / 27 合并来源与审计](docs/ios27/README.md)
+- [MeloX 来源与集成](docs/melox-tabbar.md)
+- [项目修改约束](AGENTS.md)
+
+UI 与导航模块使用 GPL-3.0，核心发布声明使用 Apache-2.0；各模块及其资源目录保留对应许可证和来源信息。分发时请一并保留：[UI 许可](liquidglass-ios27/LICENSE)、[导航许可](melox-tabbar/LICENSE)、[核心许可](liquidglass/src/main/resources/META-INF/liquidglass-core/LICENSE)。
+
+`docs/*-extracted/` 和 `vendor/` 中的原始来源用于溯源。历史文档可能含旧入口或旧行为描述，当前接入以公开 API、构建配置及组件库指南为准。

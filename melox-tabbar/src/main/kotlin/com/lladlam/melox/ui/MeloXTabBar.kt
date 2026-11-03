@@ -1,8 +1,9 @@
 package com.lladlam.melox.ui
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.fillMaxSize
+import dev.liquidglass.*
+
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -14,15 +15,20 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.kyant.backdrop.Backdrop
-import com.kyant.backdrop.backdrops.layerBackdrop
-import com.kyant.backdrop.backdrops.rememberLayerBackdrop
+import androidx.compose.ui.unit.dp
+import com.zeaze.tianyinwallpaper.backdrop.Backdrop
 import com.lladlam.melox.R
 import com.lladlam.melox.ui.glass.*
 import com.lladlam.melox.ui.settings.LocalMeloXFrostedGlass
 import com.lladlam.melox.ui.theme.isMeloXDarkTheme
 
 typealias MeloXTabIcon = @Composable (modifier: Modifier, color: Color, selected: Boolean) -> Unit
+typealias MeloXTabContent = @Composable (color: Color, selected: Boolean) -> Unit
+typealias MeloXPanelDecoration = androidx.compose.ui.graphics.drawscope.DrawScope.() -> Unit
+internal val LocalMeloXPanelDecoration = staticCompositionLocalOf<MeloXPanelDecoration?> { null }
+internal val LocalMeloXActionTabs = staticCompositionLocalOf<Set<AppTab>> { emptySet() }
+internal val LocalMeloXShowLabels = staticCompositionLocalOf { true }
+internal val LocalMeloXTabContents = staticCompositionLocalOf<Map<AppTab, MeloXTabContent>> { emptyMap() }
 internal val LocalMeloXTabLabels = staticCompositionLocalOf<Map<AppTab, String>> { emptyMap() }
 internal val LocalMeloXTabIcons = staticCompositionLocalOf<Map<AppTab, MeloXTabIcon>> { emptyMap() }
 val MeloXOriginalTabFont: FontFamily
@@ -37,9 +43,9 @@ internal fun validateMeloXTabs(tabs: List<AppTab>, selected: AppTab) {
 }
 
 /**
- * Original MeloX chrome. State/navigation belong to the caller.
+ * Shared MeloX chrome with selectable glass parameters. State/navigation belong to the caller.
  * [backdrop] must capture a sibling background, never this bar's parent tree.
- * The bar itself already applies navigationBarsPadding and the original 8dp bottom gap.
+ * The default layout applies navigationBarsPadding and the original 8dp bottom gap.
  * A tap while compact should set minimized=false in [onTabSelected], as the original host does.
  */
 @Composable
@@ -57,18 +63,50 @@ fun MeloXTabBar(
     fontFamily: FontFamily = MeloXOriginalTabFont,
     hasMedia: Boolean = false,
     searchEnabled: Boolean = true,
+    preset: GlassTabBarPreset = GlassTabBarPreset.MeloX,
+    layout: GlassTabBarLayout = GlassTabBarLayout(),
+    /** Shared material overlay for the navigation bar, search and mini-player. */
+    surfaceColor: Color = Color.Unspecified,
+    surfaceShape: androidx.compose.ui.graphics.Shape? = null,
+    surfaceLayer: (androidx.compose.ui.graphics.GraphicsLayerScope.(com.zeaze.tianyinwallpaper.catalog.components.LiquidBottomTabsSurface, Float) -> Unit)? = null,
+    accentColor: Color? = null,
+    tabContents: Map<AppTab, MeloXTabContent> = emptyMap(),
+    onToneChanged: (Float) -> Unit = {},
+    showLabels: Boolean = true,
+    panelDecoration: MeloXPanelDecoration? = null,
+    actionTabs: Set<AppTab> = emptySet(),
+    animateSearchVisibility: Boolean = false,
     miniPlayer: @Composable (compactProgress: Float) -> Unit = {},
 ) {
     validateMeloXTabs(tabs, selectedTab)
     val systemDark = isMeloXDarkTheme()
-    var measuredModifier = modifier
+    // Local compact layout: 64dp per tab, plus track padding and optional search.
+    val compactWidth = 64.dp * tabs.size +
+        (if (preset == GlassTabBarPreset.MeloX) 20.dp else 8.dp) +
+        layout.horizontalMargin * 2 +
+        (if (layout.showSearchButton) layout.height + layout.searchSpacing else 0.dp)
+    // Release a host's fillMaxWidth minimum, then constrain the actual chrome.
+    // Tone sampling measures the narrowed chrome, excluding the empty side margins.
+    var measuredModifier = modifier.then(if (layout.compact)
+        Modifier.wrapContentWidth(Alignment.CenterHorizontally).widthIn(max = compactWidth)
+        else Modifier)
     val tone = if (automaticTone) {
         val toneState = rememberBottomBarToneState(systemDark)
         DisposableEffect(toneState) { onDispose { toneState.release() } }
-        measuredModifier = modifier.onGloballyPositioned { toneState.updateBounds(it) }
+        measuredModifier = measuredModifier.onGloballyPositioned { toneState.updateBounds(it) }
         toneState.darkness(systemDark)
     } else if (systemDark) 1f else 0f
+    SideEffect { onToneChanged(tone) }
     CompositionLocalProvider(
+        LocalBottomBarSurfaceColor provides surfaceColor,
+        LocalNavigationPreset provides preset,
+        LocalNavigationShape provides surfaceShape,
+        LocalNavigationLight provides surfaceLayer,
+        LocalNavigationAccent provides accentColor,
+        LocalMeloXTabContents provides tabContents,
+        LocalMeloXPanelDecoration provides panelDecoration,
+        LocalMeloXActionTabs provides actionTabs,
+        LocalMeloXShowLabels provides showLabels,
         LocalMeloXBackdrop provides backdrop,
         LocalBottomBarTone provides tone,
         LocalMeloXFrostedGlass provides frostedGlass,
@@ -85,39 +123,11 @@ fun MeloXTabBar(
                     selectedTab = selectedTab, onSelect = onTabSelected,
                     hasMedia = hasMedia, minimized = minimized, searchEnabled = searchEnabled,
                     visibleRootTabs = tabs, modifier = measuredModifier, miniPlayer = miniPlayer,
+                    layout = layout,
+                    animateSearchVisibility = animateSearchVisibility,
                 )
             }
         }
     }
 }
 
-/** Safe default integration: background capture and all glass readers are siblings. */
-@Composable
-fun MeloXTabBarScaffold(
-    selectedTab: AppTab,
-    onTabSelected: (AppTab) -> Unit,
-    modifier: Modifier = Modifier,
-    tabs: List<AppTab> = MeloXDefaultTabs,
-    minimized: Boolean = false,
-    frostedGlass: Boolean = false,
-    automaticTone: Boolean = true,
-    labels: Map<AppTab, String> = emptyMap(),
-    icons: Map<AppTab, MeloXTabIcon> = emptyMap(),
-    fontFamily: FontFamily = MeloXOriginalTabFont,
-    hasMedia: Boolean = false,
-    searchEnabled: Boolean = true,
-    miniPlayer: @Composable (compactProgress: Float) -> Unit = {},
-    content: @Composable BoxScope.() -> Unit,
-) {
-    val background = rememberLayerBackdrop()
-    Box(modifier) {
-        Box(Modifier.fillMaxSize().layerBackdrop(background), content = content)
-        MeloXTabBar(
-            selectedTab = selectedTab, onTabSelected = onTabSelected, backdrop = background,
-            modifier = Modifier.align(Alignment.BottomCenter), tabs = tabs,
-            minimized = minimized, frostedGlass = frostedGlass, automaticTone = automaticTone,
-            labels = labels, icons = icons, fontFamily = fontFamily,
-            hasMedia = hasMedia, miniPlayer = miniPlayer, searchEnabled = searchEnabled,
-        )
-    }
-}

@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User requested disabling original 27 first for comparison",
+  "reason": "Temporarily disable original iOS 27 button motion for visual comparison; retain existing iOS 26 material-specific implementations and all route animations",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassEffects.kt",
+      "baselineSha256": "50c2b30c32e49eca68888a7d9b7f35a1535fc27419e88f6000a68d6af3244828",
+      "mergedSha256": "21299880a60d61354b9dc922320f575ee88444916ead971b06249037e493eaa1"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassEffectsTest.kt",
+      "baselineSha256": "808133a0f8478f273faa1fe2628c7b36d460921d94fbfd60b4f221c1b7d2075d",
+      "mergedSha256": "590f0e5ac56a39265d236f2fd5172845c907dc4f51a960a6431708377a810d04"
+    }
+  ],
+  "tests": "source updated; not run per user instruction",
+  "frozenBaselines": "unchanged"
+}

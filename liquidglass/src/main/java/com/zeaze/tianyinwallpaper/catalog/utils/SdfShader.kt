@@ -5,7 +5,6 @@ import android.graphics.BitmapShader
 import android.graphics.RenderEffect
 import android.graphics.Shader
 import android.graphics.drawable.BitmapDrawable
-import android.os.Build
 import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -39,19 +38,14 @@ class SdfShader(val sdfBitmap: Bitmap) {
         refractionHeight: Float = 48f.dp.toPx(),
         lightAngle: Float = 45f
     ) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            val shader =
-                obtainRuntimeShader("SdfShader", createSdfShaderString()).apply {
-                    setFloatUniform("size", size.width, size.height)
-                    setFloatUniform("sdfTexSize", sdfBitmap.width.toFloat(), sdfBitmap.height.toFloat())
-                    setFloatUniform("refractionHeight", refractionHeight)
-                    setFloatUniform("lightAngle", lightAngle)
-                }
-            val androidShader = shader.asAndroidRuntimeShader().apply {
-                setInputBuffer("sdfTex", sdfTexture)
-            }
-            effect(RenderEffect.createRuntimeShaderEffect(androidShader, "content"))
+        val shader = obtainRuntimeShader("SdfShader", createSdfShaderString()).apply {
+            setFloatUniform("size", size.width, size.height)
+            setFloatUniform("sdfTexSize", sdfBitmap.width.toFloat(), sdfBitmap.height.toFloat())
+            setFloatUniform("refractionHeight", refractionHeight)
+            setFloatUniform("lightAngle", lightAngle)
         }
+        val androidShader = shader.asAndroidRuntimeShader().apply { setInputBuffer("sdfTex", sdfTexture) }
+        effect(RenderEffect.createRuntimeShaderEffect(androidShader, "content"))
     }
 }
 

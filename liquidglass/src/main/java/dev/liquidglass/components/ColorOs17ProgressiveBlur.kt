@@ -51,14 +51,11 @@ internal fun ColorOs17ProgressiveBlurOrFallback(
     fallback: @Composable () -> Unit,
 ) {
     val properties by produceState<Map<String, String>?>(null) {
-        value = if (Build.VERSION.SDK_INT >= 31) {
-            withContext(Dispatchers.IO) { readBlurProperties() }
-        } else emptyMap()
+        value = withContext(Dispatchers.IO) { readBlurProperties() }
     }
     var failed by remember { mutableStateOf(false) }
     var active by remember { mutableStateOf(false) }
-    // Keep RenderEffect-bearing classes off the pre-31 execution path.
-    val native = Build.VERSION.SDK_INT >= 31 && properties?.let {
+    val native = properties?.let {
         ColorOs17BlurPolicy.isColorOs17(it["ro.build.version.oplusrom"].orEmpty(),
             it["ro.build.version.opporom"].orEmpty())
     } == true

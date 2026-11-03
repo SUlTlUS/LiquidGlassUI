@@ -23,7 +23,8 @@ test('default entry selects the native adapter without removing the original fal
     assert.ok(entry.includes('blur(16.dp.toPx())'));
     assert.ok(entry.includes('1.0 - smoothstep(0.0, 1.0, edge)'));
     assert.ok(entry.includes('strength: Float = 1f'));
-    assert.ok(bridge.includes('Build.VERSION.SDK_INT >= 31'));
+    assert.match(read('liquidglass/build.gradle.kts'), /minSdk = 33/);
+    assert.ok(bridge.includes('ColorOs17BlurPolicy.isColorOs17'));
     assert.ok(bridge.includes('Dispatchers.IO'));
 });
 

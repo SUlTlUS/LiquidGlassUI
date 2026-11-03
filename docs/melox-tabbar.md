@@ -1,10 +1,26 @@
-# MeloX TabBar 原样提取组件
+# 统一底栏与 MeloX 来源记录
+
+2026-11-03：按用户要求合并 MeloX 与通用底栏，保留可切换参数、默认 MeloX。当前公开入口为 `dev.liquidglass.GlassTabBar` / `GlassTabBarScaffold`，旧别名与重复 Scaffold 已删除；`MeloXTabBar` 承担底层实际渲染。主界面和“标签栏”示例使用统一入口，26 / 27 独立控制高光。新 API 见 [组件库指南](component-library.md)。下文来源与播放器说明保留；“原样”仅描述冻结来源或未修改的交互机制，旧 API 代码片段只作历史参考。
+
+| 参数 | MeloX（默认） | 通用 |
+| --- | --- | --- |
+| 主体模糊 | 2 dp | 8 dp |
+| 主体涂层 | 原 MeloX 主题色，alpha 0.52 | FAFAFA / 121212，alpha 0.4 |
+| 展开高度 | 57 dp | 62 dp |
+| 水珠折射比例 | 49 / 56 | 1 |
+| 水珠静止外/内阴影系数 | 0.50 / 0.60 | 0 / 0 |
+
+两组参数共用收缩、拖拽、捕获层和水珠机制。独立搜索、迷你播放器、滚动收缩均为选项。背景由独立兄弟层录制，27 高光通过 `surfaceLayerBlock` 绘制在外阴影之后，隐藏捕获层不注入高光。原始提取 manifest 不刷新；授权修改在 `docs/melox-tabbar-merged-files.json`，提取工具会核对基线及已审核输出，也不会覆盖这些本地修改。
 
 来源：[lladlam/MeloX-Android](https://github.com/lladlam/MeloX-Android/tree/723aa764462386440b76aed5df362dadf63a096f)，固定 commit `723aa764462386440b76aed5df362dadf63a096f`。入口是 `ui/MeloXApp.kt` 的 `MeloXBottomChrome`，不是本项目原有 `LiquidBottomTabs` 的换皮。
 
 ## 文件与调用入口
 
-- `melox-tabbar/`：独立 Android Compose Library，不依赖 `liquidglass`、音乐服务或账户业务；封面支持本地 URI 与网络图片。
+旧底栏重复实现已清理：运行代码中只保留 MeloX 这一套导航绘制/手势。旧通用底栏的整套函数、无调用的样式类与分离搜索封装已删除；两个 27 名称的入口只转接 `UnifiedGlassTabBar`。分段选择器使用的单项标签控件保留，当前导航参数、玻璃和动画未修改。来源目录仍作为冻结证据保留，不参与构建。
+
+统一底栏、Scaffold 和兼容入口均提供 `compact: Boolean = false`。开启后以每项 64dp 加主体内距、独立搜索及外边距计算宽度上限，并在宿主内居中；窄屏仍受可用宽度约束。64dp 是本地紧凑布局参数，不是上游或 Figma 原值。即使宿主传入 `fillMaxWidth()`，可见底栏仍按此上限收窄。它与滚动收缩的 `minimized` 独立，默认关闭。“标签栏 → 收缩、搜索与播放器”示例提供开关。
+
+- `melox-tabbar/`：Android Compose Library，依赖 `:liquidglass` 共用光学核心，不依赖音乐服务或账户业务；封面支持本地 URI 与网络图片。
 - `melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXBottomChrome.kt`：机械截取原版布局、手势、水珠、收缩和搜索实现。
 - `MeloXTabBar.kt`：公开接口及安全采样宿主。
 - `ui/player/MeloXIOSMiniPlayer.kt`：原版玻璃迷你播放器，包含封面、两行文字、音频指示条、播放/暂停/下一首、滑动切歌和收缩几何。
@@ -13,13 +29,13 @@
 - `ui/player/MeloXIOSNowPlayingSharedHost.kt`：原版共享壳、封面飞行、可逆拖拽与释放回弹；完整播放器业务不在本次组件范围内。
 - `ui/glass/`：原版面板材质、捕获层、水珠材质、动态明暗采样、按压高光和阻尼拖动。
 - `melox-tabbar-demo/`：独立演示应用，包名 `dev.liquidglass.meloxtabdemo`，不替换现有应用底栏。
-- 现有应用入口：组件 → 手机示例库 → **MeloX TabBar → 原版交互**。使用独立原生页面 `sample/src/main/java/dev/liquidglass/sample/MeloXTabBarExamplePage.kt`，不改生成的 Figma catalog，不走矢量查看器。进入页面时主应用标签栏按已有二级页面规则隐藏。
+- 现有应用入口：组件 → **标签栏 → 收缩、搜索与播放器**。旧 `melox-tabbar` 深链仍然有效。进入页面时主应用标签栏按已有二级页面规则隐藏。
 - `docs/melox-tabbar-extracted/source/`：原始完整 Kotlin 文件，供逐行比较，不要覆盖它们掩盖修改。
 - `docs/melox-tabbar-extracted/manifest.json`：来源 commit、原文件和提取后文件 SHA-256、适配清单。
 
 ## 推荐接法：组件自动安排采样层
 
-新 app 在 `settings.gradle.kts` 加入 `include(":melox-tabbar")`，应用模块加入 `implementation(project(":melox-tabbar"))`。复制整个模块；仅复制 AAR 时也必须显式加入下面的依赖，AAR 不包含传递依赖。
+当前集成应包含 `:liquidglass`、`:melox-tabbar`、`:liquidglass-ios27`，应用依赖后者并调用 `UnifiedGlassTabBar`。仅需 MeloX 基础 API 时可依赖 `:melox-tabbar`，但仍需它的 `:liquidglass` 依赖；AAR 不包含传递依赖。
 
 ```kotlin
 dependencies {
@@ -27,7 +43,7 @@ dependencies {
     implementation(platform("androidx.compose:compose-bom:2026.06.00"))
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.material3:material3")
-    implementation("io.github.kyant0:backdrop:2.0.0")
+    implementation(project(":liquidglass"))
     implementation("io.github.kyant0:shapes:1.2.0")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.10.0")
     implementation("androidx.core:core-ktx:1.17.0")

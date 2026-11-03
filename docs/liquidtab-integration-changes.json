@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-03",
+  "reason": "LiquidTab consumes new GlassTabBar with iOS 27; preserve native skins, inline actions and custom detached playback button using existing search action API.",
+  "frozenBaselines": "unchanged",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassTabBar.kt",
+      "baselineSha256": "aa5a8936ac326789bb0d5d8cf9bc2db15da01b1039c03bdc8b9219d693e5c3b5",
+      "mergedSha256": "d42318bc8a8861870e5a04dc05d3385323b36750f91fcecc2a69fe34a9d33467"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXTabBar.kt",
+      "baselineSha256": "2abe8b1d58a87e4b139871aaa2bf8dade636efef7b0bdd031fe2f6e322d5e58c",
+      "mergedSha256": "dc01e462b432526962bc43e9d5dd42485539d424e229dc06c58bd7c7218e70b2"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXBottomChrome.kt",
+      "baselineSha256": "546fd02253ac961412c50af31765533785e03196780573f62fe783a4b79dd716",
+      "mergedSha256": "554f67f527f99e955c209d234657cc212bf487215f579ab6e86fac7763341004"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXBackdropComponents.kt",
+      "baselineSha256": "15d0c4f167c604e4868eed654a36f7426a7a0c6b6aef2587fd3986c58dbf5210",
+      "mergedSha256": "ad191ccd819d85fa1cf5c2271f5d24261be0a6c9f60e22193af238019836a275"
+    }
+  ],
+  "tests": "Added host-slot coverage to MeloXTabBarTest; upstream tests not executed per repository instruction. Consumer compile/tests and signed Release checks recorded in LiquidTab report.",
+  "artifacts": [
+    {
+      "path": "dist/maven/dev/liquidglass/liquidglass-core/2.0.0/liquidglass-core-2.0.0.aar",
+      "sha256": "38c462533fda2df790b199b0b2bdcd11dfdc83dcf3c407d5dfc12e325c3ec55c"
+    },
+    {
+      "path": "dist/maven/dev/liquidglass/liquidglass-navigation/2.0.0/liquidglass-navigation-2.0.0.aar",
+      "sha256": "0b6c19a841a9ea1e5a61f716de1fc388bde0c9880da609ddbe36bcddb20a811e"
+    },
+    {
+      "path": "dist/maven/dev/liquidglass/liquidglass-ui/2.0.0/liquidglass-ui-2.0.0.aar",
+      "sha256": "4e5669d616f02be2c3d64891fc0bbfea2893d814f8ec86882d5e46a7c60b7fe2"
+    }
+  ],
+  "testSources": [
+    {
+      "path": "melox-tabbar/src/test/kotlin/com/lladlam/melox/ui/MeloXTabBarTest.kt",
+      "sha256": "acd8170251b3f5f8ba553387a2f7d44e7756d123eb9b3ecf8dff4321db848e6e",
+      "coverage": "Indexed host tabs with separate action, arbitrary slot count, duplicate host slot rejection"
+    }
+  ]
+}

@@ -2,22 +2,22 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    id("maven-publish")
     id("com.android.library")
     id("org.jetbrains.kotlin.plugin.compose")
 }
 android {
     namespace = "dev.liquidglass.ios27"
     compileSdk = 37
-    defaultConfig { minSdk = 24 }
+    defaultConfig { minSdk = 33 }
     buildFeatures { compose = true }
+    publishing { singleVariant("release") { withSourcesJar() } }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
 }
 tasks.withType<KotlinCompile>().configureEach {
-    // Host-only preferences depend on Tianyin's Application; keep its source intact.
-    exclude("**/utils/LiquidGlassPrefs.kt")
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_21)
         freeCompilerArgs.add("-Xcontext-parameters")

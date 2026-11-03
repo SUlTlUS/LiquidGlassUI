@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User reported 27 button material clipping during drag with limits disabled; 26 at the same position does not clip",
+  "reason": "Expand shared Goo material paint bounds with live button contours; preserve unlimited drag, foreground layout and input coordinates",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GooButtonGroup.kt",
+      "baselineSha256": "661cb53fed7d57beac53b38f24d5f351a7be27c394ff0b05e58d60d488632897",
+      "mergedSha256": "3a578d5cc3b29d2eb2bdf793dcf889e2735aa7cf95e21e9c34071e0ce6a9d69d"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassControls.kt",
+      "baselineSha256": "5ec2e92eea46d839deb2ed3851f0615bdb82b2d0943af6026e08305bdb70f5f1",
+      "mergedSha256": "63bdf54ca9255adf83ad2e9954b34d5e8dc4c84f0a5849d4ffb231708854f98a"
+    },
+    {
+      "path": "AGENTS.md",
+      "baselineSha256": "4ce46c0107ee274e3f53a08f20fda3ea6a5095f1119a3a538c09fd0f8c9737a0",
+      "mergedSha256": "c038a998e90e726b7cdd89f63d851173db7c2aebc913b29f2befb455736ece62"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GooPaintLayer.kt",
+      "baselineSha256": null,
+      "mergedSha256": "37c103f77dafb4b067894015fe582e6d771b7485fae45c4f9ef4021fe0b60e02"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GooPaintBoundsTest.kt",
+      "baselineSha256": null,
+      "mergedSha256": "66a195411e5cf04c9b82a861185c6da04e73f311bfc108068ff1577927b313b4"
+    }
+  ],
+  "tests": "sources compiled, tests not run",
+  "frozenBaselines": "unchanged"
+}

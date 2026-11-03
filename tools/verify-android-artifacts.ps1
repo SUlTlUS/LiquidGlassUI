@@ -12,24 +12,25 @@ $required = @(
     'dev/liquidglass/ios27/Ios27Tokens',
     'com/zeaze/tianyinwallpaper/ui/commom/ProgressiveBlurContentKt',
     'com/zeaze/tianyinwallpaper/backdrop/DrawBackdropModifierKt',
-    'com/zeaze/tianyinwallpaper/catalog/components/LiquidBottomTabsKt',
+    'com/zeaze/tianyinwallpaper/catalog/components/LiquidBottomTabsSurface',
     'com/zeaze/tianyinwallpaper/catalog/components/LiquidToggleKt',
     'com/zeaze/tianyinwallpaper/catalog/components/LiquidSliderKt'
 )
 $ios27Required = @(
-    'dev/liquidglass27/glass/Ios27GlassKt',
-    'dev/liquidglass27/glass/GlassSceneKt',
-    'dev/liquidglass27/glass/GlassControlsKt',
-    'dev/liquidglass27/glass/GooButtonGroupKt',
-    'dev/liquidglass27/glass/GlassDockKt',
-    'dev/liquidglass27/glass/Ios27NavigationDockKt',
-    'dev/liquidglass27/glass/PopupContentTransformKt',
-    'dev/liquidglass27/glass/GlassMenuKt',
-    'dev/liquidglass27/glass/GlassPopupKt',
-    'dev/liquidglass27/glass/GlassDialogKt',
-    'dev/liquidglass27/glass/GlassShaderPrograms',
-    'dev/liquidglass27/glass/SketchMaterialCache',
-    'dev/liquidglass27/glass/GlassGlyphs'
+    'dev/liquidglass/GlassBackdropKt',
+    'dev/liquidglass/GlassRenderSceneKt',
+    'dev/liquidglass/GlassComponentsKt',
+    'dev/liquidglass/GlassControlsKt',
+    'dev/liquidglass/GooButtonGroupKt',
+    'dev/liquidglass/DockHighlightKt',
+    'dev/liquidglass/GlassTabBarKt',
+    'dev/liquidglass/PopupContentTransformKt',
+    'dev/liquidglass/GlassMenuKt',
+    'dev/liquidglass/GlassPopupKt',
+    'dev/liquidglass/GlassDialogKt',
+    'dev/liquidglass/GlassShaderPrograms',
+    'dev/liquidglass/SketchMaterialCache',
+    'dev/liquidglass/GlassGlyphs'
 )
 $ios27Assets = @('flclash_control_highlight', 'flclash_glass', 'flclash_glass_compat', 'sketch_contrast_tint', 'sketch_goo_lens')
 function Read-ZipEntry($entry) {

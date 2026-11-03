@@ -1,5 +1,7 @@
 package com.lladlam.melox.ui
 
+import dev.liquidglass.*
+
 import androidx.annotation.StringRes
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.*
@@ -12,6 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.*
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.addOutline
+import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.platform.LocalDensity
@@ -23,7 +30,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.*
 import androidx.compose.ui.util.lerp
 import androidx.compose.ui.zIndex
-import com.kyant.backdrop.backdrops.*
+import com.zeaze.tianyinwallpaper.backdrop.backdrops.*
+import com.zeaze.tianyinwallpaper.catalog.utils.InteractiveHighlight
 import com.kyant.shapes.Capsule
 import com.lladlam.melox.R
 import com.lladlam.melox.ui.animation.*
@@ -33,15 +41,20 @@ import com.lladlam.melox.ui.settings.MeloXSettingsRuntime
 import kotlinx.coroutines.launch
 import kotlin.math.*
 
-enum class AppTab(@StringRes val titleRes: Int) {
-    Home(R.string.tab_home),
-    Explore(R.string.tab_explore),
-    Library(R.string.tab_library),
-    Podcasts(R.string.tab_podcasts),
-    Downloads(R.string.tab_downloads),
-    Cloud(R.string.tab_cloud),
-    Settings(R.string.tab_settings),
-    Search(R.string.tab_search),
+data class AppTab(val name: String, @StringRes val titleRes: Int = 0) : java.io.Serializable {
+    companion object {
+        val Home = AppTab("Home", R.string.tab_home)
+        val Explore = AppTab("Explore", R.string.tab_explore)
+        val Library = AppTab("Library", R.string.tab_library)
+        val Podcasts = AppTab("Podcasts", R.string.tab_podcasts)
+        val Downloads = AppTab("Downloads", R.string.tab_downloads)
+        val Cloud = AppTab("Cloud", R.string.tab_cloud)
+        val Settings = AppTab("Settings", R.string.tab_settings)
+        val Search = AppTab("Search", R.string.tab_search)
+        val entries = listOf(Home, Explore, Library, Podcasts, Downloads, Cloud, Settings, Search)
+        fun valueOf(name: String) = entries.first { it.name == name }
+        fun custom(key: String) = AppTab("custom:$key")
+    }
 }
 
 /**
@@ -77,10 +90,24 @@ internal fun MeloXBottomChrome(
     visibleRootTabs: List<AppTab>,
     searchEnabled: Boolean = true,
     modifier: Modifier = Modifier,
+    layout: GlassTabBarLayout = GlassTabBarLayout(),
+    animateSearchVisibility: Boolean = false,
     miniPlayer: @Composable (compactProgress: Float) -> Unit,
 ) {
     val tabsBackdrop = rememberLayerBackdrop()
+    val navigationSurface = bottomGlassSurfaceColor()
     val dockScope = rememberCoroutineScope()
+    val searchReveal = remember {
+        Animatable(if (animateSearchVisibility) 0f else if (layout.showSearchButton) 1f else 0f)
+    }
+    LaunchedEffect(layout.showSearchButton, animateSearchVisibility) {
+        val target = if (layout.showSearchButton) 1f else 0f
+        if (animateSearchVisibility) searchReveal.animateTo(target,
+            androidx.compose.animation.core.tween(260, easing = androidx.compose.animation.core.FastOutSlowInEasing))
+        else searchReveal.snapTo(target)
+    }
+    val searchPresence = if (animateSearchVisibility) searchReveal.value.coerceIn(0f, 1f)
+        else if (layout.showSearchButton) 1f else 0f
     val rawProgress by animateFloatAsState(
         targetValue = if (minimized) 1f else 0f,
         // 展开 / 收缩各用**一条完整弹簧**（方向不同、手感不同）：
@@ -103,11 +130,11 @@ internal fun MeloXBottomChrome(
     val labelStage = smoothStep(progress, 0.00f, 0.32f)   // alpha 用，保持夹住
     val dropStage = smoothStep(progress, 0.78f, 1.00f)    // 容器高度，不参与过冲
 
-    val navHeight = lerpDpBouncy(ChromeExpandedSize, ChromeCompactSize, bounceFrac)
+    val navHeight = lerpDpBouncy(layout.height, ChromeCompactSize, bounceFrac)
     // ⚠ f 的**负方向**才是「展开外扩」（f=0 是展开稳态、f=1 是收缩稳态）。
     // 这里只夹下界：搜索键右对齐，若跟着外扩会吃掉与 nav 之间的固有间隙，
     // 而它自身的外扩量只有 0.9dp、肉眼不可见 —— 整段间隙留给 nav 的过冲更划算。
-    val searchSize = lerpDpBouncy(ChromeExpandedSize, ChromeCompactSize, bounceFrac.coerceAtLeast(0f))
+    val searchSize = lerpDpBouncy(layout.height, ChromeCompactSize, bounceFrac.coerceAtLeast(0f))
     val mediaReveal by animateFloatAsState(
         targetValue = if (hasMedia) 1f else 0f,
         // 下方是 miniLift × mediaReveal 的纯乘子，不经过 lerpDp 的夹取，
@@ -131,17 +158,17 @@ internal fun MeloXBottomChrome(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .navigationBarsPadding()
+            .then(if (layout.avoidNavigationBar) Modifier.navigationBarsPadding() else Modifier)
             // Mei keeps the 64dp navigation capsule 8dp above the gesture
             // inset, giving the dock the same breathing room as iOS.
-            .padding(bottom = 8.dp),
+            .padding(bottom = layout.bottomMargin),
     ) {
         BoxWithConstraints(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(chromeHeight),
         ) {
-            val horizontalMargin = ChromeHorizontalMargin
+            val horizontalMargin = layout.horizontalMargin
             val compactSize = ChromeCompactWidth
             // nav 胶囊右缘 ↔ 搜索键左缘的固有间隙（展开态）。
             // 官方截图实测 = **10px = 7.12dp**（rim 峰法：nav 右缘 472 → 搜索键左缘 483，
@@ -149,10 +176,11 @@ internal fun MeloXBottomChrome(
             // ⚠ 这个缝同时是展开方向弹簧的约束：它定出右缘可用外扩 = 7 − 3（视觉余量）= 4dp，
             //   再按 NavExpandLeftShare(左1:右2) 反推出总外扩 6dp 与
             //   MeloXSprings.BottomBarExpandBounce 0.245。改这个值必须回头重算那个常数。
-            val searchGap = ChromeSearchGap
+            val searchSpacing = layout.searchSpacing * searchPresence
             val compactGap = 8.dp
             val expandedNavWidth =
-                maxWidth - horizontalMargin * 2 - searchGap - ChromeExpandedSize
+                (maxWidth - horizontalMargin * 2 - searchSpacing -
+                    layout.height * searchPresence).coerceAtLeast(48.dp)
             // 宽度就是弹簧本身：lerpDpBouncy 不夹取，展开方向 f<0 会让胶囊长到
             // 272 + 6.02 = 278.02dp —— **不需要按预算压缩、也不需要限幅**，因为展开那条
             // 弹簧（MeloXSprings.BottomBarExpandBounce）本来就是照着这点余地定出来的。
@@ -167,11 +195,12 @@ internal fun MeloXBottomChrome(
             // 旧的「先喂右边、余量给左边」+「等比压缩」两层都被这一行替掉了。
             val navOffsetX = horizontalMargin -
                 (navWidth - expandedNavWidth).coerceAtLeast(0.dp) * NavExpandLeftShare
-            val navShape = Capsule()
+            val navShape = LocalNavigationShape.current ?: Capsule()
             val primaryTabs = visibleRootTabs.map { it to it.rootGlyph() }
 
             val desiredCompactMiniVisibleWidth =
-                (maxWidth - horizontalMargin * 2 - compactSize * 2 - compactGap * 2)
+                (maxWidth - horizontalMargin * 2 - compactSize - compactGap -
+                    (compactSize + compactGap) * searchPresence)
                     .coerceAtLeast(80.dp)
             val compactMiniWrapperWidth = desiredCompactMiniVisibleWidth
             val compactMiniWrapperX = horizontalMargin + compactSize + compactGap
@@ -257,10 +286,14 @@ internal fun MeloXBottomChrome(
                 contentAlignment = Alignment.CenterStart,
             ) {
                 val density = LocalDensity.current
+                val panelDecoration = LocalMeloXPanelDecoration.current
+                val currentActionTabs by rememberUpdatedState(LocalMeloXActionTabs.current)
                 val tabCount = primaryTabs.size.coerceAtLeast(1)
 
                 // BiliNext L152-156：tabWidth = (maxWidth − 20dp) / n（= 两侧 10dp padding）
-                val tabWidth = (maxWidth - 20.dp) / tabCount
+                val meloxParameters = LocalNavigationPreset.current == GlassTabBarPreset.MeloX
+                val edgePadding = if (meloxParameters) 10.dp else 4.dp
+                val tabWidth = ((maxWidth - edgePadding * 2) / tabCount).coerceAtLeast(1.dp)
                 val tabWidthPx = with(density) { tabWidth.toPx() }
 
                 // ★ 核心恒等式：水珠与 Layer 2 **等高**，两者都比 Layer 1 矮 8dp
@@ -282,8 +315,7 @@ internal fun MeloXBottomChrome(
                 //   `coerceAtMost` 只在会溢出时收缩；正常 4-tab 竖屏不触发，观感零变化。
                 //   capsuleEdgeInset=4dp 与上下 inset（(navHeight−dropletHeight)/2=4dp）严格一致。
                 val capsuleEdgeInset = 4.dp
-                val edgePadding = 10.dp
-                val dropletWidth = (tabWidth * 1.15f + 2.dp)
+                val dropletWidth = (if (meloxParameters) tabWidth * 1.15f + 2.dp else tabWidth)
                     .coerceAtMost(tabWidth + (edgePadding - capsuleEdgeInset) * 2f)
                     .coerceAtLeast(1.dp)
 
@@ -345,10 +377,11 @@ internal fun MeloXBottomChrome(
                         },
                         onDragStopped = {
                             val target = targetValue.roundToInt().coerceIn(0, tabCount - 1)
-                            animateToValue(target.toFloat())
+                            val actionOnly = currentPrimaryTabs[target].first in currentActionTabs
+                            animateToValue(if (actionOnly) currentSelectedIndex.coerceAtLeast(0).toFloat() else target.toFloat())
                             // ⚠ 用 `currentSelectedIndex`（rememberUpdatedState）而不是捕获死的
                             //   `selectedIndex` —— 见上面 currentSelectedIndex 的长注释。
-                            if (target != currentSelectedIndex) {
+                            if (actionOnly || target != currentSelectedIndex) {
                                 currentOnSelect(currentPrimaryTabs[target].first)
                             }
                             dockScope.launch {
@@ -383,8 +416,9 @@ internal fun MeloXBottomChrome(
                     prevSelectedTab = selectedTab
                 }
                 val dockHighlight = remember(dockScope, dampedDock) {
-                    PublicInteractiveHighlight(
+                    InteractiveHighlight(
                         animationScope = dockScope,
+                        cancelOnConsumed = false,
                         position = { size, _ ->
                             // BiliNext：(value + 0.5) × tabWidthPx + panelOffset
                             Offset(
@@ -400,7 +434,7 @@ internal fun MeloXBottomChrome(
                 val tabScale: () -> Float = { lerp(1f, 1.2f, dampedDock.pressProgress) }
                 // BiliNext L130：`accentColor = if (isDarkTheme) TabAccentDark else TabAccentLight`。
                 // MeloX 保留自己的口径 —— 强调色 = 主题红（与选中 tab / 收缩态圆心标一致）。
-                val accentColor = MeloXSystemColors.Red
+                val accentColor = LocalNavigationAccent.current ?: MeloXSystemColors.Red
 
                 // ══ Layer 1：可见面板（BiliNext 原样）════════════════════════════
                 // ⚠ **收缩态必须把 tab 行淡出**（2026-09-25 修 bug）：
@@ -418,13 +452,14 @@ internal fun MeloXBottomChrome(
                         .meloXLiquidBottomBar(
                             shape = navShape,
                             tint = bottomLiquidGlassTint(),
-                            surfaceColor = bottomGlassSurfaceColor(),
+                            surfaceColor = navigationSurface,
                             // 官方 LiquidBottomTabs L174-179：面板随水珠按压整体膨胀
                             // （scale = 1 + 16dp/width · p）。原先写死 0f ⇒ 长按完全没有反馈：
                             // 指示器有高光、底栏却纹丝不动，读起来像「按压没生效」。
                             pressProgress = dampedDock.pressProgress,
+                            panelDecoration = panelDecoration,
                         )
-                        .then(dockHighlight.modifier)
+                        .then(if (LocalNavigationLight.current == null) dockHighlight.modifier else Modifier)
                         .height(navHeight)
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
@@ -434,11 +469,12 @@ internal fun MeloXBottomChrome(
                         modifier = Modifier
                             .fillMaxSize()
                             .graphicsLayer { alpha = expandedLayerAlpha }
-                            .padding(horizontal = 10.dp),
+                            .padding(horizontal = edgePadding),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         primaryTabs.forEach { (tab, glyph) ->
                             RootTabButton(
+                                tab = tab,
                                 title = tab.titleFor(),
                                 glyph = glyph,
                                 // BiliNext L364：可见面板的图标**永远用未激活色**，
@@ -501,12 +537,13 @@ internal fun MeloXBottomChrome(
                         contentAlignment = Alignment.Center,
                     ) {
                         RootGlyphIcon(
+                            tab = if (selectedTab == AppTab.Search) visibleRootTabs.first() else selectedTab,
                             glyph = compactGlyph,
                             modifier = Modifier.size(25.dp),
                             color = if (selectedTab == AppTab.Search) {
                                 MaterialTheme.colorScheme.onSurface
                             } else {
-                                MeloXSystemColors.Red
+                                LocalNavigationAccent.current ?: MeloXSystemColors.Red
                             },
                             selected = selectedTab != AppTab.Search,
                         )
@@ -522,18 +559,20 @@ internal fun MeloXBottomChrome(
                             .layerBackdrop(tabsBackdrop)
                             .graphicsLayer { translationX = panelOffset }
                             .meloXLiquidCaptureLayer(
-                                shape = Capsule(),
-                                surfaceColor = bottomGlassSurfaceColor(),
+                                shape = navShape,
+                                surfaceColor = navigationSurface,
                                 pressProgress = dampedDock.pressProgress,
                             )
-                            .then(dockHighlight.modifier)
+                            .meloXPanelDecoration(navShape, panelDecoration, navHeight)
+                            .then(if (LocalNavigationLight.current == null) dockHighlight.modifier else Modifier)
                             .height(dropletHeight)
                             .fillMaxWidth()
-                            .padding(horizontal = 10.dp),
+                            .padding(horizontal = edgePadding),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         primaryTabs.forEach { (tab, glyph) ->
                             RootTabButton(
+                                tab = tab,
                                 title = tab.titleFor(),
                                 glyph = glyph,
                                 // ⚠ 捕获层里 `selected` 必须传 false、改用 colorFilterTint ——
@@ -573,17 +612,17 @@ internal fun MeloXBottomChrome(
                             .graphicsLayer {
                                 // BiliNext L489-494：
                                 //   tx = 10dp + (value + 0.5)·tabWidthPx − size.width/2 + panelOffset
-                                translationX = with(density) { 10.dp.toPx() } +
+                                translationX = with(density) { edgePadding.toPx() } +
                                     (dampedDock.value + 0.5f) * tabWidthPx -
                                     size.width / 2f +
                                     panelOffset
                                 alpha = indicatorAlpha
                             }
-                            .padding(horizontal = 10.dp)
+                            .padding(horizontal = edgePadding)
                             .then(dockHighlight.gestureModifier)
                             .then(dampedDock.modifier)
                             .meloXLiquidTabSelection(
-                                shape = Capsule(),
+                                shape = navShape,
                                 selected = true,
                                 tint = selectionTint,
                                 panelBackdrop = tabsBackdrop,
@@ -607,23 +646,31 @@ internal fun MeloXBottomChrome(
                 }
             }
 
+            if (layout.showSearchButton || searchPresence > 0f) {
             val searchContentDescription = AppTab.Search.titleFor()
             Box(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .offset(x = -horizontalMargin, y = 0.dp)
                     .size(searchSize)
+                    .graphicsLayer {
+                        alpha = searchPresence
+                        scaleX = 0.72f + 0.28f * searchPresence
+                        scaleY = scaleX
+                        translationX = 20.dp.toPx() * (1f - searchPresence)
+                    }
                     // 搜索键材质与底栏 nav 胶囊完全同源：同样走
                     // meloXLiquidBottomBar（vibrancy + blur + lens，且只叠
                     // surfaceColor、不额外加 Screen 白纱与 Hue tint），
                     // 避免观感与左侧底栏对不上。
                     .meloXLiquidBottomBar(
-                        shape = Capsule(),
+                        shape = navShape,
                         tint = bottomLiquidGlassTint(),
-                        surfaceColor = bottomGlassSurfaceColor(),
+                        surfaceColor = navigationSurface,
                         refractionHeight = lerpDp(10.dp, 8.dp, bounceFrac),
                     )
-                    .clickable(enabled = searchEnabled, role = Role.Button) { onSelect(AppTab.Search) }
+                    .clickable(enabled = searchEnabled && layout.showSearchButton && searchPresence > 0.5f,
+                        role = Role.Button) { onSelect(AppTab.Search) }
                     .semantics {
                         contentDescription = searchContentDescription
                     },
@@ -634,12 +681,13 @@ internal fun MeloXBottomChrome(
                     modifier = Modifier.size(lerpDp(28.dp, 27.dp, bounceFrac)),
                     // ⚠ 搜索键的字形同样不能写死 —— 它读的是同一个被插值的 scheme。
                     color = if (selectedTab == AppTab.Search) {
-                        MeloXSystemColors.Red
+                        LocalNavigationAccent.current ?: MeloXSystemColors.Red
                     } else {
                         MaterialTheme.colorScheme.onSurface
                     },
                     selected = selectedTab == AppTab.Search,
                 )
+            }
             }
         }
     }
@@ -647,6 +695,7 @@ internal fun MeloXBottomChrome(
 
 @Composable
 private fun RowScope.RootTabButton(
+    tab: AppTab,
     title: String,
     glyph: RootGlyph,
     selected: Boolean,
@@ -676,7 +725,7 @@ private fun RowScope.RootTabButton(
     val desiredForeground = when {
         colorFilterTint != null -> colorFilterTint
         // `selectedTint`（毛玻璃模式的强调色）与 `selected` 同色、同动画路径。
-        selected || selectedTint -> MeloXSystemColors.Red
+        selected || selectedTint -> LocalNavigationAccent.current ?: MeloXSystemColors.Red
         // 回到 `colorScheme.onSurface` —— 外层 `BottomBarToneTheme` 已经把整套配色
         // 插值过，这个读值自己就会跟着动，**不需要**再在这里写端点。
         else -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.78f)
@@ -717,13 +766,19 @@ private fun RowScope.RootTabButton(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
+        val customContent = LocalMeloXTabContents.current[tab]
+        if (customContent != null) {
+            customContent(foreground, semanticSelected)
+            return@Column
+        }
         RootGlyphIcon(
+            tab = tab,
             glyph = glyph,
             modifier = Modifier.size(24.dp),
             color = foreground,
             selected = selected,
         )
-        Text(
+        if (LocalMeloXShowLabels.current) Text(
             text = title,
             modifier = Modifier.graphicsLayer { alpha = labelAlpha },
             fontSize = 11.sp,
@@ -742,11 +797,24 @@ private fun RowScope.RootTabButton(
     }
 }
 
+/** Native artwork participates in the same clipped refraction capture as tab content. */
+private fun Modifier.meloXPanelDecoration(
+    shape: Shape, decoration: MeloXPanelDecoration?, panelHeight: Dp,
+): Modifier = if (decoration == null) this else drawWithCache {
+    val path = Path().apply { addOutline(shape.createOutline(size, layoutDirection, this@drawWithCache)) }
+    val overflow = (panelHeight.toPx() - size.height) / 2f
+    onDrawWithContent {
+        clipPath(path) { inset(vertical = -overflow) { decoration() } }
+        drawContent()
+    }
+}
+
 private enum class RootGlyph { Home, Explore, Library, Podcasts, Downloads, Cloud, Settings, Search }
 
 @Composable
 @Suppress("UNUSED_PARAMETER")
-private fun AppTab.titleFor(): String = LocalMeloXTabLabels.current[this] ?: stringResource(titleRes)
+private fun AppTab.titleFor(): String = LocalMeloXTabLabels.current[this]
+    ?: if (titleRes != 0) stringResource(titleRes) else name.removePrefix("custom:")
 
 private fun AppTab.rootGlyph(): RootGlyph = when (this) {
     AppTab.Home -> RootGlyph.Home
@@ -757,17 +825,28 @@ private fun AppTab.rootGlyph(): RootGlyph = when (this) {
     AppTab.Cloud -> RootGlyph.Cloud
     AppTab.Settings -> RootGlyph.Settings
     AppTab.Search -> RootGlyph.Search
+    else -> RootGlyph.Home
+}
+
+@Composable
+fun MeloXNavigationIcon(tab: AppTab, modifier: Modifier, color: Color, selected: Boolean = false) {
+    RootGlyphIcon(tab = tab, glyph = tab.rootGlyph(), modifier = modifier, color = color, selected = selected)
 }
 
 @Composable
 private fun RootGlyphIcon(
+    tab: AppTab? = null,
     glyph: RootGlyph,
     modifier: Modifier,
     color: Color,
     selected: Boolean = false,
 ) {
-    LocalMeloXTabIcons.current[AppTab.valueOf(glyph.name)]?.let { customIcon ->
+    LocalMeloXTabIcons.current[tab ?: AppTab.valueOf(glyph.name)]?.let { customIcon ->
         customIcon(modifier, color, selected)
+        return
+    }
+    if (tab != null && tab.titleRes == 0) {
+        Text(tab.titleFor().take(1), modifier = modifier, color = color)
         return
     }
     // The home tab uses the custom house vector (traced from the user's image)

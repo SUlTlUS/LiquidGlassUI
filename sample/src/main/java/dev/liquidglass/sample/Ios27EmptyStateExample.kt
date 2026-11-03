@@ -1,6 +1,7 @@
 package dev.liquidglass.sample
 
-import android.os.Build
+import dev.liquidglass.*
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -26,7 +27,7 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.zeaze.tianyinwallpaper.backdrop.backdrops.rememberCanvasBackdrop
-import com.zeaze.tianyinwallpaper.catalog.components.LiquidButton
+import dev.liquidglass.GlassButton
 import dev.liquidglass.ios27.Ios27PageColors
 import dev.liquidglass.ios27.Ios27Tokens
 import dev.liquidglass.ios27.ios27PressedClickable
@@ -140,23 +141,13 @@ private fun EmptyStateButton(
         contentDescription = description
         role = Role.Button
     }
-    if (Build.VERSION.SDK_INT >= 33) {
-        LiquidButton(
+        GlassButton(
             onClick = onClick,
             backdrop = backdrop,
             modifier = accessible,
             tint = tint,
-            buttonHeight = 52.dp,
+            height = 52.dp,
             contentPadding = androidx.compose.foundation.layout.PaddingValues(0.dp),
             content = { content() },
         )
-    } else {
-        val shape = RoundedCornerShape(percent = 50)
-        Box(
-            accessible
-                .background(tint, shape)
-                .ios27PressedClickable(shape = shape, onClick = onClick),
-            contentAlignment = Alignment.Center,
-        ) { content() }
-    }
 }

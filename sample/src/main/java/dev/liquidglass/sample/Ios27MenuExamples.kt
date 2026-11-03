@@ -14,12 +14,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -30,6 +28,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.layout.positionInRoot
+import dev.liquidglass.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -80,104 +86,56 @@ internal fun Ios27MenuExample(
     contextMenuTop: Dp = 247.5.dp,
     visible: Boolean = true,
     onHidden: () -> Unit = {},
+    anchorBounds: androidx.compose.ui.geometry.Rect? = null,
+    sourceSurfaceImage: androidx.compose.ui.graphics.ImageBitmap? = null,
 ) {
-    val editMedium = entry.category == "Menus" && entry.variant == "Type=Edit Medium"
+    val density = androidx.compose.ui.platform.LocalDensity.current
+    val anchor = anchorBounds ?: with(density) { androidx.compose.ui.geometry.Rect(
+        16.dp.toPx(), (contextMenuTop - 176.dp).toPx(), 386.dp.toPx(), (contextMenuTop - 16.dp).toPx()) }
     val contextMenu = entry.category == "Context Menu"
-    val width = if (editMedium) 238.dp else 250.dp
-    val height = when {
-        editMedium -> 44.dp
-        contextMenu -> 278.dp
-        else -> 338.dp
+    val popup = rememberGlassPopupState<Unit>()
+    var submenuOpen by remember { mutableStateOf(false) }
+    var submenuMounted by remember { mutableStateOf(false) }
+    var hostOrigin by remember { mutableStateOf(Offset.Zero) }
+    var menuBounds by remember { mutableStateOf(anchor) }
+    LaunchedEffect(visible) {
+        if (visible && !popup.mounted) popup.open(sourceSurfaceSnapshot = sourceSurfaceImage)
+        else if (!visible) popup.dismiss()
     }
-    val y = if (contextMenu) contextMenuTop else 180.dp
-    val reveal = remember(contextMenu) { Animatable(if (contextMenu) 0f else 1f) }
-
-    LaunchedEffect(visible, contextMenu) {
-        if (contextMenu) {
-            reveal.animateTo(
-                targetValue = if (visible) 1f else 0f,
-                animationSpec = tween(
-                    durationMillis = if (visible) 250 else 150,
-                    easing = if (visible) QweaDialogEnterEasing else QweaDialogExitEasing,
-                ),
-            )
-            if (!visible) onHidden()
+    LaunchedEffect(popup.expanded, popup.mounted) {
+        if (popup.mounted && !popup.expanded) {
+            submenuOpen = false
+            if (visible) onDismiss()
         }
     }
-
-    val revealProgress = if (contextMenu) reveal.value else 1f
-    val contextMenuScale = when {
-        !contextMenu -> 1f
-        visible -> 0.86f + 0.14f * revealProgress
-        else -> 0.88f + 0.12f * revealProgress
+    val act: (String) -> Unit = { label ->
+        if (label == "Submenu") { submenuMounted = true; submenuOpen = true }
+        else { submenuOpen = false; onAction(label); popup.dismiss() }
     }
-    val animatedWidth = if (contextMenu) width * contextMenuScale else width
-    val animatedHeight = if (contextMenu) height * contextMenuScale else height
-    val animatedX = if (contextMenu) {
-        16.dp + (width - animatedWidth) / 2f
-    } else {
-        16.dp
-    }
-    val animatedY = if (contextMenu) {
-        y + (height - animatedHeight) / 2f
-    } else {
-        y
-    }
-    val menuShape = RoundedCornerShape(34.dp)
-    Box(Modifier.fillMaxSize()) {
-        // Dismissal is outside the panel. The panel is a later sibling and therefore keeps
-        // the hit target for every menu row.
-        if (!contextMenu || visible) {
-            Box(
-                Modifier.fillMaxSize().clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = null,
-                    onClick = onDismiss,
-                ),
-            )
-        }
-        if (contextMenu) {
-            // Context Menu always owns its shadow on a separate sibling layer.
-            // Keeping this structure unchanged at p=1 avoids a final-frame backdrop rebuild.
-            Box(
-                Modifier.offset(animatedX, animatedY)
-                    .size(animatedWidth, animatedHeight)
-                    .liquidDialogShadow(menuShape, revealProgress),
-            )
-        }
-
-        Box(
-            Modifier.offset(animatedX, animatedY)
-                .size(animatedWidth, animatedHeight)
-                .alpha(revealProgress)
-                .then(if (contextMenu) Modifier.clip(menuShape) else Modifier)
-                .semantics { contentDescription = if (contextMenu) "上下文菜单" else "菜单" }
-                .ios27AndroidPane(if (contextMenu) "上下文菜单" else "菜单", onDismiss)
-                .menuGlass(backdrop, colors, dark, showShadow = !contextMenu),
-            contentAlignment = Alignment.Center,
-        ) {
-            Box(
-                Modifier.requiredSize(width, height)
-                    .graphicsLayer {
-                        if (contextMenu) {
-                            scaleX = contextMenuScale
-                            scaleY = contextMenuScale
-                        }
-                    },
-            ) {
-                when {
-                    editMedium -> EditMediumMenu(entry.file, colors, dark, onAction)
-                    contextMenu -> ContextMenu(entry.file, colors, dark, onAction)
-                    else -> RegularMenu(
-                        file = entry.file,
-                        colors = colors,
-                        dark = dark,
-                        onAction = onAction,
-                    )
-                }
+    Box(Modifier.fillMaxSize().onGloballyPositioned { hostOrigin = it.positionInRoot() }) {
+    Ios26ModalScope(backdrop, dark) {
+    dev.liquidglass.GlassMenuMaterialScope {
+        GlassPopup(popup, remember(anchor) { GlassPopupAnchor(anchor) }, dark,
+            properties = GlassPopupProperties(returnIntoSource = contextMenu),
+            placement = if (contextMenu) GlassMenuPlacement.BelowAnchorStart else GlassMenuPlacement.OverAnchorStart,
+            sourceContent = { if (contextMenu) Text("Content Area", style = Ios27Tokens.Type.Body, color = colors.label) },
+            onResult = { onHidden() }) {
+            Box(Modifier.size(250.dp, if (contextMenu) 278.dp else 338.dp)
+                .onGloballyPositioned { menuBounds = it.boundsInRoot().translate(-hostOrigin) }) {
+                if (contextMenu) ContextMenu(entry.file, colors, dark, act)
+                else RegularMenu(entry.file, colors, dark, onAction = act)
             }
         }
-
+        if (submenuMounted) {
+            val childAnchor = with(density) { Rect(menuBounds.left + 16.dp.toPx(),
+                menuBounds.top + 228.dp.toPx(), menuBounds.right - 16.dp.toPx(), menuBounds.top + 268.dp.toPx()) }
+            GlassMorphMenu(submenuOpen, childAnchor,
+                listOf("收藏", "分享").map { label -> GlassMenuAction(label) { act(label) } },
+                dark, onDismiss = { submenuOpen = false }, onReturnComplete = { submenuMounted = false },
+                highlightStyle = currentGlassHighlight(), returnIntoSource = false)
+        }
+    }
+    }
     }
 }
 
@@ -190,36 +148,16 @@ private fun Modifier.menuGlass(
     val shape = RoundedCornerShape(34.dp)
     val surface = if (dark) Color(0xB51C1C1E) else Color.White.copy(alpha = 0.70f)
 
-    // The source Menu and Fullscreen Sheet share the same authored glass recipe.
-    // Reuse the common LiquidDialog surface so blur/refraction/highlight/shadow do not
-    // drift into a second menu-only implementation. Menu keeps only its source surface mix.
+    // iOS26 menus retain the shared optics and highlight without a surface color wash.
     return liquidDialogSurface(
         backdrop = backdrop,
         shape = shape,
-        surface = surface,
+        surface = Color.Transparent,
         fallbackSurface = surface,
         dark = dark,
-        surfaceOverlay = if (dark) null else Color(0xFFBFBFBF).copy(alpha = 0.10f),
+        surfaceOverlay = null,
         surfaceOverlayBlendMode = BlendMode.Darken,
         showShadow = showShadow,
-    )
-}
-
-@Composable
-private fun EditMediumMenu(
-    file: String,
-    colors: Ios27PageColors,
-    dark: Boolean,
-    onAction: (String) -> Unit,
-) {
-    EditMediumMenuContent(
-        file = file,
-        colors = colors,
-        dark = dark,
-        onCut = { onAction("剪切") },
-        onCopy = { onAction("复制") },
-        onPaste = { onAction("粘贴") },
-        onMore = { onAction("更多操作") },
     )
 }
 
@@ -893,9 +831,3 @@ private fun MenuSeparator(colors: Ios27PageColors, modifier: Modifier) {
     Box(modifier.size(202.dp, 1.dp).background(colors.separator))
 }
 
-@Composable
-private fun MenuGap(colors: Ios27PageColors) {
-    Box(Modifier.fillMaxWidth().height(21.dp).padding(vertical = 10.dp)) {
-        Spacer(Modifier.fillMaxWidth().height(1.dp).background(colors.separator))
-    }
-}

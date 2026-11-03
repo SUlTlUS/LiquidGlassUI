@@ -1,0 +1,34 @@
+{
+  "device": "emulator-5556",
+  "package": "dev.liquidglass.sample",
+  "launch": "warm (already foreground)",
+  "checks": [
+    "selection=Home",
+    "mini-player play changes UI state",
+    "mini-player pause changes UI state",
+    "mini-player next changes track",
+    "mini-player horizontal swipe switches track",
+    "mini-player title opens actual shared-transition player",
+    "player system back reverses shared transition",
+    "short player drag springs back to full screen",
+    "long player drag settles to mini player",
+    "mini-player hide/show controls real media slot",
+    "selection=Explore",
+    "selection=Search",
+    "selection=Home",
+    "selection=Library",
+    "compact labels hidden",
+    "compact player preserves artist and hides Next",
+    "compact tab tap expands",
+    "frosted toggle",
+    "upward content scroll automatically collapses bar",
+    "content scrolls beneath independent glass",
+    "downward content scroll automatically expands bar",
+    "catalog variant opens dedicated page",
+    "visible root catalog entry navigates to the live page"
+  ],
+  "visualParityWithOriginalApk": "not tested",
+  "notes": [
+    "Runtime gestures and captures checked; not a same-device original APK pixel comparison."
+  ]
+}

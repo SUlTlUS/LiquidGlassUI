@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User corrected the binding: displacement and distortion must be a single motion",
+  "reason": "Bind displacement and distortion as one motion: both consume the same resisted drag vector in profile 27, with shared 2.7-side limit; profile 26 and routes unchanged",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/ButtonDrag.kt",
+      "baselineSha256": "93a82b2df466c914f59f5a6684310a300c3a8f7f5f3d3d698cc279f788253ba7",
+      "mergedSha256": "856ce1e7e1d7323485a4d90cf6fc801909bec252a9cc6fc4d101417a3f2e5c84"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/ButtonDragTest.kt",
+      "baselineSha256": "b8675d46875642df4a7e8a78e9b254092de951ec756f030a10b11397f74cba7f",
+      "mergedSha256": "5c2b877bc2603a4eb31f40927beb9713db1d7c4249b3d5e3808c07e5ea8c27e9"
+    },
+    {
+      "path": "AGENTS.md",
+      "baselineSha256": "ff4c5c8e5bc7deac22b3ccf1996b59c8ed674f7369852f78c06da7ad36c7ddc3",
+      "mergedSha256": "86c982bdb1b0b0764fa47052e336467a69103988d290586c0df350a31b20be53"
+    },
+    {
+      "path": "docs/component-library.md",
+      "baselineSha256": "f0efbaa662d0753ef4fd99abd6d478887ee6fc8dcbb85e856e5e9c22d04fe434",
+      "mergedSha256": "70556dc62fe26079e8942bf861f5afdac477f02c375e70c3178d01da484854a2"
+    }
+  ],
+  "tests": "sources updated, not run",
+  "frozenBaselines": "unchanged"
+}

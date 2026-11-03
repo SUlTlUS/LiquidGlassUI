@@ -1,8 +1,6 @@
 package com.zeaze.tianyinwallpaper.backdrop.highlight
 
-import android.os.Build
 import androidx.annotation.FloatRange
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
@@ -26,7 +24,6 @@ interface HighlightStyle {
 
     val blendMode: BlendMode
 
-    @RequiresApi(Build.VERSION_CODES.S)
     fun DrawScope.createShader(
         shape: Shape,
         runtimeShaderCache: RuntimeShaderCache
@@ -38,7 +35,6 @@ interface HighlightStyle {
         override val blendMode: BlendMode = BlendMode.Plus
     ) : HighlightStyle {
 
-        @RequiresApi(Build.VERSION_CODES.S)
         override fun DrawScope.createShader(
             shape: Shape,
             runtimeShaderCache: RuntimeShaderCache
@@ -69,25 +65,17 @@ interface HighlightStyle {
             falloff = falloff
         )
 
-        @RequiresApi(Build.VERSION_CODES.S)
         override fun DrawScope.createShader(
             shape: Shape,
             runtimeShaderCache: RuntimeShaderCache
         ): Shader? {
-            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                runtimeShaderCache.obtainRuntimeShader(
-                    "Default",
-                    DefaultHighlightShaderString
-                ).apply {
-                    setFloatUniform("size", size.width, size.height)
-                    setFloatUniform("cornerRadii", getCornerRadii(shape))
-                    setColorUniform("color", color.copy(alpha = 1f))
-                    setFloatUniform("angle", angle * (PI / 180f).toFloat())
-                    setFloatUniform("falloff", falloff)
-                }.asComposeShader()
-            } else {
-                null
-            }
+            return runtimeShaderCache.obtainRuntimeShader("Default", DefaultHighlightShaderString).apply {
+                setFloatUniform("size", size.width, size.height)
+                setFloatUniform("cornerRadii", getCornerRadii(shape))
+                setColorUniform("color", color.copy(alpha = 1f))
+                setFloatUniform("angle", angle * (PI / 180f).toFloat())
+                setFloatUniform("falloff", falloff)
+            }.asComposeShader()
         }
     }
 
@@ -100,24 +88,16 @@ interface HighlightStyle {
 
         override val blendMode: BlendMode = DrawScope.DefaultBlendMode
 
-        @RequiresApi(Build.VERSION_CODES.S)
         override fun DrawScope.createShader(
             shape: Shape,
             runtimeShaderCache: RuntimeShaderCache
         ): Shader? {
-            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                runtimeShaderCache.obtainRuntimeShader(
-                    "Ambient",
-                    AmbientHighlightShaderString
-                ).apply {
-                    setFloatUniform("size", size.width, size.height)
-                    setFloatUniform("cornerRadii", getCornerRadii(shape))
-                    setFloatUniform("angle", 45f * (PI / 180f).toFloat())
-                    setFloatUniform("falloff", 1f)
-                }.asComposeShader()
-            } else {
-                null
-            }
+            return runtimeShaderCache.obtainRuntimeShader("Ambient", AmbientHighlightShaderString).apply {
+                setFloatUniform("size", size.width, size.height)
+                setFloatUniform("cornerRadii", getCornerRadii(shape))
+                setFloatUniform("angle", 45f * (PI / 180f).toFloat())
+                setFloatUniform("falloff", 1f)
+            }.asComposeShader()
         }
     }
 

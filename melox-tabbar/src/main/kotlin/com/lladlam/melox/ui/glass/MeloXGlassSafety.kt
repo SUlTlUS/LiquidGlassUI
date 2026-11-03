@@ -2,7 +2,7 @@ package com.lladlam.melox.ui.glass
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalView
-import com.kyant.backdrop.Backdrop
+import com.zeaze.tianyinwallpaper.backdrop.Backdrop
 
 /*
  * 液态玻璃的**能力门控**（2026-10-01 新增）。
@@ -50,7 +50,7 @@ internal fun meloXGlassBackdrop(): Backdrop? {
  * 把按压进度洗回 [0, 1]。
  *
  * 必要性（实测代码路径）：
- * - `PublicInteractiveHighlight` 用 `spring(0.5f, 300f)` —— **欠阻尼 ζ=0.5**，
+ * - `InteractiveHighlight` 用 `spring(0.5f, 300f)` —— **欠阻尼 ζ=0.5**，
  *   过冲约 +16.3%、回弹约 −16.3% ⇒ `pressProgress` 真实区间 ≈ [−0.16, 1.16]。
  *   它经 `meloXLiquidButton` 喂给 `meloXGlassSurface`（登录页 / 云盘 / 资料库 / 收藏页的按钮）。
  *

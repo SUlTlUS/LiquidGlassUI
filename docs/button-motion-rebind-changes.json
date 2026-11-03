@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User requested removing #3, binding #2 to 27 and slightly reducing deformation; confirmed #2 came from 26 material",
+  "reason": "Remove original 27 button motion (#3); bind adapted former 27-material motion (#1) to 26 and former 26-material directional motion (#2) to 27, with smooth extra-stretch limit; material-independent routing",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassAnimation.kt",
+      "baselineSha256": "d9677d274f27beef2bd76bde57baf990dfb948106f4fd8bbd59e61a7546829d5",
+      "mergedSha256": "da5f1cb9bf230ea6f0803da8532d39b7f7055bf9de4fc7a32c8157335f3eb079"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassControls.kt",
+      "baselineSha256": "9779ce0cead7d1fe0cb557a80f23e3237c04b215259e0aa502dc601ad898393f",
+      "mergedSha256": "90c48021190d8ae0c267417beaba036130ac5149cb26c10fb126f80d9cce171b"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassEffects.kt",
+      "baselineSha256": "21299880a60d61354b9dc922320f575ee88444916ead971b06249037e493eaa1",
+      "mergedSha256": "431d4dc66bdc502c2c53ce41f1bb48979108283b01d469f5367605ecb958966c"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/Ios26ButtonDrag.kt",
+      "baselineSha256": "a7a69612129ee0382ccdb97ab84f704cd30493c42851c2e5f4c6d41e973ec9e4",
+      "mergedSha256": "8fa8f1d08ea80a8759dd27c37d9895c4508c8b91ae8fdaea2b698850fe38a0a5"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassEffectsTest.kt",
+      "baselineSha256": "590f0e5ac56a39265d236f2fd5172845c907dc4f51a960a6431708377a810d04",
+      "mergedSha256": "74a4771488476499344e6e1341145db9a1abbad2680eb9702d1de829fde8c333"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidButtonCore.kt",
+      "baselineSha256": "07242e02707de5c9d9cc4c4fa452f06f8ca1e24bfec18d70c15800f80d69e4ac",
+      "mergedSha256": "774daab116b77616e7387afb036f767ab2c9b5c853db3ba2e7729b7b07221179"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/InteractiveHighlight.kt",
+      "baselineSha256": "0cf81e9fa7764c2415d3cf61f00e4f343efc234661fe7b18e8d67f7b0449de27",
+      "mergedSha256": "457e3d48affa3a7e882ba7da14b69216577c92403b90ddab78b88b3124790356"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/rendering/GlassButtonMotion.kt",
+      "baselineSha256": "f88aeb66d622d6c7ee6043131984b5ecdc7aa0d550633a8b5bc689726f994337",
+      "mergedSha256": "70408c4267f4153ff5fb7fe279d6868bebc1aed84c506f30d66ddf5b7aea9f01"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/MainActivity.kt",
+      "baselineSha256": "7d0d74547729dae3fc63ae7f421b87514afaae8500af511ef0199680bf2297ce",
+      "mergedSha256": "3334196aad716c1fc6043499cf729f3db87cbe4be8bc68ef319b75c2fa77bcf6"
+    },
+    {
+      "path": "AGENTS.md",
+      "baselineSha256": "bca306424bf608ca180f52247e45d493cdca4042ae12f1826ac3d88a1404aa3b",
+      "mergedSha256": "ff4c5c8e5bc7deac22b3ccf1996b59c8ed674f7369852f78c06da7ad36c7ddc3"
+    },
+    {
+      "path": "docs/component-library.md",
+      "baselineSha256": "b4b23ec9cea9c94d0fa14336aceea8afc8b0dd0e305cee955da89daccb3356bd",
+      "mergedSha256": "f0efbaa662d0753ef4fd99abd6d478887ee6fc8dcbb85e856e5e9c22d04fe434"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/ButtonDrag.kt",
+      "baselineSha256": null,
+      "mergedSha256": "93a82b2df466c914f59f5a6684310a300c3a8f7f5f3d3d698cc279f788253ba7"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/ButtonDragTest.kt",
+      "baselineSha256": null,
+      "mergedSha256": "b8675d46875642df4a7e8a78e9b254092de951ec756f030a10b11397f74cba7f"
+    }
+  ],
+  "tests": "sources updated, not run",
+  "frozenBaselines": "unchanged"
+}

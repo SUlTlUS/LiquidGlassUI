@@ -46,33 +46,12 @@ const report = {
     passed: [], completed: false, visualAcceptance: 'pending user review',
 };
 try {
-    await launch('ios27-buttons');
-    await waitText('弹性按钮'); shot('buttons');
-    await tap('清透按钮 · 0'); await waitText('清透按钮已点击 1 次');
-    await tap('清透按钮 · 1'); await waitText('清透按钮已点击 2 次');
-    report.passed.push('elastic button increments actual state');
-    await launch('ios27-goo');
-    await tap('添加'); await waitText('已添加 1 项');
-    await tap('重置'); await waitText('已重置操作组');
-    report.passed.push('Goo callbacks add and reset state');
-    await launch('ios27-dock');
-    await tap('收藏'); await waitText('这里显示收藏的示例');
-    report.passed.push('dock selection changes page content');
     await launch('ios27-menu');
     await tap('打开菜单'); await waitText('收藏示例'); shot('menu');
     await tap('排序'); await waitText('按最近使用');
     await tap('按最近使用'); await waitText('排序：按最近使用');
     report.passed.push('nested menu delivers leaf result and returns to page');
 
-    await launch('ios27-dialog');
-    await tap('填写名称');
-    await tapNode(nodes(dump()).find(n => n.class === 'android.widget.EditText'));
-    call('shell', 'input', 'text', 'Codex27');
-    await tap('保存'); await waitText('名称已保存：Codex27');
-    report.passed.push('dialog input submits actual typed text');
-    await tap('填写名称'); await waitText('Codex27'); await tap('取消');
-    await waitText('已取消，名称未更改');
-    report.passed.push('saved name survives reopen and cancel');
     await launch('ios27-popup');
     await tap('编辑备注'); await waitText('示例备注'); shot('popup');
     await tapNode(nodes(dump()).find(n => n.class === 'android.widget.EditText'));

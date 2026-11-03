@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User requested the 27 bottom bar use the same color as buttons",
+  "reason": "Use the regular 27 button tint for the navigation track, matching capture layer and search surface; retain automatic tone, preset optics, highlights and 26 defaults",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassTabBar.kt",
+      "baselineSha256": "d42318bc8a8861870e5a04dc05d3385323b36750f91fcecc2a69fe34a9d33467",
+      "mergedSha256": "d49366aa6d52eda307d1df29392117f19fa9211ccc9f0b4d8a5d6cc7e9456fa3"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXTabBar.kt",
+      "baselineSha256": "dc01e462b432526962bc43e9d5dd42485539d424e229dc06c58bd7c7218e70b2",
+      "mergedSha256": "16b9f7477fa43925fd760faac24cc66c904191d94478e023a6730c03e6852d7f"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXBottomChrome.kt",
+      "baselineSha256": "554f67f527f99e955c209d234657cc212bf487215f579ab6e86fac7763341004",
+      "mergedSha256": "1586a94a686e8c721ed1c1fc7aff53082afbbc891cae1304eb27bcfeeacd4928"
+    }
+  ],
+  "tests": "not run; parameter-only adjustment",
+  "frozenBaselines": "unchanged"
+}

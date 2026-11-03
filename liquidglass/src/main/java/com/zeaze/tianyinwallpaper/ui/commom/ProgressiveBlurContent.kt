@@ -1,6 +1,5 @@
 package com.zeaze.tianyinwallpaper.ui.commom
 
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -8,7 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.background
-import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,10 +14,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.sp
 import com.zeaze.tianyinwallpaper.backdrop.Backdrop
 import com.zeaze.tianyinwallpaper.backdrop.drawPlainBackdrop
 import com.zeaze.tianyinwallpaper.backdrop.effects.blur
@@ -62,8 +58,6 @@ private fun FallbackProgressiveBlurContent(
     surfaceColor: Color,
     overlayHeight: Dp,
 ) {
-    val contentColor = if (isLightTheme) Color.Black else Color.White
-    val tintColor = if (isLightTheme) Color.White else Color(0xFF808080)
     val fallbackColor = surfaceColor.copy(alpha = if (isLightTheme) 0.75f else 0.7f)
 
     Column(
@@ -80,10 +74,9 @@ private fun FallbackProgressiveBlurContent(
                         // iOS27 top material uses a stronger blur near the top edge,
                         // then fades the material out through the content area.
                         blur(16.dp.toPx())
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                            runtimeShaderEffect(
-                                key = "AlphaMask",
-                                shaderString = """
+                        runtimeShaderEffect(
+                            key = "AlphaMask",
+                            shaderString = """
 uniform shader content;
 
 uniform float2 size;
@@ -96,13 +89,10 @@ half4 main(float2 coord) {
     return content.eval(coord) * alpha;
 }
 """
-                                ,
-                                uniformShaderName = "content"
-                            ) {
-                                setFloatUniform("size", size.width, size.height)
-                                //setColorUniform("tint", tintColor)
-                                //setFloatUniform("tintIntensity", 0.8f)
-                            }
+                            ,
+                            uniformShaderName = "content"
+                        ) {
+                            setFloatUniform("size", size.width, size.height)
                         }
                     }
                 )
@@ -116,12 +106,7 @@ half4 main(float2 coord) {
                 .height(overlayHeight)
                 .fillMaxWidth(),
             contentAlignment = Alignment.Center
-        ) {
-            /*BasicText(
-                text = "alpha-masked progressive blur",
-                style = TextStyle(contentColor, 16.sp)
-            )*/
-        }
+        ) {}
     }
 }
 

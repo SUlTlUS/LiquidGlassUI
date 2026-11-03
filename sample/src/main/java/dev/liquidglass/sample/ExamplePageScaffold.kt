@@ -1,6 +1,5 @@
 package dev.liquidglass.sample
 
-import android.os.Build
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -239,7 +238,7 @@ internal fun ExampleToolbarDesignPage(
         content = content,
         overlay = { topInset, backdrop ->
             ExampleTopChrome(
-                backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                backdrop = backdrop,
                 isLightTheme = isLightTheme,
                 toolbarFile = toolbarFile,
                 onBack = onBack,
@@ -341,7 +340,7 @@ internal fun BoxScope.ExampleTopChrome(
             onBack = onBack,
             onReference = onReference,
             onTrailing = onTrailing,
-            backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+            backdrop = backdrop,
             fallbackTitle = fallbackTitle,
             trailingOverflow = trailingOverflow,
             showTrailing = showTrailing,

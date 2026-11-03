@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.zeaze.tianyinwallpaper.backdrop.Backdrop
 import com.zeaze.tianyinwallpaper.backdrop.backdrops.LayerBackdrop
-import dev.liquidglass.ios27.LiquidDialogLayer
+import dev.liquidglass.sample.Ios26ModalLayer as LiquidDialogLayer
 import dev.liquidglass.ios27.ios27AndroidPane
 
 /**
@@ -32,6 +32,9 @@ internal fun Ios27BottomSheetDialog(
     modifier: Modifier = Modifier,
     exportedBackdrop: LayerBackdrop? = null,
     description: String = "颜色选择器弹窗",
+    visible: Boolean = true,
+    solidColor: Color? = null,
+    exportPaintedSurface: Boolean = false,
     content: @Composable BoxScope.() -> Unit,
 ) {
     val bottomCorners = rememberSystemBottomCornerRadii()
@@ -41,9 +44,12 @@ internal fun Ios27BottomSheetDialog(
         bottomStart = bottomCorners.start,
         bottomEnd = bottomCorners.end,
     )
-    val surface = if (dark) Color(0xCC2C2C2E) else Color.White.copy(alpha = 0.70f)
+    val surface = solidColor ?: if (dark) Color(0xCC2C2C2E) else Color.White.copy(alpha = 0.70f)
 
     LiquidDialogLayer(
+        transition = dev.liquidglass.GlassModalTransition.BottomSheet,
+        solidSurface = solidColor != null,
+        visible = visible,
         backdrop = backdrop,
         onDismissRequest = onDismissRequest,
         panelModifier = Modifier.ios27AndroidPane(description, onDismissRequest)
@@ -57,6 +63,7 @@ internal fun Ios27BottomSheetDialog(
         scrimColor = scrimColor,
         dark = dark,
         exportedBackdrop = exportedBackdrop,
+        exportPaintedSurface = exportPaintedSurface,
         modifier = modifier,
         description = description,
         content = content,

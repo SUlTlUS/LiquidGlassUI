@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User clarified: only make highlights thinner in dark mode; restore the original appearance in light mode",
+  "reason": "Reduce 27 dock bright rim width by 30 percent only in dark theme; preserve original light-theme width and restore original dark hairline shader and uniforms",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/DockHighlight.kt",
+      "baselineSha256": "e77e115c6b4cdabad062ccf3ad65ccbf5b856ff9a20aefc4a0fbf0a88cd0e0a4",
+      "mergedSha256": "bcf59104aae63861e5558ef5ed7954cc76dd7a4416040013c20988416ebcdb46"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlClashControlHighlight.kt",
+      "baselineSha256": "6854c226fe86c1eeab28b2ab26ef2cc08123c1bc26129b6b02aa56d351a1a335",
+      "mergedSha256": "805ae042514b2fe8305fb252a28e86dacc99ce143d68e7d24d37a3d9712d8362"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/assets/shaders/flclash_control_highlight.agsl",
+      "baselineSha256": "e3fd692be7017961dd4656ba8ea0736666e9fb3e19bdb59aa29c3686101cf98e",
+      "mergedSha256": "c68577c01a54d128a2c974aae1e1e9a143dd3e52e00b4127a5ac56c2c2383113"
+    }
+  ],
+  "tests": "not run; parameter-only adjustment",
+  "frozenBaselines": "unchanged"
+}

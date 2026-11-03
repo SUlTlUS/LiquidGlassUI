@@ -198,7 +198,7 @@ fun Modifier.liquidDialogSurface(
     showHighlight: Boolean = true,
     showShadow: Boolean = true,
 ): Modifier {
-    if (backdrop == null || Build.VERSION.SDK_INT < 33) {
+    if (backdrop == null) {
         return clip(shape).background(fallbackSurface)
     }
     return drawBackdrop(

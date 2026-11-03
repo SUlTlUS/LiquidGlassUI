@@ -1,5 +1,7 @@
 package dev.liquidglass.sample
 
+import dev.liquidglass.*
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -20,7 +22,7 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.zeaze.tianyinwallpaper.backdrop.Backdrop
-import com.zeaze.tianyinwallpaper.catalog.components.LiquidButton
+import dev.liquidglass.GlassButton
 import dev.liquidglass.ios27.Ios27Tokens
 import dev.liquidglass.ios27.LocalIos27PageColors
 import dev.liquidglass.ios27.ios27PressedClickable
@@ -49,7 +51,7 @@ internal fun Ios27ToolbarBottomExample(
     // The selected Tint is translucent in the source; keep the glass surface visible through it.
     val selectedTint = colors.accent.copy(alpha = 0.78f)
 
-    Box(Modifier.fillMaxSize()) {
+    GlassButtonGroup(Modifier.fillMaxSize(), backdrop = backdrop) {
         when {
             variant.contains("Search") -> {
                 ToolbarBottomSearch(
@@ -180,12 +182,12 @@ private fun ToolbarBottomGlassButton(
         role = Role.Button
     }
     if (backdrop != null) {
-        LiquidButton(
+        GlassButton(
             onClick = onClick,
             backdrop = backdrop,
             modifier = accessibleModifier,
             tint = tint,
-            buttonHeight = 48.dp,
+            height = 48.dp,
             contentPadding = PaddingValues(0.dp),
             content = { Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { content() } },
         )

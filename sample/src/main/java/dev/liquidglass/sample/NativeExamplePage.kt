@@ -1,8 +1,7 @@
 package dev.liquidglass.sample
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
-import android.os.Build
+import dev.liquidglass.sample.Ios26AlertDialog as AlertDialog
+import dev.liquidglass.sample.Ios26BottomSheetLayout as ModalBottomSheetLayout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
@@ -25,6 +24,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.rememberGraphicsLayer
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.layer.drawLayer
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
@@ -32,6 +35,9 @@ import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
@@ -46,6 +52,7 @@ import com.zeaze.tianyinwallpaper.backdrop.backdrops.*
 import com.zeaze.tianyinwallpaper.catalog.components.*
 import com.zeaze.tianyinwallpaper.ui.commom.ProgressiveBlurContent
 import dev.liquidglass.ios27.*
+import dev.liquidglass.sample.DemoActionButton as Ios27ActionButton
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.collect
@@ -57,6 +64,12 @@ import top.yukonga.miuix.kmp.nav.gesture.PredictiveBackHandler as MiuixPredictiv
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onReference: () -> Unit) {
+    Ios26SceneOverlayHost { NativeExamplePageContent(entry, onBack, onReference) }
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+private fun NativeExamplePageContent(entry: IphoneExample, onBack: () -> Unit, onReference: () -> Unit) {
     val colors = LocalIos27PageColors.current
     val dark = !MaterialTheme.colors.isLight
     val context = LocalContext.current
@@ -86,10 +99,19 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
     var secondary by rememberSaveable { mutableStateOf(false) }
     var value by rememberSaveable { mutableFloatStateOf(0.5f) }
     var count by rememberSaveable { mutableIntStateOf(0) }
-    var tab by rememberSaveable { mutableIntStateOf(0) }
-    var searchOpen by rememberSaveable(entry.key) { mutableStateOf(false) }
     var menu by rememberSaveable(entry.key) { mutableStateOf(false) }
     var contextMenuMounted by remember(entry.key) { mutableStateOf(false) }
+    val contextSourceLayer = rememberGraphicsLayer()
+    var contextSourceImage by remember(entry.key) { mutableStateOf<ImageBitmap?>(null) }
+    val openContextMenu: () -> Unit = {
+        scope.launch {
+            contextSourceImage = contextSourceLayer.toImageBitmap()
+            contextMenuMounted = true
+            menu = true
+        }
+    }
+    var contextMenuAnchor by remember(entry.key) { mutableStateOf<androidx.compose.ui.geometry.Rect?>(null) }
+    var contextHostOrigin by remember(entry.key) { mutableStateOf(androidx.compose.ui.geometry.Offset.Zero) }
     var contextAreaPressed by remember(entry.key) { mutableStateOf(false) }
     var expanded by rememberSaveable { mutableStateOf(entry.variant == "Expanded=True") }
     var dismissed by rememberSaveable { mutableStateOf(false) }
@@ -100,6 +122,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
     var day by rememberSaveable(entry.key) { mutableIntStateOf(initialDateTime.get(Calendar.DAY_OF_MONTH)) }
     var hour by rememberSaveable(entry.key) { mutableIntStateOf(initialDateTime.get(Calendar.HOUR_OF_DAY)) }
     var minute by rememberSaveable(entry.key) { mutableIntStateOf(initialDateTime.get(Calendar.MINUTE)) }
+    var dateTimeDialog by remember { mutableStateOf<Boolean?>(null) }
     var colorPickerOpen by rememberSaveable(entry.key) { mutableStateOf(entry.category == "Color Picker") }
     var colorPickerGridIndex by rememberSaveable(entry.key) { mutableIntStateOf(6 * 12 + 3) }
     var colorPickerSwatchIndex by rememberSaveable(entry.key) { mutableIntStateOf(6) }
@@ -128,18 +151,11 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
         onCancel = {},
     )
     val pickDate = {
-        DatePickerDialog(context, { _, y, m, d ->
-            year = y
-            month = m
-            day = d
-        }, year, month, day).show()
+        dateTimeDialog = false
         Unit
     }
     val pickTime = {
-        TimePickerDialog(context, { _, h, m ->
-            hour = h
-            minute = m
-        }, hour, minute, false).show()
+        dateTimeDialog = true
         Unit
     }
     val shiftPickerMonth: (Int) -> Unit = { delta ->
@@ -159,8 +175,6 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
         minute,
         if (hour < 12) "AM" else "PM",
     )
-    val hasTabs = entry.category == "Tab Bar"
-    val hasSeparateSearch = hasTabs && entry.variant == "Split Search=True"
     val hasBottomToolbar = entry.category == "Toolbars - Bottom"
     val pageScrollModifier =
         if (entry.category in setOf("Empty States", "Menus")) Modifier else Modifier.verticalScroll(scroll)
@@ -203,7 +217,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
             Box(Modifier.fillMaxSize().semantics { contentDescription = "可操作示例 ${entry.key}" }) {
                 ControlCenterScene(
                     entry,
-                    if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                    backdrop,
                     onReference,
                     enabled,
                     secondary,
@@ -221,7 +235,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
     if (entry.category in setOf("Home Screen", "Home Screen Widgets", "Home Screen Quick Actions")) {
         ExampleFullBleedDesignPage(background = colors.page) {
             Box(Modifier.fillMaxSize().semantics { contentDescription = "可操作示例 ${entry.key}" }) {
-                HomeScreenScene(entry, if (Build.VERSION.SDK_INT >= 33) backdrop else null, onReference)
+                HomeScreenScene(entry, backdrop, onReference)
             }
         }
         return
@@ -233,7 +247,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
             fontScale = 1f,
         ) { topInset ->
             Ios27TextContextMenuHost(
-                backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                backdrop = backdrop,
                 colors = colors,
                 dark = dark,
                 modifier = Modifier.fillMaxSize(),
@@ -253,7 +267,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                     }
 
                     ExampleTopChrome(
-                        backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                        backdrop = backdrop,
                         isLightTheme = !dark,
                         toolbarFile = "12740-23997.json",
                         onBack = onBack,
@@ -280,7 +294,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
             fontScale = 1f,
             modifier = Modifier.semantics { contentDescription = "可操作示例 ${entry.key}" },
         ) { topInset ->
-            Box(Modifier.fillMaxSize()) {
+            Box(Modifier.fillMaxSize().onGloballyPositioned { contextHostOrigin = it.positionInRoot() }) {
                 ExampleBackdropLayer(
                     backdrop = backdrop,
                     background = pageSurface,
@@ -291,6 +305,8 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                         Modifier
                             .offset(x = 16.dp, y = topInset + 9.5.dp)
                             .size(370.dp, 160.dp)
+                            .onGloballyPositioned { contextMenuAnchor = it.boundsInRoot() }
+                            .alpha(if (contextMenuMounted) 0f else 1f)
                             .shadow(
                                 elevation = 32.dp,
                                 shape = contentShape,
@@ -303,12 +319,15 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                                 scaleY = contextAreaScale
                                 transformOrigin = TransformOrigin.Center
                             }
+                            .drawWithContent {
+                                contextSourceLayer.record { this@drawWithContent.drawContent() }
+                                drawLayer(contextSourceLayer)
+                            }
                             .clip(contentShape)
                             .background(colors.group)
                             .onKeyEvent { event ->
                                 if (event.key == Key.Enter && event.type == KeyEventType.KeyDown) {
-                                    contextMenuMounted = true
-                                    menu = true
+                                    openContextMenu()
                                     true
                                 } else false
                             }
@@ -316,8 +335,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                             .semantics {
                                 contentDescription = "Content Area"
                                 onLongClick(label = "打开上下文菜单") {
-                                    contextMenuMounted = true
-                                    menu = true
+                                    openContextMenu()
                                     true
                                 }
                             }
@@ -331,8 +349,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                                     onLongPress = {
                                         if (!menu) {
                                             haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                                            contextMenuMounted = true
-                                            menu = true
+                                            openContextMenu()
                                         }
                                     },
                                 )
@@ -350,8 +367,10 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
 
                 if (contextMenuMounted) {
                     Ios27MenuExample(
+                        sourceSurfaceImage = contextSourceImage,
+                        anchorBounds = contextMenuAnchor?.translate(-contextHostOrigin.x, -contextHostOrigin.y),
                         entry = entry,
-                        backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                        backdrop = backdrop,
                         colors = colors,
                         dark = dark,
                         contextMenuTop = topInset + 185.5.dp,
@@ -370,12 +389,12 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
     }
 
     Ios27TextContextMenuHost(
-        backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+        backdrop = backdrop,
         colors = colors,
         dark = dark,
         modifier = Modifier.fillMaxSize(),
     ) {
-    ModalBottomSheetLayout(modifier = Modifier.imePadding(), sheetState = sheetState, sheetBackgroundColor = colors.group,
+    ModalBottomSheetLayout(modifier = Modifier.imePadding(), sheetState = sheetState, sheetBackgroundColor = colors.group, backdrop = backdrop,
         sheetContent = {
             Column(Modifier.fillMaxWidth().navigationBarsPadding().padding(16.dp)) {
                 Text(panel, style = Ios27Tokens.Type.Title2, color = colors.label)
@@ -386,7 +405,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                         onValueChange = { note = it },
                         description = "编辑内容输入框",
                         placeholder = "编辑内容",
-                        backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                        backdrop = backdrop,
                     )
                     Ios27ActionButton("保存", { text = note; status = "内容已保存"; closePanel() })
                 } else {
@@ -424,7 +443,6 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                     else -> 54.dp
                 },
                     bottom = when {
-                        hasTabs -> 170.dp
                         hasBottomToolbar -> 100.dp
                         else -> 88.dp
                     }),
@@ -496,7 +514,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                     }
                     "Text Fields" -> Ios27TextFieldsExample(
                         entry.key,
-                        backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                        backdrop = backdrop,
                     )
                     "Keyboard" -> {
                         val keyboard = when {
@@ -516,7 +534,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                                     capitalization = if (entry.variant.contains("Uppercase"))
                                         KeyboardCapitalization.Characters else KeyboardCapitalization.None,
                                 ),
-                                backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                                backdrop = backdrop,
                             )
                             if (entry.variant.contains("Replace"))
                                 Ios27EditableTextField(
@@ -524,7 +542,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                                     onValueChange = { note = it },
                                     description = "替换内容输入框",
                                     placeholder = "替换内容",
-                                    backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                                    backdrop = backdrop,
                                 )
                         }
                         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -559,7 +577,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                                     onValueChange = { text = it },
                                     description = "Title 输入框",
                                     placeholder = "Title",
-                                    backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                                    backdrop = backdrop,
                                 )
                                 else -> Ios27ListRow("Action", onClick = { dialog = "确认操作" })
                             } }
@@ -569,6 +587,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                         file = entry.file,
                         variant = entry.variant,
                         background = pickerBackgroundBackdrop,
+                        popupBackdrop = backdrop,
                         year = year,
                         month = month,
                         selectedDay = day,
@@ -673,21 +692,20 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                         // Their controls are rendered as a separate bottom overlay below.
                         if (rememberSceneContentEmpty(entry.file)) return@Ios27PageContent
                     }
-                    "Toolbars - Top", "Tab Bar" -> {
+                    "Toolbars - Top" -> {
                         // Toolbar showcase pages have an empty Content Area in the originals.
                         if (rememberSceneContentEmpty(entry.file)) return@Ios27PageContent
-                        val showSearchContent = if (hasTabs) hasSeparateSearch && searchOpen else entry.variant.contains("Search")
+                        val showSearchContent = entry.variant.contains("Search")
                         if (showSearchContent) Ios27ListSection {
                             Ios27EditableTextField(
                                 value = text,
                                 onValueChange = { text = it },
                                 description = "搜索输入框",
                                 placeholder = "搜索",
-                                backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                                backdrop = backdrop,
                             )
                         }
-                        val contentTabLabel = if (hasTabs && hasSeparateSearch && searchOpen) "搜索"
-                            else listOf("全部", "收藏", "搜索").getOrElse(tab) { "全部" }
+                        val contentTabLabel = "全部"
                         Ios27ListSection {
                             Ios27ListRows((1..12).filter { text.isBlank() || "内容 $it".contains(text) }) { row ->
                                 Ios27ListRow("$contentTabLabel · 内容 $row",
@@ -702,7 +720,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
             }
             // Sibling glass chrome samples only the recorded content layer.
             ExampleTopChrome(
-                backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                backdrop = backdrop,
                 isLightTheme = !dark,
                 toolbarFile = entry.file.takeUnless { entry.category == "Sheets (Modals)" },
                 onBack = onBack,
@@ -724,38 +742,28 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
             if (status.isNotEmpty() && entry.category != "Action Sheet") Snackbar(
                 modifier = Modifier.align(Alignment.BottomCenter).padding(horizontal = 16.dp)
                     .padding(bottom = when {
-                        hasTabs || hasBottomToolbar -> 92.dp
+                        hasBottomToolbar -> 92.dp
                         else -> 12.dp
                     }).semantics { liveRegion = LiveRegionMode.Polite },
                 backgroundColor = colors.group, contentColor = colors.label,
                 shape = RoundedCornerShape(Ios27Tokens.GroupRadius.dp),
             ) { Text(status) }
-            if (hasTabs) Ios27TabBarExample(
-                file = entry.file,
-                selectedTabIndex = tab,
-                onTabSelected = { tab = it; if (hasSeparateSearch) searchOpen = false },
-                backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
-                isLightTheme = !dark,
-                splitSearch = hasSeparateSearch,
-                onSearchClick = { searchOpen = true },
-                modifier = Modifier.align(Alignment.BottomCenter).fillMaxWidth()
-                    .padding(horizontal = 20.dp, vertical = 12.dp),
-            )
             if (hasBottomToolbar) {
                 Box(Modifier.align(Alignment.BottomStart).fillMaxWidth().height(84.dp)) {
                     Ios27ToolbarBottomExample(
                         file = entry.file,
                         variant = entry.variant,
-                        backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                        backdrop = backdrop,
                         onAction = { status = "$it（演示）" },
                     )
                 }
             }
-            if (entry.category == "Color Picker" && colorPickerOpen) {
+            if (entry.category == "Color Picker") {
                 Box(Modifier.fillMaxSize()) {
                 Ios27ColorPickerDialog(
+                    visible = colorPickerOpen,
                     file = entry.file,
-                    backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                    backdrop = backdrop,
                     colors = colors,
                     dark = dark,
                     selectedGridIndex = colorPickerGridIndex,
@@ -773,12 +781,13 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
                 )
                 }
             }
-            if (entry.category == "Sheets (Modals)" && sheetsOpen) {
+            if (entry.category == "Sheets (Modals)") {
                 Box(Modifier.fillMaxSize()) {
                 Ios27SheetsModal(
+                    visible = sheetsOpen,
                     file = entry.file,
                     variant = entry.variant,
-                    backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                    backdrop = backdrop,
                     colors = colors,
                     dark = dark,
                     onDismiss = { sheetsOpen = false },
@@ -789,12 +798,13 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
             }
         }
     }
-    if (entry.category == "Alert" && alertOpen) {
+    if (entry.category == "Alert") {
         Box(Modifier.fillMaxSize()) {
         Ios27AlertExample(
+            visible = alertOpen,
             file = entry.file,
             variant = entry.variant,
-            backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+            backdrop = backdrop,
             colors = colors,
             dark = dark,
             firstValue = alertFirstValue,
@@ -818,7 +828,7 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
     if (entry.category == "Action Sheet" && actionSheetMounted) {
         ExampleDesignOverlay {
             Ios27ActionSheetExample(
-                backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                backdrop = backdrop,
                 colors = colors,
                 dark = dark,
                 visible = actionSheetOpen,
@@ -832,10 +842,11 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
             )
         }
     }
-    if (entry.category == "Activity View" && activityViewOpen) {
+    if (entry.category == "Activity View") {
         ExampleDesignOverlay {
             Ios27ActivityViewExample(
-                backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                visible = activityViewOpen,
+                backdrop = backdrop,
                 colors = colors,
                 dark = dark,
                 thumbnail = popupBackground.image,
@@ -847,14 +858,17 @@ internal fun NativeExamplePage(entry: IphoneExample, onBack: () -> Unit, onRefer
             )
         }
     }
-    if (dialog != null) AlertDialog(onDismissRequest = { dialog = null },
+    dateTimeDialog?.let { time -> Ios26DateTimeDialog(time, backdrop, year, month, day, hour, minute,
+        onDismiss = { dateTimeDialog = null }, onDate = { y, m, d -> year = y; month = m; day = d },
+        onTime = { h, m -> hour = h; minute = m }) }
+    if (dialog != null) AlertDialog(onDismissRequest = { dialog = null }, backdrop = backdrop,
         title = { Text(dialog.orEmpty()) }, text = {
             Ios27EditableTextField(
                 value = note,
                 onValueChange = { note = it },
                 description = "编辑内容输入框",
                 placeholder = "编辑内容",
-                backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                backdrop = backdrop,
             )
         },
         confirmButton = { TextButton(onClick = {

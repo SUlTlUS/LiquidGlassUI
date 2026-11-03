@@ -1,6 +1,8 @@
 package dev.liquidglass.sample
 
-import android.os.Build
+import dev.liquidglass.*
+
+import dev.liquidglass.sample.Ios26AlertDialog as AlertDialog
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -32,9 +34,10 @@ import com.zeaze.tianyinwallpaper.backdrop.backdrops.LayerBackdrop
 import com.zeaze.tianyinwallpaper.backdrop.backdrops.layerBackdrop
 import com.zeaze.tianyinwallpaper.backdrop.backdrops.rememberLayerBackdrop
 import com.zeaze.tianyinwallpaper.backdrop.Backdrop
-import com.zeaze.tianyinwallpaper.catalog.components.LiquidButton
+import dev.liquidglass.GlassButton
 import com.zeaze.tianyinwallpaper.ui.commom.ProgressiveBlurContent
 import dev.liquidglass.ios27.*
+import dev.liquidglass.GlassStandard
 import dev.liquidglass.coloros17.ColorOs17ComponentCatalog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -66,14 +69,21 @@ private sealed interface IphoneRoute : NavKey {
 private const val CategoryLargeTitleToolbarSceneFile = "12740-24013.json"
 internal const val MeloXTabBarExampleKey = "melox-tabbar"
 private val MeloXTabBarExampleEntry = IphoneExample(
-    MeloXTabBarExampleKey, "MeloX TabBar", "原版交互", "",
+    MeloXTabBarExampleKey, "Tab Bar", "标签栏", "",
 )
+private fun mergedTabBarKey(key: String?): String? = when (key) {
+    Ios27ExampleKeys.TabBarDefault, Ios27ExampleKeys.TabBarSplitSearch -> MeloXTabBarExampleKey
+    else -> key
+}
+private val TabBarReferenceEntries: List<IphoneExample>
+    get() = Ios27ExampleCatalog.all.filter { it.category == "Tab Bar" }
+        .map { IphoneExample(it.key, it.category, it.variant, it.file) }
 internal const val ListeningModeExampleKey = "listening-mode"
 private val ListeningModeExampleEntry = IphoneExample(
     ListeningModeExampleKey, "Listening Mode", "四档听音模式", "",
 )
 private val Ios27MechanismExamples = Ios27MechanismExample.entries.map {
-    IphoneExample(it.key, "iOS 27", it.title, "")
+    IphoneExample(it.key, if (it == Ios27MechanismExample.Menu) "Menus" else "通用演示", it.title, "")
 }
 
 // These system-surface examples are removed from the product-facing library.
@@ -111,7 +121,7 @@ internal fun Ios27BackButton(
         }
     }
     if (backdrop != null) {
-        LiquidButton(
+        GlassButton(
             onBack,
             backdrop,
             buttonModifier.semantics { contentDescription = "返回" },
@@ -153,9 +163,9 @@ internal fun BoxScope.ExampleNavBar(
     // When a toolbar owns a large title, the page draws it in the content layer.
     // Do not fall back to the first nested Title or it will appear twice.
     val title = toolbar?.title ?: if (toolbar == null) rememberSceneText(file, "Title") else null
-    Box(Modifier.align(Alignment.TopCenter).fillMaxWidth()
+    GlassButtonGroup(Modifier.align(Alignment.TopCenter).fillMaxWidth()
         .padding(top = WindowInsets.safeDrawing.asPaddingValues().calculateTopPadding())
-        .height(48.dp)) {
+        .height(48.dp), backdrop = backdrop) {
         val visibleButtons = toolbar?.buttons?.let { buttons ->
             if (showTrailing) buttons else buttons.take(1)
         }.orEmpty()
@@ -183,7 +193,7 @@ internal fun BoxScope.ExampleNavBar(
                     }
                 }
                 if (backdrop != null) {
-                    LiquidButton(
+                    GlassButton(
                         onClick,
                         backdrop,
                         Modifier.fillMaxSize(),
@@ -239,6 +249,7 @@ internal fun BoxScope.ExampleNavBar(
 
 @Composable
 internal fun IphoneExamples(
+    standard: GlassStandard,
     initialExample: String? = null,
     initialReference: Boolean = false,
     onBack: () -> Unit,
@@ -246,18 +257,22 @@ internal fun IphoneExamples(
     rootScrollState: ScrollState? = null,
     onSecondaryStateChanged: (Boolean) -> Unit = {},
 ) {
+    SampleGlassTheme(standard) {
     IphoneExamplesMiuix(
-        initialExample = initialExample,
+        standard = standard,
+        initialExample = if (initialExample == "ios26-multilevel-menu") Ios27MechanismExample.Menu.key else initialExample,
         initialReference = initialReference,
         onBack = onBack,
         rootBackdrop = rootBackdrop,
         rootScrollState = rootScrollState,
         onSecondaryStateChanged = onSecondaryStateChanged,
     )
+    }
 }
 
 @Composable
 private fun IphoneExamplesMiuix(
+    standard: GlassStandard,
     initialExample: String?,
     initialReference: Boolean,
     onBack: () -> Unit,
@@ -283,9 +298,9 @@ private fun IphoneExamplesMiuix(
                         it.getString("file"),
                     )
                 }
-            }.filterNot { it.category in HiddenPhoneExampleCategories } + MeloXTabBarExampleEntry + ListeningModeExampleEntry +
+            }.filterNot { it.category in HiddenPhoneExampleCategories || it.category == "Tab Bar" } + MeloXTabBarExampleEntry + ListeningModeExampleEntry +
                 Ios27MechanismExamples +
-                ColorOs17ComponentCatalog.entries.map { IphoneExample(it.key, it.category, it.title, "") }
+                ColorOs17ComponentCatalog.entries.map { IphoneExample(it.key, "ColorOS 17", "${it.category} · ${it.title}", "") }
         }
     }
 
@@ -299,15 +314,19 @@ private fun IphoneExamplesMiuix(
         return
     }
 
-    val initialEntry = entries.firstOrNull { it.key == initialExample }
+    val initialEntry = entries.firstOrNull { it.key == mergedTabBarKey(initialExample) }
     val initialRoutes = remember(entries, initialExample, initialReference) {
         buildList<IphoneRoute> {
             add(IphoneRoute.Root)
             if (initialEntry != null) {
-                add(IphoneRoute.Category(initialEntry.category))
+                if (initialEntry.key !in setOf(ListeningModeExampleKey, MeloXTabBarExampleKey)) {
+                    add(IphoneRoute.Category(initialEntry.category))
+                }
                 add(IphoneRoute.Example(initialEntry.key))
-                if (initialReference && initialEntry.file.isNotBlank()) {
-                    add(IphoneRoute.Reference(initialEntry.key))
+                if (initialReference) {
+                    val referenceEntry = TabBarReferenceEntries.firstOrNull { it.key == initialExample }
+                        ?: initialEntry.takeIf { it.file.isNotBlank() }
+                    if (referenceEntry != null) add(IphoneRoute.Reference(referenceEntry.key))
                 }
             }
         }
@@ -317,6 +336,9 @@ private fun IphoneExamplesMiuix(
     val popBack: () -> Unit = {
         if (backStack.size > 1) {
             backStack.removeAt(backStack.lastIndex)
+            if ((backStack.lastOrNull() as? IphoneRoute.Category)?.name == "Tab Bar") {
+                backStack.removeAt(backStack.lastIndex)
+            }
         } else {
             onBack()
         }
@@ -339,12 +361,19 @@ private fun IphoneExamplesMiuix(
                 scrollState = rootScrollState,
                 rootBackdrop = rootBackdrop,
                 onCategory = { name ->
-                    backStack.add(IphoneRoute.Category(name))
+                    backStack.add(when (name) {
+                        "Listening Mode" -> IphoneRoute.Example(ListeningModeExampleKey)
+                        "Tab Bar" -> IphoneRoute.Example(MeloXTabBarExampleKey)
+                        else -> IphoneRoute.Category(name)
+                    })
                 },
             )
         }
 
         entry<IphoneRoute.Category> { route ->
+            if (route.name == "Tab Bar") {
+                MeloXTabBarExamplePage(onBack = popBack)
+            } else {
             IphoneCategoryBackPreview(
                 category = route.name,
                 entries = entries,
@@ -355,18 +384,22 @@ private fun IphoneExamplesMiuix(
                     backStack.add(IphoneRoute.Example(example.key))
                 },
             )
+            }
         }
 
         entry<IphoneRoute.Example> { route ->
-            val entry = entries.firstOrNull { it.key == route.key }
-            if (entry?.category == "iOS 27") {
-                Ios27MechanismExamplePage(entry.key, popBack)
+            val routeKey = if (route.key == "ios26-multilevel-menu") Ios27MechanismExample.Menu.key else mergedTabBarKey(route.key)
+            val entry = entries.firstOrNull { it.key == routeKey }
+            if (entry != null && Ios27MechanismExample.entries.any { it.key == entry.key }) {
+                Ios27MechanismExamplePage(entry.key, standard, popBack)
             } else if (entry?.key == MeloXTabBarExampleKey) {
                 MeloXTabBarExamplePage(onBack = popBack)
             } else if (entry?.key == ListeningModeExampleKey) {
-                ListeningModeExamplePage(onBack = popBack)
+                SampleGlassTheme(GlassStandard.Ios26) { ListeningModeExamplePage(onBack = popBack) }
             } else if (entry != null && ColorOs17ComponentCatalog.find(entry.key) != null) {
-                ColorOs17ExamplePage(ColorOs17ComponentCatalog.find(entry.key)!!, onBack = popBack)
+                SampleGlassTheme(GlassStandard.Ios26) {
+                    ColorOs17ExamplePage(ColorOs17ComponentCatalog.find(entry.key)!!, onBack = popBack)
+                }
             } else if (entry != null) {
                 Ios27ExampleContent(
                     spec = Ios27ExampleSpec(
@@ -380,15 +413,18 @@ private fun IphoneExamplesMiuix(
                         backStack.add(IphoneRoute.Reference(entry.key))
                     },
                 )
+            } else {
+                LaunchedEffect(route.key) { popBack() }
             }
         }
 
         entry<IphoneRoute.Reference> { route ->
-            val entry = entries.firstOrNull { it.key == route.key }
+            val referenceEntries = entries + TabBarReferenceEntries
+            val entry = referenceEntries.firstOrNull { it.key == route.key }
             if (entry != null) {
                 IphoneReferenceRoute(
                     entry = entry,
-                    entries = entries,
+                    entries = referenceEntries,
                     colors = colors,
                     onBack = popBack,
                     onSelectVariant = { key ->
@@ -562,12 +598,11 @@ private fun IphoneRootBackPreview(
     val pageBackdrop = rootBackdrop ?: rememberExamplePageBackdrop(colors.page)
     val categories = entries.groupBy { it.category }
     val categoryGroups = listOf(
-        listOf("iOS 27"),
+        listOf("通用演示"),
         listOf(
             "Toolbars - Top",
             "Toolbars - Bottom",
             "Tab Bar",
-            "MeloX TabBar",
             "Listening Mode",
             "Sheets (Modals)",
             "Control Center",
@@ -598,7 +633,7 @@ private fun IphoneRootBackPreview(
             "Home Screen Widgets",
             "Home Screen",
         ),
-    ).plus(listOf(ColorOs17ComponentCatalog.entries.map { it.category }.distinct())).map { group ->
+    ).plus(listOf(listOf("ColorOS 17"))).map { group ->
         group.mapNotNull { name -> categories[name]?.let { variants -> name to variants } }
     }.filter { it.isNotEmpty() }
 
@@ -613,7 +648,7 @@ private fun IphoneRootBackPreview(
             ) {
                 Ios27PageHeader(
                     "手机示例",
-                    if (entries.isNotEmpty()) "iOS 27 新机制 · iOS 26 原有示例\n${entries.count { it.file.isNotBlank() }} 个原稿变体 · ${entries.count { it.file.isBlank() }} 个源码示例" else null,
+                    if (entries.isNotEmpty()) "当前标准：${LocalGlassStandard.current.label}\n${entries.count { it.file.isNotBlank() }} 个原稿变体 · ${entries.count { it.file.isBlank() }} 个源码示例" else null,
                 )
                 categoryGroups.forEachIndexed { index, group ->
                     Ios27ListSection {
@@ -634,7 +669,7 @@ private fun IphoneRootBackPreview(
         },
         overlay = { _, backdrop ->
             ExampleTopChrome(
-                backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                backdrop = backdrop,
                 isLightTheme = MaterialTheme.colors.isLight,
                 blurAlpha = (previewScroll.value / blurRevealDistance).coerceIn(0f, 1f),
                 scrollDriven = true,

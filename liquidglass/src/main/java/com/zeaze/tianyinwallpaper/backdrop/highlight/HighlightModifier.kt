@@ -1,7 +1,6 @@
 package com.zeaze.tianyinwallpaper.backdrop.highlight
 
 import android.graphics.BlurMaskFilter
-import android.os.Build
 import android.view.View
 import android.view.ViewTreeObserver
 import androidx.compose.ui.Modifier
@@ -87,7 +86,6 @@ internal class HighlightNode(
 
     private val runtimeShaderCache = RuntimeShaderCacheImpl()
 
-    private var prevStyle: HighlightStyle? = null
     private var sensorView: View? = null
     private var sensorRegistered = false
     private val onTiltChanged: () -> Unit = { if (isAttached) invalidateDraw() }
@@ -99,7 +97,7 @@ internal class HighlightNode(
     private fun updateSensor(value: Highlight?) {
         val view = sensorView
         val style = value?.style as? HighlightStyle.Default
-        val enabled = Build.VERSION.SDK_INT >= 33 && view != null &&
+        val enabled = view != null &&
             view.isAttachedToWindow && view.windowVisibility == View.VISIBLE &&
             style?.followDeviceTilt == true && value.width.value > 0f && value.alpha > 0f
         if (enabled == sensorRegistered) return
@@ -179,7 +177,6 @@ internal class HighlightNode(
         }
         clipPath = null
         runtimeShaderCache.clear()
-        prevStyle = null
     }
 
     private fun DrawScope.configurePaint(highlight: Highlight) {
@@ -193,23 +190,18 @@ internal class HighlightNode(
             } else {
                 null
             }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            val style = highlight.style
-            paint.shader = if (Build.VERSION.SDK_INT >= 33 && style is HighlightStyle.Default && style.followDeviceTilt) {
-                runCatching {
-                    runtimeShaderCache.obtainRuntimeShader("GyroscopeBloom", GyroscopeHighlightShader).apply {
-                        GyroscopeHighlight.configure(this, size.width, size.height,
-                            sensorView?.display?.rotation ?: 0, style.sensorRotation, style.color)
-                    }.asComposeShader()
-                }.getOrElse {
-                    with(style) { createShader(shapeProvider.innerShape, runtimeShaderCache) }
-                }
-            } else with(style) {
-                createShader(
-                    shape = shapeProvider.innerShape,
-                    runtimeShaderCache = runtimeShaderCache
-                )
+        val style = highlight.style
+        paint.shader = if (style is HighlightStyle.Default && style.followDeviceTilt) {
+            runCatching {
+                runtimeShaderCache.obtainRuntimeShader("GyroscopeBloom", GyroscopeHighlightShader).apply {
+                    GyroscopeHighlight.configure(this, size.width, size.height,
+                        sensorView?.display?.rotation ?: 0, style.sensorRotation, style.color)
+                }.asComposeShader()
+            }.getOrElse {
+                with(style) { createShader(shapeProvider.innerShape, runtimeShaderCache) }
             }
+        } else with(style) {
+            createShader(shapeProvider.innerShape, runtimeShaderCache)
         }
     }
 }

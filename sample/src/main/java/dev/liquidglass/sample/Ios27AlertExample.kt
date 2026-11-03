@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.zeaze.tianyinwallpaper.backdrop.Backdrop
-import dev.liquidglass.ios27.LiquidDialog
+import dev.liquidglass.sample.Ios26Modal as LiquidDialog
 import dev.liquidglass.ios27.LiquidDialogButton
 import dev.liquidglass.ios27.Ios27PageColors
 import dev.liquidglass.ios27.Ios27Tokens
@@ -34,6 +34,7 @@ internal fun Ios27AlertExample(
     onDefault: () -> Unit,
     onDestructive: () -> Unit,
     onDismiss: () -> Unit,
+    visible: Boolean = true,
 ) {
     val stacked = variant == "Type=Stacked"
     val width = if (stacked) 298.dp else 300.dp
@@ -46,6 +47,7 @@ internal fun Ios27AlertExample(
     val message = rememberSceneText(file, "A message should be a short, complete sentence.")
 
     LiquidDialog(
+        visible = visible,
         backdrop = backdrop,
         onDismissRequest = onDismiss,
         width = width,

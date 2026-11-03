@@ -1,0 +1,119 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User reported all circular buttons still following overall material rather than the independent button drag effect",
+  "reason": "Decouple actual button contours from material: preset 26 reflows the capsule and preset 27 stretches its original contour; synchronize standalone/Goo/rim/refraction/feather geometry and refresh backdrop clip provider",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlClashControlHighlight.kt",
+      "baselineSha256": "7fa44099db52802b169ab469e140cf895384bdc32e49d184c64d087223e203b4",
+      "mergedSha256": "ec7a7568f3395c915dfd5e13249aa6c3d056d39aea76e8c691282b94f98cc960"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassControls.kt",
+      "baselineSha256": "b4b29212c1ef7f4a32bfbd13c33f7ebda6794d9d7ceb0f7145b19e8b1d0938ee",
+      "mergedSha256": "5ec2e92eea46d839deb2ed3851f0615bdb82b2d0943af6026e08305bdb70f5f1"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassEffects.kt",
+      "baselineSha256": "2f8e784a9f5d78e76672753b971756b6118fd8fc712e18c1875f5334d1570709",
+      "mergedSha256": "30b111b631b4c15511e561dfd1a773faeca013d3b09b30bb8de707f8648f2712"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassGeometry.kt",
+      "baselineSha256": "91905a11c5d5621acf718e9c4e5064cc2828909715e7c25591300fe07fffbaeb",
+      "mergedSha256": "550a014eca4f0c7e8b2b1109d1dbd87d8aca75eb61d693c7198edc1664ad08d3"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GooButtonGroup.kt",
+      "baselineSha256": "05007a4417d06e3feab7573c7fe082d7d84fc76947ffe065dbd63ccc8e5158a2",
+      "mergedSha256": "661cb53fed7d57beac53b38f24d5f351a7be27c394ff0b05e58d60d488632897"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GooRowOutline.kt",
+      "baselineSha256": "8e5fbd6363c45f3c6b9cf2fb18c22b8c0827d68c187db7a488df254aa2c09a31",
+      "mergedSha256": "473e1a8c23ee037f66d32199f9a383dfe41186606666e21f58ff499d5dbd958d"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GooRowPathCache.kt",
+      "baselineSha256": "9c35bda4ad0705da4cc023cd947a5ab8383b90c8c4e2039f68cb21d3cc9ed038",
+      "mergedSha256": "0695cd4bf2090d507b5d43ece13dbfcbc363e184ae648b101eeb86efeaea3bad"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/Ios26FusionGroup.kt",
+      "baselineSha256": "be093cad57c314f0c99f0136dbf79e22150a16712f219d77439a329722f8177d",
+      "mergedSha256": "dd0cf1c380367fee7c772c0d2f10a356478d4e238e0130284ef9267072bceca7"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/SketchGlassBridge.kt",
+      "baselineSha256": "a96309bd144ecbed90451ef1b475e6a60ba754af52234c523cfa4a958e100796",
+      "mergedSha256": "54b72f463f3fcb4d1d1a0efd14022b4436880c060952f6f3c548120f1e8c21a2"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/SketchGooRefraction.kt",
+      "baselineSha256": "7f5aef38379e28b0b16771265d19bc5703a5b846db4737336e6fdb2997d7d833",
+      "mergedSha256": "d03a235c5eeff5d50b3c57e2abe1962643672817101161390aee555805c4bb6b"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/DrawBackdropModifier.kt",
+      "baselineSha256": "e678522beecfa8bb0653ca1868f83e2fb2ef02f7d2bfed70c97eb492d9b029cf",
+      "mergedSha256": "76b2733ca66b8e56b825a9237e134a2ce91787fbaad95ae243f2e319a0287a11"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidButtonCore.kt",
+      "baselineSha256": "774daab116b77616e7387afb036f767ab2c9b5c853db3ba2e7729b7b07221179",
+      "mergedSha256": "292d20bd1b6e4b27052ddf8dfe66b703f48d49c94ccc5c10a8fc7ec6badd5f4e"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/rendering/GlassButtonLighting.kt",
+      "baselineSha256": "4638b6e32e406f816968ec202f3f8f54927ce8ca9d1d72b5f7f944006640a9a7",
+      "mergedSha256": "6cac08e68525982c75cef1e721f75509cd7db9dff7c289ab7cf44968ca627a32"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/rendering/GlassButtonMotion.kt",
+      "baselineSha256": "70408c4267f4153ff5fb7fe279d6868bebc1aed84c506f30d66ddf5b7aea9f01",
+      "mergedSha256": "8e0737092e991ab57bbc9a5589d0506bcc374a6a3f2c0e4c1ba23ad061d78bf7"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/rendering/LiquidButtonFusion.kt",
+      "baselineSha256": "9592f8fcf66a4dadcb883bc101f43c991491472f2e889becdbd667e7a8e06e71",
+      "mergedSha256": "1e198bdf5164a9929d9ae8e2e55cc8e5c9776ab52c4cd6c3ba02359e7bc04b84"
+    },
+    {
+      "path": "AGENTS.md",
+      "baselineSha256": "a92d5b0fd58e383c869453e48b0118cc00097e811425f325e0e4178043cd8814",
+      "mergedSha256": "d9d072270d4f37caf3772bb05005c760ab27d3982b5036380064b875fa1aa55d"
+    },
+    {
+      "path": "docs/component-library.md",
+      "baselineSha256": "f5d8da15f01eb270d65bf3fd1a12b8a121dd42a31c82be45b8ae6cba757c195b",
+      "mergedSha256": "e1b3d55d3fd5cf07f5965838e0614d51586f66e5e67946705bfceefcb4db44cd"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/assets/shaders/ios26_fusion_feather.agsl",
+      "baselineSha256": "9d57702925cc9a446ea560dcdda4709845534c341339333f41c2ac2324188875",
+      "mergedSha256": "0857f8d116bc7ed5a34008929dfd700ae69bd026dcef10cb4e13cd5a858a7acf"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/assets/shaders/flclash_control_highlight.agsl",
+      "baselineSha256": "d92b5364afb9525014133c30a3bb731d0df156be689db688e5333b4a86357420",
+      "mergedSha256": "c68577c01a54d128a2c974aae1e1e9a143dd3e52e00b4127a5ac56c2c2383113"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/assets/shaders/sketch_goo_lens.agsl",
+      "baselineSha256": "d53858978adf128106d5189ce4aad564230cb4fdfd2bac6df953964ede394fb0",
+      "mergedSha256": "d90822010ceec158268914622e31cf928a5b0a330a879542fa2106cb9a25095b"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/ButtonContour.kt",
+      "baselineSha256": null,
+      "mergedSha256": "a978bda8c7403c05deb66047150e3893a35f380edc0c2a8db1f1a2cb8b7e455f"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/ButtonContourRoutingTest.kt",
+      "baselineSha256": null,
+      "mergedSha256": "1d407ff293020ff614cee8c01786bd613b72a84265ae69f4383bb312c3a3501f"
+    }
+  ],
+  "tests": "sources updated, not run",
+  "frozenBaselines": "unchanged"
+}

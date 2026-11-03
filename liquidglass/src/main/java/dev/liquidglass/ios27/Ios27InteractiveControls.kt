@@ -1,6 +1,5 @@
 package dev.liquidglass.ios27
 
-import android.os.Build
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -46,11 +45,10 @@ fun Ios27SliderRow(label: String, value: Float, onValueChange: (Float) -> Unit,
                         drawCircle(tickColor, radius, androidx.compose.ui.geometry.Offset(size.width * it / 250f, y))
                     }
                 }
-                if (Build.VERSION.SDK_INT >= 33) LiquidSlider(value = { value }, onValueChange = onValueChange,
+                LiquidSlider(value = { value }, onValueChange = onValueChange,
                     valueRange = 0f..1f, visibilityThreshold = 0.001f, backdrop = backdrop,
                     isLightTheme = colors.page != Ios27Tokens.PageDark, dragWholeTrack = true,
                     onValueChangeFinished = onValueChangeFinished)
-                else Slider(value, onValueChange, onValueChangeFinished = onValueChangeFinished)
             }
             if (trailing != null) {
                 Spacer(Modifier.width(12.dp))
@@ -62,7 +60,7 @@ fun Ios27SliderRow(label: String, value: Float, onValueChange: (Float) -> Unit,
 
 @Composable
 fun Ios27SwitchRow(label: String, checked: Boolean, onCheckedChange: (Boolean) -> Unit) {
-    Ios27SwitchRow(label, checked, showStateText = true, onCheckedChange = onCheckedChange)
+    Ios27SwitchRow(label, checked, showStateText = false, onCheckedChange = onCheckedChange)
 }
 
 @Composable
@@ -76,9 +74,8 @@ fun Ios27SwitchRow(label: String, checked: Boolean, showStateText: Boolean, onCh
             toggleableState = if (checked) ToggleableState.On else ToggleableState.Off
             onClick { onCheckedChange(!checked); true }
         }, Alignment.Center) {
-            if (Build.VERSION.SDK_INT >= 33) LiquidToggle(selected = { checked }, onSelect = onCheckedChange,
+            LiquidToggle(selected = { checked }, onSelect = onCheckedChange,
                 backdrop = backdrop, isLightTheme = colors.page != Ios27Tokens.PageDark)
-            else Switch(checked, onCheckedChange)
         }
     })
 }
@@ -111,7 +108,6 @@ fun Ios27TextFieldRow(label: String, value: String, onValueChange: (String) -> U
 fun Ios27ActionButton(label: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val colors = LocalIos27PageColors.current
     val backdrop = rememberCanvasBackdrop { drawRect(colors.group) }
-    if (Build.VERSION.SDK_INT >= 33) LiquidButton(onClick, backdrop,
+    LiquidButton(onClick, backdrop,
         modifier = modifier.semantics { contentDescription = label }) { Text(label, color = colors.label) }
-    else TextButton(onClick, modifier) { Text(label, color = colors.accent) }
 }

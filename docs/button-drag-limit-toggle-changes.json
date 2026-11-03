@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User requested a switch for the limit and an explanation of the animation override",
+  "reason": "Add persistent liquid-glass toggle and GlassEffects.limitButtonDrag API for the 27 coupled displacement/distortion limit; explain animation overrides; 26 motion unchanged",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/ButtonDrag.kt",
+      "baselineSha256": "856ce1e7e1d7323485a4d90cf6fc801909bec252a9cc6fc4d101417a3f2e5c84",
+      "mergedSha256": "d159bc161e2f02b79352e0e43c1bac6552542a1751dd51697cb6cb6e32e6976c"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassAnimation.kt",
+      "baselineSha256": "da5f1cb9bf230ea6f0803da8532d39b7f7055bf9de4fc7a32c8157335f3eb079",
+      "mergedSha256": "7e96a3164de1ee261885e086e8c8946b5bd1cc18343e696e6f75dd7bf795e66b"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassControls.kt",
+      "baselineSha256": "90c48021190d8ae0c267417beaba036130ac5149cb26c10fb126f80d9cce171b",
+      "mergedSha256": "b4b29212c1ef7f4a32bfbd13c33f7ebda6794d9d7ceb0f7145b19e8b1d0938ee"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassEffects.kt",
+      "baselineSha256": "431d4dc66bdc502c2c53ce41f1bb48979108283b01d469f5367605ecb958966c",
+      "mergedSha256": "b0007fae23c4b7169d78283164905af1475c9508df6cb77702b503e7c77692e7"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/ButtonDragTest.kt",
+      "baselineSha256": "5c2b877bc2603a4eb31f40927beb9713db1d7c4249b3d5e3808c07e5ea8c27e9",
+      "mergedSha256": "061e6437261ebacbdb566b785c4102d67527364a038d3eb3585dafe633bffd4a"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassEffectsTest.kt",
+      "baselineSha256": "74a4771488476499344e6e1341145db9a1abbad2680eb9702d1de829fde8c333",
+      "mergedSha256": "802d716a679b46ad688e0ef3e221af0b6537efc3a540d633dffc5bd3c7bdc198"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/MainActivity.kt",
+      "baselineSha256": "3334196aad716c1fc6043499cf729f3db87cbe4be8bc68ef319b75c2fa77bcf6",
+      "mergedSha256": "5ab377c57fa6a1bb41126f2396c808b961a8da47ebc37bd20f3ea81ea8411049"
+    },
+    {
+      "path": "AGENTS.md",
+      "baselineSha256": "86c982bdb1b0b0764fa47052e336467a69103988d290586c0df350a31b20be53",
+      "mergedSha256": "7b50a303009224f19a0fcac2245e8fb7b44d7d98a3e05e299d060768ab7ff0dd"
+    },
+    {
+      "path": "docs/component-library.md",
+      "baselineSha256": "70556dc62fe26079e8942bf861f5afdac477f02c375e70c3178d01da484854a2",
+      "mergedSha256": "0899e4c8c1e6cedbd252e6eb835a8d56c399bd45be5faf5b9554166cfe673235"
+    }
+  ],
+  "tests": "sources updated, not run",
+  "frozenBaselines": "unchanged"
+}

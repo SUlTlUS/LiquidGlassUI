@@ -1,7 +1,6 @@
 package dev.liquidglass.sample
 
 import android.graphics.RectF
-import android.os.Build
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -24,6 +23,10 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.graphics.ImageBitmap
+import kotlinx.coroutines.launch
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -65,8 +68,6 @@ import com.zeaze.tianyinwallpaper.backdrop.effects.colorControls
 import com.zeaze.tianyinwallpaper.backdrop.highlight.Highlight
 import com.zeaze.tianyinwallpaper.backdrop.shadow.Shadow
 import com.zeaze.tianyinwallpaper.catalog.components.WheelPicker
-import com.example.liquidglass.GlassMaterial
-import com.example.liquidglass.LiquidGlassView
 import dev.liquidglass.ios27.Ios27DisclosureIndicator
 import dev.liquidglass.ios27.Ios27DisclosureVariant
 import dev.liquidglass.ios27.Ios27IndicatorGlyph
@@ -222,7 +223,8 @@ private fun PickerPillText(
                     else onClick()
                 },
             )
-            .semantics { contentDescription = text },
+            .semantics { contentDescription = text }
+            .pickerSourceForeground(surface = true),
         contentAlignment = Alignment.Center,
     ) {
         Box(
@@ -231,7 +233,9 @@ private fun PickerPillText(
                 .background(pill),
             contentAlignment = Alignment.Center,
         ) {
-            Text(text, color = colors.label, style = Ios27Tokens.Type.Body)
+            Box(Modifier.fillMaxSize().pickerSourceForeground(), contentAlignment = Alignment.Center) {
+                Text(text, color = colors.label, style = Ios27Tokens.Type.Body)
+            }
         }
     }
 }
@@ -269,7 +273,7 @@ private fun PickerCalendar(
 
     Column(
         Modifier.fillMaxWidth().then(
-            if (!compact && Build.VERSION.SDK_INT >= 33) Modifier.drawBackdrop(
+            if (!compact) Modifier.drawBackdrop(
                 backdrop = background,
                 shape = { RoundedRectangle(frameRadius) },
                 effects = {
@@ -314,7 +318,7 @@ private fun PickerCalendar(
                         shape = RoundedCornerShape(10.dp),
                         enabled = !headerHidden,
                         onClick = onHeaderClick,
-                    ),
+                    ).pickerSourceForeground(surface = true).pickerSourceForeground(),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
@@ -489,6 +493,8 @@ private fun BoxScope.QweaMonthYearPopup(
     dark: Boolean,
     background: Backdrop,
     originBounds: Rect,
+    sourceImage: ImageBitmap?,
+    sourceSurfaceImage: ImageBitmap?,
     hostWidthPx: Float,
     onYearSelected: (Int) -> Unit,
     onMonthSelected: (Int) -> Unit,
@@ -496,181 +502,10 @@ private fun BoxScope.QweaMonthYearPopup(
     onCancel: () -> Unit,
     onHidden: () -> Unit,
 ) {
-    val density = LocalDensity.current
-    val progress = remember { Animatable(0f) }
-
-    LaunchedEffect(visible) {
-        progress.animateTo(
-            targetValue = if (visible) 1f else 0f,
-            animationSpec = tween(durationMillis = 340, easing = FastOutSlowInEasing),
-        )
-        if (!visible) onHidden()
-    }
-
-    val p = progress.value.coerceIn(0f, 1f)
-    fun lerpBy(start: Float, end: Float, amount: Float): Float =
-        start + (end - start) * amount
-    fun lerpDp(start: androidx.compose.ui.unit.Dp, end: androidx.compose.ui.unit.Dp) =
-        start + (end - start) * p
-
-    val panelWidthPx = with(density) { 302.dp.toPx() }
-    val panelHeightPx = with(density) { 300.dp.toPx() }
-    val finalLeftPx = ((hostWidthPx - panelWidthPx) / 2f).coerceAtLeast(0f)
-    val finalTopPx = with(density) { 40.dp.toPx() }
-
-    val animatedLeftPx = lerpBy(originBounds.left, finalLeftPx, p)
-    val animatedTopPx = lerpBy(originBounds.top, finalTopPx, p)
-    val animatedWidthPx = lerpBy(originBounds.width, panelWidthPx, p)
-    val animatedHeightPx = lerpBy(originBounds.height, panelHeightPx, p)
-    val animatedRightPx = animatedLeftPx + animatedWidthPx
-    val animatedBottomPx = animatedTopPx + animatedHeightPx
-
-    val animatedLeft = with(density) { animatedLeftPx.toDp() }
-    val animatedTop = with(density) { animatedTopPx.toDp() }
-    val animatedWidth = with(density) { animatedWidthPx.toDp() }
-    val animatedHeight = with(density) { animatedHeightPx.toDp() }
-    val animatedCorner = lerpDp(10.dp, 34.dp)
-
-    val originRect = RectF(
-        originBounds.left,
-        originBounds.top,
-        originBounds.right,
-        originBounds.bottom,
-    )
-    val animatedRect = RectF(
-        animatedLeftPx,
-        animatedTopPx,
-        animatedRightPx,
-        animatedBottomPx,
-    )
-    val primaryMerge = ((p - 0.72f) / 0.28f).coerceIn(0f, 1f)
-    val primaryRect = RectF(
-        lerpBy(originRect.left, animatedRect.left, primaryMerge),
-        lerpBy(originRect.top, animatedRect.top, primaryMerge),
-        lerpBy(originRect.right, animatedRect.right, primaryMerge),
-        lerpBy(originRect.bottom, animatedRect.bottom, primaryMerge),
-    )
-    val startCornerPx = with(density) { 10.dp.toPx() }
-    val animatedCornerPx = with(density) { animatedCorner.toPx() }
-    val bridgeStrength = (4f * p * (1f - p)).coerceIn(0f, 1f)
-    val smoothingPx = with(density) { 16.dp.toPx() } * bridgeStrength
-
-    val popupSurface = if (dark) Color(0xE62C2C2E) else Color.White.copy(alpha = 0.74f)
-    val animatedShape = RoundedCornerShape(animatedCorner)
-    val atPressedMaskEndpoint = p <= 0.10f
-
-    Box(Modifier.fillMaxSize()) {
-        // QWEA0 sits underneath the real window and only contributes the liquid bridge
-        // during the shape transition. At the final frame it is fully covered.
-        if (!atPressedMaskEndpoint) {
-            AndroidView(
-                factory = { context ->
-                    LiquidGlassView(context).apply {
-                        enableDynamicBackground = false
-                        useShaderPipeline = true
-                        material = GlassMaterial.CLEAR
-                        enableAdaptiveTint = false
-                        enableSensorHighlight = true
-                        enableBackdropBlur = false
-                        enableChromaticDispersion = true
-                        bevelWidth = with(density) { 18.dp.toPx() }
-                        refractionHeight = with(density) { 8.dp.toPx() }
-                        refractionFalloff = 2f
-                        dispersionStrength = 0.08f
-                        glassTint = if (dark) {
-                            android.graphics.Color.argb(138, 44, 44, 46)
-                        } else {
-                            android.graphics.Color.argb(150, 248, 248, 250)
-                        }
-                    }
-                },
-                update = { glass ->
-                    glass.setPrimaryShape(primaryRect, startCornerPx)
-                    glass.setSecondaryShape(animatedRect, animatedCornerPx, smoothingPx)
-                    glass.invalidate()
-                },
-                modifier = Modifier.fillMaxSize(),
-            )
-        }
-
-        // This is the original window itself. We animate only its geometry; the
-        // renderer/material/content remain the same.
-        Box(
-            Modifier
-                .offset(x = animatedLeft, y = animatedTop)
-                .width(animatedWidth)
-                .height(animatedHeight)
-                .then(
-                    when {
-                        atPressedMaskEndpoint -> Modifier.background(colors.pressed, animatedShape)
-                        Build.VERSION.SDK_INT >= 33 -> Modifier.drawBackdrop(
-                            backdrop = background,
-                            shape = { RoundedRectangle(animatedCorner) },
-                            effects = {
-                                colorControls(brightness = if (dark) 0f else 0.2f, saturation = 1.5f)
-                                blur(if (dark) 8.dp.toPx() else 16.dp.toPx())
-                                lens(24.dp.toPx(), 48.dp.toPx(), depthEffect = true)
-                            },
-                            highlight = { Highlight.Plain },
-                            shadow = {
-                                Shadow(
-                                    radius = 48.dp,
-                                    offset = DpOffset(0.dp, 8.dp),
-                                    color = Color.Black.copy(alpha = 0.22f),
-                                )
-                            },
-                            onDrawSurface = { drawRect(popupSurface) },
-                        )
-                        else -> Modifier.background(popupSurface, animatedShape)
-                    },
-                )
-                .clip(animatedShape).ios27AndroidPane("选择年月", onCancel),
-            contentAlignment = Alignment.TopCenter,
-        ) {
-            if (p > 0.40f) Column(
-                Modifier.requiredSize(302.dp, 300.dp)
-                    .padding(start = 16.dp, top = 20.dp, end = 16.dp, bottom = 20.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                Text(
-                    text = "选择年月",
-                    style = Ios27Tokens.Type.Title2.copy(fontWeight = FontWeight.SemiBold),
-                    color = colors.label,
-                )
-                MonthYearWheelPicker(
-                    year = year,
-                    month = month,
-                    onYearSelected = onYearSelected,
-                    onMonthSelected = onMonthSelected,
-                )
-                Row(
-                    Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                ) {
-                    Box(
-                        Modifier.weight(1f)
-                            .height(48.dp)
-                            .clip(PickerAccessoryPillShape)
-                            .background(colors.accent)
-                            .clickable(enabled = p > 0.98f, onClick = onConfirm),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text("确定", color = Color.White, style = Ios27Tokens.Type.Title3)
-                    }
-                    Box(
-                        Modifier.weight(1f)
-                            .height(48.dp)
-                            .clip(PickerAccessoryPillShape)
-                            .background(if (dark) Ios27Tokens.PressedDark else Ios27Tokens.PressedLight)
-                            .clickable(enabled = p > 0.98f, onClick = onCancel),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text("取消", color = colors.label, style = Ios27Tokens.Type.Title3)
-                    }
-                }
-            }
-        }
+    Ios26PickerPopup(visible, background, dark, "选择年月", onConfirm, onCancel, onHidden,
+        anchorBounds = originBounds, sourceLabel = pickerMonthTitle(year, month), sourceImage = sourceImage,
+        sourceSurfaceImage = sourceSurfaceImage) {
+        MonthYearWheelPicker(year, month, onYearSelected, onMonthSelected)
     }
 }
 
@@ -683,6 +518,8 @@ private fun BoxScope.QweaTimePopup(
     dark: Boolean,
     background: Backdrop,
     originBounds: Rect,
+    sourceImage: ImageBitmap?,
+    sourceSurfaceImage: ImageBitmap?,
     hostWidthPx: Float,
     onHourSelected: (Int) -> Unit,
     onMinuteSelected: (Int) -> Unit,
@@ -690,176 +527,10 @@ private fun BoxScope.QweaTimePopup(
     onCancel: () -> Unit,
     onHidden: () -> Unit,
 ) {
-    val density = LocalDensity.current
-    val progress = remember { Animatable(0f) }
-
-    LaunchedEffect(visible) {
-        progress.animateTo(
-            targetValue = if (visible) 1f else 0f,
-            animationSpec = tween(durationMillis = 340, easing = FastOutSlowInEasing),
-        )
-        if (!visible) onHidden()
-    }
-
-    val p = progress.value.coerceIn(0f, 1f)
-    fun lerpBy(start: Float, end: Float, amount: Float): Float =
-        start + (end - start) * amount
-
-    val panelWidthPx = with(density) { 302.dp.toPx() }
-    val panelHeightPx = with(density) { 300.dp.toPx() }
-    val finalLeftPx = ((hostWidthPx - panelWidthPx) / 2f).coerceAtLeast(0f)
-    val finalTopPx = with(density) { 40.dp.toPx() }
-
-    val animatedLeftPx = lerpBy(originBounds.left, finalLeftPx, p)
-    val animatedTopPx = lerpBy(originBounds.top, finalTopPx, p)
-    val animatedWidthPx = lerpBy(originBounds.width, panelWidthPx, p)
-    val animatedHeightPx = lerpBy(originBounds.height, panelHeightPx, p)
-    val animatedRightPx = animatedLeftPx + animatedWidthPx
-    val animatedBottomPx = animatedTopPx + animatedHeightPx
-
-    val animatedLeft = with(density) { animatedLeftPx.toDp() }
-    val animatedTop = with(density) { animatedTopPx.toDp() }
-    val animatedWidth = with(density) { animatedWidthPx.toDp() }
-    val animatedHeight = with(density) { animatedHeightPx.toDp() }
-    val startCorner = with(density) { (originBounds.height / 2f).toDp() }
-    val animatedCorner = startCorner + (34.dp - startCorner) * p
-
-    val originRect = RectF(
-        originBounds.left,
-        originBounds.top,
-        originBounds.right,
-        originBounds.bottom,
-    )
-    val animatedRect = RectF(
-        animatedLeftPx,
-        animatedTopPx,
-        animatedRightPx,
-        animatedBottomPx,
-    )
-    val primaryMerge = ((p - 0.72f) / 0.28f).coerceIn(0f, 1f)
-    val primaryRect = RectF(
-        lerpBy(originRect.left, animatedRect.left, primaryMerge),
-        lerpBy(originRect.top, animatedRect.top, primaryMerge),
-        lerpBy(originRect.right, animatedRect.right, primaryMerge),
-        lerpBy(originRect.bottom, animatedRect.bottom, primaryMerge),
-    )
-    val startCornerPx = originBounds.height / 2f
-    val animatedCornerPx = with(density) { animatedCorner.toPx() }
-    val bridgeStrength = (4f * p * (1f - p)).coerceIn(0f, 1f)
-    val smoothingPx = with(density) { 16.dp.toPx() } * bridgeStrength
-
-    val popupSurface = if (dark) Color(0xE62C2C2E) else Color.White.copy(alpha = 0.74f)
-    val animatedShape = RoundedCornerShape(animatedCorner)
-    val atPressedMaskEndpoint = p <= 0.10f
-
-    Box(Modifier.fillMaxSize()) {
-        if (!atPressedMaskEndpoint) {
-            AndroidView(
-                factory = { context ->
-                    LiquidGlassView(context).apply {
-                        enableDynamicBackground = false
-                        useShaderPipeline = true
-                        material = GlassMaterial.CLEAR
-                        enableAdaptiveTint = false
-                        enableSensorHighlight = true
-                        enableBackdropBlur = false
-                        enableChromaticDispersion = true
-                        bevelWidth = with(density) { 18.dp.toPx() }
-                        refractionHeight = with(density) { 8.dp.toPx() }
-                        refractionFalloff = 2f
-                        dispersionStrength = 0.08f
-                        glassTint = if (dark) {
-                            android.graphics.Color.argb(138, 44, 44, 46)
-                        } else {
-                            android.graphics.Color.argb(150, 248, 248, 250)
-                        }
-                    }
-                },
-                update = { glass ->
-                    glass.setPrimaryShape(primaryRect, startCornerPx)
-                    glass.setSecondaryShape(animatedRect, animatedCornerPx, smoothingPx)
-                    glass.invalidate()
-                },
-                modifier = Modifier.fillMaxSize(),
-            )
-        }
-
-        Box(
-            Modifier
-                .offset(x = animatedLeft, y = animatedTop)
-                .width(animatedWidth)
-                .height(animatedHeight)
-                .then(
-                    when {
-                        atPressedMaskEndpoint -> Modifier.background(colors.pressed, animatedShape)
-                        Build.VERSION.SDK_INT >= 33 -> Modifier.drawBackdrop(
-                            backdrop = background,
-                            shape = { RoundedRectangle(animatedCorner) },
-                            effects = {
-                                colorControls(brightness = if (dark) 0f else 0.2f, saturation = 1.5f)
-                                blur(if (dark) 8.dp.toPx() else 16.dp.toPx())
-                                lens(24.dp.toPx(), 48.dp.toPx(), depthEffect = true)
-                            },
-                            highlight = { Highlight.Plain },
-                            shadow = {
-                                Shadow(
-                                    radius = 48.dp,
-                                    offset = DpOffset(0.dp, 8.dp),
-                                    color = Color.Black.copy(alpha = 0.22f),
-                                )
-                            },
-                            onDrawSurface = { drawRect(popupSurface) },
-                        )
-                        else -> Modifier.background(popupSurface, animatedShape)
-                    },
-                )
-                .clip(animatedShape).ios27AndroidPane("选择时间", onCancel),
-            contentAlignment = Alignment.TopCenter,
-        ) {
-            if (p > 0.40f) Column(
-                Modifier.requiredSize(302.dp, 300.dp)
-                    .padding(start = 16.dp, top = 20.dp, end = 16.dp, bottom = 20.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                Text(
-                    text = "选择时间",
-                    style = Ios27Tokens.Type.Title2.copy(fontWeight = FontWeight.SemiBold),
-                    color = colors.label,
-                )
-                TimeWheelPicker(
-                    hour = hour,
-                    minute = minute,
-                    onHourSelected = onHourSelected,
-                    onMinuteSelected = onMinuteSelected,
-                )
-                Row(
-                    Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
-                ) {
-                    Box(
-                        Modifier.weight(1f)
-                            .height(48.dp)
-                            .clip(PickerAccessoryPillShape)
-                            .background(colors.accent)
-                            .clickable(enabled = p > 0.98f, onClick = onConfirm),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text("确定", color = Color.White, style = Ios27Tokens.Type.Title3)
-                    }
-                    Box(
-                        Modifier.weight(1f)
-                            .height(48.dp)
-                            .clip(PickerAccessoryPillShape)
-                            .background(if (dark) Ios27Tokens.PressedDark else Ios27Tokens.PressedLight)
-                            .clickable(enabled = p > 0.98f, onClick = onCancel),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text("取消", color = colors.label, style = Ios27Tokens.Type.Title3)
-                    }
-                }
-            }
-        }
+    Ios26PickerPopup(visible, background, dark, "选择时间", onConfirm, onCancel, onHidden,
+        anchorBounds = originBounds, sourceLabel = String.format(Locale.US, "%02d:%02d", hour, minute), sourceImage = sourceImage,
+        sourceSurfaceImage = sourceSurfaceImage) {
+        TimeWheelPicker(hour, minute, onHourSelected, onMinuteSelected)
     }
 }
 
@@ -868,6 +539,7 @@ internal fun Ios27PickerExample(
     file: String,
     variant: String,
     background: Backdrop,
+    popupBackdrop: Backdrop,
     year: Int,
     month: Int,
     selectedDay: Int,
@@ -881,6 +553,12 @@ internal fun Ios27PickerExample(
     onTimeChange: (Int, Int) -> Unit,
 ) {
     val compact = variant.contains("Compact")
+    val capture = remember { PickerSourceCapture() }
+    val scope = rememberCoroutineScope()
+    var monthSourceImage by remember { mutableStateOf<ImageBitmap?>(null) }
+    var timeSourceImage by remember { mutableStateOf<ImageBitmap?>(null) }
+    var monthSourceSurface by remember { mutableStateOf<ImageBitmap?>(null) }
+    var timeSourceSurface by remember { mutableStateOf<ImageBitmap?>(null) }
     val colors = LocalIos27PageColors.current
     val dark = colors.page == Ios27Tokens.PageDark
     var hostPositionInRoot by remember { mutableStateOf(Offset.Zero) }
@@ -901,6 +579,9 @@ internal fun Ios27PickerExample(
     val openMonthYearPicker: (Rect?) -> Unit = { sourceBoundsInRoot ->
         val sourceBounds = sourceBoundsInRoot ?: headerBoundsInRoot
         if (sourceBounds != null && hostWidthPx > 0f) {
+            scope.launch {
+            monthSourceImage = capture.capture(sourceBounds)
+            monthSourceSurface = capture.capture(sourceBounds, surface = true)
             monthYearSourceBoundsInRoot = sourceBounds
             animationOriginBounds = Rect(
                 left = sourceBounds.left - hostPositionInRoot.x,
@@ -912,6 +593,7 @@ internal fun Ios27PickerExample(
             pendingMonth = month
             monthYearPickerMounted = true
             monthYearPickerOpen = true
+            }
         }
     }
     val closeMonthYearPicker = { monthYearPickerOpen = false }
@@ -920,6 +602,9 @@ internal fun Ios27PickerExample(
     }
     val openTimePicker: (Rect) -> Unit = { boundsInRoot ->
         if (hostWidthPx > 0f) {
+            scope.launch {
+            timeSourceImage = capture.capture(boundsInRoot)
+            timeSourceSurface = capture.capture(boundsInRoot, surface = true)
             timeSourceBoundsInRoot = boundsInRoot
             timeAnimationOriginBounds = Rect(
                 left = boundsInRoot.left - hostPositionInRoot.x,
@@ -931,10 +616,12 @@ internal fun Ios27PickerExample(
             pendingMinute = minute
             timePickerMounted = true
             timePickerOpen = true
+            }
         }
     }
     val closeTimePicker = { timePickerOpen = false }
 
+    CompositionLocalProvider(LocalPickerSourceCapture provides capture) {
     Box(
         Modifier.fillMaxWidth()
             .onGloballyPositioned { coordinates ->
@@ -980,8 +667,10 @@ internal fun Ios27PickerExample(
                     month = pendingMonth,
                     colors = colors,
                     dark = dark,
-                    background = background,
-                    originBounds = originBounds,
+                    background = popupBackdrop,
+                    sourceImage = monthSourceImage,
+                    sourceSurfaceImage = monthSourceSurface,
+                    originBounds = monthYearSourceBoundsInRoot ?: originBounds,
                     hostWidthPx = hostWidthPx,
                     onYearSelected = { pendingYear = it },
                     onMonthSelected = { pendingMonth = it },
@@ -994,6 +683,8 @@ internal fun Ios27PickerExample(
                         monthYearPickerMounted = false
                         monthYearSourceBoundsInRoot = null
                         animationOriginBounds = null
+                        monthSourceImage = null
+                        monthSourceSurface = null
                     },
                 )
             }
@@ -1007,8 +698,10 @@ internal fun Ios27PickerExample(
                     minute = pendingMinute,
                     colors = colors,
                     dark = dark,
-                    background = background,
-                    originBounds = originBounds,
+                    background = popupBackdrop,
+                    sourceImage = timeSourceImage,
+                    sourceSurfaceImage = timeSourceSurface,
+                    originBounds = timeSourceBoundsInRoot ?: originBounds,
                     hostWidthPx = hostWidthPx,
                     onHourSelected = { pendingHour = it },
                     onMinuteSelected = { pendingMinute = it },
@@ -1021,9 +714,12 @@ internal fun Ios27PickerExample(
                         timePickerMounted = false
                         timeSourceBoundsInRoot = null
                         timeAnimationOriginBounds = null
+                        timeSourceImage = null
+                        timeSourceSurface = null
                     },
                 )
             }
         }
+    }
     }
 }

@@ -11,15 +11,21 @@ vendor/MeloX-Android/
 /docs/tmp-*.txt
 /NUL
 tools/**/tmp-*.mjs
-
-# Local build products, inspection output and regenerated design previews
 /dist/
+/build-library-api-*.log
+/build-effect-switch-*.log
+/build-animation-switch-*.log
+
+# Local tooling and scratch artifacts (published outputs stay in dist/).
 /.tools/
-/.codegraph/
 /build-*.log
 /build-*.png
+/.tmp-*.log
 /androidx/
 /META-INF/
+
+# Public source distribution exclusions
+/.codegraph/
 /docs/**/decoded.json
 /docs/iphone-examples-compare/
 /docs/iphone-examples-native/

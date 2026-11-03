@@ -1,0 +1,26 @@
+{
+  "device": "192.168.1.247:40085",
+  "checkedAt": "2026-09-15T17:25:58.539Z",
+  "apkSha256": "5b7ed8ee27251e8a96506c3c70e5539f225f14e410eea899dd7e6acab57fb337",
+  "completed": true,
+  "expected": 2,
+  "note": "Similarity = percentage of pixels with max RGB delta <=24 against local FigmaSceneView. Includes system bars; blank background can inflate scores. Not official Figma fidelity or interaction acceptance.",
+  "results": [
+    {
+      "key": "12740-24135",
+      "category": "Picker",
+      "variant": "Type=Inline",
+      "meanDiff": 16.2,
+      "changedPercent": 32.88,
+      "similarity": 67.12
+    },
+    {
+      "key": "12740-24143",
+      "category": "Picker",
+      "variant": "Type=Compact",
+      "meanDiff": 8.79,
+      "changedPercent": 4.13,
+      "similarity": 95.87
+    }
+  ]
+}

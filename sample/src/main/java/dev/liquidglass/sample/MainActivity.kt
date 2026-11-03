@@ -1,6 +1,8 @@
 package dev.liquidglass.sample
 
-import android.os.Build
+import dev.liquidglass.GlassTabBar
+import dev.liquidglass.GlassTab
+
 import android.os.Bundle
 import android.content.Context
 import androidx.activity.ComponentActivity
@@ -33,15 +35,17 @@ import androidx.compose.ui.unit.sp
 import com.zeaze.tianyinwallpaper.backdrop.backdrops.rememberLayerBackdrop
 import com.zeaze.tianyinwallpaper.backdrop.backdrops.layerBackdrop
 import dev.liquidglass.ios27.*
-import dev.liquidglass.standard.LiquidGlassStandard
-import dev.liquidglass27.glass.prepareIos27Glass
+import dev.liquidglass.GlassStandard
+import dev.liquidglass.prewarmGlass
+import dev.liquidglass.LocalGlassTabBarPreset
+import dev.liquidglass.GlassTabBarPreset
 import com.zeaze.tianyinwallpaper.ui.commom.ProgressiveBlurContent
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        prepareIos27Glass(applicationContext)
+        prewarmGlass(applicationContext)
         setContent {
             val debuggable = applicationInfo.flags and android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE != 0
             SettingsSample(
@@ -63,10 +67,24 @@ private fun SettingsSample(initialExample: String? = null, initialReference: Boo
     val preferences = remember(context) { context.getSharedPreferences("sample_appearance", Context.MODE_PRIVATE) }
     var themeMode by rememberSaveable { mutableIntStateOf(preferences.getInt("theme", 0).coerceIn(0, 2)) }
     var standardName by rememberSaveable {
-        mutableStateOf(preferences.getString("glass_standard", LiquidGlassStandard.Ios27.name)!!)
+        mutableStateOf(preferences.getString("glass_standard", GlassStandard.Ios27.name)!!)
     }
-    val standard = (LiquidGlassStandard.entries.firstOrNull { it.name == standardName }
-        ?: LiquidGlassStandard.Ios27).supportedOn(Build.VERSION.SDK_INT)
+    val standard = GlassStandard.entries.firstOrNull { it.name == standardName }
+        ?: GlassStandard.Ios27
+    var materialChoice by rememberSaveable { mutableIntStateOf(preferences.getInt("glass_material", 0).coerceIn(0, 2)) }
+    var highlightChoice by rememberSaveable { mutableIntStateOf(preferences.getInt("glass_highlight", 0).coerceIn(0, 2)) }
+    // Retain the stored key so renaming this button-only preference preserves existing choices.
+    var buttonDragChoice by rememberSaveable { mutableIntStateOf(preferences.getInt("glass_animation", 0).coerceIn(0, 2)) }
+    var limitButtonDrag by rememberSaveable { mutableStateOf(preferences.getBoolean("limit_button_drag", true)) }
+    val effectChoices = listOf(null, GlassStandard.Ios26, GlassStandard.Ios27)
+    val effects = dev.liquidglass.GlassEffects(material = effectChoices[materialChoice],
+        highlight = effectChoices[highlightChoice], buttonDragEffect = effectChoices[buttonDragChoice],
+        limitButtonDrag = limitButtonDrag)
+    var navigationPresetName by rememberSaveable {
+        mutableStateOf(preferences.getString("navigation_preset", GlassTabBarPreset.MeloX.name)!!)
+    }
+    val navigationPreset = GlassTabBarPreset.entries.firstOrNull { it.name == navigationPresetName }
+        ?: GlassTabBarPreset.MeloX
     var tab by rememberSaveable { mutableIntStateOf(0) }
     var examples by rememberSaveable { mutableStateOf(initialExample != null) }
     var examplesSecondary by rememberSaveable { mutableStateOf(false) }
@@ -76,12 +94,15 @@ private fun SettingsSample(initialExample: String? = null, initialReference: Boo
     SideEffect { onThemeChanged(dark) }
     // Existing MaterialTheme is configured by the host, independently of the new page theme.
     // Glass controls read MaterialTheme primary as their tint; keep it on the page accent.
+    CompositionLocalProvider(LocalGlassTabBarPreset provides navigationPreset) {
+    SampleGlassTheme(standard, effects) {
     MaterialTheme(colors = if (dark) darkColors(primary = Ios27Tokens.BlueDark) else lightColors(primary = Ios27Tokens.BlueLight)) {
         Ios27PageTheme(dark) {
             val colors = LocalIos27PageColors.current
             val scrollState = rememberScrollState()
             if (examples) {
                 IphoneExamples(
+                    standard = standard,
                     initialExample = if (examples) initialExample else null,
                     initialReference = if (examples) initialReference else false,
                     onBack = { if (examples) examples = false else tab = 0 },
@@ -114,6 +135,7 @@ private fun SettingsSample(initialExample: String? = null, initialReference: Boo
                         ) { page ->
                             when (page) {
                                 0 -> IphoneExamples(
+                                    standard = standard,
                                     onBack = { tab = 0 },
                                     // This page owns internal glass chrome. Give it a separate
                                     // backdrop so it never records into the outer tab backdrop.
@@ -140,10 +162,30 @@ private fun SettingsSample(initialExample: String? = null, initialReference: Boo
                                             when (page) {
                                                 1 -> NotesPage()
                                                 2 -> SettingsPage(
+                                                    navigationPreset = navigationPreset,
+                                                    onNavigationPresetSelected = {
+                                                        navigationPresetName = it.name
+                                                        preferences.edit().putString("navigation_preset", it.name).apply()
+                                                    },
                                                     standard = standard,
                                                     onStandardSelected = {
                                                         standardName = it.name
-                                                        preferences.edit().putString("glass_standard", it.name).apply()
+                                                        materialChoice = 0
+                                                        highlightChoice = 0
+                                                        buttonDragChoice = 0
+                                                        preferences.edit().putString("glass_standard", it.name)
+                                                            .putInt("glass_material", 0).putInt("glass_highlight", 0).putInt("glass_animation", 0).apply()
+                                                    },
+                                                    materialChoice = materialChoice,
+                                                    highlightChoice = highlightChoice,
+                                                    buttonDragChoice = buttonDragChoice,
+                                                    onMaterialChoice = { materialChoice = it; preferences.edit().putInt("glass_material", it).apply() },
+                                                    onHighlightChoice = { highlightChoice = it; preferences.edit().putInt("glass_highlight", it).apply() },
+                                                    onButtonDragChoice = { buttonDragChoice = it; preferences.edit().putInt("glass_animation", it).apply() },
+                                                    limitButtonDrag = limitButtonDrag,
+                                                    onLimitButtonDragChanged = {
+                                                        limitButtonDrag = it
+                                                        preferences.edit().putBoolean("limit_button_drag", it).apply()
                                                     },
                                                     themeMode = themeMode,
                                                     popupBackground = popupBackground,
@@ -170,7 +212,7 @@ private fun SettingsSample(initialExample: String? = null, initialReference: Boo
                     // participates in forward/back transitions without leaking across routes.
                     if (tab != 0) {
                         ExampleTopChrome(
-                            backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+                            backdrop = backdrop,
                             isLightTheme = !dark,
                             blurAlpha = (scrollState.value / blurRevealDistance).coerceIn(0f, 1f),
                             surfaceColor = colors.page,
@@ -180,21 +222,17 @@ private fun SettingsSample(initialExample: String? = null, initialReference: Boo
                     if (!(tab == 0 && examplesSecondary)) {
                         Box(Modifier.align(Alignment.BottomCenter).widthIn(max = 640.dp)
                             .fillMaxWidth().padding(horizontal = 20.dp, vertical = 12.dp)) {
-                            if (standard == LiquidGlassStandard.Ios27 && Build.VERSION.SDK_INT >= 33) {
-                                Ios27StandardDock(backdrop, dark, tab, { tab = it })
-                            } else Ios27TabBarExample(
-                                file = "12740-23997.json",
-                                selectedTabIndex = tab,
-                                onTabSelected = { tab = it },
-                                backdrop = if (Build.VERSION.SDK_INT >= 33) backdrop else null,
-                                isLightTheme = !dark,
+                            GlassTabBar(
+                                items = listOf(GlassTab("组件"), GlassTab("说明"), GlassTab("设置")),
+                                selectedIndex = tab,
+                                onSelectedIndexChange = { tab = it },
+                                backdrop = backdrop,
+                                darkTheme = dark,
                                 modifier = Modifier.align(Alignment.Center),
-                                splitSearch = false,
-                                labels = listOf("组件", "说明", "设置"),
-                                labelContent = { index, label, tint ->
+                                itemContent = { index, tint, _ ->
                                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                                         DemoIcon(listOf(1, 2, 0)[index], tint, Modifier.size(20.dp))
-                                        Text(label, color = tint, fontSize = 11.sp, lineHeight = 14.sp)
+                                        Text(listOf("组件", "说明", "设置")[index], color = tint, fontSize = 11.sp, lineHeight = 14.sp)
                                     }
                                 },
                             )
@@ -206,10 +244,23 @@ private fun SettingsSample(initialExample: String? = null, initialReference: Boo
     }
 }
 
+    }
+    }
+
 @Composable
 private fun SettingsPage(
-    standard: LiquidGlassStandard,
-    onStandardSelected: (LiquidGlassStandard) -> Unit,
+    navigationPreset: GlassTabBarPreset,
+    onNavigationPresetSelected: (GlassTabBarPreset) -> Unit,
+    standard: GlassStandard,
+    onStandardSelected: (GlassStandard) -> Unit,
+    materialChoice: Int,
+    highlightChoice: Int,
+    buttonDragChoice: Int,
+    onMaterialChoice: (Int) -> Unit,
+    onHighlightChoice: (Int) -> Unit,
+    onButtonDragChoice: (Int) -> Unit,
+    limitButtonDrag: Boolean,
+    onLimitButtonDragChanged: (Boolean) -> Unit,
     themeMode: Int,
     popupBackground: PopupBackground,
     backgroundError: String?,
@@ -218,16 +269,35 @@ private fun SettingsPage(
 ) {
     val colors = LocalIos27PageColors.current
     Ios27PageHeader("设置", "页面与列表的设计参考")
-    Ios27ListSection(title = "玻璃标准", footer = "切换应用导航的玻璃风格。原有组件与原稿示例保留为 iOS 26。") {
-        Ios27ListRows(LiquidGlassStandard.entries) { choice ->
-            val available = choice.supportedOn(Build.VERSION.SDK_INT) == choice
+    Ios27ListSection(title = "整体标准", footer = "整体切换会清除单项覆盖，恢复该标准的材质、高光和按钮拖拽效果。") {
+        Ios27ListRows(GlassStandard.entries) { choice ->
             Ios27ListRow(choice.label,
-                detail = if (!available) "需要 Android 13" else null,
-                onClick = if (available) ({ onStandardSelected(choice) }) else null,
+                onClick = { onStandardSelected(choice) },
                 disclosure = false,
                 modifier = Modifier.semantics { selected = standard == choice },
                 trailing = { if (standard == choice) DemoCheck(colors.accent) },
             )
+        }
+    }
+    Ios27ListSection(title = "单项覆盖", footer = "按钮拖拽效果只切换按钮整套按压、位移和扭曲，不改变材质和高光。菜单、Popup 和模态始终共用 27 动画。") {
+        val choices = listOf("跟随整体", "iOS 26", "iOS 27")
+        Ios27ListRows(listOf(0, 1, 2)) { item ->
+            if (item == 0) Ios27ListRow("玻璃材质", detail = choices[materialChoice],
+                onClick = { onMaterialChoice((materialChoice + 1) % 3) })
+            else if (item == 1) Ios27ListRow("高光", detail = choices[highlightChoice],
+                onClick = { onHighlightChoice((highlightChoice + 1) % 3) })
+            else Ios27ListRow("按钮拖拽效果", detail = choices[buttonDragChoice],
+                onClick = { onButtonDragChoice((buttonDragChoice + 1) % 3) })
+        }
+    }
+    Ios27ListSection(title = "按钮拖拽", footer = "同时作用于 26 和 27 按钮拖拽效果。开启后位移和扭曲共同受限；关闭后取消附加幅度限制，保留各自的形变样式。") {
+        Ios27SwitchRow("限制拖拽幅度", limitButtonDrag, onLimitButtonDragChanged)
+    }
+    Ios27ListSection(title = "底栏玻璃参数", footer = "主界面和标签栏示例共用此选择；高光仍跟随上面的 26／27 标准。") {
+        Ios27ListRows(GlassTabBarPreset.entries) { choice ->
+            Ios27ListRow(choice.label, onClick = { onNavigationPresetSelected(choice) }, disclosure = false,
+                modifier = Modifier.semantics { selected = navigationPreset == choice },
+                trailing = { if (navigationPreset == choice) DemoCheck(colors.accent) })
         }
     }
     Ios27ListSection(title = "配色", footer = "选择会保存在本机。“跟随系统”自动适应系统深浅色。") {

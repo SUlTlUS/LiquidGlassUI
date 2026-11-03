@@ -7,6 +7,8 @@
  */
 package com.lladlam.melox.ui.glass
 
+import dev.liquidglass.*
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.material3.MaterialTheme
@@ -15,6 +17,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.isSpecified
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.GraphicsLayerScope
 import androidx.compose.ui.graphics.compositeOver
@@ -26,19 +29,23 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastCoerceAtMost
-import com.kyant.backdrop.Backdrop
-import com.kyant.backdrop.backdrops.LayerBackdrop
-import com.kyant.backdrop.backdrops.rememberCombinedBackdrop
-import com.kyant.backdrop.drawBackdrop
-import com.kyant.backdrop.effects.blur
-import com.kyant.backdrop.effects.lens
-import com.kyant.backdrop.effects.vibrancy
-import com.kyant.backdrop.highlight.Highlight
-import com.kyant.backdrop.shadow.InnerShadow
-import com.kyant.backdrop.shadow.Shadow
+import com.zeaze.tianyinwallpaper.backdrop.Backdrop
+import com.zeaze.tianyinwallpaper.backdrop.backdrops.LayerBackdrop
+import com.zeaze.tianyinwallpaper.backdrop.backdrops.rememberCombinedBackdrop
+import com.zeaze.tianyinwallpaper.backdrop.drawBackdrop
+import com.zeaze.tianyinwallpaper.backdrop.effects.blur
+import com.zeaze.tianyinwallpaper.backdrop.effects.lens
+import com.zeaze.tianyinwallpaper.backdrop.effects.vibrancy
+import com.zeaze.tianyinwallpaper.backdrop.highlight.Highlight
+import com.zeaze.tianyinwallpaper.backdrop.shadow.InnerShadow
+import com.zeaze.tianyinwallpaper.backdrop.shadow.Shadow
 import com.lladlam.melox.ui.theme.isMeloXDarkTheme
+import dev.liquidglass.GlassTabBarPreset
+import com.lladlam.melox.ui.LocalNavigationPreset
+import com.lladlam.melox.ui.LocalNavigationLight
+import com.zeaze.tianyinwallpaper.catalog.components.LiquidBottomTabsSurface
 import com.lladlam.melox.ui.settings.MeloXSettingsRuntime
-import com.lladlam.melox.ui.glass.publicdemo.PublicInteractiveHighlight
+import com.zeaze.tianyinwallpaper.catalog.utils.InteractiveHighlight
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.remember
 import kotlin.math.abs
@@ -49,6 +56,9 @@ import kotlin.math.tanh
 
 /** The screen backdrop sampled by all MeloX liquid controls. */
 val LocalMeloXBackdrop = staticCompositionLocalOf<Backdrop?> { null }
+
+/** One material override for all surfaces owned by the tab bar. */
+internal val LocalBottomBarSurfaceColor = staticCompositionLocalOf { Color.Unspecified }
 
 /**
  * 底部 chrome（底栏 / 播放栏 / 搜索键）共用的**暗度标量 d**：0 = 亮式，1 = 暗式。
@@ -152,19 +162,24 @@ internal const val MeloXDropletRestInnerShadow = 0.60f
 
 /** 浅色下额外叠的一层白纱浓度（=0 表示不叠），用于整体加浓的 A/B 调档。 */
 @Composable
-internal fun bottomGlassSurfaceColor(): Color =
-    bottomGlassFallbackColor().copy(alpha = BOTTOM_GLASS_SURFACE_ALPHA)
+internal fun bottomGlassSurfaceColor(): Color {
+    val override = LocalBottomBarSurfaceColor.current
+    if (override.isSpecified) return override
+    return if (LocalNavigationPreset.current == GlassTabBarPreset.MeloX)
+        bottomGlassFallbackColor().copy(alpha = BOTTOM_GLASS_SURFACE_ALPHA)
+    else lerp(Color(0xFFFAFAFA), Color(0xFF121212), bottomBarTone()).copy(alpha = 0.4f)
+}
 
 /** Shared interaction state for a liquid surface and the content that rides on it. */
 class MeloXLiquidInteraction internal constructor(
-    internal val highlight: PublicInteractiveHighlight,
+    internal val highlight: InteractiveHighlight,
 )
 
 @Composable
 fun rememberMeloXLiquidInteraction(): MeloXLiquidInteraction {
     val animationScope = rememberCoroutineScope()
     return remember(animationScope) {
-        MeloXLiquidInteraction(PublicInteractiveHighlight(animationScope))
+        MeloXLiquidInteraction(InteractiveHighlight(animationScope, cancelOnConsumed = false))
     }
 }
 
@@ -206,6 +221,7 @@ fun Modifier.meloXLiquidBottomBar(
     // （照搬官方之后 lens 值由本函数内部固定，不由调用方注入。）
     refractionHeight: Dp = 24.dp,
     exportedBackdrop: LayerBackdrop? = null,
+    panelDecoration: (androidx.compose.ui.graphics.drawscope.DrawScope.() -> Unit)? = null,
 ): Modifier {
     val backdrop = meloXGlassBackdrop()
     if (backdrop == null) {
@@ -224,7 +240,7 @@ fun Modifier.meloXLiquidBottomBar(
             shadow = null,
             innerShadow = null,
             exportedBackdrop = exportedBackdrop,
-            onDrawSurface = { drawRect(surfaceColor) },
+            onDrawSurface = { drawRect(surfaceColor); panelDecoration?.invoke(this) },
         )
     }
     // ⚠ **藏在函数内部的第二处深浅分支，也必须同一个 d**（原先直接读
@@ -235,6 +251,8 @@ fun Modifier.meloXLiquidBottomBar(
     //   （`spring(1f, 1000f)`，临界阻尼、静息恰 0、理论不过冲），
     //   但仍统一过一遍 `safeProgress` —— 出口只有一处，比逐个调用点核对参数便宜。
     val p = safeProgress(pressProgress)
+    val standard = LocalNavigationPreset.current == GlassTabBarPreset.Standard
+    val decoration = LocalNavigationLight.current
     return drawBackdrop(
         backdrop = backdrop,
         shape = { shape },
@@ -247,27 +265,32 @@ fun Modifier.meloXLiquidBottomBar(
             //   ⚠ 不变约束：面板 blur 必须 ≥ 捕获层 blur，两处永远同值。
             //     二者一旦不等，「指示器 / 折射混乱」就会重现 —— 成因是锐利的页面内容
             //     穿进 lens，被放大链撕成碎片；排查该症状第一步看本行，别先去动 lens。
-            blur(2.dp.toPx())
+            blur((if (standard) 8.dp else 2.dp).toPx())
             lens(24.dp.toPx(), 24.dp.toPx())
         },
-        highlight = {
+        highlight = if (decoration != null) null else {
+            {
             Highlight.Default.copy(
-                alpha = (lerp(0.48f, 0.32f, tone) + 0.30f * p).coerceAtMost(1f)
+                alpha = if (standard) 1f else (lerp(0.48f, 0.32f, tone) + 0.30f * p).coerceAtMost(1f)
             )
+            }
         },
+        surfaceLayerBlock = decoration?.let { decorate -> ({ decorate(this, LiquidBottomTabsSurface.Track, p) }) },
         shadow = {
             Shadow(
                 radius = 24.dp,
-                color = Color.Black.copy(alpha = 0.12f),
-                alpha = 0.08f + 0.22f * p,
+                color = Color.Black.copy(alpha = if (standard) 0.1f else 0.12f),
+                alpha = if (standard) 1f else 0.08f + 0.22f * p,
             )
         },
-        innerShadow = {
+        innerShadow = if (standard) null else {
+            {
             InnerShadow(
                 radius = 4.dp + 8.dp * p,
                 color = Color.Black.copy(alpha = 0.12f),
                 alpha = 0.10f + 0.30f * p,
             )
+            }
         },
         layerBlock = {
             val scale = (1f + 16.dp.toPx() / size.width.coerceAtLeast(1f) * p).finiteOrZero()
@@ -277,6 +300,7 @@ fun Modifier.meloXLiquidBottomBar(
         exportedBackdrop = exportedBackdrop,
         onDrawSurface = {
             drawRect(surfaceColor)
+            panelDecoration?.invoke(this)
         },
     )
 }
@@ -323,6 +347,8 @@ fun Modifier.meloXLiquidCaptureLayer(
     val backdrop = meloXGlassBackdrop() ?: return this
     // ⚠ 底栏捕获层的按压同样过 `safeProgress`，理由见下面 lens 的零值门。
     val p = safeProgress(pressProgress)
+    val standard = LocalNavigationPreset.current == GlassTabBarPreset.Standard
+    val decoration = LocalNavigationLight.current
     if (MeloXSettingsRuntime.frostedGlassEnabled) {
         return drawBackdrop(
             backdrop = backdrop,
@@ -347,7 +373,7 @@ fun Modifier.meloXLiquidCaptureLayer(
             //     onDrawSurface = { drawRect(containerColor) }
             //     // ← 没有 shadow、没有 innerShadow
             //   ⚠ blur 必须与面板同值：改一处就必须改另一处，二者不等即重现折射混乱。
-            blur(2.dp.toPx())
+            blur((if (standard) 8.dp else 2.dp).toPx())
             // ⚠ **静息（p≈0）必须整段跳过 lens，不能传 lens(0, 0)**。
             //   AGSL 里：`if (-sd >= refractionHeight) return content.eval(coord);`
             //   refractionHeight = 0 时，形状内部（sd ≤ 0）全部提前返回 —— 但**抗锯齿边缘
@@ -361,7 +387,7 @@ fun Modifier.meloXLiquidCaptureLayer(
                 lens(24.dp.toPx() * p, 24.dp.toPx() * p)
             }
         },
-        highlight = { Highlight.Default.copy(alpha = p) },
+        highlight = if (decoration != null) null else ({ Highlight.Default.copy(alpha = p) }),
         // 官方/BiliNext 的捕获层都没有这两个 —— 见上面注释 ②③。
         shadow = null,
         innerShadow = null,
@@ -422,9 +448,8 @@ fun Modifier.meloXLiquidTabSelection(
     // 水珠 / 选中指示器同样由同一个 d 驱动。指示器色是黑白（不是 accent 蓝）：
     // 暗式翻成白、亮式是黑 —— 端点与 `MeloXApp.kt` 的 `selectionTint` 口径一致。
     val tone = bottomBarTone()
-    // 静息态轮廓光下限：与胶囊 L1 面板的静息 highlight 同口径
-    // （`meloXLiquidBottomBar` 里是恒定的 `lerp(0.48f, 0.32f, tone)`）。
-    val restRim = lerp(0.48f, 0.32f, tone)
+    val standard = LocalNavigationPreset.current == GlassTabBarPreset.Standard
+    val decoration = LocalNavigationLight.current
     // ⚠ 水珠的 press spec 是临界阻尼、静息恰 0；这里统一清洗只为「出口唯一」。
     val p = safeProgress(pressProgress)
     return drawBackdrop(
@@ -440,7 +465,7 @@ fun Modifier.meloXLiquidTabSelection(
             //     同一条边界线在相对尺度上越"靠外"，照搬 56dp 的绝对值会让折射带相对过深。
             //   本函数拿不到水珠高度（modifier 里无 size），故用官方基准 56dp 与 MeloX
             //   展开态 49dp 的比值作为固定系数；`DropletHeight` 若再改，改这一个常量。
-            val dropletLensScale = MeloXDropletLensScale
+            val dropletLensScale = if (standard) 1f else MeloXDropletLensScale
             // ⚠ 同 `meloXLiquidCaptureLayer`：静息（p≈0）**整段跳过**，不传 lens(0, 0)。
             //   这里还是带色散的 `RefractionWithDispersion` shader（uniform 更多），
             //   除零产生的 NaN 波及面比普通 lens 更大。跳过后的输出与原「提前返回」一致。
@@ -452,25 +477,17 @@ fun Modifier.meloXLiquidTabSelection(
                 )
             }
         },
-        // ── 静息态 rim：不再全灭（2026-09-25 v0.10.7，用户反馈「静息指示器比胶囊通透、像挖了个洞」）
-        //
-        //   官方 `LiquidBottomTabs` 水珠的 highlight / shadow / innerShadow **一律 ×p**
-        //   ⇒ 静息 p=0 时三项全 0：水珠边界只靠「取样图与胶囊内容的明暗差」勾勒，
-        //     没有边缘光、没有投影 ⇒ 读成「在胶囊上开了个洞」，而不是「胶囊里浮着玻璃珠」。
-        //
-        //   ⚠ **这不是取样浓度的问题，别去动涂层 / lens**：静息时取样图（L2 捕获层）已经
-        //     带 0.52 涂层，本层 onDrawSurface 又叠 0.1 纱 ⇒ 水珠有效涂层 0.62，比胶囊的
-        //     0.52 **更厚**。要变通透只能从边缘光找，不是从取样找。
-        //
-        //   三项各给一个静息下限，再按 p 插回官方值 —— **p=1 时与官方逐字一致**，
-        //   按压态的折射 / 缩放 / 折痕全部不变（不破坏下面「缩放不溢出折射带」那条约束）。
-        highlight = { Highlight.Default.copy(alpha = lerp(restRim, 1f, p)) },
+        // 26 indicator rim follows the press spring, with no resting highlight.
+        highlight = if (decoration != null) null else ({ Highlight.Default.copy(alpha = p) }),
+        surfaceLayerBlock = decoration?.let { decorate -> ({ decorate(this, LiquidBottomTabsSurface.Indicator, p) }) },
         // 保留库默认 offset / radius / color（见上方教训），只加静息下限。
-        shadow = { Shadow(alpha = lerp(MeloXDropletRestShadow, 1f, p)) },
+        shadow = { Shadow(color = Color.Black.copy(alpha = if (standard) 0.1f else 0.06f),
+            alpha = lerp(if (standard) 0f else MeloXDropletRestShadow, 1f, p)) },
         innerShadow = {
             InnerShadow(
-                radius = 4.dp + 4.dp * p,    // 静息 4dp → 按压 8dp（官方 8dp·p）
-                alpha = lerp(MeloXDropletRestInnerShadow, 1f, p),
+                radius = if (standard) 8.dp * p else 4.dp + 4.dp * p,
+                color = Color.Black.copy(alpha = if (standard) 0.15f else 0.06f),
+                alpha = lerp(if (standard) 0f else MeloXDropletRestInnerShadow, 1f, p),
             )
         },
         // ⚠ 调用方注入的是一段**裸变换 lambda**（本项目的调用点里含 `velocity` 除法、

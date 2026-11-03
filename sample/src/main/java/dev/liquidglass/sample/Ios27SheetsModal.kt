@@ -1,6 +1,7 @@
 package dev.liquidglass.sample
 
-import android.os.Build
+import dev.liquidglass.*
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.safeDrawing
@@ -39,13 +41,15 @@ import com.zeaze.tianyinwallpaper.backdrop.backdrops.rememberCanvasBackdrop
 import com.zeaze.tianyinwallpaper.backdrop.backdrops.rememberLayerBackdrop
 import com.zeaze.tianyinwallpaper.backdrop.drawBackdrop
 import com.zeaze.tianyinwallpaper.backdrop.shadow.Shadow
-import com.zeaze.tianyinwallpaper.catalog.components.LiquidButton
+import dev.liquidglass.GlassButton
 import com.zeaze.tianyinwallpaper.catalog.components.LiquidButtonStyle
 import dev.liquidglass.ios27.Ios27PageColors
 import dev.liquidglass.ios27.Ios27Tokens
 import dev.liquidglass.ios27.ios27PressedClickable
 import dev.liquidglass.ios27.ios27AndroidPane
 import androidx.compose.runtime.saveable.rememberSaveable
+import dev.liquidglass.rendering.rememberTransformAwareBackdrop
+import dev.liquidglass.GlassStandard
 
 private val SheetToolbarGlassStyle = LiquidButtonStyle(
     height = 44.dp,
@@ -55,6 +59,10 @@ private val SheetToolbarGlassStyle = LiquidButtonStyle(
     lensRadiusX = 30.dp,
     lensRadiusY = 21.dp,
 )
+
+// The panel has already applied its color processing. Keep a second optical
+// surface, but do not re-grade the panel colors beneath these iOS26 buttons.
+private val SheetOnGlassButtonStyle = LiquidButtonStyle.Default.copy(preserveBackdropColors = true)
 
 private val StackShape = RoundedCornerShape(
     topStart = 38.dp,
@@ -78,10 +86,13 @@ internal fun Ios27SheetsModal(
     dark: Boolean,
     onDismiss: () -> Unit,
     onAction: () -> Unit,
+    visible: Boolean = true,
 ) {
     if (variant == "Type=Fullscreen Stack") {
         FullscreenStackModal(
+            visible = visible,
             file = file,
+            backdrop = backdrop,
             colors = colors,
             dark = dark,
             onDismiss = onDismiss,
@@ -89,6 +100,7 @@ internal fun Ios27SheetsModal(
         )
     } else {
         ColorPickerBackedModal(
+            visible = visible,
             file = file,
             inspector = variant == "Type=Inspector",
             backdrop = backdrop,
@@ -109,21 +121,30 @@ private fun ColorPickerBackedModal(
     dark: Boolean,
     onDismiss: () -> Unit,
     onAction: () -> Unit,
+    visible: Boolean,
 ) {
     val exportedSheetBackdrop = rememberLayerBackdrop()
+    val ios26 = currentGlassMaterial() == GlassStandard.Ios26
+    val paintedBackdrop = rememberTransformAwareBackdrop(exportedSheetBackdrop)
     val toolbarBackdrop: Backdrop? =
-        if (backdrop != null && Build.VERSION.SDK_INT >= 33) exportedSheetBackdrop else null
+        if (backdrop != null) {
+            if (ios26) paintedBackdrop else exportedSheetBackdrop
+        } else null
     var actionActivated by rememberSaveable { mutableStateOf(false) }
 
     // Fullscreen / Inspector now use the exact same LiquidDialog hierarchy as Color Picker:
     // Root -> Scrim -> Panel glass -> Content. No extra sample-layer panel/clip exists.
     Ios27BottomSheetDialog(
+        solidColor = null,
+        visible = visible,
         backdrop = backdrop,
         dark = dark,
         height = 459.dp,
         scrimColor = Color.Black.copy(alpha = if (inspector) 0f else 0.20f),
         onDismissRequest = onDismiss,
         exportedBackdrop = exportedSheetBackdrop,
+        // Export the processed material only; the panel rim must not enter the button lens.
+        exportPaintedSurface = false,
         description = if (inspector) "模态面板 Type=Inspector" else "模态面板 Type=Fullscreen",
     ) {
         OriginalSheetChrome(
@@ -137,6 +158,7 @@ private fun ColorPickerBackedModal(
                 actionActivated = true
                 onAction()
             },
+            buttonStyle = if (ios26) SheetOnGlassButtonStyle else SheetToolbarGlassStyle,
         )
     }
 }
@@ -144,93 +166,35 @@ private fun ColorPickerBackedModal(
 @Composable
 private fun FullscreenStackModal(
     file: String,
+    backdrop: Backdrop?,
     colors: Ios27PageColors,
     dark: Boolean,
     onDismiss: () -> Unit,
     onAction: () -> Unit,
+    visible: Boolean,
 ) {
-    val stackSurface = colors.group
-    val stackBackdrop = rememberCanvasBackdrop { drawRect(stackSurface) }
+    val exported = rememberLayerBackdrop()
     var actionActivated by rememberSaveable { mutableStateOf(false) }
-
-    BoxWithConstraints(
-        Modifier.fillMaxSize()
-            .semantics { contentDescription = "模态面板 Type=Fullscreen Stack" }
-            .ios27AndroidPane("模态面板 Type=Fullscreen Stack", onDismiss),
-    ) {
-        // Match Activity View's runtime top origin exactly.
-        val sheetTop = WindowInsets.safeDrawing.asPaddingValues().calculateTopPadding()
-        val sheetHeight = (maxHeight - sheetTop).coerceAtLeast(1.dp)
-        val backgroundTop = (sheetTop - 10.dp).coerceAtLeast(0.dp)
-        val backgroundHeight = (maxHeight - backgroundTop).coerceAtLeast(1.dp)
-
-        Box(
-            Modifier.fillMaxSize()
-                .background(Color.Black.copy(alpha = if (dark) 0.30f else 0.20f))
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = null,
-                    onClick = onDismiss,
-                ),
-        )
-
-        // Preserve the source's 10pt stacked-page reveal while aligning the front
-        // sheet with Activity View's safe-area top.
-        Box(
-            Modifier.align(Alignment.TopCenter)
-                .offset(y = backgroundTop)
-                .width(370.dp)
-                .height(backgroundHeight)
-                .clip(StackShape)
-                .background(stackSurface),
-        )
-
-        Box(
-            Modifier.align(Alignment.TopCenter)
-                .offset(y = sheetTop)
-                .fillMaxWidth()
-                .height(sheetHeight)
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = null,
-                    onClick = {},
-                )
-                .stackSheetSurface(stackBackdrop, stackSurface),
-        ) {
-            OriginalSheetChrome(
-                file = file,
-                toolbarBackdrop = stackBackdrop,
-                colors = colors,
-                dark = dark,
-                actionActivated = actionActivated,
-                onDismiss = onDismiss,
-                onAction = {
-                    actionActivated = true
-                    onAction()
-                },
-            )
+    BoxWithConstraints(Modifier.fillMaxSize()) {
+        val top = WindowInsets.safeDrawing.asPaddingValues().calculateTopPadding()
+        Ios26ModalLayer(backdrop, onDismiss,
+            solidSurface = true,
+            transition = dev.liquidglass.GlassModalTransition.BottomSheet,
+            visible = visible,
+            panelModifier = Modifier.fillMaxWidth().height((maxHeight - top).coerceAtLeast(1.dp)),
+            shape = StackShape, surfaceColor = colors.group,
+            scrimColor = Color.Black.copy(alpha = if (dark) .30f else .20f), dark = dark,
+            alignment = Alignment.BottomCenter, exportedBackdrop = exported,
+            behindSurface = {
+                Box(Modifier.matchParentSize().offset(y = (-10).dp)
+                    .padding(horizontal = 16.dp).background(colors.group, StackShape))
+            },
+            description = "模态面板 Type=Fullscreen Stack") {
+            OriginalSheetChrome(file, exported, colors, dark, actionActivated, onDismiss) {
+                actionActivated = true; onAction()
+            }
         }
     }
-}
-
-private fun Modifier.stackSheetSurface(
-    backdrop: Backdrop,
-    surface: Color,
-): Modifier {
-    return drawBackdrop(
-        backdrop = backdrop,
-        shape = { StackShape },
-        effects = {},
-        highlight = { null },
-        shadow = {
-            Shadow(
-                radius = 75.dp,
-                offset = DpOffset(0.dp, 15.dp),
-                color = Color.Black.copy(alpha = 0.18f),
-            )
-        },
-        onDrawSurface = { drawRect(surface) },
-    ).clip(StackShape)
 }
 
 /**
@@ -245,6 +209,7 @@ private fun BoxScope.OriginalSheetChrome(
     dark: Boolean,
     actionActivated: Boolean,
     onDismiss: () -> Unit,
+    buttonStyle: LiquidButtonStyle = SheetToolbarGlassStyle,
     onAction: () -> Unit,
 ) {
     val leadingSource = rememberSceneSubtreeNamedText(file, "Leading", "Symbol")
@@ -265,6 +230,7 @@ private fun BoxScope.OriginalSheetChrome(
         backdrop = toolbarBackdrop,
         modifier = Modifier.align(Alignment.TopStart).offset(x = 16.dp, y = 16.dp).size(73.dp, 44.dp),
         description = "关闭模态页面",
+        style = buttonStyle,
         tint = Color.Unspecified,
         colors = colors,
         dark = dark,
@@ -296,6 +262,7 @@ private fun BoxScope.OriginalSheetChrome(
         backdrop = toolbarBackdrop,
         modifier = Modifier.align(Alignment.TopEnd).offset(x = (-16).dp, y = 16.dp).size(44.dp),
         description = if (actionActivated) "模态页面操作 已触发" else "模态页面操作",
+        style = buttonStyle,
         tint = colors.accent,
         colors = colors,
         dark = dark,
@@ -318,6 +285,7 @@ private fun SourceToolbarButton(
     tint: Color,
     colors: Ios27PageColors,
     dark: Boolean,
+    style: LiquidButtonStyle,
     content: @Composable () -> Unit,
 ) {
     val accessible = modifier.semantics {
@@ -325,14 +293,14 @@ private fun SourceToolbarButton(
         role = Role.Button
     }
 
-    if (backdrop != null && Build.VERSION.SDK_INT >= 33) {
-        LiquidButton(
+    if (backdrop != null) {
+        GlassButton(
             onClick = onClick,
             backdrop = backdrop,
             modifier = accessible,
             tint = tint,
-            style = SheetToolbarGlassStyle,
-            buttonHeight = 44.dp,
+            style = style,
+            height = 44.dp,
             contentPadding = PaddingValues(0.dp),
             content = {
                 Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

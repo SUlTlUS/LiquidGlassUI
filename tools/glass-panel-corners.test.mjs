@@ -92,6 +92,6 @@ test('highlight preserves original clipping, blur, width and blending with senso
     // the actual outline recording, clipping and layer composition byte-identical.
     assert.equal(between(current, '        drawContent()\n', '    override fun onAttach()'),
         between(original, '        drawContent()\n', '    override fun onAttach()'));
-    assert.equal(between(current, '        paint.color =', '        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)'),
+    assert.equal(between(current, '        paint.color =', '        val style = highlight.style'),
         between(original, '        paint.color =', '        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)'));
 });

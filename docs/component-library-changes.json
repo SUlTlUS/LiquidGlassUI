@@ -1,0 +1,1419 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User: remove redundant/old code, turn into a component library, replace APIs directly and delete old aliases",
+  "reason": "Component library 2.0: canonical API, no compatibility aliases, one tab bar renderer, audited obsolete-code removal",
+  "frozenBaselines": "unchanged",
+  "tests": "not run at user request",
+  "kotlinLinesInChangedScope": {
+    "before": 30677,
+    "after": 30243,
+    "delta": -434
+  },
+  "files": [
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidButton.kt",
+      "baselineSha256": "01705f9080a67ac36727ce858c9c1b8406aeba44b368f8629da52d904200b826",
+      "mergedSha256": "7d8115f21527598be1177b90577a7c2b3e0b3384dece95f3a6e5374433e4b823",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidButtonCore.kt",
+      "baselineSha256": "27486da15f44f5f41d632d6e498c6c6fa9ad9abc1c86db711d296be7f67da89a",
+      "mergedSha256": "7e670005d1aa091d2e58db42be74f6c0ff44412b2069c6d162c6b08557d725cd",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/PlainFallbackControls.kt",
+      "baselineSha256": "59d5a96cc085bf433b1a6cfbd26a9c1eabf4409a65458e9186c9b722cffd2b8e",
+      "mergedSha256": null,
+      "change": "removed",
+      "removed": true
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/utils/LiquidGlassPrefs.kt",
+      "baselineSha256": "69d475ab91c13d00d1fcc7d6a74b00f2ee35a8739ef905fbb30627b1013a7a08",
+      "mergedSha256": null,
+      "change": "removed",
+      "removed": true
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/Ios27InteractiveControls.kt",
+      "baselineSha256": "2ed3126f82dfadc74ad8729327883fe0c7037880f59563b1a9ab5ef0c2daec09",
+      "mergedSha256": "01b0baa25a028ed5902e70c1200040f6be967ba0fc81d50c39b2478b16c3643f",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/ios27/LiquidDialog.kt",
+      "baselineSha256": "729ff130393877d698e26ca2e628fc2286e9b23e5a360731090a42e799dd7f95",
+      "mergedSha256": "03e984a76b506c0755ce7f101fac932742b0c5b5df2750f5269f98887dd0f4ae",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/GlassStandard.kt",
+      "baselineSha256": "97cfdce0b39f26d6afcedeecb986386aebde71a1565636b0901f2fa9290e0948",
+      "mergedSha256": "7434f37247983668dfb107e68f47541279a72875340801edb7fb876f1053a826",
+      "change": "moved",
+      "previousPath": "liquidglass/src/main/java/dev/liquidglass/standard/LiquidGlassStandard.kt"
+    },
+    {
+      "path": "liquidglass/src/test/java/dev/liquidglass/standard/LiquidGlassStandardTest.kt",
+      "baselineSha256": "52547f2b9acd78ce5ca7b596640c4654bb47eae7b5aad057718379e9a836a655",
+      "mergedSha256": null,
+      "change": "removed",
+      "removed": true
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/ConicCubicFitter.kt",
+      "baselineSha256": "4867fe9799f0a5a8de6633d926a24b5af8f4d3726d4fd1f4625efcb04666986a",
+      "mergedSha256": "e1d0e2c9a7df65befb85a6a4ac27fdba15c8b34210a78ddd77d65f96d6fb55f5",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/ConicCubicFitter.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlClashAlertMotion.kt",
+      "baselineSha256": "abb89bf4e3487c85895b521749539583991e822a403a078bfd74252df6b97dc7",
+      "mergedSha256": "c151600e12f6c5a82d70d64f8597168d664ce4f22fdf358c29a8c7f1cec3f5a0",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashAlertMotion.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlClashContrastTint.kt",
+      "baselineSha256": "ffdf3738640a441f0ad480ca2ba5a4340359fa91d78acd6c6e82a5dba91a015a",
+      "mergedSha256": "d70983a95213cad7efba22e7c83570796ca56f92110874ea462af5cc1752b16f",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashContrastTint.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlClashControlHighlight.kt",
+      "baselineSha256": "0212b2a6624139e4cf791f79db4a5e133a2610b12de659115f6df96fbb1ceb62",
+      "mergedSha256": "7fa44099db52802b169ab469e140cf895384bdc32e49d184c64d087223e203b4",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashControlHighlight.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlClashDockMotion.kt",
+      "baselineSha256": "f2e4631f2ac44ad624bcefa39ab73699681b34c914bf29343339af5cf8dcc9c7",
+      "mergedSha256": "abd740feae90a6e774a2ebe3af66793531af3b811787dadf31951da9fc60ae50",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashDockMotion.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlClashDockShape.kt",
+      "baselineSha256": "a5a6743bb6ceb19cf8d9d7763ba0c1c0fb7f042feadc782a7489fa414f975ccd",
+      "mergedSha256": "90aa3cd62a8636bf0fd193209495bd643f589733998c05946422d04f8a87b9cb",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashDockShape.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlClashElasticMotion.kt",
+      "baselineSha256": "1e94f6a94395d441402488c53599582974ae59671a8b166feee6a685eacd2000",
+      "mergedSha256": "1a8741f19180fcdc1fdc87f134a724d93057e19905139119c43bc16225e97d23",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashElasticMotion.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlClashHazeEffect.kt",
+      "baselineSha256": "5615fabc629b4efcdef40f312ffec5566e313ad5747ca6a69d6c430732a221b6",
+      "mergedSha256": "688f06a8c3f8c534abc811c53945b3c680dd3038008c4a1e0564242c41578ea5",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashHazeEffect.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlClashMenuSprings.kt",
+      "baselineSha256": "5c74153c503976805b0d07307879ec192671a681aaa443fa44484db7e16cab92",
+      "mergedSha256": "e2355be5c49a7e882a7a1dbfe19448767d856f6be06c80fdc0fbff1f152fd982",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashMenuSprings.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlClashPopupRouteMotion.kt",
+      "baselineSha256": "1eb8ffd35e80502491064fd3fa4da1654d8114c13984084ba68db364bd24bebc",
+      "mergedSha256": "efae7f6d5c813a1cda95204cb8caa875b7631bb450c2641da9da6acf7eb7c301",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlClashPopupRouteMotion.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlutterRSuperellipse.kt",
+      "baselineSha256": "d522b183de19c480ecf7792f644c89d537671146822bed9b1b21cb265556cbc9",
+      "mergedSha256": "b7e895931e3be62b1fc85075bc5c9e53042273e1f047ac5adaf5996ea2604ac5",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/FlutterRSuperellipse.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassBackdropBlur.kt",
+      "baselineSha256": "887c9e405d4a7ab80a557205039e9746cee9bc89db46001fb1777a66611257f3",
+      "mergedSha256": "c1492926547c2310b96256db5cbdc9db441d3b36447aaa377feb5e6b9e01f1f3",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassBackdropBlur.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassCapturePlanner.kt",
+      "baselineSha256": "7c6e0e1c753899bc448e24ee2fca2be61f9b4411591fc5eac1120f12574ff96f",
+      "mergedSha256": "d7ce6d91d98282337d1bbcbe083cffb2dfe0673e7ab9ed913833969e2c95196c",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassCapturePlanner.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassCaptureRoot.kt",
+      "baselineSha256": "87c897dae9eeb009b4f8db6885b9ec51cb21fe1b49cc043c5d6e944f36f02dd8",
+      "mergedSha256": "b0d4155b95b3b55f9808c098973bbec4e04dc370db5bf30bc0d1d4c55aea010e",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassCaptureRoot.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassCombinedAtlas.kt",
+      "baselineSha256": "76372a1fb409f9284d76d8157b17d20f9d8ee080752ebeca765c08d80cd25fb2",
+      "mergedSha256": "f7203d151ac7dd5a0f15e92880d8c2a81e68ab4d69b6fd1dca01931fa8452b40",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassCombinedAtlas.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassControlFallback.kt",
+      "baselineSha256": "6a287ec78533f4d3a737d4990112538d42ab4822b53a9575491205b33fb4642c",
+      "mergedSha256": "e09b165118f06ca5bc574a5c94324e45c144b502b29069ee93bce84c1c55ae2c",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassControlFallback.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassControls.kt",
+      "baselineSha256": "9d10df7e1c06e9be1b00528b61b349064990ea6e0fc5b9084a140ec2825cca70",
+      "mergedSha256": "d595ca3e2bffcd2682ee9b82b055a557f2d0e9691564be8e599b111d324a22b5",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassControls.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassCornerCurveCache.kt",
+      "baselineSha256": "fee5baddfca797dbcba2072401036720bdda5502abd99f0fc480591875d7e2a6",
+      "mergedSha256": "9e277c7e199ead02530965c4daa7f370f85db846ca0bcd2fed82c0b1b9d9a1ad",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassCornerCurveCache.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassDialog.kt",
+      "baselineSha256": "507333c6a1400fdb6797c0491eaf67da4a452a3f1f0e7f6d8f8944f9ca31e85a",
+      "mergedSha256": "eb5e1ea65fa1b1f51cb0dec2107de1f701a6debfa6cb5e962b1eafc3a1696ba7",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassDialog.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassDock.kt",
+      "baselineSha256": "54aa7a74189e541a0bb09441c8acda2b924627177a5d3c5009e07b85a39429f1",
+      "mergedSha256": null,
+      "change": "removed",
+      "removed": true
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassGeometry.kt",
+      "baselineSha256": "ee530baa7b45dbf64b4b1164496e11a54f24a5bd8c878e17ab04aa43f26adb8f",
+      "mergedSha256": "91905a11c5d5621acf718e9c4e5064cc2828909715e7c25591300fe07fffbaeb",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassGeometry.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassGlyph.kt",
+      "baselineSha256": "a842df4a550b026c089fb2dcadf7ef7e6bc1050cea6c66a16fd7a8fced60713d",
+      "mergedSha256": "d862de11cdb97e5d3a64290744798f2e665d0a8512f441299d88cccbd47d14ca",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassGlyph.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassGlyphs.kt",
+      "baselineSha256": "c359041dfb686d181b20ab06119b112db95f8c7ac533420c4143151d9f3ea0b7",
+      "mergedSha256": "dbc294014c136296887a2c744e3b53e8f1badd8bc39bc07f896c376dd39124ec",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassGlyphs.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassGpuFrostAtlas.kt",
+      "baselineSha256": "ce0819d18d9b130b24ff7eef2db87076a6dfbd35b1c677c2dbf5c3415d1cdad8",
+      "mergedSha256": "fe28e4e1d09141a1cfcd7d793928d493f0162a65c3dc98fe233a3ec143c50885",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassGpuFrostAtlas.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassGpuResidentAtlas.kt",
+      "baselineSha256": "afb8e97461bd8f0f916e7e5b599ae8eadc898539d5d2744686e713677bc5dc9a",
+      "mergedSha256": "f59cebfe80edb3d460ba685533a6b228cf35d09f3ce8ac811da536f27c601893",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassGpuResidentAtlas.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassMenu.kt",
+      "baselineSha256": "98156d2823c70766a2c42132145867fdb6c49e8dfd309c19bb45168a8f36841a",
+      "mergedSha256": "5ddafd8871c66ab0f29aa86de8d16801be5c7d8f6b8867f2b3ab1d1ed88b69ff",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassMenu.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassMenuGestures.kt",
+      "baselineSha256": "9427abaaa2fafc002884d607f79f47d16e07c8c66d856a39f6b3f6ce9fbd9c64",
+      "mergedSha256": "720101c802288667cea645af3c8029ca6ea9d864cda19f96dceb3935c0729097",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassMenuGestures.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassMenuHighlight.kt",
+      "baselineSha256": "9743a9eee9e2b54a0a9e0b75e549e0cc44d38ca4f4029fb747912d7af1e9a303",
+      "mergedSha256": "4c9999d5322ee1070ededd025143bd21520d3deae46d522c91ec88f7f408b071",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassMenuHighlight.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassMenuRim.kt",
+      "baselineSha256": "b3867560ea04dae23efbff149f0527c661950a6ab2d7b856a03015514bc1b474",
+      "mergedSha256": "20ad8dd8dd35a9b9c5eb90257957f3fe0b79624ad543aa1390a2cb2bbc97018f",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassMenuRim.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassMenuRimPaths.kt",
+      "baselineSha256": "3d26e496f49eee4a188d16662b0f45fb0755037a5a64f686417ff9ee88e57318",
+      "mergedSha256": "029125727485d47357b93fb62558371b9602c6c789087b475b240111881e1323",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassMenuRimPaths.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassModal.kt",
+      "baselineSha256": "72a76ed64626a8f30aeb7005b514061188f075529d6ae14015e075f0aa998d12",
+      "mergedSha256": "637ae5d76625aaa465a73b32dfb7594c6e3ccf9c2145ac07606157e3e3501f56",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassModal.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassModalSurface.kt",
+      "baselineSha256": "ad649d4889221774749c7eb9061ddc8cd9d4306eb6a26a4cd085c3593abb5253",
+      "mergedSha256": "4d946e0076e8fa83cce785455e1b7cf1a70c4ade1b6fa51e2cb73b87ff04afed",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassModalSurface.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassMorphGlyphs.kt",
+      "baselineSha256": "10dd0c3198da4cab175922f6f96ed2ce1f26ac1626e70fa2620d73848c4b09e7",
+      "mergedSha256": "2115205674b3360ab1f29df2a228e4c21d2791e49a891d021ac7ef6bd7de75ee",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassMorphGlyphs.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassPanelPress.kt",
+      "baselineSha256": "a8fd2e711672331c4389650a1afb9229bd36f08d014faf7ff63f6dd6ac49960b",
+      "mergedSha256": "127296af166b881dfa696197f17623e1a9754a888690bb9d1287753a1565e233",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassPanelPress.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassPopup.kt",
+      "baselineSha256": "99e58355b60d06e379d804aaeab8944bb987fcfdac00d09c18dcc2020061600c",
+      "mergedSha256": "52cbfa2e75660c72f94757c1f70781763c1e3531f3fc035b832244a528826619",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassPopup.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassPopupAnchor.kt",
+      "baselineSha256": "1fb0f426a9b9617f5b5e0a82d5016251733c24ed3ca35000365707d7c981811c",
+      "mergedSha256": "d0a1a537cc1a33fd8f6dd7b981765df7c42eb0cd967d18833b40a757b868062d",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassPopupAnchor.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassPopupValueText.kt",
+      "baselineSha256": "5ffdbe71c1dfad0d6b508e40526458707786a66362f4a0ef111479436f7005e0",
+      "mergedSha256": "507f7da170e431c3476e8259bfdc1924354f2c5d8cc24c58385ddff1f655d8d4",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassPopupValueText.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassRadialProfile.kt",
+      "baselineSha256": "56a187f1f689a284b8ae89d29a3fabdbb8c67cf34990b8f90356e07fe3756a56",
+      "mergedSha256": "bc8407f240e5b54f786f1220b127be6fd9df68face8f45a315e3248624f661c9",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassRadialProfile.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassRenderer.kt",
+      "baselineSha256": "810ed41c5e5c9fe87e17c8345127d00ba75080167a9407cef03d6ef54c5328fa",
+      "mergedSha256": "3af7c0addcda876bece2a47f680f59e4daaafb679abaab94726995f6aa1d7aff",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassRenderer.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassRenderScene.kt",
+      "baselineSha256": "5c3c3207e237083d93011bbcbc64928d5e411f96edc1db33e6f9682920fbc9b9",
+      "mergedSha256": "fd922ce4e8320325c41f05be2f80fcd67f9630b0271ec3a7104fc6a5da100d6e",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassScene.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassShaderPrograms.kt",
+      "baselineSha256": "51c31fb6baeb114bc9b0c4754552ecd9a6dd9d3587a773753a7baa24b16ec0db",
+      "mergedSha256": "d63c2da34f41eaa956044e7aef5b3c003e66873e6af039530b0ed18e6954d6ac",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassShaderPrograms.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassStyle.kt",
+      "baselineSha256": "506d5f7525ea91822f6868077e41e08748f426069b75787f0cb718ac0a71ec49",
+      "mergedSha256": "8cfc59d3b9a55715826ec9d28ba0bcafe46b5718d6d22f6b70d126582969910b",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassStyle.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassSubmenu.kt",
+      "baselineSha256": "a309dca2d75dc742b89dd740c2c02dc4dd0c189ba59fc2d49e6b1db9f31c9a00",
+      "mergedSha256": "a72ce82f5213f80c184524206d1a169323dc83fffcb7768005f8b231ac0b7704",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassSubmenu.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassTheme.kt",
+      "baselineSha256": "052294a42e8a73bcd1918c93f2e244cf8b1e5e683c8dce19277d2f3fdc0cedff",
+      "mergedSha256": "72c354a23fbe4ba47d54af26efa83a6d97786e64d1e1299b0c890d7ffb6d9729",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassTheme.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassTouchBounds.kt",
+      "baselineSha256": "e9cfbc5bb5494d1954060baf4ee7a78c559e34fe3dd5d068c5b9f3e72c4abb06",
+      "mergedSha256": "a3d44e90bfa19e293c1cfe8999a2a4a0f1c1e01de7d14b8b650ff7ab52fb4bc9",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassTouchBounds.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GooButtonGroup.kt",
+      "baselineSha256": "8b7e7f51b8ad7ebd00a99920b95f78a9d4cd23c799c61a3717ad143ddfffde18",
+      "mergedSha256": "b54373eaacbfc7c34295cb1cd17f5928f84371fd1b3443fb9c5c865ddc7c0e02",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GooButtonGroup.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GooPairOutline.kt",
+      "baselineSha256": "598a1a66140f1b4a9fcab6443a4132f316852e805987b2552bc938f0d42c0f8d",
+      "mergedSha256": "7e1b1e29a1beac00ea3273b4505bd011964a886ded37a3bba5a4fad215a77734",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GooPairOutline.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GooRowOutline.kt",
+      "baselineSha256": "4210bd68a156d2900a12f5b9f0f18ef0f434eea67458db0ffe4540c03d179281",
+      "mergedSha256": "8e5fbd6363c45f3c6b9cf2fb18c22b8c0827d68c187db7a488df254aa2c09a31",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GooRowOutline.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GooRowPathCache.kt",
+      "baselineSha256": "eb39574057fde857e3cd2d5e7257ab2356bd77ddfc75dc96de48d0fe56824b83",
+      "mergedSha256": "9c35bda4ad0705da4cc023cd947a5ab8383b90c8c4e2039f68cb21d3cc9ed038",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GooRowPathCache.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/Ios26ButtonDrag.kt",
+      "baselineSha256": "2f5af270f0bc11900bdcb86ddbef587dd953af4c485bac4bbeb8a6e515a16642",
+      "mergedSha256": "a7a69612129ee0382ccdb97ab84f704cd30493c42851c2e5f4c6d41e973ec9e4",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/Ios26ButtonDrag.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/Ios26FusionGroup.kt",
+      "baselineSha256": "3164a0509ee2d00df1d83aa1a675cf2e5caad11f96c3b7cac878e3a6e9f77c66",
+      "mergedSha256": "36afcf7519cf635d0e6db0a51c7a907a7b4a3c47bf1cd0e2b30afd00907f9983",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/Ios26FusionGroup.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassBackdrop.kt",
+      "baselineSha256": "b223d5d7d5a86b56a90beff3b420f8a11de42753fd43bab964f7763b2de6c26c",
+      "mergedSha256": "de50bad1d981f817ea687a4cd21083da004fd536e8b7a34ed35c48cd91d8cd07",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/Ios27Glass.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/DockHighlight.kt",
+      "baselineSha256": "4866545a59be884b8a5c56455143b27df3aa9ab0c6487c2f9e83bb446b74ad28",
+      "mergedSha256": "13ac4ef52d473136d67deb6c9d65d116f67000fdb327b278477cddb46d6eda98",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/Ios27NavigationDock.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuCardShadow.kt",
+      "baselineSha256": "e71a56e5819c599eb98cfbe87a696e9f97ea9581bf1c6607496ef71de1dcb353",
+      "mergedSha256": "22f7f5ea25b4e939aa907ed05bf705b0e0aa0127fe072fad94dda7720c951bf6",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuCardShadow.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuContentRows.kt",
+      "baselineSha256": "8018247d0cbade7dc0f0aa899d89540a1dd8b7336afd1f1e87c35b04380a5bb4",
+      "mergedSha256": "ed4f084bdedbd981dcc25735b415db29c46fc73ed82c4911c978d844e2a052e4",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuContentRows.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuElasticTransform.kt",
+      "baselineSha256": "15fbab9534f5c16f71122ff6c3f5166438137a3671443032a7f1505355cfa95a",
+      "mergedSha256": "0661073221f21a16c1456eca4094333eecd5d33b259d3a304f942a0e6ba20c5e",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuElasticTransform.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuFoldPressGeometry.kt",
+      "baselineSha256": "c46931e1baa7f36754ef5aea99306a0a4c2ee07795b814d622364105d8e54cc4",
+      "mergedSha256": "564b0584c813295e311aa223b06be7532399d07536422ec6206bb0d2d5aba1b3",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuFoldPressGeometry.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuFoldPressHandoff.kt",
+      "baselineSha256": "769b4b2475067951424ddfd56517e790fe0e80431767fd759e7de355e0b752b4",
+      "mergedSha256": "ee94cb72cc00cbfb2638a40f2694415b4ffa645daa8cf19fc0adbf02302eda85",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuFoldPressHandoff.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuGestureArena.kt",
+      "baselineSha256": "deb09ff49d687123ea969f9a85134d96e945b96ecd45644c3e80b23d06a991db",
+      "mergedSha256": "5fba7d840963b45d3be04d64457f9efbf8351399a34c226bac060e987e9008e5",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuGestureArena.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuItemContent.kt",
+      "baselineSha256": "eb130f0b60fb5435d4028ce7c23cb20f59ea11bfc764878b5a7f292164d00b9d",
+      "mergedSha256": "fb16dcb6ce3c479e44d7521b234a3c9c930b1ba583e3444ad0b349d3072726bc",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuItemContent.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuLabelWidthCache.kt",
+      "baselineSha256": "d5294b96894334114f5f36f5efcd352d03f30999edf3a9100fd65c5401bc73dc",
+      "mergedSha256": "d221b6f2d5c6fee7115aae22379dfde36f3bf1ae8af9eeccb2590e28b434f0cd",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuLabelWidthCache.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuLayerMotion.kt",
+      "baselineSha256": "88354794fcb95c452b279bf33c22764daf5641261559376a262bc6eb4a9720cb",
+      "mergedSha256": "e5757b15e7cea780bec85f58f2824570f855b610d6b074d44976c225b47f680a",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuLayerMotion.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuLazyRows.kt",
+      "baselineSha256": "a08f66179bb0c241d8959df1e1be83ecb98ecf50383a00b08857fd3955c6f1df",
+      "mergedSha256": "459ebc71774d40ad2a61ce3ecf284a002b636557affc732e04a6950668e83912",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuLazyRows.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuMorphMomentum.kt",
+      "baselineSha256": "a91b910dd9f66405af1e027abb3b5103bcbf28f8a14b5dc90261e143d905f7ed",
+      "mergedSha256": "571ed3c1b279aefc18cd1a560cdd9c31e6a6c660b1990c00b5e41781c6444895",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuMorphMomentum.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuPopupPlacement.kt",
+      "baselineSha256": "3db7af3ee918a08e59319786e62d3604acf14cee9db8f517539707661c33577a",
+      "mergedSha256": "c53b9966dbaf20b3fc106fac2aaa5ec14fe505c8613a691861dcbd43a62dfb83",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuPopupPlacement.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuPressedMaskMorph.kt",
+      "baselineSha256": "7f5493fd86edd6fec066f2bfb58c40ab9e553fb88f00e4ec2e4fa48cc3d09901",
+      "mergedSha256": "db7923d61ae14a506a375a8d2ac295fb78eb7d05115c3a46ce5c4e9214e8c0a4",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuPressedMaskMorph.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuRetargetSpring.kt",
+      "baselineSha256": "4c7b936bccd26708fc9ecf0d0e8b495d1797000829a8ea4a62801613db9900d9",
+      "mergedSha256": "733e2da453ba6e2716b1effb272d1213863a4200ab317e1f73c0ee4d98abdf34",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuRetargetSpring.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuRouteState.kt",
+      "baselineSha256": "2e19b745286b32b50680fddb2cf4c8646a04b014f06fe2c4411e2742f164faa7",
+      "mergedSha256": "e71db8d23af622421b32bd169ce4b34a5d0a92e7a85342cf61cee07e60bc22df",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuRouteState.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuScrollConflator.kt",
+      "baselineSha256": "7f431bc742f5d744c3ef7988a660261ab48927fa553c86ef18965f25cf879a98",
+      "mergedSha256": "951c82db9685d0891f144202013d1eef63d29908b49b5e801068308352ea2d08",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuScrollConflator.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/MenuSectionDecoration.kt",
+      "baselineSha256": "376923c0b6ee65e3d3128a6fe89f2dce4f82515ab3874477cb1891471382b7c7",
+      "mergedSha256": "d00643d082da2da49f0803bf59a89ad9251cc89be938b3cd333ff124d159c058",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/MenuSectionDecoration.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/NestedMenuMotionJobs.kt",
+      "baselineSha256": "04ecb19a00032f70dd4315a0c007be75d3d37cb577d140c241afbfed8cadfd71",
+      "mergedSha256": "2255348ac4d7e31a34c7d9453fc1bf977c98a93ac9d94477bba75abe42c165d2",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/NestedMenuMotionJobs.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/PopupContentTransform.kt",
+      "baselineSha256": "8c6bff2a5194b02ab1eb6496d13a438d4bbf65f345005be0bfaa5f90591557c5",
+      "mergedSha256": "514a707bc8bab53cb62bcf3bb147fcacc3c36576a5225d2912a76562430e3954",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/PopupContentTransform.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/SketchGlassBridge.kt",
+      "baselineSha256": "aea2a379c8a5d2582c95ff7e89aac5dedc1c36c44a4593be62b517cb9d12f8c9",
+      "mergedSha256": "a96309bd144ecbed90451ef1b475e6a60ba754af52234c523cfa4a958e100796",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SketchGlassBridge.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/SketchGooRefraction.kt",
+      "baselineSha256": "a0423e99642b8f31231d9cf70603a5461389f1966e4125b114b44a7b0d4b3545",
+      "mergedSha256": "7f5aef38379e28b0b16771265d19bc5703a5b846db4737336e6fdb2997d7d833",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SketchGooRefraction.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/SketchLayerOrder.kt",
+      "baselineSha256": "8149fc01eb4ff82cb5023f856ad773fd59b36a070fe1c40126e5d2d5a61cd53c",
+      "mergedSha256": "cb2a6e9580c39b6a8e8dcbff7bd6b981ba1231b3140b703f71bb565c382ed3c0",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SketchLayerOrder.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/SketchMaterialCache.kt",
+      "baselineSha256": "832118c6d3efc1642ec2f205178587c47bee33ad9cc97a31d56ac9c0a1f23b1d",
+      "mergedSha256": "866698737380bde362423a0b1e653d74289b57e8aebaa5dd4d993aaf8fd29585",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SketchMaterialCache.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/SketchMenuRootSurface.kt",
+      "baselineSha256": "14f9d956568bb244989d089ea21a11a75a4c4410cf68d20458cd47a8bef9dd22",
+      "mergedSha256": "dcf42ff0520007f4a8798bfa15087a3aec26213f87ca0bb9dc558bc7889f32b1",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SketchMenuRootSurface.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/SketchOpticalInputs.kt",
+      "baselineSha256": "d796e8d48446ef440c7d7be96df6d0b21c2047a4802cc7d352e6a8046b50dea4",
+      "mergedSha256": "83e594bcd8b788fcdf94c25abc654c89c9f7231db87921803c386c57e5ffdbe5",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SketchOpticalInputs.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/SourceContentPolicy.kt",
+      "baselineSha256": "29ab72dbea8c5683e2206b806869e60f7d2c9ab1547af54686c232aaf9ef0c21",
+      "mergedSha256": "270f587face665baba67537646a188f9f26dc885ed0df188e3e0aeabe78aa778",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/SourceContentPolicy.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassTabBar.kt",
+      "baselineSha256": "d19d952655e5182ac0e7a4ec330247e6ae746c95983e4351e7ca28b508a06f32",
+      "mergedSha256": "7b6beefc45f1a725db7ed23f39bf0ed099adf48add0df062b218cebdd45a5187",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/UnifiedGlassTabBar.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/ConicCubicFitterTest.kt",
+      "baselineSha256": "03f9c8c2791ce806ca1aac9fe97d11f31bc58894bf314efe95d112bfbdd5c9db",
+      "mergedSha256": "32fd77b2e0c2f50c27a72f8b441f5b2b28b384edc60a37ab1c129e9c330c13d4",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/ConicCubicFitterTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/FlClashAlertMotionTest.kt",
+      "baselineSha256": "6d2fb4c60f004ad37a38dd9c9f6771fa32f1d877bb8e2e119aeb4529c1cd3a15",
+      "mergedSha256": "4ddf4fac261cecbda24e2333c449a53ec1de3ecf42255e388b081ba48988b785",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashAlertMotionTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/FlClashDockMotionTest.kt",
+      "baselineSha256": "294e8a59b0a496dffe0259c4cc7b33471d028be807348cad7aad5f3073bd5900",
+      "mergedSha256": "f6bb2f2be18248016c160a2a6e2a599aa22bb001fc93a62516e08b355024d560",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashDockMotionTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/FlClashElasticMotionTest.kt",
+      "baselineSha256": "c40ec47081686cae8da38349e4a887780f8d2e14b0f329ece70d9e9360492261",
+      "mergedSha256": "4da9f17993ce808371c26a99c9dc3d21b11d4a30263adbe57a0cf795ad75ad50",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashElasticMotionTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/FlClashHeaderPressTest.kt",
+      "baselineSha256": "a738a4e9524e033649085cc717f2574fbf79f63e148ac40ac0b88ca15fb72347",
+      "mergedSha256": "df1160718e7d4e91fdcfc90e5a78052641dab78973a82dbfb4ed86bd5e5496f3",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashHeaderPressTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/FlClashMenuItemParityTest.kt",
+      "baselineSha256": "cd4b77990ca7587fc213c81609e1ad0d0a2e31c61e38de49a4e884babb2ec7b4",
+      "mergedSha256": "ccaec4373c5543477942fcd78f7e3c475f4bf929defd0024d93451577d322671",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashMenuItemParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/FlClashMenuSpringsTest.kt",
+      "baselineSha256": "d673e56c9d5437ec0d8bb8e76c74296705788668d5236faefe029ec641566cd3",
+      "mergedSha256": "424510dd14f6e10ea6470a1f145a4256a5cf622a7bdb3bb2d0a8c2294980e650",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashMenuSpringsTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/FlClashSubmenuMotionVisualParityTest.kt",
+      "baselineSha256": "f2c956a02497b2bac907a7fac64d3bc8fc5255997d38e7b4c487a23c431cde5f",
+      "mergedSha256": "485e92ba843d57349fc821eb7b1b6f45f00cbff92141151b082bd728298c5df4",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlClashSubmenuMotionVisualParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/FlutterRSuperellipseFitTest.kt",
+      "baselineSha256": "7d2ac0c81bbe3512815fb672b04a8c050b369f16cd43292baa6a1c0e3cafff01",
+      "mergedSha256": "d43c90f188528eabd9981e2e5aa10e9aed783ed4b9b1add5c91834958f04a6e7",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/FlutterRSuperellipseFitTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassCapturePlannerTest.kt",
+      "baselineSha256": "bed4d40014c417fe0b1c65782bb1299f73a7d8c6bbd3b408e4b4adabddc2e80e",
+      "mergedSha256": "867044502d71fa640ecbf984e2ea15e2c01c0efa79ce5eb0ed2fb3693af521d6",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassCapturePlannerTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassCarriedPressTest.kt",
+      "baselineSha256": "ab761f46e01132d793f3c9ebb4ec1fffed8bdffe0c8a06547819931b5f8e5e03",
+      "mergedSha256": "9efa1ea4abcd951e9dc66c5b0f6dda7cc3824ab53f7048a0c1a9b499e20cfb82",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassCarriedPressTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassCompletionTest.kt",
+      "baselineSha256": "b72e40ea128771490a7558b12c620cc97e8dec6a9eb2d9e1e197682b8278ad2e",
+      "mergedSha256": "e2f9000a792eec2876ff480e5b56cd36e5b2767cee9bbfce4e430a0fdb8d1731",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassCompletionTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassCornerCurveCacheTest.kt",
+      "baselineSha256": "e48eda13bfa41a4493fa1205aca994571ce5c96a6651c31c63eab896a8627f21",
+      "mergedSha256": "56a4dbc6711be74bba855cf0b4d1ba28644f3fc3649f78cb86f023b63cfff660",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassCornerCurveCacheTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassGeometryTest.kt",
+      "baselineSha256": "a7d9232877933f01b50436b8316679804cceef5bba8b679ce7c0e303f5368358",
+      "mergedSha256": "ad843771812e13f52b5c771cb50e85e608a9d010ed073b721f52d6278c1cecc5",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassGeometryTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassGpuAtlasStatsTest.kt",
+      "baselineSha256": "8ca1af87bd87ab7d5cb5eba04e81c25aa26ade50113c8fecb2265bcc31a4437e",
+      "mergedSha256": "56a1335fe7577437d20116cbc3ee990467e4f0d542cee49b5159e036306d445d",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassGpuAtlasStatsTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassHighlightStyleTest.kt",
+      "baselineSha256": "e38286af215f74f7b366bae353af744b16a08fa85d8329c5aef8dc1c58dda5c7",
+      "mergedSha256": "adfb8cc578c98b6ee26b4c13ba4d90454614b32a40f711437d2dfb3042b05ed3",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassHighlightStyleTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassMenuGestureHitTest.kt",
+      "baselineSha256": "99df19bc6002024328b10bc05664ff4b3b700eb4713b5ff6bcdfc355b0f4303d",
+      "mergedSha256": "a6cc85c7d28ec3890cb3da91cdcf55b8608b7567a095d1ba7c4bcef3a1464daf",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassMenuGestureHitTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassMenuNestedOpeningTest.kt",
+      "baselineSha256": "3f3f866e9d402b3fa7c9d97ccf8bbc9d4035da5c6a55f4319ec4b2b7ecb4094d",
+      "mergedSha256": "8ca25e47fd8b2f31e62e7b46961995fa795364a078be76a53b84230c75cb9e08",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassMenuNestedOpeningTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassMenuPlacementTest.kt",
+      "baselineSha256": "441cb4e2e5e51df24c1049fad75b3d0280d4b3cceecd5135e23b8bdaac626978",
+      "mergedSha256": "38a9ff332bce882f2ded1116a422c8bc38ca397eeb5ff3d4526cbde38ae8f0bf",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassMenuPlacementTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassMenuReturnContinuityTest.kt",
+      "baselineSha256": "a72f1fd708112f17ca2be8d2bba1b8d39112df2fdf6db7b0aac7477d2780f5d0",
+      "mergedSha256": "14c8017073e5cc32f94a724f0ce78287516631a47094907931392c86b7a5a05f",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassMenuReturnContinuityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassMenuTopLevelActivationTest.kt",
+      "baselineSha256": "87df3fd2d188619e42a3f389d82d3da473a75276108d080e165f40eda1cc8305",
+      "mergedSha256": "d3db61d6506821dfcd2a580702afceef4d6290bf8dfcd2b19702d1f1f7ac8137",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GlassMenuTopLevelActivationTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GooButtonGroupTest.kt",
+      "baselineSha256": "56006c7c37d44db8222c238dfcfe442cb7da28d1e3a94e427866ab0284411e1c",
+      "mergedSha256": "0b9637324c474e81200ce3febf3c768917d419b6647d744190fed068c5383cf4",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GooButtonGroupTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GooDistanceLengthTest.kt",
+      "baselineSha256": "346adb10757ee972f48c2c95185c20c03d21a68da190a6091c8c301a52db522c",
+      "mergedSha256": "cb6c6595ad5a11b44eb4740c7a7bd19e751be65695715623b5ce607d9ed09233",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GooDistanceLengthTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GooGeometrySlotsTest.kt",
+      "baselineSha256": "a8c3b48614acb0574a8666daee9049623d14f51268c0a15b339befde16f941dc",
+      "mergedSha256": "d34bd89b8ee532496cbbf048751f6aa91c9616b1657633845e92000c7272d692",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GooGeometrySlotsTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GooOpticsParityTest.kt",
+      "baselineSha256": "5ce464d7bfe89dde11d2526e346e5c582b63c4fcb63a2ac832866e385c4bc07d",
+      "mergedSha256": "24646edbb9fb5a7721e94a789d7c922c73d43470b7d04fba24fe09f9de59d5d3",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GooOpticsParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GooRefractionAlignmentTest.kt",
+      "baselineSha256": "12000d437de190d0bbf66903da92fe325031c38fa89dcf6d8f0b9bec992ddcb9",
+      "mergedSha256": "bd35fb09acac583c1c193ac53123ba8c14574a5cb6382ecda5b450f5e9319fb7",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/GooRefractionAlignmentTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/Ios26ButtonDragTest.kt",
+      "baselineSha256": "7872fbfcc8cddae20e63890cd69ea8d602bcba17138cd65031c71d837e79ddec",
+      "mergedSha256": "2f4ca58cdd5cfff5ee8d7910572e913fa0ab95ba6191bec3f48df1fa964dbeb4",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/Ios26ButtonDragTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/Ios27DockBodyTest.kt",
+      "baselineSha256": "22a798167731aaf8a7842939cd88d450f2f3aa526b3e0bd07ca0ced6f659672e",
+      "mergedSha256": "349bd6092539ccabe08a99b101e82e1f3a2371d779094420d7bc1f30ce432711",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/Ios27DockBodyTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuAnimationParityTest.kt",
+      "baselineSha256": "94550cd3793bc32a234b0a34f30e0754c46e0a196d8a259fada01738af9ec684",
+      "mergedSha256": "ffc98ec2e70b29199cef7ba5eedc78c01d3a9fd2c8791aca2f7ca4f202befabe",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuAnimationParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuDragDismissParityTest.kt",
+      "baselineSha256": "bf3e59f765c9fd7fe083f60398dda76b814eab847fc06512e5c207f420e92077",
+      "mergedSha256": "f4c567bc45776cbe9629f4a32d7b2f4c908c9f2edca9ae2caded881a15242a1e",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuDragDismissParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuDragReleaseParityTest.kt",
+      "baselineSha256": "26f9d3e84cf8ee782411b65c4b29010ca51c6a72003810be35f7ec6d640cb90f",
+      "mergedSha256": "93091678fcfa128f372d363a286c789f25457e4a5495b4a5ef1b781261850cc2",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuDragReleaseParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuDrawPhaseGeometryTest.kt",
+      "baselineSha256": "2b7ff6d74f956793646e138431aa622e6068d6e87930fb7ca3b6505ae6d35d73",
+      "mergedSha256": "15c11e426079a29f0cd51e98cb74576f87e09efed2c2ea4c5fa061c9b361dd39",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuDrawPhaseGeometryTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuEdgeBounceTest.kt",
+      "baselineSha256": "04259714e7ad8919021dafec0b4749b420a4e113210142a8618acb1e5ad0ce2f",
+      "mergedSha256": "bc790ead9a56f78466d192d5537774392b4cc8165b4c5f6c7b5b52c821041d14",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuEdgeBounceTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuElasticFullParityTest.kt",
+      "baselineSha256": "d36381699e56668e5331d482b4ccc9aded033bb48327242a1e36dfc7541d2c65",
+      "mergedSha256": "e9165a6286b3becbae430b3582136e58c679d92d5b52df8c94f9dd8486130d41",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuElasticFullParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuElasticPressTest.kt",
+      "baselineSha256": "e97fce8b644ce58ab1914b3bd42e0f58004e40669ae8dfed7305f4da5da3f258",
+      "mergedSha256": "a693241e8e54dd148a9a7af68bfd37159040d323e50767bf3b37fab88ec79649",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuElasticPressTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuFoldPressGeometryTest.kt",
+      "baselineSha256": "6c19bbdbcdaffe91563642ca9e1f3d85d52b6aecfd882dd3b80eaa12e12a4dfd",
+      "mergedSha256": "748efdc8cb227fbe6c441dfc78519d9026dd5a9e7ca765522d9552ed4434de59",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuFoldPressGeometryTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuFoldPressHandoffTest.kt",
+      "baselineSha256": "91c4d4779376541d908234cdeec5f42a3882bf381364c0046fb6f179bfb3b49f",
+      "mergedSha256": "048fb327bb049d003a696623434b5750eb3d8907bd372595b6efb3431f1f3e12",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuFoldPressHandoffTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuGestureArenaParityTest.kt",
+      "baselineSha256": "357c10d326c54d99984232fcbfc1f546c5b3fb16d6ff8a1ebb71a48232dc9e7e",
+      "mergedSha256": "667a2fec40d9d6bff69e301a24725ee06f0922e90af8d68f070f69302dda0164",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuGestureArenaParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuLabelWidthCacheTest.kt",
+      "baselineSha256": "7dc86de6f9e877a8d30f7b73c5c00c711d737c5de386d746d3a92de82e1ddcca",
+      "mergedSha256": "8bc0ae987f0ea3a3645258cbf0e254aebdb7cd1c39f7c9dcd6ea6fceeb406b76",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuLabelWidthCacheTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuLazyRowsParityTest.kt",
+      "baselineSha256": "ff14b06cd06ee9ac4dda3fd4b60296d950904f1488211cc9a5b9c1e899648420",
+      "mergedSha256": "ee830ca656b4916bd44ee86336c3d7b18530c50f1b3e005b994b19c27e29e063",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuLazyRowsParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuMorphMomentumTest.kt",
+      "baselineSha256": "cbe3aabef98c4a5defa132ae34aec101e161f5bfcc93c11e27a94b7dc92d49c9",
+      "mergedSha256": "4aa71aa06c6f4aa51501a5b5cefaad833707cfbb36e94c49530ec9efdd8d2f19",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuMorphMomentumTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuOpenFirstFrameTest.kt",
+      "baselineSha256": "e98312f5b693f08cbe8a5573740f225e878fba9eb2f3ffc81a509430efe7b9e1",
+      "mergedSha256": "c05d2c1283dff048eec5de0eee213b49965b90f0e0fdc25838d5c7a0c5ec0029",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuOpenFirstFrameTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuOpenPerformanceTest.kt",
+      "baselineSha256": "49faaf771a14698f156e7cd15e56ec40acb7e1438dac2a6cde8ccd836ab31848",
+      "mergedSha256": "0d672f71af257d6724f26e7d09e17c9b4ad847d25ac6a78e658629e4d2a41e6f",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuOpenPerformanceTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuParentDimParityTest.kt",
+      "baselineSha256": "2c6a06934d708cd2df59c04d33512adfddb47f0a800401dd1a355a7a3fa8f547",
+      "mergedSha256": "ecdca4dce0427039613125a0f2f4653907f0e897563d453db4556b8e1c8c1f63",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuParentDimParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuPopupPlacementParityTest.kt",
+      "baselineSha256": "04b14f1a8a0390addc125440c92e1b422dee5ac167f1daeda003445ac0e32f60",
+      "mergedSha256": "cf25a4e8f44ecba583a74b29987d5c8dffe7e5d54a58dfeffb236f9e6e88177f",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuPopupPlacementParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuPressedMaskMorphTest.kt",
+      "baselineSha256": "eb27fb286ff9e7570b0e702cb321ffb5b594163e0040b807228aa97041188e9a",
+      "mergedSha256": "7687eee202103aed619682c2078ffab8f612f978efbc18e74b8ae1f9d5d9a7c1",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuPressedMaskMorphTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuRimAndGooShadowParityTest.kt",
+      "baselineSha256": "7bbc8fbfe84cd5be306c883410cbbb3a93d2dfed01d23aa59ebda862bdf015a3",
+      "mergedSha256": "70131de6bff199f43ca6f542a5d52355dc56a298797c4b52395834439657fe5a",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuRimAndGooShadowParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuRootShadowContinuityTest.kt",
+      "baselineSha256": "0ba697f9fc0d4ce56d032a36aa5b044315133532a8e73d364ec4500bd99491f0",
+      "mergedSha256": "ceb58ae34e1436603d054a672bc4da5aa6052c6e2a9586a6413f8f736c8984e5",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuRootShadowContinuityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuScrollConflatorTest.kt",
+      "baselineSha256": "607176da3c259940ae06d0980aa905ec6ff35a2733d99b6493d48097e2844f0d",
+      "mergedSha256": "46d171582ca29f456fe9de11ccae02e53bd11058252b2fc315e1264e4a9b1b37",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuScrollConflatorTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuSectionParityTest.kt",
+      "baselineSha256": "be79fa0cc4aed7bdccf461a36df9f95dfc27c1bdf3c65a8dc21b7165fcc8de34",
+      "mergedSha256": "61ab50b6d53459309b479b668f328d1ce9fafd803aefec959b8243a3925ebe08",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuSectionParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuSpringSettlingDiagnosticTest.kt",
+      "baselineSha256": "1bbeae816003e6c6d2cff35bf5513946c7e4e51557b9cf7fbd5e905c298027dc",
+      "mergedSha256": "f3ca8e40fe4ca5871cb5c97beb9312374448ea5ca3c9007dc74e299290a49ba1",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuSpringSettlingDiagnosticTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuSubtitleGlyphParityTest.kt",
+      "baselineSha256": "2d470826ed8b1c971b70977743a8ebfabafa20298759729c4ead1cf57f0b7341",
+      "mergedSha256": "aa80097528238dd45e7e2eea19768a577e63f7b93360fa640fb92ebe724f2c1a",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/MenuSubtitleGlyphParityTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/NestedMenuMotionJobsTest.kt",
+      "baselineSha256": "6fff86f88c764e0c964f9f1ed2331afe8fbe0bf77d2a0c79c3cdf42bc58e7174",
+      "mergedSha256": "f912e15297ee839bebba7a2e9e588742ce8b58aec258520af67005071d0e95c5",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/NestedMenuMotionJobsTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/PopupPresentationTest.kt",
+      "baselineSha256": "68fe7c69275ddfe35f93dc2fc5fcd3e9217709dd3c07acc986f6dcb8e8f6d793",
+      "mergedSha256": "8d68966ac7f5b406c1514434aeebb2213b165641409043be57523f42935ffb22",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/PopupPresentationTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/PopupValueTextAndCheckedSemanticsTest.kt",
+      "baselineSha256": "0c05a33d84f070a90e5c2e395a6bdf38bf64cbbb616d75e5ce8fa7f36f77d7cb",
+      "mergedSha256": "63ebf0fb1ec3dfd6f536857cf4a0c8c496320d409c3644c7c08f1b35ffe23a20",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/PopupValueTextAndCheckedSemanticsTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/SketchFrostContrastTest.kt",
+      "baselineSha256": "f7657ed19ac042aee56da8109f635ddab0233c6202e0f6e4f005f579bb5437bb",
+      "mergedSha256": "be6c5d8031c6620ec6e15554b70c8cb68925702c82f58ba0f8e37b288410fea9",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/SketchFrostContrastTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/SketchGlassBridgeTest.kt",
+      "baselineSha256": "d200f25560109f7c2c180fb4c096f3f5ef96e2ec361e13b76eceab3fe020149a",
+      "mergedSha256": "b4c0dac8662ea96d83baac9380de3a6f69061032b88e0388576f14fa42cb914a",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/SketchGlassBridgeTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/SketchLayerOrderTest.kt",
+      "baselineSha256": "0d443979c190b011607f7062148cfbd0df1b3c2ac2078638bfbbb39d890586d1",
+      "mergedSha256": "c385a9a84541bbf62257dcb341ca8200b1466254a0fb2cf153da41ca7b7e4832",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/SketchLayerOrderTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/SketchOpticalInputsTest.kt",
+      "baselineSha256": "19c867a80d4a3bfc9bacf66342327e0d3253cae938ac4af965a5b98e040f6547",
+      "mergedSha256": "3d20a2902b08b17036bb961dc2662e16b76f1f87e43f680b3fc89973741b3c18",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/SketchOpticalInputsTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/SourceContentPolicyTest.kt",
+      "baselineSha256": "3071e2c0e4ddb947f8272726c51df698559c0ec67f20fe401de7d01ccc2636bc",
+      "mergedSha256": "48645116d21dc9bba1a1a9d60afbcd73c4d6561385a5551ba6c6e71e3950475d",
+      "change": "moved",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/SourceContentPolicyTest.kt"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/GlassNavigationStyle.kt",
+      "baselineSha256": "84f47f5bc466e74fa1c492794d754f7cab3fb456345d0ec0c195bd38638ae0cb",
+      "mergedSha256": "5e6c684d2d389c50f7ce8e31556fd8323d15a533b88b4fb839d19a91ae94dc6c",
+      "change": "modified"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXBottomChrome.kt",
+      "baselineSha256": "fddde75016230c3e13fa0a4664e830180e7dda9ed192b38d72b603b878775b8a",
+      "mergedSha256": "5c67f97bf22d2a4c8c71323614c36a5a48072732ff26da83d788c6dee27e4895",
+      "change": "modified"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXTabBar.kt",
+      "baselineSha256": "55b79b05f6e0cdb2dd92e47cd2c4f78e30a1f9c82ac38cc34aed96c6943a4468",
+      "mergedSha256": "2abe8b1d58a87e4b139871aaa2bf8dade636efef7b0bdd031fe2f6e322d5e58c",
+      "change": "modified"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXBackdropComponents.kt",
+      "baselineSha256": "7a521d1113a43622e3e3a55419a940fb05de6a4cbc030438af96579037d39c78",
+      "mergedSha256": "167665202b9290d49fb4bb78aac6a5d3814a993f1e91affde4c88fc8f4da6cfa",
+      "change": "modified"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/MeloXPlayerScaffold.kt",
+      "baselineSha256": "2c8545cf2723026c968a5780664f7b346596e0f81ca849705a26e6a4e0691dd6",
+      "mergedSha256": "0c1664e28f4ec09e9156c023305c20ca7e48e16fa29a51f0399f2e3e80b5ff99",
+      "change": "modified"
+    },
+    {
+      "path": "melox-tabbar-demo/src/main/kotlin/dev/liquidglass/meloxtabdemo/MeloXTabBarDemoActivity.kt",
+      "baselineSha256": "4359a5647f3e6fe0ea4c25daeff8b2f9c257cf5210190d265e97b698159ade83",
+      "mergedSha256": null,
+      "change": "removed",
+      "removed": true
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/ColorOs17ExamplePage.kt",
+      "baselineSha256": "f18fc00e363dd3b23d88d8283911d768d4ef21363880c09195aa39449926999a",
+      "mergedSha256": "e53dcb1a0191be5d0b9bc2b59bfdb65b279defb7821960e43479db2990d690ff",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/DemoGlassStandard.kt",
+      "baselineSha256": "037750735f05cc9047e4c15ac756072c8255845d88f884eb3426bf26b92c619d",
+      "mergedSha256": null,
+      "change": "removed",
+      "removed": true
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/ExamplePageScaffold.kt",
+      "baselineSha256": "39772b80c9cd6caccce8369af487694c0fa510c411c0f1b80adf30effc05f8d0",
+      "mergedSha256": "780d9b54d092558ea18694064ce4db0f50cc776f8c2a62e2a1d9f80cf76ea6c1",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/FigmaSceneView.kt",
+      "baselineSha256": "0fa7dab50e68918bdc5c9bb29183881275a07187728838edb88d897a5c651750",
+      "mergedSha256": "215395071f7ceb0add502ce544243048ce51436a1492f0ba3a8aba6a0feac13f",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios26ModalFramework.kt",
+      "baselineSha256": "4a34e417fd094e98c6ef4b4457346b35cc21f57f63588e7cac39e184f2783980",
+      "mergedSha256": "62b474033cc65772264cb2d87d2ae77936b1b3b779da2ae39c79d4882f4152d6",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27ActionSheetExample.kt",
+      "baselineSha256": "844823e83c4f8351512fb1b2dd1294d6a58b508fe449fc2390d28e911585fe92",
+      "mergedSha256": "190dc264a4889097a648ab426a4c8b2e14aa6b75c043ee822653cfdb5702f669",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27ActivityViewExample.kt",
+      "baselineSha256": "a35f26e63f9ad299241ba906b753a4170f15f4bc6194cf1f2653bef540fe3f58",
+      "mergedSha256": "298b661857111cd869b91dbf41a036a8b9f698f52e2003cebe1a0bd45557c709",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27ColorPickerSheetSurface.kt",
+      "baselineSha256": "8a781d06d6eccaa82902614e4db1bcf8a89139e9f388bc169e23a835f0dd6ee1",
+      "mergedSha256": "c5bea4606c6bdbeecd8deb28df9a8df307a240f0fd99a1858e023909ceff7ffa",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27EmptyStateExample.kt",
+      "baselineSha256": "6186db09767bc7eb0935660a066a525fdacde833b5a0e27ef00e9aa88ba5fd73",
+      "mergedSha256": "a963b9eafa00e7c53034cf1e1b13a5250b4df26471a361cd2f035eb5d6c9ea69",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27HomeScreenScene.kt",
+      "baselineSha256": "88a4a890e276bb2e843aa1d6fd8d1d289b9b5c84f53bc63a0fdfc134425feb2b",
+      "mergedSha256": "3136c9f5043b007a1a2bd326ec6cb52b532b22785165497ec462e5a05f2191c1",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27MechanismExamplePage.kt",
+      "baselineSha256": "c488f5c06819187236e8faf47228243261da4b3c949b58e4702ea7c25fa7fcc1",
+      "mergedSha256": "7574c126de74b9762dbbdd2161304d3b95e9cc98dd02a73510dde04f3dd8342e",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27MenuExamples.kt",
+      "baselineSha256": "86de87debfab313d83cf9e9ed2c46da89dbcfcbaf80ee2e7ea2801b10643824c",
+      "mergedSha256": "4cae59136a4f6b8c6dc57fd7449dfb6d699a6ea298105d155e91f6b592962e37",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27NativeExamples.kt",
+      "baselineSha256": "c2b729f14b3a5020797adc43fea8a5c3df54b8289e54177ca06875fd9e4e8175",
+      "mergedSha256": "7adc7b776ac3df9d238cdd45a16eb78f73440c63ec197c4d64a0bfa0b91ffae0",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27PickerExample.kt",
+      "baselineSha256": "318f9abc3b0a9b019c60d969f0e4548372952d43b85dbb0c8e3bb8a52e27f731",
+      "mergedSha256": "62723d745bc52f895939e47530f98e8ea5e59398ad469a9343bdcf1ac0fe80cc",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27SheetsModal.kt",
+      "baselineSha256": "018324ae38b9d06854ce1647fa78a8a92f25a5636e57ce06265d69cc7b5ef0f4",
+      "mergedSha256": "1af3bf9c04674a9a157686385c1f12720be918f08cd5621486a55043246ca444",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/TabPageTransition.kt",
+      "baselineSha256": "33d4724a189ac9d5ccfe9932095c5e4dc68f9f0646ffe117c76bab29efbcb71a",
+      "mergedSha256": "5f80f580b5e78368f6db72d4c3e14cf84cba7b556be004c0c642032fae11b675",
+      "change": "moved",
+      "previousPath": "sample/src/main/java/dev/liquidglass/sample/Ios27TabBar.kt"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27TextFieldsExample.kt",
+      "baselineSha256": "e100c78bc3adf35cad372ce3cfa03511372c39250920063a72312ec8ee9b9241",
+      "mergedSha256": "444a4fc61293841386c762c27182e94fc05bd7bf04b15c83f845250117718dc6",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27ToolbarBottom.kt",
+      "baselineSha256": "9d2657352431ccc5d4cce262542fed4685005df9d35a25cbcf5c37739ce85ee4",
+      "mergedSha256": "537f048115e550f4b0ad088a7040d74bb55d83a14d6e8f11d373ae30d6716f7b",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/IphoneExamples.kt",
+      "baselineSha256": "9cdc53856d145051d7baa3c378bcdf6720d766d3a58818dfc7f352ae0919fde9",
+      "mergedSha256": "13c45158f48169c25d6ba06295ebd5c36f3674bc2ea032337ab7ff2c59be872b",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/ListDetailPage.kt",
+      "baselineSha256": "b0f22a6994dda4d7912b5be44c1da18fe3a298579066f4a930efca68e78b9522",
+      "mergedSha256": "88c9ba036badcd37f00e08c6c28849d38fa1de331b05afd56fa782a3833a009f",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/ListeningModeExamplePage.kt",
+      "baselineSha256": "0e298b26ed35a9a25ab20f2ff1d332ba6dd4f853831c665c00519ab5126adeaf",
+      "mergedSha256": "6784f1d190fb29026c8dc85419c6e3ac0d1ced53e6602565ab2aed224e0e26f7",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/MainActivity.kt",
+      "baselineSha256": "7ac0e7c68a8705bc22046cf29d065e93889a13b6b2331372bdbbba719f083e8d",
+      "mergedSha256": "565776f58099cff4fd5d93ac5dd0e7b1877e7fed05a857b5ef36f659c25a9f59",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/MeloXTabBarExamplePage.kt",
+      "baselineSha256": "008611ac800103ae4d0ad1201fcc465e027ab020b1605278b7ca28b7052451b2",
+      "mergedSha256": "302b4af079ab844c14d9d41d9d1c9ecc529a5db1c9a32c7d7ef64c6ebe81f73b",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/NativeExamplePage.kt",
+      "baselineSha256": "589f397c6d6f212c8ee419345ddfa0f341ce470ef2a331f9d9b7f18fed956b3b",
+      "mergedSha256": "ce85a15e7c5554de08c38205cabe33a690a76b55cd7151065b74ab89c5835162",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/PopupBackground.kt",
+      "baselineSha256": "d0c64aa5ea0b93877d016557f7bf958f78aa6d24b564a5b2904460a4d2f18fd8",
+      "mergedSha256": "bd609302a5ac585e88c8d48444e95cb24d8843717484ab6fce0d0924c9c4101f",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/PredictiveBackSupport.kt",
+      "baselineSha256": "39029165da0ec0a6318f40a184f5115279fe96431d2460ae2306e8ba54c6cef7",
+      "mergedSha256": "8dedd13b741f762ffb918565820532f0b7d8d877b956e4870400cc3cdfdbc5b4",
+      "change": "modified"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/TabBarParameterPanel.kt",
+      "baselineSha256": "0eb94a5b5a61d88e94ea103172090f0faad1cdb9d29bc866445fdac3c8c5707f",
+      "mergedSha256": "3166ff711ffa0241a6663fd348f9a763661299b5ce1711c80ed98c7a43fe17a9",
+      "change": "modified"
+    },
+    {
+      "path": "tools/melox-tabbar-extraction.test.mjs",
+      "baselineSha256": "501a9189c3412e8330e2bfc48d27a96ec848444a975e0590a5b8b45f6397e5e4",
+      "mergedSha256": "ef5b2544be55a1c3e8ba100af8212655f2ed1b24fc045f52639275e1ce62c0be",
+      "change": "modified"
+    },
+    {
+      "path": "tools/tabbar-split-material.test.mjs",
+      "baselineSha256": "807178fe09325a92921366b6c64e2659572ae6db4e4d9baef90037fd68fd62cc",
+      "mergedSha256": "4f50bf41ad7d51fc4f74681417c592cf009915a27f0b213b3abbd7646000b802",
+      "change": "modified"
+    },
+    {
+      "path": "tools/verify-android-artifacts.ps1",
+      "baselineSha256": "cf5d003cb141c93acf9550723d686c24b0ff3faf90d86a118d3ce1ceba2fa221",
+      "mergedSha256": "2c1aed334f8fd23cdb05791043f1c31a99f8c695d2fb09338dbf1b1f0294abe9",
+      "change": "modified"
+    },
+    {
+      "path": "tools/verify-extraction.mjs",
+      "baselineSha256": "0448ba2f76b32208dae3bdd4ecf67e97315a9e0cf1fee2aa984db3c3922934a0",
+      "mergedSha256": "3acb7f09dd5fd6d38c1ecfdf6a612d07bf714208bd37e6df9b7d30e76375eb18",
+      "change": "modified"
+    },
+    {
+      "path": "tools/verify-ios27-merge.mjs",
+      "baselineSha256": "ffe5713f24ee7a93364211db917de58e51c2031dc6c6dedcc5c54de41e54317f",
+      "mergedSha256": "f613a1f5dfaf61257ce210c547c93a6758dc0960d4c33ca0286c04d6fa555ef2",
+      "change": "modified"
+    },
+    {
+      "path": "tools/figma-reader/native-framework.test.mjs",
+      "baselineSha256": "91151aab5f8f871a7c5181fdcd1451ebc3b9bd90754aa16ff8e0acf9bd3da39d",
+      "mergedSha256": "5650a9a36c6b3d24fabe0300141665f45be78541037cf8f688875474c4a86b44",
+      "change": "modified"
+    },
+    {
+      "path": "tools/ios27/native-examples.test.mjs",
+      "baselineSha256": "15948dd02fe84d508529c9cce55e3796757106c9c763bff10ee324e34e1b66c2",
+      "mergedSha256": "0831e36dbd3fd50ff3dd5dc1803374a59ad2d90242c6d59308a7e9c36fa7cb5f",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/build.gradle.kts",
+      "baselineSha256": "f92414e726ecfc063c87166a1fa7e2acb5a57f9e4e38f0278800df0a50bb1750",
+      "mergedSha256": "5eae701ec89247bc0b6d65d687a68a76434588128b1b2b1bbd79a58ccab1cdc2",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass-ios27/build.gradle.kts",
+      "baselineSha256": "0cb1c00a5f278d41435eddbdb9a804a9536cfaae3a743d8d17984f40cec86029",
+      "mergedSha256": "0cc11e69e794912f5e83c70707448a4cda3bdaa64d82b870c1c32fa71c4d5786",
+      "change": "modified"
+    },
+    {
+      "path": "melox-tabbar/build.gradle.kts",
+      "baselineSha256": "6a667440063ec076a755740f379dbd797b0032b8692f0b66de07b48f32cac3e8",
+      "mergedSha256": "1baff72eb4bac7e8a19a4a0043a13da2a2c4283c35739585ec040193e5215c3a",
+      "change": "modified"
+    },
+    {
+      "path": "melox-tabbar-demo/build.gradle.kts",
+      "baselineSha256": "1d9ceafb8bdf03361af12c0daefb7af5a019cc575969904f915a4f1d5373d6e0",
+      "mergedSha256": null,
+      "change": "removed",
+      "removed": true
+    },
+    {
+      "path": "sample/build.gradle.kts",
+      "baselineSha256": "2cc2ad100f44736327321313719c2b033a56a40e9a54bb01518cae82666e1880",
+      "mergedSha256": "45ae4ca079d65e5c844fbe51f55fd1215e7103f466dfa80f075ce15e0311d38b",
+      "change": "modified"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "baselineSha256": "0b3a7f3ef575c9b84c0e909e3bc66e06938fe7cbdd7732d890205da3fb5e7f94",
+      "mergedSha256": "5c520a00873eff541a295586c3b4b65bcfa2e0d1e717a565e0ca7b733bd299d6",
+      "change": "modified"
+    },
+    {
+      "path": "build.gradle.kts",
+      "baselineSha256": "783fa80e457dc58c6207148028b97295a884517e3023838b3357991fba8ca3e6",
+      "mergedSha256": "14ebac39f59c762f9e1e3395d97569cc7cdfbd95e52901f27251871dce8e43d2",
+      "change": "modified"
+    },
+    {
+      "path": "README.md",
+      "baselineSha256": "2a61d499e9e1d8e4f2d70881858f0a09cfc908d02b1b50869280dfab43e16bae",
+      "mergedSha256": "cfd6a24d7964404a05ed16d68d076c87556e66460498827be7d53454f4001c0c",
+      "change": "modified"
+    },
+    {
+      "path": "AGENTS.md",
+      "baselineSha256": "8830b1b28216623ff87dee1387f4ac31edb14bdb365394bc727a93ae54bd84e7",
+      "mergedSha256": "02dc100ec2ae6871de1bc0c05ad87adc1230596e56155ab1c5b2230a75702db6",
+      "change": "modified"
+    },
+    {
+      "path": "docs/ios27/README.md",
+      "baselineSha256": "7ddc1fa80ad5fb1ef265144611206756e4c366f68ce2f8ee3d84e71cb09520b6",
+      "mergedSha256": "bf3cceea9598047e1efa054acede81e60348052002ed3e7cf2ac7fbe97c1b8a6",
+      "change": "modified"
+    },
+    {
+      "path": "docs/ios27/verification-results.json",
+      "baselineSha256": "91f3f2e6aef78ae1973162bd22b6f316a1a6dc3e552a27f4836149832c4c23ba",
+      "mergedSha256": "f175283edd440e6d6504c16e74d826022ba456edb67673dd386c73ea3f53e83b",
+      "change": "modified"
+    },
+    {
+      "path": "docs/ios27/validation.md",
+      "baselineSha256": "d81d80beb8af3b5c37c71f5e6ee254305d20a5a0690cbda08afb08a4185614f9",
+      "mergedSha256": "d9064f1fc84a77a936066d7fa63d534c329485993997a3ae1dc1521f1acd0380",
+      "change": "modified"
+    },
+    {
+      "path": ".gitignore",
+      "baselineSha256": null,
+      "mergedSha256": "b2f3b77812afa15e75cfeb2d02170fa24021c89ee5b6ad49efa4fd92c644145a",
+      "change": "modified",
+      "note": "Pre-edit hash not captured; ignore local distribution and build logs"
+    },
+    {
+      "path": "docs/component-library.md",
+      "baselineSha256": null,
+      "mergedSha256": "ef5cac22123d9f9bf4b9ebc0e8c4c0e443a73408e836ab0870524286ce4b69da",
+      "change": "added"
+    },
+    {
+      "path": "docs/melox-tabbar.md",
+      "baselineSha256": "bba2588fba116ce9aebd7f03007d4e53ac920eead4e83fc9187a9eb1935ecf33",
+      "mergedSha256": "9335adde1d6a453a2a223e34611739a439bf9782670d684e55331827b5b4755e",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassComponents.kt",
+      "baselineSha256": null,
+      "mergedSha256": "5a0f4d0eedb03a59e6f0e320de8cb70c633dad5e373b4f2cf32e0a857eee9945",
+      "change": "added"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/resources/META-INF/liquidglass-ui/LICENSE",
+      "baselineSha256": null,
+      "mergedSha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+      "change": "added"
+    },
+    {
+      "path": "liquidglass/src/main/resources/META-INF/liquidglass-core/LICENSE",
+      "baselineSha256": null,
+      "mergedSha256": "0b7759178f26b93b765e59bf33b653f31179e33840a26b919df51544c286934c",
+      "change": "added"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/dev/liquidglass/GlassTabBarStyle.kt",
+      "baselineSha256": null,
+      "mergedSha256": "0b578dab6ad373ec86244b626631e3c85b5cc31cb6819536e20d6cef3ee155e9",
+      "change": "added"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/SampleGlassTheme.kt",
+      "baselineSha256": null,
+      "mergedSha256": "3ee8be6f39b76d4909087f9c36b6599c89b60ce1847ed21cca4800bc73c759f2",
+      "change": "added"
+    },
+    {
+      "path": "melox-tabbar-demo/src/main/AndroidManifest.xml",
+      "baselineSha256": null,
+      "mergedSha256": null,
+      "removed": true,
+      "change": "removed",
+      "note": "Obsolete standalone demo module; pre-edit XML hash was not captured"
+    }
+  ]
+}

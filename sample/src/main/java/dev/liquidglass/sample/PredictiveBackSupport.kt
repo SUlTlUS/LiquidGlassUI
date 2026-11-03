@@ -2,7 +2,6 @@ package dev.liquidglass.sample
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
 import android.view.RoundedCorner
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
@@ -31,22 +30,16 @@ internal fun rememberSystemBottomCornerRadii(): SystemBottomCornerRadii {
 
     val radiiPx = remember(context, view, insets) {
         val fallback = bottomCornerRadiusFromResources(context)
-        val left = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            insets
+        val left = insets
                 ?.getRoundedCorner(RoundedCorner.POSITION_BOTTOM_LEFT)
                 ?.radius
                 ?.takeIf { it > 0 }
-        } else {
-            null
-        } ?: fallback
-        val right = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            insets
+                ?: fallback
+        val right = insets
                 ?.getRoundedCorner(RoundedCorner.POSITION_BOTTOM_RIGHT)
                 ?.radius
                 ?.takeIf { it > 0 }
-        } else {
-            null
-        } ?: fallback
+                ?: fallback
         left to right
     }
 

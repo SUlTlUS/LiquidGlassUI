@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User requested thinner 27 bottom-tab-bar highlights",
+  "reason": "Reduce only the 27 dock bright rim width parameter by 30 percent; preserve dark hairlines, material, geometry and other controls",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/DockHighlight.kt",
+      "baselineSha256": "13ac4ef52d473136d67deb6c9d65d116f67000fdb327b278477cddb46d6eda98",
+      "mergedSha256": "081c0c169900c15aaba8f6ed476e9b7804ea7e8a940a33bcc59cade49eb81a20"
+    }
+  ],
+  "tests": "not run; parameter-only adjustment",
+  "frozenBaselines": "unchanged"
+}

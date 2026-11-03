@@ -1,0 +1,248 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User requested deep code simplification with existing functionality and effects retained",
+  "reason": "Deep cleanup: shared button math, shared damped motion and press highlight, unreachable pre-33 branches and unused sample functions removed",
+  "runtimeKotlinLinesInChangedScope": {
+    "before": 5752,
+    "after": 5267,
+    "delta": -485
+  },
+  "kotlinLinesInChangedScope": {
+    "before": 5890,
+    "after": 5407,
+    "delta": -483
+  },
+  "preserved": [
+    "26/27 drag mapping and shared limit switch",
+    "material, highlight, Goo and sampling policies",
+    "independent gesture consumption and release clocks",
+    "bottom bar search-return position-only spring",
+    "vendor capability and runtime-failure fallbacks",
+    "imported atlas and capture-planner mechanisms"
+  ],
+  "tests": "Kotlin test sources compiled; tests, Lint, verification scripts and device interaction not run",
+  "frozenBaselines": "unchanged",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "baselineSha256": "515b78c2ae92945b88b8cb19e3685d1c9f3f2b023feadfd216f48767c915ca87",
+      "mergedSha256": "4ce46c0107ee274e3f53a08f20fda3ea6a5095f1119a3a538c09fd0f8c9737a0",
+      "change": "modified"
+    },
+    {
+      "path": "docs/component-library.md",
+      "baselineSha256": "ad4b978a78c00aa3c2963bfd1126fc4d0d249246e0cb195a075f8cc1d423df3a",
+      "mergedSha256": "fab775ee6643ee8d48d3abbd6891cfd581f84e088eb826bdedee6ea18add5074",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/ButtonDrag.kt",
+      "baselineSha256": "a1604cecb5d648e387cea425889a605f8b42618ecd73ab21a2d237510edecb04",
+      "mergedSha256": "d608ef2bfab0c8debfa7e4b0b7f4a4dc640bd1c44a2c2374d06afcdcb9c500ef",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassAnimation.kt",
+      "baselineSha256": "81371b4b9d95a1303e5b5b3ae0e72861e75bba69ba36bfc69e5c89cea02cc0d2",
+      "mergedSha256": null,
+      "change": "removed",
+      "removed": true
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/Ios26ButtonDrag.kt",
+      "baselineSha256": "e7e3dcff94ccf1bec777a78db2950c6ca89cd8d6fe5416b1748dada4951ae847",
+      "mergedSha256": null,
+      "change": "removed",
+      "removed": true
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/ButtonDragBoundsTest.kt",
+      "baselineSha256": null,
+      "mergedSha256": "e792c734a76d48439c5bbee051889f9823a7263148061a67c6d860b8c3b7f011",
+      "change": "added",
+      "previousPath": "liquidglass-ios27/src/test/java/dev/liquidglass/Ios26ButtonDragTest.kt"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/ButtonDragTest.kt",
+      "baselineSha256": "58ff13cf1c83936305b5b32f12ee317886cf59f647b1d3317a026a09c3717893",
+      "mergedSha256": "3f8ff14bc6dd5b9b3c6a3027a210a2682401bf7baf62fb82e7aecf6a06d9e986",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/Ios26ButtonDragTest.kt",
+      "baselineSha256": "2f4ca58cdd5cfff5ee8d7910572e913fa0ab95ba6191bec3f48df1fa964dbeb4",
+      "mergedSha256": null,
+      "change": "removed",
+      "removed": true
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/DrawBackdropModifier.kt",
+      "baselineSha256": "76b2733ca66b8e56b825a9237e134a2ce91787fbaad95ae243f2e319a0287a11",
+      "mergedSha256": "f089cd0870c1043b3533e2fdbc1d8f194747350483d1a227323c169a3ffea5fd",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/effects/Blur.kt",
+      "baselineSha256": "40fab8510c55c893dd12b7969f1232ebf2f8d4d5e7ef17ec6fd44009e996327b",
+      "mergedSha256": "8d3a96a72d60c616f5a94744b800deb39f1a701be98b1ffb3075a505a4369cf9",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/effects/ColorFilter.kt",
+      "baselineSha256": "1df7f6b99785d1a19445063e865e7cad22e535c63fb5b5f1c61521923e6a3814",
+      "mergedSha256": "6fc75fdfa4cab1b14686cd2338f94fb5760b7088f3afedf3456eea40c519770f",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/effects/Lens.kt",
+      "baselineSha256": "af025cf7dc6a28c08d8fcad452213ad717cee5f7d4e30c00f9bf3b7d65b4b198",
+      "mergedSha256": "670081669e0486b2afd7d2afc249d7e426f30c19024f6c012dff093af2ac4501",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/effects/RuntimeShaderEffect.kt",
+      "baselineSha256": "c79e4fc0a72ee86afe75047e7960c695f4bd2be6175a33c1f5fe7c929d5b03d0",
+      "mergedSha256": "4468cfe5f74924b28eb3f0909a6413160b8801ba45250af5eb4b2bd71ab8ae75",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/highlight/HighlightModifier.kt",
+      "baselineSha256": "5dc16a8ad96a27a8be0691a3ae23a941a3f7e5fbc906f611f93deb91b4872f80",
+      "mergedSha256": "9143f047500eb95535b78708a9a56df15ccb6a9cc67ae61ecc65e9bbe8d3756a",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/highlight/HighlightStyle.kt",
+      "baselineSha256": "9e17ef75af36c9586c13f54027839054bb1e23a22fd7c531e5133f556479af1a",
+      "mergedSha256": "6ce7adb3ddbb7042bd6db7175c33735e89a6f062efbe9922d302093e006b7cc4",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/highlight/RenderEffect.kt",
+      "baselineSha256": "5cd0f9a31e764ba6de1fe1644c502fe776a540806d6b01fc06b7360a8d13d909",
+      "mergedSha256": "5c604217d57247db16a9d66386ff70e8965d29b9f23c247b3a9cef9a09c06882",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/backdrop/shadow/InnerShadowModifier.kt",
+      "baselineSha256": "e3b8905efea8bcdc2ed91d004f4dbdc02eb1a14c39b71cdcfaefeac503115190",
+      "mergedSha256": "98893c40f59b53a2a8b056e474fcf9e5578780d6e803aee41b198e4503527f4c",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidButtonCore.kt",
+      "baselineSha256": "292d20bd1b6e4b27052ddf8dfe66b703f48d49c94ccc5c10a8fc7ec6badd5f4e",
+      "mergedSha256": "5feb35132a9abfbdb4f393c0284ae616e1bbbe4c4fd1ec33721f1546995aa784",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidButtonGroup.kt",
+      "baselineSha256": "5e38820955d65ed790ce9d975c4afeb7dcd62a24c35f2d25ccca4f336000761b",
+      "mergedSha256": "6823c4e0169fc3c3f0c003acfee44bbe6d117d8380099405fa7f58dfa7ce0b0b",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/StripedGlass.kt",
+      "baselineSha256": "30f595dd617b61ce45328c4273448adaa166d5f70f062e0299203dd9897cb9a6",
+      "mergedSha256": "8fa91c63ecd1612933e2432df66d15a0f1b4eaebcf875275ea5f855b423facd8",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/DampedDragAnimation.kt",
+      "baselineSha256": "dbed25224a1cefbe4b8ddf2905b7020a1cc8e012dd235dbfee090f473489f1db",
+      "mergedSha256": "598ba8010fd34821624d60cbdc0c49257b0cf881a1060a33005b732b6c700ae7",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/DragGestureInspector.kt",
+      "baselineSha256": "4e10f6706e4b341a1fbd06c1d1df8fe6809d81de2f1b608601ef33a912efb401",
+      "mergedSha256": "0fd2a5adb763ca87066fb72e7a366f59528b831f66325abcf634a4945bc9c971",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/InteractiveHighlight.kt",
+      "baselineSha256": "457e3d48affa3a7e882ba7da14b69216577c92403b90ddab78b88b3124790356",
+      "mergedSha256": "e131d70c8e2102bebb074c5cce3a85b742b7e4f80cebc0305c536848bdf5e77d",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/SdfShader.kt",
+      "baselineSha256": "d7bdae61e00212547b50b2bca47d585d6aee18d8daf9cc3b4fa63992a68f696e",
+      "mergedSha256": "5749ced7586047619c8d050b4e33b63b1a49b058c70faef53e2b063064c954a5",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/ui/commom/ProgressiveBlurContent.kt",
+      "baselineSha256": "ef4850974d462d2bac3e8c89373934fa3ae5c8e9df3a94f00e3aed97513b0518",
+      "mergedSha256": "dfb1120d63cf695ec9b8a3025c627fead89f76eabb14add511e96273e61a008a",
+      "change": "modified"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/components/ColorOs17ProgressiveBlur.kt",
+      "baselineSha256": "9e8c39745712a9e37f2b56b6b062fff5c3f0583c6685ac5cc244e74490cb5244",
+      "mergedSha256": "21b0136dfbe18d1d2706595d17ef779daf5453d966e073df9d3c08f4e27ccb50",
+      "change": "modified"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXBottomChrome.kt",
+      "baselineSha256": "5c67f97bf22d2a4c8c71323614c36a5a48072732ff26da83d788c6dee27e4895",
+      "mergedSha256": "546fd02253ac961412c50af31765533785e03196780573f62fe783a4b79dd716",
+      "change": "modified"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXBackdropComponents.kt",
+      "baselineSha256": "167665202b9290d49fb4bb78aac6a5d3814a993f1e91affde4c88fc8f4da6cfa",
+      "mergedSha256": "15d0c4f167c604e4868eed654a36f7426a7a0c6b6aef2587fd3986c58dbf5210",
+      "change": "modified"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXGlassSafety.kt",
+      "baselineSha256": "85d9698ab1b79af121512439d25d69c9949a9ee53d144fba5808406ebd063137",
+      "mergedSha256": "b626e5b0723da441f1b732efc41dce6def402c0740f8fda81641559e258e6f69",
+      "change": "modified"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/publicdemo/PublicDampedDragAnimation.kt",
+      "baselineSha256": "3654aef83fd157ca144c864ecf8676f786c3dffba4c09877d58bece7e59ef0ab",
+      "mergedSha256": "a7aa193f28e0c33b9b157b396fec34e687cee7f51111413c4e10315e79c9cb49",
+      "change": "modified"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/publicdemo/PublicInteractiveHighlight.kt",
+      "baselineSha256": "1fbcdefe8a8fda76f98a0728431beba0557599664b9fb9739e23ca1f3818fe7d",
+      "mergedSha256": null,
+      "change": "removed",
+      "removed": true
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27MenuExamples.kt",
+      "baselineSha256": "f3b99b514c62ab8e7da513af076709499fa6b93b18e26be803a933179e71f680",
+      "mergedSha256": "c3bc9d9f3a554544b710be2e6323ee2c7fb9366cc44d695eb1c7b710a0f869eb",
+      "change": "modified"
+    },
+    {
+      "path": "tools/coloros17-progressive-blur.test.mjs",
+      "baselineSha256": "d7a1ef9be4c6b8e820c8ec5c27f68eca8eceaecf930579d56073f42ff7d10b6c",
+      "mergedSha256": "1e3c4fed51d5b897425242c00a60ee6c9d7bdfb6bb513163c09422e546ece076",
+      "change": "modified"
+    },
+    {
+      "path": "tools/figma-reader/native-framework.test.mjs",
+      "baselineSha256": "acb1cb57b811d209d49f1b1b6e35517c4dcf329100c5d3d9d52a685d26b65c94",
+      "mergedSha256": "20329b39bde598215b33cba62b3a873b8003d889e27a37c7bb9ad9157c0f6e03",
+      "change": "modified"
+    },
+    {
+      "path": "tools/glass-panel-corners.test.mjs",
+      "baselineSha256": "6d641853ca98df1e0215efcf187aeba33779f1669da4a1fb437cde65990d60ab",
+      "mergedSha256": "ed939bd5167f8c5c51a73f69eeeca17f441467433fc38e2ca2e93e42a139c306",
+      "change": "modified"
+    },
+    {
+      "path": "tools/melox-tabbar-extraction.test.mjs",
+      "baselineSha256": "ef5b2544be55a1c3e8ba100af8212655f2ed1b24fc045f52639275e1ce62c0be",
+      "mergedSha256": "0ae13fa1f7aa180d2ea26031b0bfb20988e2f81c8c77a156636f6a6089e495a3",
+      "change": "modified"
+    }
+  ]
+}

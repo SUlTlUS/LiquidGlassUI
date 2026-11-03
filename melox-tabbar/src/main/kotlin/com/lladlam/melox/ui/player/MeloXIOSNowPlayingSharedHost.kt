@@ -17,7 +17,7 @@ import androidx.compose.ui.platform.*
 import androidx.compose.ui.unit.*
 import coil3.request.ImageRequest
 import coil3.size.Precision
-import com.kyant.backdrop.backdrops.*
+import com.zeaze.tianyinwallpaper.backdrop.backdrops.*
 import com.lladlam.melox.ui.glass.LocalMeloXBackdrop
 import com.lladlam.melox.ui.settings.MeloXSettingsRuntime
 import com.lladlam.melox.ui.layout.rememberMeloXWindowInfo

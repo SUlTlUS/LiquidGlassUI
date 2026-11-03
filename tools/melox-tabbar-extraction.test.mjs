@@ -9,13 +9,21 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const prefix = 'melox-tabbar/src/main/kotlin/com/lladlam/melox/';
 const manifest = JSON.parse(read('docs/melox-tabbar-extracted/manifest.json'));
+const reviews = JSON.parse(read('docs/melox-tabbar-merged-files.json')).files;
 test('extracted source and binary assets match their recorded hashes', () => {
   for (const file of manifest.extractedFiles) {
+    const review = reviews.find(entry => entry.path === file.path);
+    if (review) assert.equal(review.baselineSha256, file.sha256, file.path);
+    if (review?.removed) {
+      assert.equal(review.mergedSha256, null, file.path);
+      assert.ok(!fs.existsSync(path.join(root, file.path)), file.path);
+      continue;
+    }
     const bytes = fs.readFileSync(path.join(root, file.path));
-    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), file.sha256, file.path);
+    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), review?.mergedSha256 ?? file.sha256, file.path);
   }
 });
-test('complete chrome is identical after only the recorded API adaptations', () => {
+test('unified chrome retains original spring and drag lifecycle', () => {
   const original = read('docs/melox-tabbar-extracted/source/ui/MeloXApp.kt').replaceAll('\r\n', '\n');
   const output = read(prefix + 'ui/MeloXBottomChrome.kt');
   const start = 'internal fun MeloXBottomChrome(';
@@ -26,13 +34,23 @@ test('complete chrome is identical after only the recorded API adaptations', () 
     .replace('    source: MusicSource,\n', '')
     .replaceAll('.titleFor(source)', '.titleFor()')
     .replace('val searchContentDescription = stringResource(R.string.tab_search)', 'val searchContentDescription = AppTab.Search.titleFor()');
-  assert.equal(extractedBody, originalBody);
+  for (const [from, to] of [
+    ['    val rawProgress by animateFloatAsState(', '    val navHeight ='],
+    ['                val dampedDock = remember(', '                LaunchedEffect('],
+  ]) {
+    const startAt = originalBody.indexOf(from);
+    const endAt = originalBody.indexOf(to, startAt + from.length);
+    assert.ok(startAt >= 0 && endAt > startAt, from);
+    assert.ok(extractedBody.includes(originalBody.slice(startAt, endAt)), from);
+  }
 });
-test('all three glass renderer bodies are identical to upstream', () => {
-  const marker = '/** Official LiquidBottomTabs-style outer panel.';
-  const original = read('docs/melox-tabbar-extracted/source/ui/glass/MeloXBackdropComponents.kt').replaceAll('\r\n', '\n');
+test('unified optics use shared core and keep custom highlight outside sampling transforms', () => {
   const output = read(prefix + 'ui/glass/MeloXBackdropComponents.kt');
-  assert.equal(output.slice(output.indexOf(marker)), original.slice(original.indexOf(marker)));
+  assert.match(output, /import com.zeaze.tianyinwallpaper.backdrop.drawBackdrop/);
+  assert.doesNotMatch(output, /import com.kyant.backdrop/);
+  assert.match(output, /surfaceLayerBlock = decoration\?\.let/);
+  assert.match(output, /rememberCombinedBackdrop\(backdrop, panelBackdrop \?: backdrop\)/);
+  assert.match(output, /if \(p > 0.001f\)/);
 });
 test('mini-player is original source except explicitly injected audio sampling', () => {
   const original = read('docs/melox-tabbar-extracted/source/ui/player/MeloXIOSMiniPlayer.kt').replaceAll('\r\n', '\n')
@@ -48,34 +66,64 @@ test('mini-player is original source except explicitly injected audio sampling',
   const output = read(prefix + 'ui/glass/MeloXBackdropComponents.kt');
   for (const [start, stop] of [['/** Shared interaction state', '/**\n * Official LiquidButton'],
     ['/** Applies the same optical', '/** Shared material entry']]) {
-    assert.ok(output.includes(glass.slice(glass.indexOf(start), glass.indexOf(stop))));
+    const originalBlock = glass.slice(glass.indexOf(start), glass.indexOf(stop))
+      .replaceAll('PublicInteractiveHighlight', 'InteractiveHighlight')
+      .replace('InteractiveHighlight(animationScope)', 'InteractiveHighlight(animationScope, cancelOnConsumed = false)');
+    assert.ok(output.includes(originalBlock));
   }
 });
-test('drag, shader highlight, motion, icons and tone sampler are unchanged', () => {
-  for (const file of ['ui/glass/publicdemo/PublicDampedDragAnimation.kt', 'ui/glass/publicdemo/PublicInteractiveHighlight.kt',
-    'ui/animation/MeloXMotion.kt', 'ui/glass/MeloXSymbol.kt', 'ui/glass/BottomBarToneSampler.kt']) {
+test('motion, icons and tone sampler are unchanged', () => {
+  for (const file of ['ui/animation/MeloXMotion.kt', 'ui/glass/MeloXSymbol.kt', 'ui/glass/BottomBarToneSampler.kt']) {
     assert.equal(read(prefix + file), read('docs/melox-tabbar-extracted/source/' + file).replaceAll('\r\n', '\n'), file);
   }
 });
+
+test('shared drag state keeps indicator tap, consumed-event and search-return policies', () => {
+  const drag = read(prefix + 'ui/glass/publicdemo/PublicDampedDragAnimation.kt');
+  assert.match(drag, /: DampedDragState\(/);
+  assert.match(drag, /cancelOnConsumed = false/);
+  assert.match(drag, /if \(movedDuringGesture\) onDragStopped\(\) else onTap\(downPosition\)/);
+  assert.match(drag, /animateValue\(value, bouncyValueAnimationSpec, pressFeedback = false\)/);
+  assert.match(read(prefix + 'ui/MeloXBottomChrome.kt'), /InteractiveHighlight\([\s\S]*?cancelOnConsumed = false/);
+});
 test('safe scaffold captures content before drawing its sibling bar', () => {
   const source = read(prefix + 'ui/MeloXTabBar.kt');
-  assert.match(source, /Box\(Modifier.fillMaxSize\(\).layerBackdrop\(background\), content = content\)\s+MeloXTabBar\(/);
+  const facade = read('liquidglass-ios27/src/main/java/dev/liquidglass/GlassTabBar.kt');
+  assert.match(facade, /Box\(Modifier.fillMaxSize\(\).layerBackdrop\(backdrop\), content = content\)\s+GlassTabBar\(/);
   assert.match(source, /onDispose \{ toneState.release\(\) \}/);
   assert.match(source, /LocalMeloXFrostedGlass provides frostedGlass/);
+  assert.match(source, /if \(layout.compact\)\s*Modifier.wrapContentWidth\(Alignment.CenterHorizontally\)/);
+  assert.match(source, /widthIn\(max = compactWidth\)/);
+  assert.match(source, /64.dp \* tabs.size/);
+  assert.match(source, /measuredModifier = measuredModifier.onGloballyPositioned/);
+  assert.match(read('melox-tabbar/src/main/kotlin/dev/liquidglass/GlassTabBarStyle.kt'), /val compact: Boolean = false/);
 });
 test('host catalog routes the extracted bar to its own live page without editing Figma assets', () => {
   const router = read('sample/src/main/java/dev/liquidglass/sample/IphoneExamples.kt');
-  assert.match(router, /filterNot \{ it.category in HiddenPhoneExampleCategories \} \+ MeloXTabBarExampleEntry/);
+  assert.match(router, /filterNot \{ it.category in HiddenPhoneExampleCategories \|\| it.category == "Tab Bar" \} \+ MeloXTabBarExampleEntry/);
   assert.match(router, /entry\?\.key == MeloXTabBarExampleKey[\s\S]*MeloXTabBarExamplePage\(onBack = popBack\)/);
-  assert.match(router, /val categoryGroups[\s\S]*"Tab Bar",\s*"MeloX TabBar",/);
+  assert.match(router, /MeloXTabBarExampleKey, "Tab Bar"/);
   assert.match(router, /entries.count \{ it.file.isNotBlank\(\) \}.*entries.count \{ it.file.isBlank\(\) \}.*个源码示例/);
   const page = read('sample/src/main/java/dev/liquidglass/sample/MeloXTabBarExamplePage.kt');
-  assert.match(page, /Build.VERSION.SDK_INT < 26/);
-  assert.match(page, /MeloXTabBarScaffold\(/);
-  assert.match(page, /onTabSelected = \{ selected = it; tabBarScrollState.expand\(\) \}/);
-  assert.match(page, /popupBackground\(popupBackground.image\)/);
+  assert.doesNotMatch(page, /Build.VERSION.SDK_INT < 26/);
+  assert.match(page, /GlassTabBarScaffold\(/);
+  assert.match(page, /onSelectedIndexChange = \{ selected = visibleTabs\[it\]; if \(options.expandOnSelect\) tabBarScrollState.expand\(\) \}/);
+  assert.match(page, /TabBarParameterPanel\(/);
+  assert.match(page, /layout = options.layout\(preset\)/);
+  assert.match(page, /searchEnabled = options.searchEnabled/);
+  const panel = read('sample/src/main/java/dev/liquidglass/sample/TabBarParameterPanel.kt');
+  assert.match(panel, /GlassSwitch\(item.checked, item.change/);
+  assert.match(panel, /GlassSlider\(/);
+  assert.match(panel, /rememberCanvasBackdrop/);
+  assert.doesNotMatch(panel, /layerBackdrop\(/);
+  assert.doesNotMatch(page, /rememberPopupBackground|\.popupBackground\(/);
+  assert.match(page, /ExampleTopChrome\(/);
+  assert.match(page, /surfaceColor = colors.page/);
+  assert.match(page, /blurAlpha = topBlurAlpha/);
+  assert.match(page, /scrollDriven = true/);
+  assert.match(page, /firstVisibleItemIndex > 0/);
   assert.match(page, /MeloXPlayerScaffold\(state = playback/);
-  assert.match(page, /miniPlayer = miniPlayer/);
+  assert.match(page, /player = if \(options.media\) miniPlayer else null/);
   assert.match(page, /nestedScroll\(tabBarMinimizeConnection\)/);
   assert.doesNotMatch(page, /Slot demonstration|播放器插槽|点击关闭/);
   assert.doesNotMatch(page, /FigmaSceneView|Ios27TabBarExample\(/);

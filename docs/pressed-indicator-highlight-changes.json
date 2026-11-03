@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User requested no highlight on the 26 inner tab capsule while not pressed",
+  "reason": "Make the 26 tab selection capsule highlight follow press progress with zero resting alpha; preserve outer track, 27 highlight, optics and shadows",
+  "files": [
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXBackdropComponents.kt",
+      "baselineSha256": "ad191ccd819d85fa1cf5c2271f5d24261be0a6c9f60e22193af238019836a275",
+      "mergedSha256": "e8deefa937b575f6f694d5c64b20cf29b1b03a33bac75a94664013e0eff09c0e"
+    }
+  ],
+  "tests": "not run; parameter-only adjustment",
+  "frozenBaselines": "unchanged"
+}

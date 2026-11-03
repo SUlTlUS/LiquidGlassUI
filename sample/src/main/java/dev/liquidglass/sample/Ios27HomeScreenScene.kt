@@ -1,7 +1,6 @@
 package dev.liquidglass.sample
 
 import android.graphics.BitmapFactory
-import android.os.Build
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -448,7 +447,7 @@ private fun HomeGlass(
     // requiredSize: offset() shrinks the incoming constraints by the offset amount, so a bottom-anchored
     // panel would otherwise have its height clamped by the remaining viewport instead of its own geometry.
     Box(Modifier.sceneBox(panel.x, panel.y, panel.w, panel.h)) {
-        if (backdrop != null && Build.VERSION.SDK_INT >= 33) {
+        if (backdrop != null) {
             // The vector original has no specular rim on these sheets (only a 0.5pt light spread shadow inside the
             // Figma effect list), so drop the default 0.5dp white Highlight: it costs ~4 heat rows per edge.
             Box(Modifier.fillMaxSize().drawBackdrop(

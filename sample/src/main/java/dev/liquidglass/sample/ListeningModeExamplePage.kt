@@ -1,6 +1,5 @@
 package dev.liquidglass.sample
 
-import android.os.Build
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -38,7 +37,7 @@ internal fun ListeningModeExamplePage(onBack: () -> Unit) {
         overlay = { topInset, backdrop ->
             ExampleTopChrome(backdrop, isLightTheme = MaterialTheme.colors.isLight,
                 appBarHeight = topInset + 48.dp)
-            Ios27BackButton(onBack, if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+            Ios27BackButton(onBack, backdrop,
                 Modifier.align(Alignment.TopStart).padding(start = 16.dp, top = topInset + 4.dp))
         })
 }

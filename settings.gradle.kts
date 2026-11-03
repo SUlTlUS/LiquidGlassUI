@@ -7,5 +7,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "LiquidGlassSketch"
 include(":liquidglass", ":sample")
-include(":melox-tabbar", ":melox-tabbar-demo")
+include(":melox-tabbar")
 include(":liquidglass-ios27")

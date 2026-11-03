@@ -1,0 +1,32 @@
+// Connection-only coverage. Original iOS26 buttons remain underneath, unmodified.
+uniform shader uContent;
+uniform float4 uPillA;
+uniform float4 uPillB;
+uniform float2 uScaleA;
+uniform float2 uScaleB;
+uniform float uBlend;
+uniform float uDensity;
+
+float capsuleDistance(float2 p, float4 pill, float2 scale) {
+    float2 halfSize = pill.zw / scale;
+    float radius = min(halfSize.x, halfSize.y);
+    float2 q = abs(p - pill.xy) / scale - halfSize + radius;
+    return (length(max(q, float2(0.0))) + min(max(q.x, q.y), 0.0) - radius) * min(scale.x, scale.y);
+}
+
+half4 main(float2 p) {
+    float a = capsuleDistance(p, uPillA, uScaleA);
+    float b = capsuleDistance(p, uPillB, uScaleB);
+    float density = max(uDensity, .001);
+    // Extend the flowing SDF influence smoothly, instead of cropping a painted patch.
+    float influence = 1.0 - smoothstep(uBlend, uBlend + 8.0 * density, abs(a - b));
+    float inset = max(-min(a, b), 0.0);
+    float body = 1.0 - smoothstep(1.0 * density, 6.0 * density, inset);
+    // Fully replace the obsolete facing rim, including when the buttons overlap.
+    // Only the union's outside contour receives the new highlighter.
+    float oldEdge = min(abs(a), abs(b));
+    float rim = 1.0 - smoothstep(1.0 * density, 3.0 * density, oldEdge);
+    float coverage = clamp(influence * max(body, rim), 0.0, 1.0);
+    // Premultiplied RGBA fade: prevents a dark fringe at the attachment.
+    return uContent.eval(p) * half(coverage);
+}

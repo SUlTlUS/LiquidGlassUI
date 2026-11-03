@@ -24,8 +24,18 @@ uniform float4 uPill2;
 uniform float4 uPill3;
 uniform float4 uPill4;
 uniform float4 uPill5;
+uniform float2 uPillScales[6];
 uniform float4 uBlends;
 uniform float uBlendLast;
+
+float2 pillScaleAt(int i) {
+    if (i == 0) return uPillScales[0];
+    if (i == 1) return uPillScales[1];
+    if (i == 2) return uPillScales[2];
+    if (i == 3) return uPillScales[3];
+    if (i == 4) return uPillScales[4];
+    return uPillScales[5];
+}
 
 float4 pillAt(int i) {
     if (i == 0) return uPill0;
@@ -95,9 +105,12 @@ void gooGeometry(float2 p, out float distance, out float2 normal) {
     for (int i = 0; i < 6; ++i) {
         if (i >= uCount) break;
         float4 pill = pillAt(i);
-        float r = min(pill.z, pill.w);
-        float next = roundedBoxPower(p, pill.xy, pill.zw, r, 2.0);
-        float2 nextNormal = roundedBoxNormal(p, pill.xy, pill.zw, r, 2.0);
+        float2 scale = pillScaleAt(i);
+        float2 localP = pill.xy + (p - pill.xy) / scale;
+        float2 halfSize = pill.zw / scale;
+        float r = min(halfSize.x, halfSize.y);
+        float next = roundedBoxPower(localP, pill.xy, halfSize, r, 2.0) * min(scale.x, scale.y);
+        float2 nextNormal = normalize(roundedBoxNormal(localP, pill.xy, halfSize, r, 2.0) / scale);
         if (i == 0) {
             d = next;
             n = nextNormal;

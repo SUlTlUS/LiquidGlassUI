@@ -1,0 +1,18 @@
+{
+  "device": "192.168.1.247:40085",
+  "checkedAt": "2026-09-15T15:33:00.402Z",
+  "apkSha256": "f5caac12ad92eed0b67b34103d384cb6c5e71509703f5b567f1990dd1cf73190",
+  "completed": true,
+  "expected": 1,
+  "note": "Similarity = percentage of pixels with max RGB delta <=24 against local FigmaSceneView. Includes system bars; blank background can inflate scores. Not official Figma fidelity or interaction acceptance.",
+  "results": [
+    {
+      "key": "12740-35188",
+      "category": "Control Center",
+      "variant": "Default",
+      "meanDiff": 61.92,
+      "changedPercent": 85.31,
+      "similarity": 14.69
+    }
+  ]
+}

@@ -2,14 +2,16 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    id("maven-publish")
     id("com.android.library")
     id("org.jetbrains.kotlin.plugin.compose")
 }
 android {
     namespace = "com.lladlam.melox"
     compileSdk = 37
-    defaultConfig { minSdk = 26 }
+    defaultConfig { minSdk = 33 }
     buildFeatures { compose = true }
+    publishing { singleVariant("release") { withSourcesJar() } }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
@@ -22,8 +24,7 @@ dependencies {
     api(platform("androidx.compose:compose-bom:2026.06.00"))
     api("androidx.compose.foundation:foundation")
     api("androidx.compose.material3:material3")
-    api("io.github.kyant0:backdrop:2.0.0")
-    api("io.github.kyant0:shapes:1.2.0")
+    api(project(":liquidglass"))
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.10.0")
     implementation("androidx.core:core-ktx:1.17.0")
     implementation("io.coil-kt.coil3:coil-compose:3.5.0")

@@ -1,6 +1,5 @@
 package com.zeaze.tianyinwallpaper.catalog.components
 
-import android.os.Build
 import androidx.annotation.FloatRange
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -235,7 +234,6 @@ private fun BackdropEffectScope.stripedRefraction(
     @FloatRange(from = 0.0) colorSaturation: Float,
     @FloatRange(from = 0.0) colorContrast: Float
 ) {
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return
     if (amplitudePx <= 0f) return
 
     val clampedWavelength = wavelengthPx.coerceAtLeast(1f)

@@ -1,0 +1,11 @@
+{
+  "build": "passed",
+  "task": ":sample:assembleDebug",
+  "tests": "not run",
+  "deviceAcceptance": "pending user",
+  "artifact": {
+    "path": "dist/button-motion-comparison-20261103/LiquidGlassSketch-original27-disabled-debug.apk",
+    "bytes": 73738160,
+    "sha256": "6fd5760e6b9a934b4d81ec8d34c3ef5ae69a555f96e94e3b13c355188d3cb2fc"
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User: animations also support independent switching",
+  "reason": "Independent animation selection for buttons, Goo geometry, menu/Popup and modal transitions; material and light remain independent",
+  "files": [
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidButtonCore.kt",
+      "baselineSha256": "042c70ccc74f18ce4546f958f3e48d478539fca64792f645247f06d371a3cabf",
+      "mergedSha256": "07242e02707de5c9d9cc4c4fa452f06f8ca1e24bfec18d70c15800f80d69e4ac"
+    },
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/utils/InteractiveHighlight.kt",
+      "baselineSha256": "75bc0b25a2ac4c183f78487a3fcb35dbd662eb1563208cddbeab848776377080",
+      "mergedSha256": "0cf81e9fa7764c2415d3cf61f00e4f343efc234661fe7b18e8d67f7b0449de27"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassControls.kt",
+      "baselineSha256": "d595ca3e2bffcd2682ee9b82b055a557f2d0e9691564be8e599b111d324a22b5",
+      "mergedSha256": "9779ce0cead7d1fe0cb557a80f23e3237c04b215259e0aa502dc601ad898393f"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassEffects.kt",
+      "baselineSha256": "0b8320b8176cba130294ba07721e262749f3e51a148f3bac555c30d36fbfc93c",
+      "mergedSha256": "50c2b30c32e49eca68888a7d9b7f35a1535fc27419e88f6000a68d6af3244828"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassMenu.kt",
+      "baselineSha256": "219d6cb748ecc835942e4be861e312ac0b7076ffcc194afe2f46c71a61a9a93e",
+      "mergedSha256": "5d48122cb9bbbf7118be93c5e3562b9fb216f5aea79a943a5de50bdd3ce48ee3"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassModal.kt",
+      "baselineSha256": "637ae5d76625aaa465a73b32dfb7594c6e3ccf9c2145ac07606157e3e3501f56",
+      "mergedSha256": "3f6329e6d4b828213d7a2ea6448ff3c849ad77d7ec6e056f51eb68f5fe1c8910"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassPopup.kt",
+      "baselineSha256": "52cbfa2e75660c72f94757c1f70781763c1e3531f3fc035b832244a528826619",
+      "mergedSha256": "5f993d27b5f5e63f6613c3b47c5a25640d77766ae621448edaf6a1ffffbf8923"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GooButtonGroup.kt",
+      "baselineSha256": "b54373eaacbfc7c34295cb1cd17f5928f84371fd1b3443fb9c5c865ddc7c0e02",
+      "mergedSha256": "05007a4417d06e3feab7573c7fe082d7d84fc76947ffe065dbd63ccc8e5158a2"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassEffectsTest.kt",
+      "baselineSha256": "3195cbfab11064740cde7038cdf26989ef64556c3b2301f25c0dbbbc8816bbeb",
+      "mergedSha256": "808133a0f8478f273faa1fe2628c7b36d460921d94fbfd60b4f221c1b7d2075d"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuAnimationParityTest.kt",
+      "baselineSha256": "ffc98ec2e70b29199cef7ba5eedc78c01d3a9fd2c8791aca2f7ca4f202befabe",
+      "mergedSha256": "e111ccc9fe5a4cd99713b2683886d55bfc1383bb5483b758ba232ce2ea7f25d9"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/MenuSpringSettlingDiagnosticTest.kt",
+      "baselineSha256": "f3ca8e40fe4ca5871cb5c97beb9312374448ea5ca3c9007dc74e299290a49ba1",
+      "mergedSha256": "3f63a6afc3b9a3f7e56b4b302e8bc016e49c72b4903457c08ce616eb2e65e468"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/MainActivity.kt",
+      "baselineSha256": "702dbd557da9408e3eb4d746356a84fcc9ed38895cd27a55104fe272be161865",
+      "mergedSha256": "7d0d74547729dae3fc63ae7f421b87514afaae8500af511ef0199680bf2297ce"
+    },
+    {
+      "path": "README.md",
+      "baselineSha256": "27a52ae4c0fed50f0e2dbbee9b577bfcb9a8f93f7f6e183d0a5c305380a1daff",
+      "mergedSha256": "960afde5d25720b41bd36c349561dd126274a88e8976d4473fcd39f4ffd71782"
+    },
+    {
+      "path": "AGENTS.md",
+      "baselineSha256": "b5159ba2284a63d4cfc163140864f249ceeaf4e89c6615595bdbf9c4d4a415eb",
+      "mergedSha256": "bca306424bf608ca180f52247e45d493cdca4042ae12f1826ac3d88a1404aa3b"
+    },
+    {
+      "path": ".gitignore",
+      "baselineSha256": "27f6dfbae16ab9f8ba45c924618d98fd3927d338a6e6e564f5669861dd1714a2",
+      "mergedSha256": "7b2e3ca3e3e5079b09cfdf3e08db53317f53bcc029acb65d3206bed272f9ee65"
+    },
+    {
+      "path": "docs/component-library.md",
+      "baselineSha256": "0b1d6cee6f90fbd4c59e97b4dc46a6147761823fbe7d1f7f6de7978d01232925",
+      "mergedSha256": "b4b23ec9cea9c94d0fa14336aceea8afc8b0dd0e305cee955da89daccb3356bd"
+    },
+    {
+      "path": "docs/ios27/validation.md",
+      "baselineSha256": "76ba4d73a6d6b0822b6ceb7a39913a8508f8e7d381e969947664b6eb5eb7f7bc",
+      "mergedSha256": "d51f77174e55e3075fb853658f8f68698c0e708b60594daee8aee66eeba43a8c"
+    },
+    {
+      "path": "docs/ios27/verification-results.json",
+      "baselineSha256": "45966cfaafb55ba21e3606993450d54236e48da599411451aeac7b56159735a0",
+      "mergedSha256": "bc7893b835f685f5e6e454749c35cbdbf2db9481edb210ee20123e08e1b9bc81"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/rendering/GlassButtonMotion.kt",
+      "baselineSha256": null,
+      "mergedSha256": "f88aeb66d622d6c7ee6043131984b5ecdc7aa0d550633a8b5bc689726f994337"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassAnimation.kt",
+      "baselineSha256": null,
+      "mergedSha256": "d9677d274f27beef2bd76bde57baf990dfb948106f4fd8bbd59e61a7546829d5"
+    }
+  ],
+  "tests": "not run",
+  "frozenBaselines": "unchanged"
+}

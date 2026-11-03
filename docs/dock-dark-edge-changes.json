@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User corrected the request: preserve highlight thickness and reduce the dark part; interpreted as dark outline after clarification remained unanswered",
+  "reason": "Restore original 27 dock bright rim width; reduce only dock dark hairline width from 0.67dp to 0.469dp, preserving strength and non-dock widths",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/DockHighlight.kt",
+      "baselineSha256": "081c0c169900c15aaba8f6ed476e9b7804ea7e8a940a33bcc59cade49eb81a20",
+      "mergedSha256": "e77e115c6b4cdabad062ccf3ad65ccbf5b856ff9a20aefc4a0fbf0a88cd0e0a4"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlClashControlHighlight.kt",
+      "baselineSha256": "805ae042514b2fe8305fb252a28e86dacc99ce143d68e7d24d37a3d9712d8362",
+      "mergedSha256": "6854c226fe86c1eeab28b2ab26ef2cc08123c1bc26129b6b02aa56d351a1a335"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/assets/shaders/flclash_control_highlight.agsl",
+      "baselineSha256": "c68577c01a54d128a2c974aae1e1e9a143dd3e52e00b4127a5ac56c2c2383113",
+      "mergedSha256": "e3fd692be7017961dd4656ba8ea0736666e9fb3e19bdb59aa29c3686101cf98e"
+    }
+  ],
+  "tests": "not run; parameter-only adjustment",
+  "frozenBaselines": "unchanged"
+}

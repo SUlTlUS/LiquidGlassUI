@@ -11,7 +11,7 @@ android {
     compileSdk = 37
     defaultConfig {
         applicationId = "dev.liquidglass.sample"
-        minSdk = 24
+        minSdk = 33
         targetSdk = 36
         versionCode = 20
         versionName = "1.0.19"
@@ -29,14 +29,11 @@ tasks.withType<KotlinCompile>().configureEach {
     }
 }
 dependencies {
-    implementation(project(":liquidglass"))
     implementation(project(":liquidglass-ios27"))
-    implementation(project(":melox-tabbar"))
     implementation("androidx.activity:activity-compose:1.13.0")
     implementation("androidx.startup:startup-runtime:1.2.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.11.0")
     implementation("top.yukonga.miuix.kmp:miuix-nav-android:0.9.4-rc01")
-    implementation("com.github.QWEA0:liquidglass:v2.0.10")
 }
 
 fun registerQqApkSendTask(
@@ -98,9 +95,4 @@ val sendReleaseApkToQq = registerQqApkSendTask(
     buildType = "release",
 )
 
-tasks.matching { it.name == "assembleDebug" }.configureEach {
-    finalizedBy(sendDebugApkToQq)
-}
-tasks.matching { it.name == "assembleRelease" }.configureEach {
-    finalizedBy(sendReleaseApkToQq)
-}
+// Distribution builds have no sending side effect; QQ tasks are explicitly invoked only.

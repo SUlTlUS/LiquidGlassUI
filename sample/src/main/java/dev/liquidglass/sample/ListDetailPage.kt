@@ -1,8 +1,8 @@
 package dev.liquidglass.sample
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
-import android.os.Build
+import dev.liquidglass.*
+
+import dev.liquidglass.sample.Ios26AlertDialog as AlertDialog
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -20,6 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -33,7 +36,7 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.text.font.FontWeight
 import com.zeaze.tianyinwallpaper.backdrop.backdrops.*
-import com.zeaze.tianyinwallpaper.catalog.components.LiquidButton
+import dev.liquidglass.GlassButton
 import com.zeaze.tianyinwallpaper.catalog.components.LiquidToggle
 import com.zeaze.tianyinwallpaper.ui.commom.ProgressiveBlurContent
 import dev.liquidglass.ios27.*
@@ -59,7 +62,6 @@ private fun ListDetailContent(dark: Boolean, onBack: () -> Unit) {
     val colors = LocalIos27PageColors.current
     val context = LocalContext.current
     val scroll = rememberScrollState()
-    val supported = Build.VERSION.SDK_INT >= 33
     val reveal = with(LocalDensity.current) { 48.dp.toPx() }
     val toolbar = rememberSceneToolbar(ListExampleSceneFile)
     val popupLabelGlyph = rememberSceneText(ListExampleSceneFile, "Pop-up")
@@ -77,17 +79,19 @@ private fun ListDetailContent(dark: Boolean, onBack: () -> Unit) {
     var hour by rememberSaveable { mutableIntStateOf(9) }
     var minute by rememberSaveable { mutableIntStateOf(41) }
     var popup by remember { mutableStateOf(false) }
+    var popupAnchor by remember { mutableStateOf(Rect.Zero) }
     var choice by rememberSaveable { mutableStateOf("Pop-up") }
     var message by remember { mutableStateOf<String?>(null) }
+    var dateTimeDialog by remember { mutableStateOf<Boolean?>(null) }
     val dateLabel = SimpleDateFormat("MMMM yyyy", Locale.US).format(Calendar.getInstance().apply {
         set(year, month, day)
     }.time)
     val timeLabel = String.format(Locale.US, "%d:%02d %s", (hour % 12).let { if (it == 0) 12 else it }, minute, if (hour < 12) "AM" else "PM")
     val pickDate = {
-        DatePickerDialog(context, { _, y, m, d -> year = y; month = m; day = d }, year, month, day).show()
+        dateTimeDialog = false
     }
     val pickTime = {
-        TimePickerDialog(context, { _, h, m -> hour = h; minute = m }, hour, minute, false).show()
+        dateTimeDialog = true
     }
     ExampleRecordedDesignPage(
         background = colors.page,
@@ -198,7 +202,7 @@ private fun ListDetailContent(dark: Boolean, onBack: () -> Unit) {
                                     }
                                     8 -> Box {
                                         Row(
-                                            Modifier.ios27PressedClickable(
+                                            Modifier.onGloballyPositioned { popupAnchor = it.boundsInRoot() }.ios27PressedClickable(
                                                 shape = RoundedCornerShape(percent = 50),
                                                 onClick = { popup = true },
                                             ),
@@ -215,14 +219,8 @@ private fun ListDetailContent(dark: Boolean, onBack: () -> Unit) {
                                                 color = colors.secondaryLabel,
                                             )
                                         }
-                                        DropdownMenu(popup, onDismissRequest = { popup = false }) {
-                                            listOf("First", "Second", "Third").forEach { option ->
-                                                DropdownMenuItem(onClick = { choice = option; popup = false }) { Text(option) }
-                                            }
-                                        }
                                     }
-                                    10 -> if (supported) LiquidToggle({ enabled }, { enabled = it }, rowBackdrop, !dark)
-                                        else Switch(enabled, { enabled = it })
+                                    10 -> GlassSwitch(enabled, { enabled = it }, backdrop = rowBackdrop, darkTheme = dark)
                                 }
                             })
                     }
@@ -232,7 +230,7 @@ private fun ListDetailContent(dark: Boolean, onBack: () -> Unit) {
         },
         overlay = { topInset, recordedBackdrop ->
             ExampleTopChrome(
-                backdrop = if (supported) recordedBackdrop else null,
+                backdrop = recordedBackdrop,
                 isLightTheme = !dark,
                 blurAlpha = (scroll.value / reveal).coerceIn(0f, 1f),
             )
@@ -246,7 +244,7 @@ private fun ListDetailContent(dark: Boolean, onBack: () -> Unit) {
             ) {
                 Ios27BackButton(
                     onBack,
-                    if (supported) recordedBackdrop else null,
+                    recordedBackdrop,
                     backGlyph = {
                         SceneToolbarButtonContent(
                             button = toolbar?.buttons?.getOrNull(0),
@@ -255,13 +253,13 @@ private fun ListDetailContent(dark: Boolean, onBack: () -> Unit) {
                         )
                     },
                 )
+                GlassButtonGroup(Modifier.width(214.dp).height(44.dp), backdrop = recordedBackdrop) {
                 Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    if (supported) {
-                        LiquidButton(
+                        GlassButton(
                             { message = "Toolbar" },
                             recordedBackdrop,
                             modifier = Modifier.width(44.dp),
-                            buttonHeight = 44.dp,
+                            height = 44.dp,
                             contentPadding = PaddingValues(0.dp),
                         ) {
                             SceneToolbarButtonContent(
@@ -269,11 +267,11 @@ private fun ListDetailContent(dark: Boolean, onBack: () -> Unit) {
                                 tint = colors.label,
                             )
                         }
-                        LiquidButton(
+                        GlassButton(
                             { message = "Toolbar group" },
                             recordedBackdrop,
                             modifier = Modifier.width(160.dp),
-                            buttonHeight = 44.dp,
+                            height = 44.dp,
                             contentPadding = PaddingValues(0.dp),
                         ) {
                             SceneToolbarButtonContent(
@@ -284,19 +282,26 @@ private fun ListDetailContent(dark: Boolean, onBack: () -> Unit) {
                                 },
                             )
                         }
-                    } else {
-                        TextButton(onClick = { message = "Toolbar" }) {
-                            Text("•••", color = colors.label)
-                        }
-                    }
+                }
                 }
             }
         },
     )
+    Ios26ModalScope(backdrop, dark) {
+        dev.liquidglass.GlassMorphMenu(popup, popupAnchor,
+            listOf("First", "Second", "Third").map { option ->
+                dev.liquidglass.GlassMenuAction(option, selected = choice == option,
+                    onClick = { choice = option; popup = false })
+            }, dark, onDismiss = { popup = false }, returnIntoSource = false,
+            highlightStyle = currentGlassHighlight())
+    }
     message?.let { text ->
-        AlertDialog(onDismissRequest = { message = null }, title = { Text(text) },
+        AlertDialog(onDismissRequest = { message = null }, backdrop = backdrop, title = { Text(text) },
             confirmButton = { TextButton(onClick = { message = null }) { Text("好") } })
     }
+    dateTimeDialog?.let { time -> Ios26DateTimeDialog(time, backdrop, year, month, day, hour, minute,
+        onDismiss = { dateTimeDialog = null }, onDate = { y, m, d -> year = y; month = m; day = d },
+        onTime = { h, m -> hour = h; minute = m }) }
 }
 
 /** Secondary-page Inset uses the shared 16pt page margin, so the group is 370x656pt. */

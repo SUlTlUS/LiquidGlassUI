@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User corrected that button drag effects 26 and 27 were reversed",
+  "reason": "Swap complete 26/27 button drag bindings, including translation, distortion, contour, Goo and highlight; drag limit toggle controls the newly mapped 27 profile only",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/ButtonContour.kt",
+      "baselineSha256": "a978bda8c7403c05deb66047150e3893a35f380edc0c2a8db1f1a2cb8b7e455f",
+      "mergedSha256": "ab4b232582595fae19993160780ce448170159b20aad1bb059557623102643e9"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/ButtonDrag.kt",
+      "baselineSha256": "d159bc161e2f02b79352e0e43c1bac6552542a1751dd51697cb6cb6e32e6976c",
+      "mergedSha256": "4fb423e70cf63790fdd7cddf7ec19c2b38135505dff55359d909eda8d7b3c1fe"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/FlClashControlHighlight.kt",
+      "baselineSha256": "ec7a7568f3395c915dfd5e13249aa6c3d056d39aea76e8c691282b94f98cc960",
+      "mergedSha256": "805ae042514b2fe8305fb252a28e86dacc99ce143d68e7d24d37a3d9712d8362"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassEffects.kt",
+      "baselineSha256": "30b111b631b4c15511e561dfd1a773faeca013d3b09b30bb8de707f8648f2712",
+      "mergedSha256": "2fa806c3837bab3bacb059471fa69fd78f1280d6b3dabccd5479b712a03dcc39"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassGeometry.kt",
+      "baselineSha256": "550a014eca4f0c7e8b2b1109d1dbd87d8aca75eb61d693c7198edc1664ad08d3",
+      "mergedSha256": "3bd4bf4cffc26b0e63bceaa23a41867280302c1721cb401b0cb19c12264ed529"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GooRowOutline.kt",
+      "baselineSha256": "473e1a8c23ee037f66d32199f9a383dfe41186606666e21f58ff499d5dbd958d",
+      "mergedSha256": "f863547c869f58956f5dd90aca515aec1688d0f29e489623af8a439501696cd7"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/Ios26ButtonDrag.kt",
+      "baselineSha256": "8fa8f1d08ea80a8759dd27c37d9895c4508c8b91ae8fdaea2b698850fe38a0a5",
+      "mergedSha256": "e7e3dcff94ccf1bec777a78db2950c6ca89cd8d6fe5416b1748dada4951ae847"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/Ios26FusionGroup.kt",
+      "baselineSha256": "dd0cf1c380367fee7c772c0d2f10a356478d4e238e0130284ef9267072bceca7",
+      "mergedSha256": "d899ba35f1c0449167e07b71b641fa4e7ab7decd0a7ffebbf11de6c401d41697"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/ButtonContourRoutingTest.kt",
+      "baselineSha256": "1d407ff293020ff614cee8c01786bd613b72a84265ae69f4383bb312c3a3501f",
+      "mergedSha256": "5fa776aae8ee4a72a5c38d5637fee915286139e4a45ffcf4d99d5a2b4859d281"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/ButtonDragTest.kt",
+      "baselineSha256": "061e6437261ebacbdb566b785c4102d67527364a038d3eb3585dafe633bffd4a",
+      "mergedSha256": "611f70be0c9d1523fee6d1bdaf9f7c8431f09f2bd975e4bd1335ee213380bd2a"
+    },
+    {
+      "path": "AGENTS.md",
+      "baselineSha256": "d9d072270d4f37caf3772bb05005c760ab27d3982b5036380064b875fa1aa55d",
+      "mergedSha256": "52990b4cfc90b50b4d81c555315272fa6a5dc2e73b46cf12a4844e7ff9ac928d"
+    },
+    {
+      "path": "docs/component-library.md",
+      "baselineSha256": "e1b3d55d3fd5cf07f5965838e0614d51586f66e5e67946705bfceefcb4db44cd",
+      "mergedSha256": "19d6f94233038fca3faf9b025f29351a8c08e6f0698e1faa43f429098adb573b"
+    }
+  ],
+  "tests": "sources updated, not run",
+  "frozenBaselines": "unchanged"
+}

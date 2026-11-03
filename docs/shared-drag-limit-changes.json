@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User requested that 26 drag limits also use the same switch",
+  "reason": "Apply the existing limitButtonDrag switch to both 26 and 27 button motion, jointly controlling displacement and distortion without changing contour selection",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/ButtonDrag.kt",
+      "baselineSha256": "4fb423e70cf63790fdd7cddf7ec19c2b38135505dff55359d909eda8d7b3c1fe",
+      "mergedSha256": "a1604cecb5d648e387cea425889a605f8b42618ecd73ab21a2d237510edecb04"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassEffects.kt",
+      "baselineSha256": "2fa806c3837bab3bacb059471fa69fd78f1280d6b3dabccd5479b712a03dcc39",
+      "mergedSha256": "ca958d14b5dde7e511501efe7719ab343d6a85dc5d5174da763f361dcf79dec9"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/ButtonDragTest.kt",
+      "baselineSha256": "611f70be0c9d1523fee6d1bdaf9f7c8431f09f2bd975e4bd1335ee213380bd2a",
+      "mergedSha256": "58ff13cf1c83936305b5b32f12ee317886cf59f647b1d3317a026a09c3717893"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/MainActivity.kt",
+      "baselineSha256": "c7f5fbcdc67228ed36a9c53714373bcd90c9022cf0f2021b42cd66aecddd1073",
+      "mergedSha256": "3ff32f0eacd1bbcab692eac043d0c7d192238abd3c1a0b6f30d36a887e0f644f"
+    },
+    {
+      "path": "AGENTS.md",
+      "baselineSha256": "52990b4cfc90b50b4d81c555315272fa6a5dc2e73b46cf12a4844e7ff9ac928d",
+      "mergedSha256": "515b78c2ae92945b88b8cb19e3685d1c9f3f2b023feadfd216f48767c915ca87"
+    },
+    {
+      "path": "docs/component-library.md",
+      "baselineSha256": "19d6f94233038fca3faf9b025f29351a8c08e6f0698e1faa43f429098adb573b",
+      "mergedSha256": "ad4b978a78c00aa3c2963bfd1126fc4d0d249246e0cb195a075f8cc1d423df3a"
+    }
+  ],
+  "tests": "sources updated, not run",
+  "frozenBaselines": "unchanged"
+}

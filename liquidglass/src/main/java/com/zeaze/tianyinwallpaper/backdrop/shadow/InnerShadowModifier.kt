@@ -1,6 +1,5 @@
 package com.zeaze.tianyinwallpaper.backdrop.shadow
 
-import android.os.Build
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.BlurEffect
@@ -77,8 +76,6 @@ internal class InnerShadowNode(
 
     override fun ContentDrawScope.draw() {
         drawContent()
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
 
         val shadow = shadow() ?: return
 

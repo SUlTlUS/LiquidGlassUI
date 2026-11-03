@@ -1,273 +1,2075 @@
 {
   "date": "2026-11-03",
-  "revision": "Dock outline uses 256 rays and denser native path sampling; other controls retain 64 rays",
+  "revision": "Use analytic capsule geometry for standalone 27 button highlights, including inverse motion transforms; share the 27 tab bar overlay with its mini-player while retaining 26 defaults",
+  "minSdk": 33,
   "build": {
     "result": "passed",
     "tasks": [
-      "sample:assembleDebug"
+      "sample:assembleDebug",
+      "liquidglass-ios27:compileDebugUnitTestKotlin",
+      "packageLibrary"
     ],
-    "log": "build-ios27-dock-outline-final.log",
-    "qqSending": "excluded"
+    "log": ".tmp/button-rim-player-tint-build.log"
   },
   "tests": {
     "status": "not_run",
-    "reason": "User requested no testing; no unit/lint/static/shader/device tests executed"
+    "reason": "User requested no tests, Lint or device interaction",
+    "updated": [
+      "liquidglass-ios27/src/test/java/dev/liquidglass/ButtonContourRoutingTest.kt"
+    ]
   },
   "device": {
-    "serial": "192.168.1.148:45149",
-    "installation": "success (adb install -r returned Success)",
-    "launched": false,
-    "interactions": "not_run",
+    "installation": "not installed",
     "visualAcceptance": "pending user"
   },
   "artifacts": [
     {
-      "path": "dist/ios27-dock-outline-20261103/LiquidGlassSketch-ios27-dock-outline-debug.apk",
-      "bytes": 47536098,
-      "sha256": "d534959300788916e5b014e33521bdbf1cbe70951ceced24837d11c43ec89d18"
+      "path": "dist/button-rim-player-tint-20261103/LiquidGlassSketch-button-rim-player-tint-debug.apk",
+      "bytes": 73691048,
+      "sha256": "3667507e7016b097158d27fa778a6c88b8cdd1b72349aea50caf1da9a64fb4ac"
+    },
+    {
+      "path": "dist/button-rim-player-tint-20261103/LiquidGlassUI-2.0.0-button-rim-player-tint-maven.zip",
+      "bytes": 17378958,
+      "sha256": "797161d29ad872d1cb8362a27b010ac806ed2de43263a199c5c69d2ca6b97f9b"
     }
   ],
-  "previousDockRimRevision": {
+  "previousRevision": {
     "date": "2026-11-03",
-    "revision": "Dock hidden reference rim removed; indicator side hairline follows press progress",
+    "revision": "Use the regular 27 button tint for the navigation track, matching capture layer and search surface; retain automatic tone, preset optics, highlights and 26 defaults",
+    "minSdk": 33,
     "build": {
       "result": "passed",
       "tasks": [
-        "sample:assembleDebug"
+        "sample:clean",
+        "sample:assembleDebug",
+        "packageLibrary"
       ],
-      "qqSending": "excluded",
-      "log": "build-ios27-dock-rim-final.log"
+      "log": ".tmp/dock-button-color-build.log"
     },
-    "unitTests": {
+    "tests": {
       "status": "not_run",
-      "reason": "User explicitly requested no tests"
-    },
-    "lint": {
-      "status": "not_run",
-      "reason": "User explicitly requested no tests"
+      "reason": "User requested no tests, Lint or device interaction",
+      "updated": []
     },
     "device": {
-      "serial": "192.168.1.148:45149",
-      "installation": "success (adb install -r; streamed install returned Success)",
-      "launched": false,
-      "interactions": "not_run",
+      "installation": "not installed",
       "visualAcceptance": "pending user"
     },
     "artifacts": [
       {
-        "path": "dist/ios27-dock-rim-20261103/LiquidGlassSketch-ios27-dock-rim-debug.apk",
-        "bytes": 47536098,
-        "sha256": "daee3beb2e534dc42d1ca24c27899d9f2b724f0e97a539fbc79764d529fea481"
+        "path": "dist/dock-button-color-20261103/LiquidGlassSketch-dock-button-color-debug.apk",
+        "bytes": 71522484,
+        "sha256": "2a5cc545a0acd3552bd110dbb5be3d288a5ee2d8b0dcc118bd90c8aae0d94b68"
+      },
+      {
+        "path": "dist/dock-button-color-20261103/LiquidGlassUI-2.0.0-dock-button-color-maven.zip",
+        "bytes": 17374864,
+        "sha256": "d27769369c75f0bdcc7c151b850cc6249ce461e94914615343e62e6f05730d0e"
       }
     ],
-    "previousVerifiedGooRevision": {
+    "previousRevision": {
       "date": "2026-11-03",
-      "nativeStaticTests": {
-        "tests": 32,
-        "pass": 15,
-        "fail": 17,
-        "baselineFailureNames": [
-          "full-width list uses edge-to-edge rows and remains interactive",
-          "source-extracted navigation and accessory indicators are centralized",
-          "secondary list uses the Examples/List inset geometry",
-          "Examples/List inset is entered through the reusable example component",
-          "category secondary pages use Toolbars - Top large-title geometry while List inset keeps its own chrome",
-          "alerts use the reusable glass dialog and fixed capsule actions",
-          "text fields show four source states and share clear behavior with alerts",
-          "all live application text inputs use the reusable example field",
-          "action sheet uses the source-sized top-end LiquidDialog instead of the generic bottom sheet",
-          "activity view uses the full-width scrolling share sheet and native actions",
-          "toolbar glyphs are content of the animated LiquidButton, not sibling overlays",
-          "tab bar host uses reusable LiquidBottomTab primitives",
-          "sheets modal host preserves the three source variants and safe glass layering",
-          "menus use source-sized glass panels and keep menu actions native",
-          "empty states use source variants, native glyphs and exact action geometry",
-          "picker variants use the date-calendar layout and keep both actions interactive",
-          "click feedback masks follow the visible control shapes"
-        ],
-        "sameFailuresBeforeAndAfter": true,
-        "baselineMethod": "Reconstructed only the two modified sample files and verified bytes against premerge SHA-256; all other test inputs unchanged.",
-        "currentRevisionSameFailures": true
-      },
-      "unitTests": {
-        "liquidglass": {
-          "tests": 68,
-          "failures": 0,
-          "errors": 0,
-          "skipped": 0
-        },
-        "liquidglass-ios27": {
-          "tests": 341,
-          "failures": 0,
-          "errors": 0,
-          "skipped": 0
-        }
-      },
-      "ios27Lint": {
-        "error": 0,
-        "warning": 18,
-        "information": 0
-      },
-      "sampleLint": {
-        "error": 0,
-        "warning": 102,
-        "information": 0
-      },
+      "revision": "Reduce 27 dock bright rim width by 30 percent only in dark theme; preserve original light-theme width and restore original dark hairline shader and uniforms",
+      "minSdk": 33,
       "build": {
         "result": "passed",
         "tasks": [
-          "verifyLiquidGlassSpec",
-          "liquidglass:testDebugUnitTest",
-          "liquidglass-ios27:testDebugUnitTest",
-          "liquidglass-ios27:lintDebug",
-          "sample:lintDebug",
+          "sample:clean",
           "sample:assembleDebug",
-          "verifyDebugArtifacts"
+          "packageLibrary"
         ],
-        "qqSending": "excluded",
-        "sourceManifest": "passed",
-        "log": "build-ios27-goo-final.log",
-        "signatureV2": "passed",
-        "alignment16KiB": "passed",
-        "sourceDemoClassesAbsentFromApk": true
+        "log": ".tmp/dark-mode-dock-highlight-build.log"
+      },
+      "tests": {
+        "status": "not_run",
+        "reason": "User requested no tests, Lint or device interaction",
+        "updated": []
       },
       "device": {
-        "preliminaryBuild": "installed and cold-started on PLQ110 (API 37); navigation test incomplete, external overlay/foreground interference observed",
-        "api24to32": "not tested",
-        "visualAcceptance": "pending user",
-        "previousRevision": "Final APK installed successfully on PLQ110 via adb install -r; not launched or interaction-tested after the final update.",
-        "currentRevision": "Not installed or operated; Goo grouping, callbacks and popup hide/restore await user acceptance."
+        "installation": "not installed",
+        "visualAcceptance": "pending user"
       },
       "artifacts": [
         {
-          "path": "dist/ios27-goo-buttons-20261103/liquidglass-ios26-debug.aar",
-          "bytes": 827968,
-          "sha256": "1bbfce0b923e38aaa326702646a34a15561363ed13be4361ca6e8a71c04104e8"
+          "path": "dist/dark-mode-dock-highlight-20261103/LiquidGlassSketch-dark-mode-dock-highlight-debug.apk",
+          "bytes": 71506100,
+          "sha256": "327011727a52970db70c484b84ce91022184d6c1e9415c8ce84a0c0518543563"
         },
         {
-          "path": "dist/ios27-goo-buttons-20261103/liquidglass-ios27-debug.aar",
-          "bytes": 1272637,
-          "sha256": "1a8c3ddddd4fa00f7bb3938f72b71794083979e8344d4f833de97b2695d1532b"
-        },
-        {
-          "path": "dist/ios27-goo-buttons-20261103/LiquidGlassSketch-ios27-goo-buttons-debug.apk",
-          "bytes": 47536098,
-          "sha256": "bcae9a3fb7a27ef9d83e3605825cc96b6bb5bf59e6bb51ffc8279590d2bf6f35"
+          "path": "dist/dark-mode-dock-highlight-20261103/LiquidGlassUI-2.0.0-dark-mode-dock-highlight-maven.zip",
+          "bytes": 17373928,
+          "sha256": "bf10d5437b997a06aff17101814041f702bfe8ebc6f537206eae6613ff092973"
         }
       ],
-      "dependencyResolution": {
-        "composeUi": "1.12.0",
-        "composeFoundation": "1.12.0",
-        "material3": "1.4.0",
-        "forcedVersionsAdded": false
+      "previousRevision": {
+        "date": "2026-11-03",
+        "revision": "Restore original 27 dock bright rim width; reduce only dock dark hairline width from 0.67dp to 0.469dp, preserving strength and non-dock widths",
+        "minSdk": 33,
+        "build": {
+          "result": "passed",
+          "tasks": [
+            "sample:clean",
+            "sample:assembleDebug",
+            "packageLibrary"
+          ],
+          "log": ".tmp/dock-dark-edge-build.log"
+        },
+        "tests": {
+          "status": "not_run",
+          "reason": "User requested no tests, Lint or device interaction",
+          "updated": []
+        },
+        "device": {
+          "installation": "not installed",
+          "visualAcceptance": "pending user"
+        },
+        "artifacts": [
+          {
+            "path": "dist/dock-dark-edge-20261103/LiquidGlassSketch-dock-dark-edge-debug.apk",
+            "bytes": 71506112,
+            "sha256": "c093df0ade4e40a8e53d5b71c00abb52c0741de94b0c6720955613219c16e68f"
+          },
+          {
+            "path": "dist/dock-dark-edge-20261103/LiquidGlassUI-2.0.0-dock-dark-edge-maven.zip",
+            "bytes": 17373782,
+            "sha256": "d42a6d43268903275bfc570a0925592e1821932644f270d5f648131cbef2dbb9"
+          }
+        ],
+        "previousRevision": {
+          "date": "2026-11-03",
+          "revision": "Make the 26 tab selection capsule highlight follow press progress with zero resting alpha; preserve outer track, 27 highlight, optics and shadows",
+          "minSdk": 33,
+          "build": {
+            "result": "passed",
+            "tasks": [
+              "sample:clean",
+              "sample:assembleDebug",
+              "packageLibrary"
+            ],
+            "log": ".tmp/pressed-indicator-highlight-build.log"
+          },
+          "tests": {
+            "status": "not_run",
+            "reason": "User requested no tests, Lint or device interaction",
+            "updated": []
+          },
+          "device": {
+            "installation": "not installed",
+            "visualAcceptance": "pending user"
+          },
+          "artifacts": [
+            {
+              "path": "dist/pressed-indicator-highlight-20261103/LiquidGlassSketch-pressed-indicator-highlight-debug.apk",
+              "bytes": 71506100,
+              "sha256": "e96f1d7891e0ef86d7a3676c272b21a04358761f859a0edb47dc5a68472a37c7"
+            },
+            {
+              "path": "dist/pressed-indicator-highlight-20261103/LiquidGlassUI-2.0.0-pressed-indicator-highlight-maven.zip",
+              "bytes": 17373843,
+              "sha256": "cf4afec02447c1e2039f2a5729dd0cecddeec59c0224b54256ed37fe04ed144c"
+            }
+          ],
+          "previousRevision": {
+            "date": "2026-11-03",
+            "revision": "Reduce only the 27 dock bright rim width parameter by 30 percent; preserve dark hairlines, material, geometry and other controls",
+            "minSdk": 33,
+            "build": {
+              "result": "passed",
+              "tasks": [
+                "sample:clean",
+                "sample:assembleDebug",
+                "packageLibrary"
+              ],
+              "log": ".tmp/thinner-dock-highlight-build.log"
+            },
+            "tests": {
+              "status": "not_run",
+              "reason": "User requested no tests, Lint or device interaction",
+              "updated": []
+            },
+            "device": {
+              "installation": "not installed",
+              "visualAcceptance": "pending user"
+            },
+            "artifacts": [
+              {
+                "path": "dist/thinner-dock-highlight-20261103/LiquidGlassSketch-thinner-dock-highlight-debug.apk",
+                "bytes": 71506100,
+                "sha256": "6c5e547f50c7f23befd41980abc62a729032955cff45cba8c91389591f588f6a"
+              },
+              {
+                "path": "dist/thinner-dock-highlight-20261103/LiquidGlassUI-2.0.0-thinner-dock-highlight-maven.zip",
+                "bytes": 17374544,
+                "sha256": "559c86a43baab8c927b464e4eb0d1ec8d2afa026b077ab3e99bc94fb578fc847"
+              }
+            ],
+            "previousRevision": {
+              "date": "2026-11-03",
+              "revision": "Expand shared Goo material paint bounds with live button contours; preserve unlimited drag, foreground layout and input coordinates",
+              "minSdk": 33,
+              "build": {
+                "result": "passed",
+                "tasks": [
+                  "sample:clean",
+                  "sample:assembleDebug",
+                  "packageLibrary",
+                  "liquidglass-ios27:compileDebugUnitTestKotlin"
+                ],
+                "log": ".tmp/goo-drag-overflow-build.log"
+              },
+              "tests": {
+                "status": "not_run",
+                "reason": "User requested no tests, Lint or device interaction",
+                "updated": [
+                  "GooPaintBoundsTest"
+                ],
+                "sources": "compiled successfully; not executed"
+              },
+              "device": {
+                "installation": "not installed",
+                "visualAcceptance": "pending user"
+              },
+              "artifacts": [
+                {
+                  "path": "dist/goo-drag-overflow-20261103/LiquidGlassSketch-goo-drag-overflow-debug.apk",
+                  "bytes": 71489716,
+                  "sha256": "96325c2862ac0d59ccfd108742da26645f25feb91843007efa45de1227f64763"
+                },
+                {
+                  "path": "dist/goo-drag-overflow-20261103/LiquidGlassUI-2.0.0-goo-drag-overflow-maven.zip",
+                  "bytes": 17362895,
+                  "sha256": "0dbbe497de639ced605782547cca2e9d430cd6cd6577bc1daa6a4450666274a8"
+                }
+              ],
+              "previousRevision": {
+                "date": "2026-11-03",
+                "revision": "Deep cleanup: shared button math, shared damped motion and press highlight, unreachable pre-33 branches and unused sample functions removed",
+                "minSdk": 33,
+                "build": {
+                  "result": "passed",
+                  "tasks": [
+                    "sample:clean",
+                    "sample:assembleDebug",
+                    "packageLibrary",
+                    "liquidglass:compileDebugUnitTestKotlin",
+                    "liquidglass-ios27:compileDebugUnitTestKotlin"
+                  ],
+                  "log": ".tmp/deep-cleanup-build.log"
+                },
+                "tests": {
+                  "status": "not_run",
+                  "sources": "Kotlin compiled; static source checks updated only",
+                  "reason": "Standing user instruction: no tests, Lint, verification scripts or device interaction"
+                },
+                "device": {
+                  "installation": "not installed",
+                  "visualAcceptance": "pending user"
+                },
+                "publication": {
+                  "repository": "dist/maven",
+                  "remoteUpload": false
+                },
+                "artifacts": [
+                  {
+                    "path": "dist/deep-cleanup-20261103/LiquidGlassSketch-deep-cleanup-debug.apk",
+                    "bytes": 71489716,
+                    "sha256": "5086c0211398a1eb44b685f6f1c1596d7e8b77a22d86537043add1b004b80f44"
+                  },
+                  {
+                    "path": "dist/deep-cleanup-20261103/LiquidGlassUI-2.0.0-deep-cleanup-maven.zip",
+                    "bytes": 17354228,
+                    "sha256": "29a9fdfca8b94e02189f90911270e260287bd7b0cccded8d5ccfadc9cda524e8"
+                  }
+                ],
+                "previousRevision": {
+                  "date": "2026-11-03",
+                  "revision": "Apply the existing limitButtonDrag switch to both 26 and 27 button motion, jointly controlling displacement and distortion without changing contour selection",
+                  "minSdk": 33,
+                  "build": {
+                    "result": "passed",
+                    "tasks": [
+                      "sample:clean",
+                      "sample:assembleDebug",
+                      "packageLibrary"
+                    ],
+                    "log": ".tmp/shared-drag-limit-build.log"
+                  },
+                  "tests": {
+                    "status": "not_run",
+                    "reason": "User requested no tests, Lint or device interaction",
+                    "updated": [
+                      "ButtonDragTest"
+                    ]
+                  },
+                  "device": {
+                    "installation": "not installed",
+                    "visualAcceptance": "pending user"
+                  },
+                  "artifacts": [
+                    {
+                      "path": "dist/shared-drag-limit-20261103/LiquidGlassSketch-shared-drag-limit-debug.apk",
+                      "bytes": 71555252,
+                      "sha256": "0c7bc2585ffa03979ab78c0333f98667e54d499d604dbef723e6e7ad1c5e4e26"
+                    },
+                    {
+                      "path": "dist/shared-drag-limit-20261103/LiquidGlassUI-2.0.0-shared-drag-limit-maven.zip",
+                      "bytes": 17445336,
+                      "sha256": "f89f7ee4197627565061c34cb81490f93ca68ca4ae9e0ed3e75d62e26c6859c2"
+                    }
+                  ],
+                  "previousRevision": {
+                    "date": "2026-11-03",
+                    "revision": "Swap complete 26/27 button drag bindings, including translation, distortion, contour, Goo and highlight; drag limit toggle controls the newly mapped 27 profile only",
+                    "minSdk": 33,
+                    "build": {
+                      "result": "passed",
+                      "tasks": [
+                        "sample:clean",
+                        "sample:assembleDebug",
+                        "packageLibrary"
+                      ],
+                      "log": ".tmp/button-effect-swap-build.log"
+                    },
+                    "tests": {
+                      "status": "not_run",
+                      "reason": "User requested no tests, Lint or device interaction",
+                      "updated": [
+                        "ButtonDragTest",
+                        "ButtonContourRoutingTest"
+                      ]
+                    },
+                    "device": {
+                      "installation": "not installed",
+                      "visualAcceptance": "pending user"
+                    },
+                    "artifacts": [
+                      {
+                        "path": "dist/button-effect-swap-20261103/LiquidGlassSketch-button-effect-swap-debug.apk",
+                        "bytes": 71555252,
+                        "sha256": "c265ab5f5b999c9b5d62820e4a6011969c6a57c8506556dd7d2a883c50e07df9"
+                      },
+                      {
+                        "path": "dist/button-effect-swap-20261103/LiquidGlassUI-2.0.0-button-effect-swap-maven.zip",
+                        "bytes": 17445317,
+                        "sha256": "bd3b4fe603c813c4d3102cde1642e946841b51cc29a3af9d610c563580bdafb9"
+                      }
+                    ],
+                    "previousRevision": {
+                      "date": "2026-11-03",
+                      "revision": "Decouple actual button contours from material: preset 26 reflows the capsule and preset 27 stretches its original contour; synchronize standalone/Goo/rim/refraction/feather geometry and refresh backdrop clip provider",
+                      "minSdk": 33,
+                      "build": {
+                        "result": "passed",
+                        "tasks": [
+                          "sample:assembleDebug",
+                          "packageLibrary"
+                        ],
+                        "log": ".tmp/button-contour-decouple-final-build.log"
+                      },
+                      "tests": {
+                        "status": "not_run",
+                        "reason": "User requested no tests, Lint or device interaction",
+                        "updated": [
+                          "ButtonContourRoutingTest"
+                        ]
+                      },
+                      "device": {
+                        "installation": "not installed",
+                        "visualAcceptance": "pending user"
+                      },
+                      "artifacts": [
+                        {
+                          "path": "dist/button-contour-decouple-20261103/LiquidGlassSketch-button-contour-decouple-debug.apk",
+                          "bytes": 71623912,
+                          "sha256": "212b8020301742d176d3e7398e661a1caed20d52d7c5302c35662225b32d997f"
+                        },
+                        {
+                          "path": "dist/button-contour-decouple-20261103/LiquidGlassUI-2.0.0-button-contours-maven.zip",
+                          "bytes": 17445125,
+                          "sha256": "8710790df3c11490ae108098e6f07a76da615bce876ba79d7be1449831d5e26c"
+                        }
+                      ],
+                      "previousRevision": {
+                        "date": "2026-11-03",
+                        "revision": "Rename animation override to buttonDragEffect and restrict it to complete button press/translation/distortion; remove 26 route branches so menus, Popup and modals always use 27 motion",
+                        "minSdk": 33,
+                        "build": {
+                          "result": "passed",
+                          "tasks": [
+                            "sample:clean",
+                            "sample:assembleDebug",
+                            "packageLibrary"
+                          ],
+                          "log": ".tmp/button-drag-effect-only-build.log"
+                        },
+                        "tests": {
+                          "status": "not_run",
+                          "reason": "User requested no tests, Lint or device interaction",
+                          "updated": [
+                            "GlassEffectsTest",
+                            "MenuAnimationParityTest",
+                            "MenuSpringSettlingDiagnosticTest"
+                          ]
+                        },
+                        "device": {
+                          "installation": "not installed",
+                          "visualAcceptance": "pending user"
+                        },
+                        "artifacts": [
+                          {
+                            "path": "dist/button-drag-effect-only-20261103/LiquidGlassSketch-button-drag-effect-only-debug.apk",
+                            "bytes": 71538584,
+                            "sha256": "22a8e089ddb31a94c4929c7dddb89bf8cda819fea9703ad24bde5ee4ac46ffd1"
+                          },
+                          {
+                            "path": "dist/button-drag-effect-only-20261103/LiquidGlassUI-2.0.0-button-effects-maven.zip",
+                            "bytes": 17426801,
+                            "sha256": "6f6003b0293d1d572e30533f0d2b671f0f4cac668a0a2c01f15ba303d9477d74"
+                          }
+                        ],
+                        "previousRevision": {
+                          "date": "2026-11-03",
+                          "revision": "Add persistent liquid-glass toggle and GlassEffects.limitButtonDrag API for the 27 coupled displacement/distortion limit; explain animation overrides; 26 motion unchanged",
+                          "minSdk": 33,
+                          "build": {
+                            "result": "passed",
+                            "tasks": [
+                              "sample:clean",
+                              "sample:assembleDebug",
+                              "packageLibrary"
+                            ],
+                            "log": ".tmp/button-drag-limit-toggle-build.log"
+                          },
+                          "tests": {
+                            "status": "not_run",
+                            "reason": "User requested no tests, Lint or device interaction",
+                            "updated": [
+                              "GlassEffectsTest",
+                              "ButtonDragTest"
+                            ]
+                          },
+                          "device": {
+                            "installation": "not installed",
+                            "visualAcceptance": "pending user"
+                          },
+                          "artifacts": [
+                            {
+                              "path": "dist/button-drag-limit-toggle-20261103/LiquidGlassSketch-button-drag-limit-toggle-debug.apk",
+                              "bytes": 71538584,
+                              "sha256": "3da2f10fdc44012b3ee8cf60ab0c4bc43a9d0600c182870978e84190745f6b3e"
+                            },
+                            {
+                              "path": "dist/button-drag-limit-toggle-20261103/LiquidGlassUI-2.0.0-drag-limit-maven.zip",
+                              "bytes": 17429214,
+                              "sha256": "fa506228005df7171bcf51d235f0758735cfa0bb0a28b484be9b78b28715ed33"
+                            }
+                          ],
+                          "previousRevision": {
+                            "date": "2026-11-03",
+                            "revision": "Bind displacement and distortion as one motion: both consume the same resisted drag vector in profile 27, with shared 2.7-side limit; profile 26 and routes unchanged",
+                            "minSdk": 33,
+                            "build": {
+                              "result": "passed",
+                              "tasks": [
+                                "sample:clean",
+                                "sample:assembleDebug",
+                                "packageLibrary"
+                              ],
+                              "log": ".tmp/button-motion-coupled-build.log"
+                            },
+                            "tests": {
+                              "status": "not_run",
+                              "reason": "User requested no tests, Lint or device interaction",
+                              "updated": [
+                                "ButtonDragTest"
+                              ]
+                            },
+                            "device": {
+                              "installation": "not installed",
+                              "visualAcceptance": "pending user"
+                            },
+                            "artifacts": [
+                              {
+                                "path": "dist/button-motion-coupled-20261103/LiquidGlassSketch-button-motion-coupled-debug.apk",
+                                "bytes": 71538584,
+                                "sha256": "c17d79e0a7e53a23f9de20fa1f65da4b70506297d3871fb44f274b9acca07a4b"
+                              },
+                              {
+                                "path": "dist/button-motion-coupled-20261103/LiquidGlassUI-2.0.0-coupled-motion-maven.zip",
+                                "bytes": 17427933,
+                                "sha256": "11e678fdf92c2f70dee6e328442acb875387eaf85a03991ad786659442c9543b"
+                              }
+                            ],
+                            "previousRevision": {
+                              "date": "2026-11-03",
+                              "revision": "Remove original 27 button motion (#3); bind adapted former 27-material motion (#1) to 26 and former 26-material directional motion (#2) to 27, with smooth extra-stretch limit; material-independent routing",
+                              "minSdk": 33,
+                              "build": {
+                                "result": "passed",
+                                "tasks": [
+                                  "sample:clean",
+                                  "sample:assembleDebug",
+                                  "packageLibrary"
+                                ],
+                                "log": ".tmp/button-motion-rebind-build.log"
+                              },
+                              "tests": {
+                                "status": "not_run",
+                                "reason": "User requested no tests, Lint or device interaction",
+                                "updated": [
+                                  "GlassEffectsTest",
+                                  "ButtonDragTest"
+                                ]
+                              },
+                              "device": {
+                                "installation": "not installed",
+                                "visualAcceptance": "pending user"
+                              },
+                              "artifacts": [
+                                {
+                                  "path": "dist/button-motion-rebind-20261103/LiquidGlassSketch-button-motion-rebind-debug.apk",
+                                  "bytes": 71538584,
+                                  "sha256": "99b26c225cd636ee440e9e692e2e7220b5a80a19db1f29ec3d47fe3cdcf5f97e"
+                                },
+                                {
+                                  "path": "dist/button-motion-rebind-20261103/LiquidGlassUI-2.0.0-button-motion-maven.zip",
+                                  "bytes": 17427528,
+                                  "sha256": "b9ae38ef00bd38b080ef03ca582dd601548187761d34ca643460d3704efa5f1a"
+                                }
+                              ],
+                              "previousRevision": {
+                                "date": "2026-11-03",
+                                "revision": "Independent animation selection for buttons, Goo geometry, menu/Popup and modal transitions; material and light remain independent",
+                                "minSdk": 33,
+                                "build": {
+                                  "result": "passed",
+                                  "tasks": [
+                                    "sample:clean",
+                                    "sample:assembleDebug",
+                                    "packageLibrary"
+                                  ],
+                                  "log": "build-animation-switch-final.log"
+                                },
+                                "tests": {
+                                  "status": "not_run",
+                                  "reason": "User requested no tests, Lint or device interaction",
+                                  "updated": [
+                                    "GlassEffectsTest",
+                                    "MenuAnimationParityTest",
+                                    "MenuSpringSettlingDiagnosticTest"
+                                  ]
+                                },
+                                "device": {
+                                  "installation": "not installed",
+                                  "reason": "ADB devices empty; previously supplied endpoint timed out",
+                                  "launched": false,
+                                  "visualAcceptance": "pending user"
+                                },
+                                "artifacts": [
+                                  {
+                                    "path": "dist/animation-switch-20261103/LiquidGlassSketch-animation-switch-debug.apk",
+                                    "bytes": 71538584,
+                                    "sha256": "149c4c6beaabc2c470cfab6817db2e393b7acbf86469d060be7f839fe4f503bd"
+                                  },
+                                  {
+                                    "path": "dist/animation-switch-20261103/LiquidGlassUI-2.0.0-animation-maven.zip",
+                                    "bytes": 17427149,
+                                    "sha256": "69631e9904018e339f76c5b99d155d32cc6805b10943d8b1e7dbce7bb2ec3e29"
+                                  }
+                                ],
+                                "previousRevision": {
+                                  "date": "2026-11-03",
+                                  "revision": "Independent overall standard, material and highlight selection; preserve existing shared motion",
+                                  "minSdk": 33,
+                                  "build": {
+                                    "result": "passed",
+                                    "tasks": [
+                                      "sample:clean",
+                                      "sample:assembleDebug",
+                                      "packageLibrary"
+                                    ],
+                                    "log": "build-effect-switch-final.log"
+                                  },
+                                  "tests": {
+                                    "status": "not_run",
+                                    "reason": "User requested no tests, Lint or device interaction",
+                                    "updated": [
+                                      "GlassEffectsTest",
+                                      "native-framework.test.mjs"
+                                    ]
+                                  },
+                                  "device": {
+                                    "installation": "not installed",
+                                    "reason": "ADB devices empty; previously supplied endpoint timed out",
+                                    "launched": false,
+                                    "visualAcceptance": "pending user"
+                                  },
+                                  "artifacts": [
+                                    {
+                                      "path": "dist/effect-switch-20261103/LiquidGlassSketch-effect-switch-debug.apk",
+                                      "bytes": 71522200,
+                                      "sha256": "e166d4de61157e837dbd09ab92a5cf714883e123f2a3efda3100a67ea072abee"
+                                    },
+                                    {
+                                      "path": "dist/effect-switch-20261103/LiquidGlassUI-2.0.0-effects-maven.zip",
+                                      "bytes": 17409470,
+                                      "sha256": "4152f08a332c8fbdcff1712aec786956ab0b4c1a0760c8562e43e2bc59fdc8ad"
+                                    }
+                                  ],
+                                  "previousRevision": {
+                                    "date": "2026-11-03",
+                                    "revision": "Component library 2.0: canonical API, no compatibility aliases, one tab bar renderer, audited obsolete-code removal",
+                                    "minSdk": 33,
+                                    "build": {
+                                      "result": "passed",
+                                      "tasks": [
+                                        "sample:clean",
+                                        "sample:assembleDebug",
+                                        "packageLibrary"
+                                      ],
+                                      "log": "build-library-api-final.log",
+                                      "qqSending": "not invoked"
+                                    },
+                                    "tests": {
+                                      "status": "not_run",
+                                      "reason": "User requested no tests, Lint, validation scripts or device interaction; source checks migrated only"
+                                    },
+                                    "device": {
+                                      "serial": "192.168.1.148:45149",
+                                      "installation": "not installed",
+                                      "launched": false,
+                                      "interactions": "not_run",
+                                      "visualAcceptance": "pending user",
+                                      "connection": "connect timed out (10060); adb devices and mdns services empty"
+                                    },
+                                    "publication": {
+                                      "repository": "dist/maven",
+                                      "coordinate": "dev.liquidglass:liquidglass-ui:2.0.0",
+                                      "remoteUpload": false
+                                    },
+                                    "artifacts": [
+                                      {
+                                        "path": "dist/library-api-20261103/LiquidGlassSketch-library-api-debug.apk",
+                                        "bytes": 71489432,
+                                        "sha256": "e8ba728a6f716dc1492e2c56f86d8a64ad7594c994d2d26e0c370c1e64968a97"
+                                      },
+                                      {
+                                        "path": "dist/library-api-20261103/LiquidGlassUI-2.0.0-maven.zip",
+                                        "bytes": 17396112,
+                                        "sha256": "61ad149f0f8320f65284ef953ffb3cba29f1783791927a717ef511a74af8495d"
+                                      }
+                                    ],
+                                    "previousRevision": {
+                                      "date": "2026-11-03",
+                                      "revision": "Tab bar demo uses theme surface without wallpaper and shared scroll-driven progressive top blur",
+                                      "minSdk": 33,
+                                      "build": {
+                                        "result": "passed",
+                                        "tasks": [
+                                          "sample:assembleDebug"
+                                        ],
+                                        "log": "build-tabbar-top-blur-final.log",
+                                        "qqSending": "excluded"
+                                      },
+                                      "tests": {
+                                        "status": "not_run",
+                                        "reason": "User requested no tests or device interaction",
+                                        "updated": [
+                                          "tools/melox-tabbar-extraction.test.mjs"
+                                        ]
+                                      },
+                                      "device": {
+                                        "serial": "192.168.1.148:45149",
+                                        "installation": "Success",
+                                        "launched": false,
+                                        "interactions": "not_run",
+                                        "visualAcceptance": "pending user"
+                                      },
+                                      "artifacts": [
+                                        {
+                                          "path": "dist/tabbar-top-blur-20261103/LiquidGlassSketch-tabbar-top-blur-debug.apk",
+                                          "bytes": 74739130,
+                                          "sha256": "aabd8ed81442698f7284b105759830077ab5b73da78b830853f7936de3c8d675"
+                                        }
+                                      ],
+                                      "previousRevision": {
+                                        "date": "2026-11-03",
+                                        "revision": "Merge three tab bar demos into one live page with functional and layout controls using LiquidToggle; optical values unchanged",
+                                        "minSdk": 33,
+                                        "build": {
+                                          "result": "passed",
+                                          "tasks": [
+                                            "sample:assembleDebug"
+                                          ],
+                                          "log": "build-tabbar-controls-final.log",
+                                          "qqSending": "excluded"
+                                        },
+                                        "tests": {
+                                          "status": "not_run",
+                                          "reason": "User requested no tests or device interaction",
+                                          "updated": [
+                                            "tools/melox-tabbar-extraction.test.mjs",
+                                            "tools/ios27/native-examples.test.mjs"
+                                          ]
+                                        },
+                                        "device": {
+                                          "serial": "192.168.1.148:45149",
+                                          "installation": "Success",
+                                          "launched": false,
+                                          "interactions": "not_run",
+                                          "visualAcceptance": "pending user"
+                                        },
+                                        "artifacts": [
+                                          {
+                                            "path": "dist/tabbar-controls-20261103/LiquidGlassSketch-tabbar-controls-debug.apk",
+                                            "bytes": 74737994,
+                                            "sha256": "46997fc86fa0f483dbff491b1c5b0ec4c4950a3de60f6976fd7bc2623065f654"
+                                          }
+                                        ],
+                                        "previousRevision": {
+                                          "date": "2026-11-03",
+                                          "revision": "iOS27 adjacent equal override colors cover their Goo neck, including within mixed batches; iOS26 unchanged",
+                                          "minSdk": 33,
+                                          "build": {
+                                            "result": "passed",
+                                            "tasks": [
+                                              "sample:assembleDebug"
+                                            ],
+                                            "log": "build-same-tint-goo-final.log",
+                                            "qqSending": "excluded"
+                                          },
+                                          "tests": {
+                                            "status": "not_run",
+                                            "reason": "User requested no tests or device interaction",
+                                            "updated": "GooButtonGroupTest: contiguous equal tint runs in mixed batches"
+                                          },
+                                          "device": {
+                                            "serial": "192.168.1.148:45149",
+                                            "installation": "Success",
+                                            "launched": false,
+                                            "interactions": "not_run",
+                                            "visualAcceptance": "pending user"
+                                          },
+                                          "artifacts": [
+                                            {
+                                              "path": "dist/same-tint-goo-20261103/LiquidGlassSketch-same-tint-goo-debug.apk",
+                                              "bytes": 74687090,
+                                              "sha256": "4997484f6ac7e32d2d7090592b37c9e5d1146633790c651bb3369015ad8d31ed"
+                                            }
+                                          ],
+                                          "previousRevision": {
+                                            "date": "2026-11-03",
+                                            "revision": "Restore normal iOS27 button drag amplitude with later resistance onset; retain shared edge limits",
+                                            "minSdk": 33,
+                                            "build": {
+                                              "result": "passed",
+                                              "tasks": [
+                                                "sample:assembleDebug"
+                                              ],
+                                              "log": "build-button-drag-retune-final.log",
+                                              "qqSending": "excluded"
+                                            },
+                                            "tests": {
+                                              "status": "not_run",
+                                              "reason": "User requested no tests or device interaction",
+                                              "updated": "Ios26ButtonDragTest: ordinary-distance amplitude regression"
+                                            },
+                                            "device": {
+                                              "serial": "192.168.1.148:45149",
+                                              "installation": "Success",
+                                              "launched": false,
+                                              "interactions": "not_run",
+                                              "visualAcceptance": "pending user"
+                                            },
+                                            "artifacts": [
+                                              {
+                                                "path": "dist/button-drag-retune-20261103/LiquidGlassSketch-button-drag-retune-debug.apk",
+                                                "bytes": 74687090,
+                                                "sha256": "ad9822e3bc8bac35c8f9561c4cc7bba48f74609fe2431509e9d3a9652926df11"
+                                              }
+                                            ],
+                                            "previousRevision": {
+                                              "date": "2026-11-03",
+                                              "revision": "Bound iOS27 button drag response with distance and shared pull/stretch margin; preserve press scale and release spring",
+                                              "minSdk": 33,
+                                              "build": {
+                                                "result": "passed",
+                                                "tasks": [
+                                                  "sample:assembleDebug"
+                                                ],
+                                                "log": "build-button-drag-resistance-final.log",
+                                                "qqSending": "excluded"
+                                              },
+                                              "tests": {
+                                                "status": "not_run",
+                                                "reason": "User requested no tests, lint, validation scripts or device interaction",
+                                                "added": "liquidglass-ios27/src/test/java/dev/liquidglass27/glass/Ios26ButtonDragTest.kt"
+                                              },
+                                              "device": {
+                                                "serial": "192.168.1.148:45149",
+                                                "installation": "Success",
+                                                "launched": false,
+                                                "interactions": "not_run",
+                                                "visualAcceptance": "pending user"
+                                              },
+                                              "artifacts": [
+                                                {
+                                                  "path": "dist/button-drag-resistance-20261103/LiquidGlassSketch-button-drag-resistance-debug.apk",
+                                                  "bytes": 74687090,
+                                                  "sha256": "f46b02e49519547dffd20eafe91f192201bdf1e6b71878f44e5d0750752fcfaa"
+                                                }
+                                              ],
+                                              "previousRevision": {
+                                                "date": "2026-11-03",
+                                                "revision": "Allow transparent and colored buttons to share Goo geometry; keep each color inside its original body and leave mixed necks untinted",
+                                                "minSdk": 33,
+                                                "build": {
+                                                  "result": "passed",
+                                                  "tasks": [
+                                                    "sample:assembleDebug"
+                                                  ],
+                                                  "log": "build-mixed-goo-final.log",
+                                                  "qqSending": "excluded"
+                                                },
+                                                "tests": {
+                                                  "status": "not_run",
+                                                  "reason": "User requested no tests, lint, validation scripts or device interaction"
+                                                },
+                                                "device": {
+                                                  "serial": "192.168.1.148:45149",
+                                                  "installation": "Success",
+                                                  "launched": false,
+                                                  "interactions": "not_run",
+                                                  "visualAcceptance": "pending user"
+                                                },
+                                                "artifacts": [
+                                                  {
+                                                    "path": "dist/mixed-goo-20261103/LiquidGlassSketch-mixed-goo-debug.apk",
+                                                    "bytes": 74687090,
+                                                    "sha256": "4935fa695265104cde7442f7eaceb0306817afd4e2373760908a3a0c52eb8202"
+                                                  }
+                                                ],
+                                                "previousRevision": {
+                                                  "date": "2026-11-03",
+                                                  "revision": "Remove unused legacy tab renderers/styles/split wrappers; forward old 27 dock API to unified renderer; active renderer and effects unchanged",
+                                                  "minSdk": 33,
+                                                  "runtimeSourceLinesRemoved": 971,
+                                                  "build": {
+                                                    "result": "passed",
+                                                    "tasks": [
+                                                      "sample:assembleDebug",
+                                                      "melox-tabbar-demo:assembleDebug"
+                                                    ],
+                                                    "log": "build-deduplicate-tabbar-final.log",
+                                                    "qqSending": "excluded"
+                                                  },
+                                                  "tests": {
+                                                    "status": "not_run",
+                                                    "reason": "User requested no tests, lint, validation scripts or device interaction"
+                                                  },
+                                                  "device": {
+                                                    "serial": "192.168.1.148:45149",
+                                                    "installation": "Success",
+                                                    "launched": false,
+                                                    "interactions": "not_run",
+                                                    "visualAcceptance": "pending user"
+                                                  },
+                                                  "artifacts": [
+                                                    {
+                                                      "path": "dist/deduplicate-tabbar-20261103/LiquidGlassSketch-deduplicate-tabbar-debug.apk",
+                                                      "bytes": 74687078,
+                                                      "sha256": "4ee9e8a0b422516ab612011ac6bad7a099b7a4ca4b4847aac2137a6a889bdaa2"
+                                                    }
+                                                  ],
+                                                  "previousRevision": {
+                                                    "date": "2026-11-03",
+                                                    "revision": "Optional compact tab bar width by tab count, independent of minimized state; default false",
+                                                    "minSdk": 33,
+                                                    "build": {
+                                                      "result": "passed",
+                                                      "tasks": [
+                                                        "sample:assembleDebug",
+                                                        "melox-tabbar-demo:assembleDebug"
+                                                      ],
+                                                      "log": "build-compact-tabbar-final.log",
+                                                      "qqSending": "excluded"
+                                                    },
+                                                    "tests": {
+                                                      "status": "not_run",
+                                                      "reason": "User requested no tests or device interaction"
+                                                    },
+                                                    "device": {
+                                                      "serial": "192.168.1.148:45149",
+                                                      "installation": "Success",
+                                                      "launched": false,
+                                                      "interactions": "not_run",
+                                                      "visualAcceptance": "pending user"
+                                                    },
+                                                    "artifacts": [
+                                                      {
+                                                        "path": "dist/compact-tabbar-20261103/LiquidGlassSketch-compact-tabbar-debug.apk",
+                                                        "bytes": 74691790,
+                                                        "sha256": "bf9c6d44632672a9689e2ca034f0a2183b9bae4187acfc1dc2eba0169fbeae8e"
+                                                      }
+                                                    ],
+                                                    "previousRevision": {
+                                                      "date": "2026-11-03",
+                                                      "revision": "Merge MeloX and common navigation into one renderer; selectable presets default to MeloX, independent 26/27 highlight",
+                                                      "minSdk": 33,
+                                                      "build": {
+                                                        "result": "passed",
+                                                        "tasks": [
+                                                          "sample:assembleDebug",
+                                                          "melox-tabbar-demo:assembleDebug"
+                                                        ],
+                                                        "log": "build-unified-tabbar-final.log",
+                                                        "qqSending": "excluded"
+                                                      },
+                                                      "tests": {
+                                                        "status": "not_run",
+                                                        "reason": "User requested no tests, lint, validation scripts or device interaction"
+                                                      },
+                                                      "device": {
+                                                        "serial": "192.168.1.148:45149",
+                                                        "installation": "Success",
+                                                        "launched": false,
+                                                        "interactions": "not_run",
+                                                        "visualAcceptance": "pending user"
+                                                      },
+                                                      "artifacts": [
+                                                        {
+                                                          "path": "dist/unified-tabbar-20261103/LiquidGlassSketch-unified-tabbar-debug.apk",
+                                                          "bytes": 74687370,
+                                                          "sha256": "713cd1fa4f4e184b66b60c8ca035773764007cbd8f70d3a95acf682b93b94ece"
+                                                        }
+                                                      ],
+                                                      "previousRevision": {
+                                                        "date": "2026-11-03",
+                                                        "revision": "Preserve sampled colors in iOS26 Fullscreen/Inspector buttons and exclude panel highlight from their source",
+                                                        "minSdk": 33,
+                                                        "build": {
+                                                          "result": "passed",
+                                                          "tasks": [
+                                                            "sample:assembleDebug"
+                                                          ],
+                                                          "log": "build-modal-static-color-final.log",
+                                                          "qqSending": "excluded"
+                                                        },
+                                                        "tests": {
+                                                          "status": "not_run",
+                                                          "reason": "User requested no tests, lint, validation scripts or device interaction"
+                                                        },
+                                                        "device": {
+                                                          "serial": "192.168.1.148:45149",
+                                                          "installation": "Success",
+                                                          "launched": false,
+                                                          "interactions": "not_run",
+                                                          "visualAcceptance": "pending user"
+                                                        },
+                                                        "artifacts": [
+                                                          {
+                                                            "path": "dist/modal-static-color-20261103/LiquidGlassSketch-modal-static-color-debug.apk",
+                                                            "bytes": 74687062,
+                                                            "sha256": "9625eb3b670b7f12690847f7db38544a9d223194fb60eb93386b9f2ffb362c18"
+                                                          }
+                                                        ],
+                                                        "previousRevision": {
+                                                          "date": "2026-11-03",
+                                                          "revision": "Correct nested Popup press sampling and restore independent iOS26 glass modal toolbar surfaces",
+                                                          "minSdk": 33,
+                                                          "build": {
+                                                            "result": "passed",
+                                                            "tasks": [
+                                                              "sample:assembleDebug"
+                                                            ],
+                                                            "log": "build-nested-glass-final.log",
+                                                            "qqSending": "excluded"
+                                                          },
+                                                          "tests": {
+                                                            "status": "not_run",
+                                                            "reason": "User requested no tests, lint, validation scripts or device interaction"
+                                                          },
+                                                          "device": {
+                                                            "serial": "192.168.1.148:45149",
+                                                            "installation": "Success",
+                                                            "launched": false,
+                                                            "interactions": "not_run",
+                                                            "visualAcceptance": "pending user"
+                                                          },
+                                                          "artifacts": [
+                                                            {
+                                                              "path": "dist/nested-glass-20261103/LiquidGlassSketch-nested-glass-debug.apk",
+                                                              "bytes": 74686882,
+                                                              "sha256": "9baa030dc6c5d73082f10d1ff6b8e1440ef0f0d37e912af1d98efa4e40adeb57"
+                                                            }
+                                                          ],
+                                                          "previousRevision": {
+                                                            "date": "2026-11-03",
+                                                            "revision": "Fix common iOS26 Popup return shadow clipping with live source paint and padded alpha layer",
+                                                            "minSdk": 33,
+                                                            "build": {
+                                                              "result": "passed",
+                                                              "tasks": [
+                                                                "sample:assembleDebug"
+                                                              ],
+                                                              "log": "build-popup-shadow-final.log",
+                                                              "qqSending": "excluded"
+                                                            },
+                                                            "tests": {
+                                                              "status": "not_run",
+                                                              "reason": "User requested no tests, lint, validation scripts or device interaction"
+                                                            },
+                                                            "device": {
+                                                              "serial": "192.168.1.148:45149",
+                                                              "installation": "Success",
+                                                              "launched": false,
+                                                              "interactions": "not_run",
+                                                              "visualAcceptance": "pending user"
+                                                            },
+                                                            "artifacts": [
+                                                              {
+                                                                "path": "dist/popup-shadow-20261103/LiquidGlassSketch-popup-shadow-debug.apk",
+                                                                "bytes": 74684454,
+                                                                "sha256": "24a11a68624184b2caeeb4b1d9cdf9c73803c41d665a2f34872a9e4fe0f3b8db"
+                                                              }
+                                                            ],
+                                                            "previousRevision": {
+                                                              "date": "2026-11-03",
+                                                              "revision": "Consolidate demos and follow selected 26/27 standard; preserve original external demos with MeloX and Listening Mode as direct first-level entries",
+                                                              "minSdk": 33,
+                                                              "build": {
+                                                                "result": "passed",
+                                                                "tasks": [
+                                                                  "sample:assembleDebug"
+                                                                ],
+                                                                "log": "build-common-demos-final.log",
+                                                                "qqSending": "excluded"
+                                                              },
+                                                              "tests": {
+                                                                "status": "not_run",
+                                                                "reason": "User requested no tests, lint, validation scripts or device interaction"
+                                                              },
+                                                              "device": {
+                                                                "serial": "192.168.1.148:45149",
+                                                                "installation": "Success",
+                                                                "launched": false,
+                                                                "interactions": "not_run",
+                                                                "visualAcceptance": "pending user"
+                                                              },
+                                                              "artifacts": [
+                                                                {
+                                                                  "path": "dist/common-demos-20261103/LiquidGlassSketch-common-demos-debug.apk",
+                                                                  "bytes": 74684810,
+                                                                  "sha256": "61b620e5e9285a6bed7dd9e6d0434891a85b20328283c8eb8205ca3aa7f68a66"
+                                                                }
+                                                              ],
+                                                              "previousRevision": {
+                                                                "date": "2026-11-03",
+                                                                "revision": "Use iOS26 4dp press expansion and press/release spring for iOS27 buttons while preserving drag, material and lighting",
+                                                                "minSdk": 33,
+                                                                "build": {
+                                                                  "result": "passed",
+                                                                  "tasks": [
+                                                                    "sample:assembleDebug"
+                                                                  ],
+                                                                  "log": "build-ios27-button-press26-final.log",
+                                                                  "qqSending": "excluded"
+                                                                },
+                                                                "tests": {
+                                                                  "status": "not_run",
+                                                                  "reason": "User requested no tests or device interaction"
+                                                                },
+                                                                "device": {
+                                                                  "serial": "192.168.1.148:45149",
+                                                                  "installation": "Success",
+                                                                  "launched": false,
+                                                                  "interactions": "not_run",
+                                                                  "visualAcceptance": "pending user"
+                                                                },
+                                                                "artifacts": [
+                                                                  {
+                                                                    "path": "dist/ios27-button-press26-20261103/LiquidGlassSketch-ios27-button-press26-debug.apk",
+                                                                    "bytes": 74689258,
+                                                                    "sha256": "d13dc0b002f982affd7e9694bedfd21067aa2ecea33cccba3c5ac6d60c23136b"
+                                                                  }
+                                                                ],
+                                                                "previousPopupBackdropRevision": {
+                                                                  "date": "2026-11-03",
+                                                                  "revision": "Make popup child glass sample the independently recorded popup surface over its parent backdrop, without recording child controls",
+                                                                  "minSdk": 33,
+                                                                  "build": {
+                                                                    "result": "passed",
+                                                                    "tasks": [
+                                                                      "sample:assembleDebug"
+                                                                    ],
+                                                                    "log": "build-popup-content-backdrop-final.log",
+                                                                    "qqSending": "excluded"
+                                                                  },
+                                                                  "tests": {
+                                                                    "status": "not_run",
+                                                                    "reason": "User requested no tests or device interaction"
+                                                                  },
+                                                                  "device": {
+                                                                    "serial": "192.168.1.148:45149",
+                                                                    "installation": "Success",
+                                                                    "launched": false,
+                                                                    "interactions": "not_run",
+                                                                    "visualAcceptance": "pending user"
+                                                                  },
+                                                                  "artifacts": [
+                                                                    {
+                                                                      "path": "dist/popup-content-backdrop-20261103/LiquidGlassSketch-popup-content-backdrop-debug.apk",
+                                                                      "bytes": 74689258,
+                                                                      "sha256": "3405e4eed3f647f27940c087f4f7f8321612d7441d25afd04ff6cbdd3194ce09"
+                                                                    }
+                                                                  ],
+                                                                  "previousButtonDragRevision": {
+                                                                    "date": "2026-11-03",
+                                                                    "revision": "Use iOS26 drag translation/stretch and release spring for iOS27 buttons only; preserve material, lighting, press swell and other controls",
+                                                                    "minSdk": 33,
+                                                                    "build": {
+                                                                      "result": "passed",
+                                                                      "tasks": [
+                                                                        "sample:assembleDebug"
+                                                                      ],
+                                                                      "log": "build-ios27-button-drag26-final.log",
+                                                                      "qqSending": "excluded"
+                                                                    },
+                                                                    "tests": {
+                                                                      "status": "not_run",
+                                                                      "reason": "User requested no tests or device interaction"
+                                                                    },
+                                                                    "device": {
+                                                                      "serial": "192.168.1.148:45149",
+                                                                      "installation": "Success",
+                                                                      "launched": false,
+                                                                      "interactions": "not_run",
+                                                                      "visualAcceptance": "pending user"
+                                                                    },
+                                                                    "artifacts": [
+                                                                      {
+                                                                        "path": "dist/ios27-button-drag26-20261103/LiquidGlassSketch-ios27-button-drag26-debug.apk",
+                                                                        "bytes": 74689258,
+                                                                        "sha256": "067f990a0ea68338bd99cea3a7913e578c6741db375b7e6d5f9f960b3793342f"
+                                                                      }
+                                                                    ],
+                                                                    "previousMenuWindingRevision": {
+                                                                      "date": "2026-11-03",
+                                                                      "revision": "Boolean-union the opposite-winding platter and source bodies before the Goo bridge to prevent interior bow-tie holes",
+                                                                      "minSdk": 33,
+                                                                      "build": {
+                                                                        "result": "passed",
+                                                                        "tasks": [
+                                                                          "sample:assembleDebug"
+                                                                        ],
+                                                                        "log": "build-menu-winding-union-final.log",
+                                                                        "qqSending": "excluded"
+                                                                      },
+                                                                      "tests": {
+                                                                        "status": "not_run",
+                                                                        "reason": "User requested no tests or device interaction"
+                                                                      },
+                                                                      "device": {
+                                                                        "serial": "192.168.1.148:45149",
+                                                                        "installation": "Success",
+                                                                        "launched": false,
+                                                                        "interactions": "not_run",
+                                                                        "visualAcceptance": "pending user"
+                                                                      },
+                                                                      "artifacts": [
+                                                                        {
+                                                                          "path": "dist/menu-winding-union-20261103/LiquidGlassSketch-menu-winding-union-debug.apk",
+                                                                          "bytes": 74689258,
+                                                                          "sha256": "846aaf005d8682eb6781e2c5ddc3af8337e4087fe1884271e1ae95840dd3bdfe"
+                                                                        }
+                                                                      ],
+                                                                      "previousMenuNoTintRevision": {
+                                                                        "date": "2026-11-03",
+                                                                        "revision": "Remove the iOS26 menu surface color overlay while retaining optics and highlights; preserve iOS27 and modal materials",
+                                                                        "minSdk": 33,
+                                                                        "build": {
+                                                                          "result": "passed",
+                                                                          "tasks": [
+                                                                            "sample:assembleDebug"
+                                                                          ],
+                                                                          "log": "build-ios26-menu-no-tint-final.log",
+                                                                          "qqSending": "excluded"
+                                                                        },
+                                                                        "tests": {
+                                                                          "status": "not_run",
+                                                                          "reason": "User requested no tests or device interaction"
+                                                                        },
+                                                                        "device": {
+                                                                          "serial": "192.168.1.148:45149",
+                                                                          "installation": "Success",
+                                                                          "launched": false,
+                                                                          "interactions": "not_run",
+                                                                          "visualAcceptance": "pending user"
+                                                                        },
+                                                                        "artifacts": [
+                                                                          {
+                                                                            "path": "dist/ios26-menu-no-tint-20261103/LiquidGlassSketch-ios26-menu-no-tint-debug.apk",
+                                                                            "bytes": 74689258,
+                                                                            "sha256": "08df77a91c5bdb3784749fa1b8d1b7a682135f138c3383eca26b9134b10075c5"
+                                                                          }
+                                                                        ],
+                                                                        "previousMenuShadowRevision": {
+                                                                          "date": "2026-11-03",
+                                                                          "revision": "Expand the menu source handoff alpha layer to include the original button external shadow without changing button geometry",
+                                                                          "minSdk": 33,
+                                                                          "build": {
+                                                                            "result": "passed",
+                                                                            "tasks": [
+                                                                              "sample:assembleDebug"
+                                                                            ],
+                                                                            "log": "build-menu-shadow-bounds-final.log",
+                                                                            "qqSending": "excluded"
+                                                                          },
+                                                                          "tests": {
+                                                                            "status": "not_run",
+                                                                            "reason": "User requested no tests or device interaction"
+                                                                          },
+                                                                          "device": {
+                                                                            "serial": "192.168.1.148:45149",
+                                                                            "installation": "Success",
+                                                                            "launched": false,
+                                                                            "interactions": "not_run",
+                                                                            "visualAcceptance": "pending user"
+                                                                          },
+                                                                          "artifacts": [
+                                                                            {
+                                                                              "path": "dist/menu-shadow-bounds-20261103/LiquidGlassSketch-menu-shadow-bounds-debug.apk",
+                                                                              "bytes": 74686694,
+                                                                              "sha256": "54d4bcaaf67270fc411bec8ec4a02c43bfb58489a6e622715d26012ca0ebbd61"
+                                                                            }
+                                                                          ],
+                                                                          "previousMenuHandoffRevision": {
+                                                                            "date": "2026-11-03",
+                                                                            "revision": "Hand off the multilevel menu to the live original iOS26 button material before dismissal completes",
+                                                                            "minSdk": 33,
+                                                                            "build": {
+                                                                              "result": "passed",
+                                                                              "tasks": [
+                                                                                "sample:assembleDebug"
+                                                                              ],
+                                                                              "log": "build-menu-source-handoff-final.log",
+                                                                              "qqSending": "excluded"
+                                                                            },
+                                                                            "tests": {
+                                                                              "status": "not_run",
+                                                                              "reason": "User requested no tests or device interaction"
+                                                                            },
+                                                                            "device": {
+                                                                              "serial": "192.168.1.148:45149",
+                                                                              "installation": "Success",
+                                                                              "launched": false,
+                                                                              "interactions": "not_run",
+                                                                              "visualAcceptance": "pending user"
+                                                                            },
+                                                                            "artifacts": [
+                                                                              {
+                                                                                "path": "dist/menu-source-handoff-20261103/LiquidGlassSketch-menu-source-handoff-debug.apk",
+                                                                                "bytes": 74686694,
+                                                                                "sha256": "66b665abac26b105edb2f547f1fe5aa6ee69ecc1b40dc21966a5e641a47f400d"
+                                                                              }
+                                                                            ],
+                                                                            "previousUnifiedMenuRevision": {
+                                                                              "date": "2026-11-03",
+                                                                              "revision": "Unify multilevel menu demos under Menus and select source button/highlight from the persisted iOS26/iOS27 setting",
+                                                                              "minSdk": 33,
+                                                                              "build": {
+                                                                                "result": "passed",
+                                                                                "tasks": [
+                                                                                  "sample:assembleDebug"
+                                                                                ],
+                                                                                "log": "build-unified-menu-final.log",
+                                                                                "qqSending": "excluded"
+                                                                              },
+                                                                              "tests": {
+                                                                                "status": "not_run",
+                                                                                "reason": "User requested no tests or device interaction; existing route assertions updated only"
+                                                                              },
+                                                                              "device": {
+                                                                                "serial": "192.168.1.148:45149",
+                                                                                "installation": "Success",
+                                                                                "launched": false,
+                                                                                "interactions": "not_run",
+                                                                                "visualAcceptance": "pending user"
+                                                                              },
+                                                                              "artifacts": [
+                                                                                {
+                                                                                  "path": "dist/unified-menu-20261103/LiquidGlassSketch-unified-menu-debug.apk",
+                                                                                  "bytes": 74684458,
+                                                                                  "sha256": "4651d89f99e4686084ca543381f10ac32eacebc8433ed61d97f3181c00a33454"
+                                                                                }
+                                                                              ],
+                                                                              "previousFusionSeamRevision": {
+                                                                                "date": "2026-11-03",
+                                                                                "revision": "Feather iOS26 fusion material and highlight together across the attachment instead of using a hard clipped patch",
+                                                                                "minSdk": 33,
+                                                                                "build": {
+                                                                                  "result": "passed",
+                                                                                  "tasks": [
+                                                                                    "sample:assembleDebug"
+                                                                                  ],
+                                                                                  "log": "build-ios26-fusion-seam-final.log",
+                                                                                  "qqSending": "excluded"
+                                                                                },
+                                                                                "tests": {
+                                                                                  "status": "not_run",
+                                                                                  "reason": "User requested no tests or device interaction"
+                                                                                },
+                                                                                "device": {
+                                                                                  "serial": "192.168.1.148:45149",
+                                                                                  "installation": "Success",
+                                                                                  "launched": false,
+                                                                                  "interactions": "not_run",
+                                                                                  "visualAcceptance": "pending user"
+                                                                                },
+                                                                                "artifacts": [
+                                                                                  {
+                                                                                    "path": "dist/ios26-fusion-seam-20261103/LiquidGlassSketch-ios26-fusion-seam-debug.apk",
+                                                                                    "bytes": 74682730,
+                                                                                    "sha256": "e16ddbfe04488f67f5c0262677b90d04ae38b9093551515f4c5a29d0ffd0b139"
+                                                                                  }
+                                                                                ],
+                                                                                "previousFusionNeckRevision": {
+                                                                                  "date": "2026-11-03",
+                                                                                  "revision": "Restore iOS26 fusion using neck-only geometry and rendering, observing the unchanged original per-button material/input/transform",
+                                                                                  "minSdk": 33,
+                                                                                  "build": {
+                                                                                    "result": "passed",
+                                                                                    "tasks": [
+                                                                                      "sample:assembleDebug"
+                                                                                    ],
+                                                                                    "log": "build-ios26-fusion-neck-final.log",
+                                                                                    "qqSending": "excluded"
+                                                                                  },
+                                                                                  "tests": {
+                                                                                    "status": "not_run",
+                                                                                    "reason": "User requested no tests or device interaction"
+                                                                                  },
+                                                                                  "sourcePreservation": {
+                                                                                    "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidButtonCore.kt",
+                                                                                    "originalSha256": "85c716d3f55e3d7f9d8d1202f08bca6cdb662a081275c1a97f8cc8cea8845cdf",
+                                                                                    "withoutObserverHooksSha256": "85c716d3f55e3d7f9d8d1202f08bca6cdb662a081275c1a97f8cc8cea8845cdf",
+                                                                                    "sameMaterialInputAndTransform": true
+                                                                                  },
+                                                                                  "device": {
+                                                                                    "serial": "192.168.1.148:45149",
+                                                                                    "installation": "Success",
+                                                                                    "launched": false,
+                                                                                    "interactions": "not_run",
+                                                                                    "visualAcceptance": "pending user"
+                                                                                  },
+                                                                                  "artifacts": [
+                                                                                    {
+                                                                                      "path": "dist/ios26-fusion-neck-20261103/LiquidGlassSketch-ios26-fusion-neck-debug.apk",
+                                                                                      "bytes": 74682644,
+                                                                                      "sha256": "de8706b47067eeb58367e11982d549a3564ec3faf49d9f59b454149b702d410e"
+                                                                                    }
+                                                                                  ],
+                                                                                  "previousOriginalButtonsRevision": {
+                                                                                    "date": "2026-11-03",
+                                                                                    "revision": "Restore original iOS26 per-button optics and interaction; withdraw the incorrect iOS26 Goo adapter without reverting independent menu fixes",
+                                                                                    "minSdk": 33,
+                                                                                    "build": {
+                                                                                      "result": "passed",
+                                                                                      "tasks": [
+                                                                                        "sample:assembleDebug"
+                                                                                      ],
+                                                                                      "log": "build-ios26-original-buttons-final.log",
+                                                                                      "qqSending": "excluded"
+                                                                                    },
+                                                                                    "tests": {
+                                                                                      "status": "not_run",
+                                                                                      "reason": "User requested no tests or device interaction"
+                                                                                    },
+                                                                                    "sourceRestoration": {
+                                                                                      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidButtonCore.kt",
+                                                                                      "preGooSha256": "85c716d3f55e3d7f9d8d1202f08bca6cdb662a081275c1a97f8cc8cea8845cdf",
+                                                                                      "currentSha256": "85c716d3f55e3d7f9d8d1202f08bca6cdb662a081275c1a97f8cc8cea8845cdf",
+                                                                                      "identical": true
+                                                                                    },
+                                                                                    "ios26Goo": "withdrawn; preserving original material and motion takes precedence",
+                                                                                    "device": {
+                                                                                      "serial": "192.168.1.148:45149",
+                                                                                      "installation": "Success",
+                                                                                      "launched": false,
+                                                                                      "interactions": "not_run",
+                                                                                      "visualAcceptance": "pending user"
+                                                                                    },
+                                                                                    "artifacts": [
+                                                                                      {
+                                                                                        "path": "dist/ios26-original-buttons-20261103/LiquidGlassSketch-ios26-original-buttons-debug.apk",
+                                                                                        "bytes": 74683128,
+                                                                                        "sha256": "aebcf1629144fb1e47c744f4fa34b3fa6b92dbb7650a1cf08b8d014f57b12e6c"
+                                                                                      }
+                                                                                    ],
+                                                                                    "previousGooShapeCrashRevision": {
+                                                                                      "date": "2026-11-03",
+                                                                                      "revision": "Fix confirmed secondary-page crash: generic Goo path was passed to rounded-shape-only lens effect",
+                                                                                      "minSdk": 33,
+                                                                                      "build": {
+                                                                                        "result": "passed",
+                                                                                        "tasks": [
+                                                                                          "sample:assembleDebug"
+                                                                                        ],
+                                                                                        "log": "build-ios26-goo-shape-crash-final.log",
+                                                                                        "qqSending": "excluded"
+                                                                                      },
+                                                                                      "tests": {
+                                                                                        "status": "not_run",
+                                                                                        "reason": "User requested no tests or device interaction"
+                                                                                      },
+                                                                                      "device": {
+                                                                                        "serial": "192.168.1.148:45149",
+                                                                                        "installation": "Success",
+                                                                                        "launched": false,
+                                                                                        "interactions": "not_run",
+                                                                                        "visualAcceptance": "pending user",
+                                                                                        "crashEvidence": "docs/ios27/crash-evidence/ios26-goo-lens-20261103.log"
+                                                                                      },
+                                                                                      "artifacts": [
+                                                                                        {
+                                                                                          "path": "dist/ios26-goo-shape-crash-20261103/LiquidGlassSketch-ios26-goo-shape-crash-debug.apk",
+                                                                                          "bytes": 74683872,
+                                                                                          "sha256": "9d03339af9b3645fa80316a2d7b9ae2f4122498641206eff9511f1fb72400c2a"
+                                                                                        }
+                                                                                      ],
+                                                                                      "previousGooReturnRevision": {
+                                                                                        "date": "2026-11-03",
+                                                                                        "revision": "Enable iOS26 button Goo with original material; restore context return, text-menu dismissal lifetime and picker source-material handoff",
+                                                                                        "minSdk": 33,
+                                                                                        "build": {
+                                                                                          "result": "passed",
+                                                                                          "tasks": [
+                                                                                            "sample:assembleDebug"
+                                                                                          ],
+                                                                                          "log": "build-ios26-goo-return-final.log",
+                                                                                          "qqSending": "excluded"
+                                                                                        },
+                                                                                        "tests": {
+                                                                                          "status": "not_run",
+                                                                                          "reason": "User requested no tests, Lint or device interaction"
+                                                                                        },
+                                                                                        "device": {
+                                                                                          "serial": "192.168.1.148:45149",
+                                                                                          "installation": "Success",
+                                                                                          "launched": false,
+                                                                                          "interactions": "not_run",
+                                                                                          "visualAcceptance": "pending user"
+                                                                                        },
+                                                                                        "artifacts": [
+                                                                                          {
+                                                                                            "path": "dist/ios26-goo-return-20261103/LiquidGlassSketch-ios26-goo-return-debug.apk",
+                                                                                            "bytes": 74683872,
+                                                                                            "sha256": "bde99bbbb4f67ae669078550b4964a8a2ef2b8971a1fda222dc1759bc321bbcd"
+                                                                                          }
+                                                                                        ],
+                                                                                        "previousOverlayLayersRevision": {
+                                                                                          "date": "2026-11-03",
+                                                                                          "revision": "Restore horizontal menu actions/outside selection dismissal; use same-window picker overlays and source snapshots; export modal material for nested buttons; hide switch state text",
+                                                                                          "minSdk": 33,
+                                                                                          "build": {
+                                                                                            "result": "passed",
+                                                                                            "tasks": [
+                                                                                              "sample:assembleDebug"
+                                                                                            ],
+                                                                                            "log": "build-ios26-overlay-layers-final.log",
+                                                                                            "qqSending": "excluded"
+                                                                                          },
+                                                                                          "tests": {
+                                                                                            "status": "not_run",
+                                                                                            "reason": "User requested no tests, Lint or device interaction"
+                                                                                          },
+                                                                                          "device": {
+                                                                                            "serial": "192.168.1.148:45149",
+                                                                                            "installation": "Success",
+                                                                                            "launched": false,
+                                                                                            "interactions": "not_run",
+                                                                                            "visualAcceptance": "pending user"
+                                                                                          },
+                                                                                          "artifacts": [
+                                                                                            {
+                                                                                              "path": "dist/ios26-overlay-layers-20261103/LiquidGlassSketch-ios26-overlay-layers-debug.apk",
+                                                                                              "bytes": 74665020,
+                                                                                              "sha256": "99500d38baf8a3b6d6cf33a2768ecbef7f496604cc5b5cb0a007f0caff9d4dc9"
+                                                                                            }
+                                                                                          ],
+                                                                                          "previousFullscreenContextRevision": {
+                                                                                            "date": "2026-11-03",
+                                                                                            "revision": "Restore Fullscreen glass, keep Fullscreen Stack solid, and place context menu below content region",
+                                                                                            "minSdk": 33,
+                                                                                            "build": {
+                                                                                              "result": "passed",
+                                                                                              "tasks": [
+                                                                                                "sample:assembleDebug"
+                                                                                              ],
+                                                                                              "log": "build-ios26-fullscreen-context-final.log",
+                                                                                              "qqSending": "excluded"
+                                                                                            },
+                                                                                            "tests": {
+                                                                                              "status": "not_run",
+                                                                                              "reason": "User requested no tests, Lint or device interaction"
+                                                                                            },
+                                                                                            "device": {
+                                                                                              "serial": "192.168.1.148:45149",
+                                                                                              "installation": "Success",
+                                                                                              "launched": false,
+                                                                                              "interactions": "not_run",
+                                                                                              "visualAcceptance": "pending user"
+                                                                                            },
+                                                                                            "artifacts": [
+                                                                                              {
+                                                                                                "path": "dist/ios26-fullscreen-context-20261103/LiquidGlassSketch-ios26-fullscreen-context-debug.apk",
+                                                                                                "bytes": 74573848,
+                                                                                                "sha256": "69a74029b226ba7c82ac68daff6e77ca25f441fff433b3d1b632ef998d3a4dff"
+                                                                                              }
+                                                                                            ],
+                                                                                            "previousSolidSheetsRevision": {
+                                                                                              "date": "2026-11-03",
+                                                                                              "revision": "Opaque fullscreen/share sheets, iOS27 bottom-up springs and continuous iOS26 source-button shadow handoff",
+                                                                                              "minSdk": 33,
+                                                                                              "build": {
+                                                                                                "result": "passed",
+                                                                                                "tasks": [
+                                                                                                  "sample:assembleDebug"
+                                                                                                ],
+                                                                                                "log": "build-ios26-solid-sheets-final.log",
+                                                                                                "qqSending": "excluded"
+                                                                                              },
+                                                                                              "tests": {
+                                                                                                "status": "not_run",
+                                                                                                "reason": "User requested no tests, Lint or device interaction"
+                                                                                              },
+                                                                                              "device": {
+                                                                                                "serial": "192.168.1.148:45149",
+                                                                                                "installation": "Success",
+                                                                                                "launched": false,
+                                                                                                "interactions": "not_run",
+                                                                                                "visualAcceptance": "pending user"
+                                                                                              },
+                                                                                              "artifacts": [
+                                                                                                {
+                                                                                                  "path": "dist/ios26-solid-sheets-20261103/LiquidGlassSketch-ios26-solid-sheets-debug.apk",
+                                                                                                  "bytes": 74570108,
+                                                                                                  "sha256": "bf1ca87bccf7f1466aaee122cb9ba6c2695b360addfca677f59c56675674e30d"
+                                                                                                }
+                                                                                              ],
+                                                                                              "previousAllModalsRevision": {
+                                                                                                "date": "2026-11-03",
+                                                                                                "revision": "All iOS26 modal hosts use iOS27 framework with iOS26 highlights; minSdk33",
+                                                                                                "minSdk": 33,
+                                                                                                "build": {
+                                                                                                  "result": "passed",
+                                                                                                  "tasks": [
+                                                                                                    "sample:assembleDebug"
+                                                                                                  ],
+                                                                                                  "log": "build-ios26-all-modals-final.log",
+                                                                                                  "qqSending": "excluded"
+                                                                                                },
+                                                                                                "tests": {
+                                                                                                  "status": "not_run",
+                                                                                                  "reason": "User requested no tests, Lint or device interaction"
+                                                                                                },
+                                                                                                "device": {
+                                                                                                  "serial": "192.168.1.148:45149",
+                                                                                                  "installation": "Success",
+                                                                                                  "launched": false,
+                                                                                                  "interactions": "not_run",
+                                                                                                  "visualAcceptance": "pending user"
+                                                                                                },
+                                                                                                "artifacts": [
+                                                                                                  {
+                                                                                                    "path": "dist/ios26-all-modals-api33-20261103/LiquidGlassSketch-ios26-all-modals-api33-debug.apk",
+                                                                                                    "bytes": 74568292,
+                                                                                                    "sha256": "a0e98a38e8b894d1afa12330bf08dc1e4b717fbb4c8194e2f5060d829cac39be"
+                                                                                                  }
+                                                                                                ],
+                                                                                                "previousMultilevelMenuRevision": {
+                                                                                                  "date": "2026-11-03",
+                                                                                                  "revision": "iOS26 multilevel menu: iOS27 mechanism, shared iOS26 highlight",
+                                                                                                  "build": {
+                                                                                                    "result": "passed",
+                                                                                                    "tasks": [
+                                                                                                      "sample:assembleDebug"
+                                                                                                    ],
+                                                                                                    "log": "build-ios26-multilevel-menu-final.log",
+                                                                                                    "qqSending": "excluded"
+                                                                                                  },
+                                                                                                  "tests": {
+                                                                                                    "status": "not_run",
+                                                                                                    "reason": "User requested no tests; existing route expectations updated only"
+                                                                                                  },
+                                                                                                  "device": {
+                                                                                                    "serial": "192.168.1.148:45149",
+                                                                                                    "installation": "Success",
+                                                                                                    "launched": false,
+                                                                                                    "interactions": "not_run",
+                                                                                                    "visualAcceptance": "pending user"
+                                                                                                  },
+                                                                                                  "artifacts": [
+                                                                                                    {
+                                                                                                      "path": "dist/ios26-multilevel-menu-20261103/LiquidGlassSketch-ios26-multilevel-menu-debug.apk",
+                                                                                                      "bytes": 47540120,
+                                                                                                      "sha256": "9026f0d6551ac178e7b3424451e4f96d3cf1071b6f1d56628011caf6cb43cf4a"
+                                                                                                    }
+                                                                                                  ],
+                                                                                                  "previousNativeDockRevision": {
+                                                                                                    "date": "2026-11-03",
+                                                                                                    "revision": "Native port of original dock corner highlight and matching Android Path contour; no Flutter runtime",
+                                                                                                    "build": {
+                                                                                                      "result": "passed",
+                                                                                                      "tasks": [
+                                                                                                        "sample:assembleDebug"
+                                                                                                      ],
+                                                                                                      "log": "build-ios27-dock-original-final.log",
+                                                                                                      "qqSending": "excluded"
+                                                                                                    },
+                                                                                                    "tests": {
+                                                                                                      "status": "not_run",
+                                                                                                      "reason": "User requested no tests; existing source assertions updated only"
+                                                                                                    },
+                                                                                                    "device": {
+                                                                                                      "serial": "192.168.1.148:45149",
+                                                                                                      "installation": "success (adb install -r returned Success)",
+                                                                                                      "launched": false,
+                                                                                                      "interactions": "not_run",
+                                                                                                      "visualAcceptance": "pending user"
+                                                                                                    },
+                                                                                                    "artifacts": [
+                                                                                                      {
+                                                                                                        "path": "dist/ios27-dock-native-original-20261103/LiquidGlassSketch-ios27-dock-native-original-debug.apk",
+                                                                                                        "bytes": 47536093,
+                                                                                                        "sha256": "69d22ce3b88571e0e1665b8b48a90e43b007b2b73cb436a2727b3ea7b366b15b"
+                                                                                                      }
+                                                                                                    ],
+                                                                                                    "previousDockPrewarmRevision": {
+                                                                                                      "date": "2026-11-03",
+                                                                                                      "revision": "Background prewarm of two independently owned 256-ray dock shaders",
+                                                                                                      "atlasPlanner": "Skipped per user reply; existing Sketch backend retained",
+                                                                                                      "build": {
+                                                                                                        "result": "passed",
+                                                                                                        "tasks": [
+                                                                                                          "sample:assembleDebug"
+                                                                                                        ],
+                                                                                                        "log": "build-ios27-dock-prewarm-final.log",
+                                                                                                        "qqSending": "excluded"
+                                                                                                      },
+                                                                                                      "tests": {
+                                                                                                        "status": "not_run",
+                                                                                                        "reason": "User requested no tests"
+                                                                                                      },
+                                                                                                      "device": {
+                                                                                                        "serial": "192.168.1.148:45149",
+                                                                                                        "installation": "success (adb install -r returned Success)",
+                                                                                                        "launched": false,
+                                                                                                        "interactions": "not_run",
+                                                                                                        "visualAcceptance": "pending user"
+                                                                                                      },
+                                                                                                      "artifacts": [
+                                                                                                        {
+                                                                                                          "path": "dist/ios27-dock-prewarm-20261103/LiquidGlassSketch-ios27-dock-prewarm-debug.apk",
+                                                                                                          "bytes": 47536098,
+                                                                                                          "sha256": "ef07bd28f73df6f722a0d258a7f55739687200438c9eaaf6ca5e843d47f003e6"
+                                                                                                        }
+                                                                                                      ],
+                                                                                                      "previousDockOutlineRevision": {
+                                                                                                        "date": "2026-11-03",
+                                                                                                        "revision": "Dock outline uses 256 rays and denser native path sampling; other controls retain 64 rays",
+                                                                                                        "build": {
+                                                                                                          "result": "passed",
+                                                                                                          "tasks": [
+                                                                                                            "sample:assembleDebug"
+                                                                                                          ],
+                                                                                                          "log": "build-ios27-dock-outline-final.log",
+                                                                                                          "qqSending": "excluded"
+                                                                                                        },
+                                                                                                        "tests": {
+                                                                                                          "status": "not_run",
+                                                                                                          "reason": "User requested no testing; no unit/lint/static/shader/device tests executed"
+                                                                                                        },
+                                                                                                        "device": {
+                                                                                                          "serial": "192.168.1.148:45149",
+                                                                                                          "installation": "success (adb install -r returned Success)",
+                                                                                                          "launched": false,
+                                                                                                          "interactions": "not_run",
+                                                                                                          "visualAcceptance": "pending user"
+                                                                                                        },
+                                                                                                        "artifacts": [
+                                                                                                          {
+                                                                                                            "path": "dist/ios27-dock-outline-20261103/LiquidGlassSketch-ios27-dock-outline-debug.apk",
+                                                                                                            "bytes": 47536098,
+                                                                                                            "sha256": "d534959300788916e5b014e33521bdbf1cbe70951ceced24837d11c43ec89d18"
+                                                                                                          }
+                                                                                                        ],
+                                                                                                        "previousDockRimRevision": {
+                                                                                                          "date": "2026-11-03",
+                                                                                                          "revision": "Dock hidden reference rim removed; indicator side hairline follows press progress",
+                                                                                                          "build": {
+                                                                                                            "result": "passed",
+                                                                                                            "tasks": [
+                                                                                                              "sample:assembleDebug"
+                                                                                                            ],
+                                                                                                            "qqSending": "excluded",
+                                                                                                            "log": "build-ios27-dock-rim-final.log"
+                                                                                                          },
+                                                                                                          "unitTests": {
+                                                                                                            "status": "not_run",
+                                                                                                            "reason": "User explicitly requested no tests"
+                                                                                                          },
+                                                                                                          "lint": {
+                                                                                                            "status": "not_run",
+                                                                                                            "reason": "User explicitly requested no tests"
+                                                                                                          },
+                                                                                                          "device": {
+                                                                                                            "serial": "192.168.1.148:45149",
+                                                                                                            "installation": "success (adb install -r; streamed install returned Success)",
+                                                                                                            "launched": false,
+                                                                                                            "interactions": "not_run",
+                                                                                                            "visualAcceptance": "pending user"
+                                                                                                          },
+                                                                                                          "artifacts": [
+                                                                                                            {
+                                                                                                              "path": "dist/ios27-dock-rim-20261103/LiquidGlassSketch-ios27-dock-rim-debug.apk",
+                                                                                                              "bytes": 47536098,
+                                                                                                              "sha256": "daee3beb2e534dc42d1ca24c27899d9f2b724f0e97a539fbc79764d529fea481"
+                                                                                                            }
+                                                                                                          ],
+                                                                                                          "previousVerifiedGooRevision": {
+                                                                                                            "date": "2026-11-03",
+                                                                                                            "nativeStaticTests": {
+                                                                                                              "tests": 32,
+                                                                                                              "pass": 15,
+                                                                                                              "fail": 17,
+                                                                                                              "baselineFailureNames": [
+                                                                                                                "full-width list uses edge-to-edge rows and remains interactive",
+                                                                                                                "source-extracted navigation and accessory indicators are centralized",
+                                                                                                                "secondary list uses the Examples/List inset geometry",
+                                                                                                                "Examples/List inset is entered through the reusable example component",
+                                                                                                                "category secondary pages use Toolbars - Top large-title geometry while List inset keeps its own chrome",
+                                                                                                                "alerts use the reusable glass dialog and fixed capsule actions",
+                                                                                                                "text fields show four source states and share clear behavior with alerts",
+                                                                                                                "all live application text inputs use the reusable example field",
+                                                                                                                "action sheet uses the source-sized top-end LiquidDialog instead of the generic bottom sheet",
+                                                                                                                "activity view uses the full-width scrolling share sheet and native actions",
+                                                                                                                "toolbar glyphs are content of the animated LiquidButton, not sibling overlays",
+                                                                                                                "tab bar host uses reusable LiquidBottomTab primitives",
+                                                                                                                "sheets modal host preserves the three source variants and safe glass layering",
+                                                                                                                "menus use source-sized glass panels and keep menu actions native",
+                                                                                                                "empty states use source variants, native glyphs and exact action geometry",
+                                                                                                                "picker variants use the date-calendar layout and keep both actions interactive",
+                                                                                                                "click feedback masks follow the visible control shapes"
+                                                                                                              ],
+                                                                                                              "sameFailuresBeforeAndAfter": true,
+                                                                                                              "baselineMethod": "Reconstructed only the two modified sample files and verified bytes against premerge SHA-256; all other test inputs unchanged.",
+                                                                                                              "currentRevisionSameFailures": true
+                                                                                                            },
+                                                                                                            "unitTests": {
+                                                                                                              "liquidglass": {
+                                                                                                                "tests": 68,
+                                                                                                                "failures": 0,
+                                                                                                                "errors": 0,
+                                                                                                                "skipped": 0
+                                                                                                              },
+                                                                                                              "liquidglass-ios27": {
+                                                                                                                "tests": 341,
+                                                                                                                "failures": 0,
+                                                                                                                "errors": 0,
+                                                                                                                "skipped": 0
+                                                                                                              }
+                                                                                                            },
+                                                                                                            "ios27Lint": {
+                                                                                                              "error": 0,
+                                                                                                              "warning": 18,
+                                                                                                              "information": 0
+                                                                                                            },
+                                                                                                            "sampleLint": {
+                                                                                                              "error": 0,
+                                                                                                              "warning": 102,
+                                                                                                              "information": 0
+                                                                                                            },
+                                                                                                            "build": {
+                                                                                                              "result": "passed",
+                                                                                                              "tasks": [
+                                                                                                                "verifyLiquidGlassSpec",
+                                                                                                                "liquidglass:testDebugUnitTest",
+                                                                                                                "liquidglass-ios27:testDebugUnitTest",
+                                                                                                                "liquidglass-ios27:lintDebug",
+                                                                                                                "sample:lintDebug",
+                                                                                                                "sample:assembleDebug",
+                                                                                                                "verifyDebugArtifacts"
+                                                                                                              ],
+                                                                                                              "qqSending": "excluded",
+                                                                                                              "sourceManifest": "passed",
+                                                                                                              "log": "build-ios27-goo-final.log",
+                                                                                                              "signatureV2": "passed",
+                                                                                                              "alignment16KiB": "passed",
+                                                                                                              "sourceDemoClassesAbsentFromApk": true
+                                                                                                            },
+                                                                                                            "device": {
+                                                                                                              "preliminaryBuild": "installed and cold-started on PLQ110 (API 37); navigation test incomplete, external overlay/foreground interference observed",
+                                                                                                              "api24to32": "not tested",
+                                                                                                              "visualAcceptance": "pending user",
+                                                                                                              "previousRevision": "Final APK installed successfully on PLQ110 via adb install -r; not launched or interaction-tested after the final update.",
+                                                                                                              "currentRevision": "Not installed or operated; Goo grouping, callbacks and popup hide/restore await user acceptance."
+                                                                                                            },
+                                                                                                            "artifacts": [
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-goo-buttons-20261103/liquidglass-ios26-debug.aar",
+                                                                                                                "bytes": 827968,
+                                                                                                                "sha256": "1bbfce0b923e38aaa326702646a34a15561363ed13be4361ca6e8a71c04104e8"
+                                                                                                              },
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-goo-buttons-20261103/liquidglass-ios27-debug.aar",
+                                                                                                                "bytes": 1272637,
+                                                                                                                "sha256": "1a8c3ddddd4fa00f7bb3938f72b71794083979e8344d4f833de97b2695d1532b"
+                                                                                                              },
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-goo-buttons-20261103/LiquidGlassSketch-ios27-goo-buttons-debug.apk",
+                                                                                                                "bytes": 47536098,
+                                                                                                                "sha256": "bcae9a3fb7a27ef9d83e3605825cc96b6bb5bf59e6bb51ffc8279590d2bf6f35"
+                                                                                                              }
+                                                                                                            ],
+                                                                                                            "dependencyResolution": {
+                                                                                                              "composeUi": "1.12.0",
+                                                                                                              "composeFoundation": "1.12.0",
+                                                                                                              "material3": "1.4.0",
+                                                                                                              "forcedVersionsAdded": false
+                                                                                                            },
+                                                                                                            "mechanismParity": "67 imported mechanisms match the source after API annotation normalization. GlassPopup.kt and GlassControls.kt carry user-requested corrections; added Goo group/dock/transform helpers tracked separately.",
+                                                                                                            "revision": "Ordinary glass buttons support Goo groups, including icon/text/tinted and popup sources",
+                                                                                                            "previousRevisionArtifacts": [
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-merge-20261103/LiquidGlassSketch-ios26-ios27-debug.apk",
+                                                                                                                "bytes": 47477203,
+                                                                                                                "sha256": "03fc453d9fe7eb5ca6aaaac550551e6da633e182ef72096ae99e64d2c39182ca"
+                                                                                                              },
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-merge-20261103/liquidglass-ios27-debug.aar",
+                                                                                                                "bytes": 1227404,
+                                                                                                                "sha256": "21dc0de487c8961bb7ecfd6274663d3a4c5cd4a3f5bc91e25c34f63d948df52a"
+                                                                                                              },
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-merge-20261103/liquidglass-ios26-debug.aar",
+                                                                                                                "bytes": 824262,
+                                                                                                                "sha256": "f5843e083cbd25f955ea2be1c6f0a8667c193cfd117a7b2b9f0d687c7cbe13f0"
+                                                                                                              }
+                                                                                                            ],
+                                                                                                            "nativeExampleChecks": {
+                                                                                                              "tests": 4,
+                                                                                                              "pass": 4,
+                                                                                                              "fail": 0,
+                                                                                                              "scope": "Static integration boundaries only; no device interactions executed"
+                                                                                                            },
+                                                                                                            "previousNativeExamplesArtifacts": [
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-native-examples-20261103/liquidglass-ios26-debug.aar",
+                                                                                                                "bytes": 824262,
+                                                                                                                "sha256": "f5843e083cbd25f955ea2be1c6f0a8667c193cfd117a7b2b9f0d687c7cbe13f0"
+                                                                                                              },
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-native-examples-20261103/liquidglass-ios27-debug.aar",
+                                                                                                                "bytes": 1227403,
+                                                                                                                "sha256": "61a822ac40598595177d487889f9362e1536224829b8f7eda30159092c9113c9"
+                                                                                                              },
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-native-examples-20261103/LiquidGlassSketch-ios27-native-examples-debug.apk",
+                                                                                                                "bytes": 47525096,
+                                                                                                                "sha256": "c7adb2efabe8700d00f3be0e275884e64ce9c4951ca3576bcff5075d91128e1e"
+                                                                                                              }
+                                                                                                            ],
+                                                                                                            "legacyRuntime": {
+                                                                                                              "frozenBaselines": 86,
+                                                                                                              "unchangedFiles": 84,
+                                                                                                              "reviewedChanges": [
+                                                                                                                "LiquidBottomTabs.kt: material-only hook",
+                                                                                                                "DrawBackdropModifier.kt: default-null surfaceLayerBlock after shadows"
+                                                                                                              ]
+                                                                                                            },
+                                                                                                            "newRegressionTests": {
+                                                                                                              "PopupPresentationTest": 8,
+                                                                                                              "Ios27DockBodyTest": 3,
+                                                                                                              "result": "passed",
+                                                                                                              "GooButtonGroupTest": 6
+                                                                                                            },
+                                                                                                            "previousDockPopupArtifacts": [
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-dock-popup-20261103/liquidglass-ios26-debug.aar",
+                                                                                                                "bytes": 826871,
+                                                                                                                "sha256": "0755acaa4ed05308774fae72ef81e78b6f60e534cf1376c6c6a91297d8c0443c"
+                                                                                                              },
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-dock-popup-20261103/liquidglass-ios27-debug.aar",
+                                                                                                                "bytes": 1247224,
+                                                                                                                "sha256": "64262c5e53947546a96e331ebc51b047f18eb7112aefff8babdc51a192afb326"
+                                                                                                              },
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-dock-popup-20261103/LiquidGlassSketch-ios27-dock-popup-debug.apk",
+                                                                                                                "bytes": 47525123,
+                                                                                                                "sha256": "a6aaf9acc644164d83f22f92fb32dcdb17214589ae0b4abfc746317ee0a94965"
+                                                                                                              }
+                                                                                                            ],
+                                                                                                            "previousPopupTextArtifacts": [
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-popup-text-20261103/liquidglass-ios26-debug.aar",
+                                                                                                                "bytes": 826871,
+                                                                                                                "sha256": "0755acaa4ed05308774fae72ef81e78b6f60e534cf1376c6c6a91297d8c0443c"
+                                                                                                              },
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-popup-text-20261103/liquidglass-ios27-debug.aar",
+                                                                                                                "bytes": 1247722,
+                                                                                                                "sha256": "c56a72a11b121587008d2088c571b0424475ea514151e6263a947270c9e37ada"
+                                                                                                              },
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-popup-text-20261103/LiquidGlassSketch-ios27-popup-text-debug.apk",
+                                                                                                                "bytes": 47525123,
+                                                                                                                "sha256": "1fffa7c3e68579e7a93ff30d96170f605db296aad309f43666d5e45de9b79606"
+                                                                                                              }
+                                                                                                            ],
+                                                                                                            "previousDockEdgeArtifacts": [
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-dock-edge-20261103/liquidglass-ios26-debug.aar",
+                                                                                                                "bytes": 827968,
+                                                                                                                "sha256": "1bbfce0b923e38aaa326702646a34a15561363ed13be4361ca6e8a71c04104e8"
+                                                                                                              },
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-dock-edge-20261103/liquidglass-ios27-debug.aar",
+                                                                                                                "bytes": 1247737,
+                                                                                                                "sha256": "c36fe4344ea98ee9cf6011f1ca5e913e23c23e6691201b0f71726e332de9270e"
+                                                                                                              },
+                                                                                                              {
+                                                                                                                "path": "dist/ios27-dock-edge-20261103/LiquidGlassSketch-ios27-dock-edge-debug.apk",
+                                                                                                                "bytes": 47525055,
+                                                                                                                "sha256": "df0e6e8e0d9d31090518bfa5218a7328a2649ade4f6f45739399727d4861a621"
+                                                                                                              }
+                                                                                                            ]
+                                                                                                          }
+                                                                                                        }
+                                                                                                      }
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "artifactInspection": {
+                                      "oldMechanismPackageClassesInPublishedAars": 0,
+                                      "transitiveCoordinates": [
+                                        "dev.liquidglass:liquidglass-core:2.0.0",
+                                        "dev.liquidglass:liquidglass-navigation:2.0.0"
+                                      ],
+                                      "sourcesAndLicenses": "included"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "artifactInspection": {
+                  "liquidglass": {
+                    "classes": 235,
+                    "sharedDragState": true,
+                    "removedImplementations": []
+                  },
+                  "melox-tabbar": {
+                    "classes": 119,
+                    "sharedDragState": false,
+                    "removedImplementations": []
+                  },
+                  "liquidglass-ios27": {
+                    "classes": 346,
+                    "sharedDragState": false,
+                    "removedImplementations": []
+                  }
+                },
+                "delivery": {
+                  "method": "tools/send-apk-to-qq.ps1",
+                  "exitCode": 0,
+                  "status": "send sequence completed",
+                  "receipt": "not verified"
+                }
+              },
+              "delivery": {
+                "method": "tools/send-apk-to-qq.ps1",
+                "exitCode": 0,
+                "status": "send sequence completed",
+                "receipt": "not verified"
+              }
+            },
+            "delivery": {
+              "method": "tools/send-apk-to-qq.ps1",
+              "exitCode": 1,
+              "status": "stopped before paste because QQ lost foreground focus",
+              "receipt": "not sent"
+            }
+          },
+          "delivery": {
+            "method": "tools/send-apk-to-qq.ps1",
+            "exitCode": 1,
+            "status": "stopped before paste because QQ lost foreground focus",
+            "receipt": "not sent"
+          }
+        },
+        "delivery": {
+          "method": "tools/send-apk-to-qq.ps1",
+          "exitCode": 1,
+          "status": "stopped before paste because QQ lost foreground focus",
+          "receipt": "not sent"
+        }
       },
-      "mechanismParity": "67 imported mechanisms match the source after API annotation normalization. GlassPopup.kt and GlassControls.kt carry user-requested corrections; added Goo group/dock/transform helpers tracked separately.",
-      "revision": "Ordinary glass buttons support Goo groups, including icon/text/tinted and popup sources",
-      "previousRevisionArtifacts": [
-        {
-          "path": "dist/ios27-merge-20261103/LiquidGlassSketch-ios26-ios27-debug.apk",
-          "bytes": 47477203,
-          "sha256": "03fc453d9fe7eb5ca6aaaac550551e6da633e182ef72096ae99e64d2c39182ca"
-        },
-        {
-          "path": "dist/ios27-merge-20261103/liquidglass-ios27-debug.aar",
-          "bytes": 1227404,
-          "sha256": "21dc0de487c8961bb7ecfd6274663d3a4c5cd4a3f5bc91e25c34f63d948df52a"
-        },
-        {
-          "path": "dist/ios27-merge-20261103/liquidglass-ios26-debug.aar",
-          "bytes": 824262,
-          "sha256": "f5843e083cbd25f955ea2be1c6f0a8667c193cfd117a7b2b9f0d687c7cbe13f0"
-        }
-      ],
-      "nativeExampleChecks": {
-        "tests": 4,
-        "pass": 4,
-        "fail": 0,
-        "scope": "Static integration boundaries only; no device interactions executed"
-      },
-      "previousNativeExamplesArtifacts": [
-        {
-          "path": "dist/ios27-native-examples-20261103/liquidglass-ios26-debug.aar",
-          "bytes": 824262,
-          "sha256": "f5843e083cbd25f955ea2be1c6f0a8667c193cfd117a7b2b9f0d687c7cbe13f0"
-        },
-        {
-          "path": "dist/ios27-native-examples-20261103/liquidglass-ios27-debug.aar",
-          "bytes": 1227403,
-          "sha256": "61a822ac40598595177d487889f9362e1536224829b8f7eda30159092c9113c9"
-        },
-        {
-          "path": "dist/ios27-native-examples-20261103/LiquidGlassSketch-ios27-native-examples-debug.apk",
-          "bytes": 47525096,
-          "sha256": "c7adb2efabe8700d00f3be0e275884e64ce9c4951ca3576bcff5075d91128e1e"
-        }
-      ],
-      "legacyRuntime": {
-        "frozenBaselines": 86,
-        "unchangedFiles": 84,
-        "reviewedChanges": [
-          "LiquidBottomTabs.kt: material-only hook",
-          "DrawBackdropModifier.kt: default-null surfaceLayerBlock after shadows"
-        ]
-      },
-      "newRegressionTests": {
-        "PopupPresentationTest": 8,
-        "Ios27DockBodyTest": 3,
-        "result": "passed",
-        "GooButtonGroupTest": 6
-      },
-      "previousDockPopupArtifacts": [
-        {
-          "path": "dist/ios27-dock-popup-20261103/liquidglass-ios26-debug.aar",
-          "bytes": 826871,
-          "sha256": "0755acaa4ed05308774fae72ef81e78b6f60e534cf1376c6c6a91297d8c0443c"
-        },
-        {
-          "path": "dist/ios27-dock-popup-20261103/liquidglass-ios27-debug.aar",
-          "bytes": 1247224,
-          "sha256": "64262c5e53947546a96e331ebc51b047f18eb7112aefff8babdc51a192afb326"
-        },
-        {
-          "path": "dist/ios27-dock-popup-20261103/LiquidGlassSketch-ios27-dock-popup-debug.apk",
-          "bytes": 47525123,
-          "sha256": "a6aaf9acc644164d83f22f92fb32dcdb17214589ae0b4abfc746317ee0a94965"
-        }
-      ],
-      "previousPopupTextArtifacts": [
-        {
-          "path": "dist/ios27-popup-text-20261103/liquidglass-ios26-debug.aar",
-          "bytes": 826871,
-          "sha256": "0755acaa4ed05308774fae72ef81e78b6f60e534cf1376c6c6a91297d8c0443c"
-        },
-        {
-          "path": "dist/ios27-popup-text-20261103/liquidglass-ios27-debug.aar",
-          "bytes": 1247722,
-          "sha256": "c56a72a11b121587008d2088c571b0424475ea514151e6263a947270c9e37ada"
-        },
-        {
-          "path": "dist/ios27-popup-text-20261103/LiquidGlassSketch-ios27-popup-text-debug.apk",
-          "bytes": 47525123,
-          "sha256": "1fffa7c3e68579e7a93ff30d96170f605db296aad309f43666d5e45de9b79606"
-        }
-      ],
-      "previousDockEdgeArtifacts": [
-        {
-          "path": "dist/ios27-dock-edge-20261103/liquidglass-ios26-debug.aar",
-          "bytes": 827968,
-          "sha256": "1bbfce0b923e38aaa326702646a34a15561363ed13be4361ca6e8a71c04104e8"
-        },
-        {
-          "path": "dist/ios27-dock-edge-20261103/liquidglass-ios27-debug.aar",
-          "bytes": 1247737,
-          "sha256": "c36fe4344ea98ee9cf6011f1ca5e913e23c23e6691201b0f71726e332de9270e"
-        },
-        {
-          "path": "dist/ios27-dock-edge-20261103/LiquidGlassSketch-ios27-dock-edge-debug.apk",
-          "bytes": 47525055,
-          "sha256": "df0e6e8e0d9d31090518bfa5218a7328a2649ade4f6f45739399727d4861a621"
-        }
-      ]
+      "delivery": {
+        "method": "tools/send-apk-to-qq.ps1",
+        "exitCode": 1,
+        "status": "stopped before paste because QQ lost foreground focus",
+        "receipt": "not sent"
+      }
+    },
+    "delivery": {
+      "method": "tools/send-apk-to-qq.ps1",
+      "exitCode": 1,
+      "status": "stopped before paste because QQ lost foreground focus",
+      "receipt": "not sent"
     }
+  },
+  "delivery": {
+    "method": "tools/send-apk-to-qq.ps1",
+    "exitCode": 0,
+    "status": "send sequence completed",
+    "receipt": "not verified"
   }
 }

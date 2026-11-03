@@ -1,0 +1,124 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User: 26/27 can switch as a whole, and highlight etc can switch independently",
+  "reason": "Independent overall standard, material and highlight selection; preserve existing shared motion",
+  "files": [
+    {
+      "path": "liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidButtonCore.kt",
+      "baselineSha256": "7e670005d1aa091d2e58db42be74f6c0ff44412b2069c6d162c6b08557d725cd",
+      "mergedSha256": "042c70ccc74f18ce4546f958f3e48d478539fca64792f645247f06d371a3cabf"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassComponents.kt",
+      "baselineSha256": "5a0f4d0eedb03a59e6f0e320de8cb70c633dad5e373b4f2cf32e0a857eee9945",
+      "mergedSha256": "480c710830a5fd4ae46b2f9728f096a68b66bf99068b529c625907af369df098"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassMenu.kt",
+      "baselineSha256": "5ddafd8871c66ab0f29aa86de8d16801be5c7d8f6b8867f2b3ab1d1ed88b69ff",
+      "mergedSha256": "219d6cb748ecc835942e4be861e312ac0b7076ffcc194afe2f46c71a61a9a93e"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassMenuHighlight.kt",
+      "baselineSha256": "4c9999d5322ee1070ededd025143bd21520d3deae46d522c91ec88f7f408b071",
+      "mergedSha256": "d8d3f6073e080085fe845cc7e6ceec643a3cef0f3efd8817e4861d99fc77518a"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassTabBar.kt",
+      "baselineSha256": "7b6beefc45f1a725db7ed23f39bf0ed099adf48add0df062b218cebdd45a5187",
+      "mergedSha256": "aa5a8936ac326789bb0d5d8cf9bc2db15da01b1039c03bdc8b9219d693e5c3b5"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassTheme.kt",
+      "baselineSha256": "72c354a23fbe4ba47d54af26efa83a6d97786e64d1e1299b0c890d7ffb6d9729",
+      "mergedSha256": "26e92ead1bfeb8d8af8a86258fc27f45518929bb567b5db440ee17d1515fbc3a"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/Ios26FusionGroup.kt",
+      "baselineSha256": "36afcf7519cf635d0e6db0a51c7a907a7b4a3c47bf1cd0e2b30afd00907f9983",
+      "mergedSha256": "be093cad57c314f0c99f0136dbf79e22150a16712f219d77439a329722f8177d"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27MenuExamples.kt",
+      "baselineSha256": "4cae59136a4f6b8c6dc57fd7449dfb6d699a6ea298105d155e91f6b592962e37",
+      "mergedSha256": "f3b99b514c62ab8e7da513af076709499fa6b93b18e26be803a933179e71f680"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27NativeExamples.kt",
+      "baselineSha256": "7adc7b776ac3df9d238cdd45a16eb78f73440c63ec197c4d64a0bfa0b91ffae0",
+      "mergedSha256": "638e77924160442061d066d1c812d9a1204c7d8eb4601ebd948fb9f513967937"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27SheetsModal.kt",
+      "baselineSha256": "1af3bf9c04674a9a157686385c1f12720be918f08cd5621486a55043246ca444",
+      "mergedSha256": "e7f16f84e46a74f926f076b7889844b24001701a54c036c784f20af36308ed3e"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/Ios27TextFieldsExample.kt",
+      "baselineSha256": "444a4fc61293841386c762c27182e94fc05bd7bf04b15c83f845250117718dc6",
+      "mergedSha256": "fbc2ebcb62ac449242469cf94bc91975310c86e8f330ca6e67b6b885694d203d"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/MainActivity.kt",
+      "baselineSha256": "565776f58099cff4fd5d93ac5dd0e7b1877e7fed05a857b5ef36f659c25a9f59",
+      "mergedSha256": "702dbd557da9408e3eb4d746356a84fcc9ed38895cd27a55104fe272be161865"
+    },
+    {
+      "path": "sample/src/main/java/dev/liquidglass/sample/SampleGlassTheme.kt",
+      "baselineSha256": "3ee8be6f39b76d4909087f9c36b6599c89b60ce1847ed21cca4800bc73c759f2",
+      "mergedSha256": "88f635e001d75c2123cf01ad02dac4d8892def22bc633a35178687b421b68e45"
+    },
+    {
+      "path": "README.md",
+      "baselineSha256": "cfd6a24d7964404a05ed16d68d076c87556e66460498827be7d53454f4001c0c",
+      "mergedSha256": "27a52ae4c0fed50f0e2dbbee9b577bfcb9a8f93f7f6e183d0a5c305380a1daff"
+    },
+    {
+      "path": "AGENTS.md",
+      "baselineSha256": "02dc100ec2ae6871de1bc0c05ad87adc1230596e56155ab1c5b2230a75702db6",
+      "mergedSha256": "b5159ba2284a63d4cfc163140864f249ceeaf4e89c6615595bdbf9c4d4a415eb"
+    },
+    {
+      "path": "docs/component-library.md",
+      "baselineSha256": "ef5cac22123d9f9bf4b9ebc0e8c4c0e443a73408e836ab0870524286ce4b69da",
+      "mergedSha256": "0b1d6cee6f90fbd4c59e97b4dc46a6147761823fbe7d1f7f6de7978d01232925"
+    },
+    {
+      "path": "docs/ios27/validation.md",
+      "baselineSha256": "d9064f1fc84a77a936066d7fa63d534c329485993997a3ae1dc1521f1acd0380",
+      "mergedSha256": "76ba4d73a6d6b0822b6ceb7a39913a8508f8e7d381e969947664b6eb5eb7f7bc"
+    },
+    {
+      "path": "docs/ios27/verification-results.json",
+      "baselineSha256": "f175283edd440e6d6504c16e74d826022ba456edb67673dd386c73ea3f53e83b",
+      "mergedSha256": "45966cfaafb55ba21e3606993450d54236e48da599411451aeac7b56159735a0"
+    },
+    {
+      "path": "tools/figma-reader/native-framework.test.mjs",
+      "baselineSha256": "5650a9a36c6b3d24fabe0300141665f45be78541037cf8f688875474c4a86b44",
+      "mergedSha256": "acb1cb57b811d209d49f1b1b6e35517c4dcf329100c5d3d9d52a685d26b65c94"
+    },
+    {
+      "path": ".gitignore",
+      "baselineSha256": "b2f3b77812afa15e75cfeb2d02170fa24021c89ee5b6ad49efa4fd92c644145a",
+      "mergedSha256": "27f6dfbae16ab9f8ba45c924618d98fd3927d338a6e6e564f5669861dd1714a2"
+    },
+    {
+      "path": "liquidglass/src/main/java/dev/liquidglass/rendering/GlassButtonLighting.kt",
+      "baselineSha256": null,
+      "mergedSha256": "4638b6e32e406f816968ec202f3f8f54927ce8ca9d1d72b5f7f944006640a9a7"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassEffects.kt",
+      "baselineSha256": null,
+      "mergedSha256": "0b8320b8176cba130294ba07721e262749f3e51a148f3bac555c30d36fbfc93c"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/GlassEffectsTest.kt",
+      "baselineSha256": null,
+      "mergedSha256": "3195cbfab11064740cde7038cdf26989ef64556c3b2301f25c0dbbbc8816bbeb"
+    }
+  ],
+  "tests": "not run",
+  "frozenBaselines": "unchanged"
+}

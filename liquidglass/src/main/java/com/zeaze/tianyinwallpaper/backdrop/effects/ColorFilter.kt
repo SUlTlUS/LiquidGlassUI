@@ -4,7 +4,6 @@ import android.graphics.ColorFilter
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.graphics.RenderEffect
-import android.os.Build
 import androidx.annotation.FloatRange
 import androidx.compose.ui.graphics.asAndroidColorFilter
 import com.zeaze.tianyinwallpaper.backdrop.BackdropEffectScope
@@ -12,8 +11,6 @@ import com.zeaze.tianyinwallpaper.backdrop.GammaAdjustmentShaderString
 import kotlin.math.pow
 
 fun BackdropEffectScope.colorFilter(colorFilter: ColorFilter) {
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
-
     val currentEffect = renderEffect
     renderEffect =
         if (currentEffect != null) {

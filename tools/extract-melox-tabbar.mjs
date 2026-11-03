@@ -15,9 +15,20 @@ const check = process.argv.includes('--check');
 const sha = data => crypto.createHash('sha256').update(data).digest('hex');
 const records = [];
 const outputs = [];
+// The extraction baseline remains frozen. Explicit user-authorized integration
+// changes are audited separately and must never be overwritten by extraction.
+const reviewsPath = path.join(root, 'docs/melox-tabbar-merged-files.json');
+const reviewed = fs.existsSync(reviewsPath)
+  ? JSON.parse(fs.readFileSync(reviewsPath, 'utf8')).files : [];
 function emit(relative, data) {
   const target = path.join(root, relative);
-  if (check) {
+  const review = reviewed.find(file => file.path === relative);
+  if (review) {
+    if (!relative.startsWith(outputBase) || review.baselineSha256 !== sha(data)
+      || !fs.existsSync(target) || review.mergedSha256 !== sha(fs.readFileSync(target))) {
+      throw new Error(`Reviewed integration drift: ${relative}`);
+    }
+  } else if (check) {
     if (!fs.existsSync(target) || !fs.readFileSync(target).equals(Buffer.from(data))) {
       throw new Error(`Extraction drift: ${relative}`);
     }

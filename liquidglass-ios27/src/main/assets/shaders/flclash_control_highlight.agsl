@@ -30,14 +30,21 @@ uniform float4 uPill2;
 uniform float4 uPill3;
 uniform float4 uPill4;
 uniform float4 uPill5;
+uniform float2 uPillScales[6];
 uniform float4 uBlends;
 uniform float uBlendLast;
 uniform int uProfileEnabled;
 uniform float2 uProfileCenter;
-// Dock specialization raises these together; other controls keep source resolution.
-const int PROFILE_PACKS = 16;
-const float PROFILE_SAMPLES = 64.0;
 uniform float4 uProfile[16];
+
+float2 pillScaleAt(int i) {
+    if (i == 0) return uPillScales[0];
+    if (i == 1) return uPillScales[1];
+    if (i == 2) return uPillScales[2];
+    if (i == 3) return uPillScales[3];
+    if (i == 4) return uPillScales[4];
+    return uPillScales[5];
+}
 
 float4 pillAt(int i) {
     if (i == 0) return uPill0;
@@ -139,7 +146,7 @@ float smoothMinimum(float a, float b, float k) {
 
 void addTurn(float u, float index, float radius, inout float2 sum) {
     float x = u - index;
-    x -= PROFILE_SAMPLES * floor(x / PROFILE_SAMPLES + .5);
+    x -= 64.0 * floor(x / 64.0 + .5);
     float d = abs(x);
     if (d >= 2.0) return;
     float2 weight = d < 1.0
@@ -154,9 +161,9 @@ void profileGeometry(float2 point, out float distance, out float2 normal) {
     float2 p = point - uProfileCenter;
     float len = max(length(p), .001);
     float angle = atan(p.y, p.x) / 6.28318530718;
-    float u = (angle - floor(angle)) * PROFILE_SAMPLES;
+    float u = (angle - floor(angle)) * 64.0;
     float2 sum = float2(0.0);
-    for (int i = 0; i < PROFILE_PACKS; ++i) {
+    for (int i = 0; i < 16; ++i) {
         float4 radii = uProfile[i];
         float index = float(i) * 4.0;
         addTurn(u, index, radii.x, sum);
@@ -165,7 +172,7 @@ void profileGeometry(float2 point, out float distance, out float2 normal) {
         addTurn(u, index + 3.0, radii.w, sum);
     }
     float reach = max(sum.x, .001);
-    float slope = sum.y * PROFILE_SAMPLES / 6.28318530718 / reach;
+    float slope = sum.y * 64.0 / 6.28318530718 / reach;
     float2 radial = p / len;
     float2 gradient = radial - slope * float2(-radial.y, radial.x);
     float stretch = max(length(gradient), .0001);
@@ -207,14 +214,18 @@ void rimGeometry(float2 p, float traced, out float distance,
         for (int i = 0; i < 6; ++i) {
             if (i >= uCount) break;
             float4 pill = pillAt(i);
-            float r = min(pill.z, pill.w);
-            float next = roundedBoxDistance(p, pill.xy, pill.zw, r);
-            float2 nextNormal = roundedBoxNormal(p, pill.xy, pill.zw, r);
+            float2 scale = pillScaleAt(i);
+            float2 localP = pill.xy + (p - pill.xy) / scale;
+            float4 localPill = float4(pill.xy, pill.zw / scale);
+            float unit = min(scale.x, scale.y);
+            float r = min(localPill.z, localPill.w);
+            float next = roundedBoxDistance(localP, pill.xy, localPill.zw, r) * unit;
+            float2 nextNormal = normalize(roundedBoxNormal(localP, pill.xy, localPill.zw, r) / scale);
             if (next < nearest) {
                 nearest = next;
                 lost = 0.0;
                 if (traced > 0.0 && -next < traced + 1.0 + .03 * r) {
-                    lost = max(-next - pillInset(p, pill, i), 0.0);
+                    lost = max(-next - pillInset(localP, localPill, i) * unit, 0.0);
                 }
             }
             if (i == 0) {

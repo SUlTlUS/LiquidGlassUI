@@ -14,8 +14,7 @@ import com.zeaze.tianyinwallpaper.catalog.utils.AdaptiveLuminanceGlassState
 /**
  * 天音液态玻璃按钮公开入口。
  *
- * 默认行为保持原组件不变。只有显式传入 [enableMetaballDrag] 时，才在原按钮外增加
- * 拖拽、弹簧回弹和动态 SDF neck；按钮本体仍由 [LiquidButtonCore] 绘制。
+ * iOS 26 rendering backend. Public cross-standard controls live in dev.liquidglass.
  */
 @Composable
 fun LiquidButton(
@@ -29,14 +28,13 @@ fun LiquidButton(
     style: LiquidButtonStyle = LiquidButtonStyle.Default,
     buttonHeight: Dp = style.height,
     contentPadding: PaddingValues = PaddingValues(horizontal = style.horizontalPadding),
-    enableMetaballDrag: Boolean = false,
-    metaballGapToAnchor: Dp = 8.dp,
     @DrawableRes iconRes: Int? = null,
     iconContentDescription: String? = null,
     iconSize: Dp = 20.dp,
     iconTint: Color = Color.Unspecified,
     iconOffsetX: Dp = 0.dp,
     iconOffsetY: Dp = 0.dp,
+    enabled: Boolean = true,
     content: (@Composable RowScope.() -> Unit)? = null
 ) {
     LiquidButtonCore(
@@ -56,6 +54,7 @@ fun LiquidButton(
         iconTint = iconTint,
         iconOffsetX = iconOffsetX,
         iconOffsetY = iconOffsetY,
-        content = content
+        content = content,
+        enabled = enabled,
     )
 }

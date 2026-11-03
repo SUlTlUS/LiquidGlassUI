@@ -33,3 +33,9 @@
 ## 后续：外圈不均匀
 
 底栏采用 Kyant Continuous Capsule 原轮廓。现有 64 射线加三次插值会近似重建轮廓，本轮为底栏启用 256 射线，并将路径离散段数提高至 1024–4096；普通控件默认精度和明暗公式保留。shader 在编译前用常量专门化，数组容量、角度周期和导数倍率一起更新。未改主体尺寸、颜色或圆角。按用户要求只构建和安装，不执行测试；视觉及运行时 shader 验收由用户完成。
+
+## 原版高光的原生移植
+
+对照 `FlClash/lib/ui/navigation_dock.dart` 与 `liquid_glass.dart` 的 LiquidGlassCorners 分支，普通底栏不使用径向 profile。撤回此前 256 射线近似，使用已有原生 AGSL 中的 roundedBoxDistance / roundedBoxNormal / cornerInset，保留 pill/lens 光照参数；Android Path 采用已有 Kotlin 连续圆角算法。26 主体增加默认 Capsule 的 surfaceShape 参数，仅 27 注入新轮廓。后台预热两份普通高光 shader，不再生成 256 变体。用户要求不使用 Flutter，本实现没有新增 Flutter SDK、引擎或组件依赖。
+
+本轮只编译和安装；已有源码断言同步更新但未运行，未启动或测试手机。

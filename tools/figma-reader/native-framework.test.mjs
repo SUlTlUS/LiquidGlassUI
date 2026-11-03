@@ -182,7 +182,7 @@ test('Examples/List inset is entered through the reusable example component',()=
  assert.match(main,/if \(tab == 0\) \{[\s\S]*IphoneExamples\([\s\S]*rootBackdrop[\s\S]*rootScrollState/);
  assert.match(main,/if \(!\(tab == 0 && examplesSecondary\)\)/);
  assert.match(main,/splitSearch = false/);
- assert.match(main,/Ios27TabBarExample\([\s\S]*modifier = Modifier\.align\(Alignment\.Center\)/);
+ assert.match(main,/GlassTabBar\([\s\S]*modifier = Modifier\.align\(Alignment\.Center\)/);
  assert.doesNotMatch(main,/ComponentsPage\(/);
  assert.doesNotMatch(main,/listDetail|onOpenList|ListDetailPage\(/);
  assert.doesNotMatch(main,/列表二级页面/);
@@ -270,7 +270,7 @@ test('activity view uses the full-width scrolling share sheet and native actions
  assert.match(page,/"Activity View" -> \{/);
  assert.doesNotMatch(page,/"Sheets \(Modals\)", "Activity View" ->/);
  assert.match(page,/Ios27ActivityViewExample\(/);
- for(const token of ['LiquidDialog(','width = 402.dp','height = sheetHeight','cornerRadius = 38.dp','ActivitySheetShape','verticalScroll(scroll)','height(161.dp)','height(134.dp)','height(128.dp)','height(120.dp)','height(424.dp)','ActivityContactsRow(','ActivityAppRow(','ActivityQuickActionRow(','ActivityActionsList(','ActivityActionGroup(','ActivityGlassButton(','LiquidButton(','Edit Actions','Close','Collaborate'])
+ for(const token of ['LiquidDialog(','width = 402.dp','height = sheetHeight','cornerRadius = 38.dp','ActivitySheetShape','verticalScroll(scroll)','height(161.dp)','height(134.dp)','height(128.dp)','height(120.dp)','height(424.dp)','ActivityContactsRow(','ActivityAppRow(','ActivityQuickActionRow(','ActivityActionsList(','ActivityActionGroup(','ActivityGlassButton(','GlassButton(','Edit Actions','Close','Collaborate'])
   assert.ok(activity.includes(token),token);
  assert.match(activity,/val sheetTop = WindowInsets\.safeDrawing\.asPaddingValues\(\)\.calculateTopPadding\(\)/);
  assert.match(activity,/val sheetHeight = \(maxHeight - sheetTop\)\.coerceAtLeast\(1\.dp\)/);
@@ -328,11 +328,11 @@ test('toolbar glyphs are content of the animated LiquidButton, not sibling overl
 });
 test('bottom toolbars are independent from bottom tabs and preserve source geometry',()=>{
  const toolbar=read('sample/src/main/java/dev/liquidglass/sample/Ios27ToolbarBottom.kt');
- assert.match(page,/val hasTabs = entry\.category == "Tab Bar"/);
+ assert.doesNotMatch(page,/val hasTabs|Ios27TabBarExample\(/);
  assert.match(page,/val hasBottomToolbar = entry\.category == "Toolbars - Bottom"/);
  assert.match(page,/Ios27ToolbarBottomExample\(/);
  assert.doesNotMatch(page,/val hasTabs = entry\.category in setOf\("Tab Bar", "Toolbars - Bottom"\)/);
- for(const token of ['variant.contains("Search")','variant.contains("Symbols")','286.dp','28.dp','88.dp','266.dp','326.dp','LiquidButton(']) assert.match(toolbar,new RegExp(token.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')),token);
+ for(const token of ['variant.contains("Search")','variant.contains("Symbols")','286.dp','28.dp','88.dp','266.dp','326.dp','GlassButton(']) assert.match(toolbar,new RegExp(token.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')),token);
  assert.match(toolbar,/The Text variant is two text actions/);
  assert.match(page,/"Toolbars - Bottom"[^\n]*supportsPopupBackground|supportsPopupBackground[^\n]*"Toolbars - Bottom"/);
  assert.match(page,/popupBackground\(if \(supportsPopupBackground && entry\.category != "Picker"\) popupBackground\.image else null\)/);
@@ -340,7 +340,7 @@ test('bottom toolbars are independent from bottom tabs and preserve source geome
 test('settings is the final tab and owns the single background picker entry',()=>{
  const main=read('sample/src/main/java/dev/liquidglass/sample/MainActivity.kt');
  const page=read('sample/src/main/java/dev/liquidglass/sample/NativeExamplePage.kt');
- assert.match(main,/labels = listOf\("组件", "说明", "设置"\)/);
+ assert.match(main,/items = listOf\("组件", "说明", "设置"\).map/);
  assert.match(main,/2 -> SettingsPage\(/);
  assert.match(main,/Ios27PageHeader\("设置"/);
  assert.match(main,/Ios27ActionButton\("选择背景图片"/);
@@ -348,41 +348,30 @@ test('settings is the final tab and owns the single background picker entry',()=
  assert.doesNotMatch(page,/Ios27ActionButton\("选择背景图片"/);
  assert.doesNotMatch(page,/Ios27ActionButton\("移除背景图片"/);
 });
-test('tab bar host uses reusable LiquidBottomTab primitives',()=>{
- const tabBar=read('sample/src/main/java/dev/liquidglass/sample/Ios27TabBar.kt');
+test('tab bar host uses one renderer for regular and split layouts',()=>{
+ const tabBar=read('liquidglass-ios27/src/main/java/dev/liquidglass/GlassTabBar.kt');
  const component=read('liquidglass/src/main/java/com/zeaze/tianyinwallpaper/catalog/components/LiquidBottomTabs.kt');
- assert.match(page,/val hasTabs = entry\.category == "Tab Bar"/);
- assert.match(page,/Ios27TabBarExample\(/);
- assert.match(page,/val hasSeparateSearch = hasTabs && entry\.variant == "Split Search=True"/);
+ const catalogHost=read('sample/src/main/java/dev/liquidglass/sample/Ios27ExampleComponents.kt');
+ assert.match(catalogHost,/spec.category == "Tab Bar"[\s\S]*MeloXTabBarExamplePage\(onBack = onBack\)/);
+ assert.doesNotMatch(page,/val hasTabs|val hasSeparateSearch|Ios27TabBarExample\(/);
  assert.match(page,/entry\.category == "Sheets \(Modals\)" && sheetsOpen/);
  assert.match(page,/Ios27SheetsModal\(/);
  assert.match(page,/if \(entry\.category != "Sheets \(Modals\)"\) \{[\s\S]*ExampleNavBar\(entry\.file, onBack, onReference/);
  assert.match(page,/if \(entry\.category != "Sheets \(Modals\)" &&[\s\S]*toolbar\.largeTitle/);
  assert.match(page,/supportsPopupBackground && entry\.category != "Picker"/);
- assert.match(page,/var searchOpen by rememberSaveable\(entry\.key\)/);
- assert.match(page,/onSearchClick = \{ searchOpen = true \}/);
- assert.match(tabBar,/LiquidBottomTabsRegular\(/);
- assert.match(tabBar,/LiquidBottomTabsSplitSearch\(/);
- assert.match(tabBar,/LiquidBottomTab\(/);
- assert.match(component,/fun LiquidBottomTabsCompact\(/);
- assert.match(component,/fun LiquidBottomTabsRegular\(/);
- assert.match(component,/fun LiquidBottomTabsSplitSearch\(/);
- assert.match(component,/itemSpacing: Dp = 0\.dp/);
- assert.match(component,/itemWidth: Dp = 94\.dp/);
-assert.match(component,/Arrangement\.spacedBy\(itemSpacing\)/);
-assert.match(component,/searchGap: Dp = 16\.dp/);
- assert.match(component,/val tabWidthDp = with\(density\) \{ tabWidth\.toDp\(\) \}/);
- assert.equal((component.match(/\.width\(tabWidthDp\)/g) ?? []).length, 2);
- assert.match(component,/Arrangement\.spacedBy\(searchGap, Alignment\.CenterHorizontally\)/);
- assert.match(tabBar,/tabsCount = labels\.take\(2\)\.size/);
- assert.match(tabBar,/selected = selectedTabIndex == index/);
- assert.match(tabBar,/itemWidth = 94\.dp/);
- assert.match(tabBar,/itemSpacing = \(-8\)\.dp/);
- assert.match(tabBar,/trackHeight = 62\.dp/);
- assert.match(tabBar,/indicatorHeight = 54\.dp/);
- assert.match(component,/searchWidth: Dp = 62\.dp/);
- assert.match(component,/searchHeight: Dp = 62\.dp/);
+ const controls=read('sample/src/main/java/dev/liquidglass/sample/MeloXTabBarExamplePage.kt');
+ assert.match(controls,/layout = options.layout\(preset\)/);
+ assert.match(controls,/TabBarParameterPanel\(/);
+ assert.match(tabBar,/GlassTabBar\(/);
+ assert.match(tabBar,/layout.showSearchButton && searchSelected/);
+ assert.match(tabBar,/onSelectedIndexChange\(tabs.indexOf\(it\)\)/);
+ assert.doesNotMatch(component,/fun LiquidBottomTabs/);
+ const unified=read('liquidglass-ios27/src/main/java/dev/liquidglass/GlassTabBar.kt');
+ assert.match(unified,/MeloXTabBar\(/);
+ assert.match(unified,/surfaceLayer = if \(highlight27\) appearance\?\.layer else null/);
+ assert.match(unified,/surfaceShape = if \(material27\) appearance\?\.shape else null/);
 });
+
 test('sheets modal host preserves the three source variants and safe glass layering',()=>{
  assert.match(page,/var sheetsOpen by rememberSaveable\(entry\.key\) \{ mutableStateOf\(entry\.category == "Sheets \(Modals\)"\) \}/);
  assert.match(page,/if \(entry\.category == "Sheets \(Modals\)"\) sheetsOpen = true/);
@@ -433,7 +422,7 @@ test('menus use source-sized glass panels and keep menu actions native',()=>{
  assert.match(menus,/Paste and Match Style/);
  assert.match(menus,/Disabled Action/);
  assert.match(menus,/ContextMenuSections/);
- assert.match(menus,/MenuGap\(colors\)/);
+ assert.match(menus,/MenuSeparator\(colors/);
  assert.match(menus,/556\.5\.dp/);
  assert.match(menus,/ios27PressedClickable\([\s\S]*enabled = enabled/);
  assert.match(menus,/occurrence = occurrence/);
@@ -458,7 +447,7 @@ test('empty states use source variants, native glyphs and exact action geometry'
  assert.match(empty,/EmptyStateLargeSymbolBodyOffset = 67\.dp/);
  assert.doesNotMatch(empty,/TitleAndSubtitleButtonTop|SymbolInCircleButtonTop|LargeSymbolButtonTop/);
  assert.match(empty,/rememberCanvasBackdrop/);
- assert.match(empty,/LiquidButton\(/);
+ assert.match(empty,/GlassButton\(/);
  assert.match(empty,/Color\(0xFFFF2D55\)/);
  assert.match(empty,/Color\(0xFFFFCC00\)/);
  assert.match(empty,/contentDescription = description/);

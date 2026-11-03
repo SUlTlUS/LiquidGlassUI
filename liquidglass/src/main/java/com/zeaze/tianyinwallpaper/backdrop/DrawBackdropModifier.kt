@@ -1,6 +1,5 @@
 package com.zeaze.tianyinwallpaper.backdrop
 
-import android.os.Build
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -178,6 +177,7 @@ private class DrawBackdropElement(
     override fun update(node: DrawBackdropNode) {
         node.backdrop = backdrop
         node.shapeProvider = shapeProvider
+        node.shapeProvider = shapeProvider
         node.effects = effects
         node.layerBlock = layerBlock
         if (node.exportedBackdrop != exportedBackdrop) {
@@ -237,7 +237,7 @@ private class DrawBackdropElement(
 
 private class DrawBackdropNode(
     var backdrop: Backdrop,
-    var shapeProvider: ShapeProvider,
+    shapeProvider: ShapeProvider,
     var effects: BackdropEffectScope.() -> Unit,
     var layerBlock: (GraphicsLayerScope.() -> Unit)?,
     var exportedBackdrop: LayerBackdrop?,
@@ -246,6 +246,9 @@ private class DrawBackdropNode(
     var onDrawSurface: (DrawScope.() -> Unit)?,
     var onDrawFront: (DrawScope.() -> Unit)?
 ) : LayoutModifierNode, DrawModifierNode, GlobalPositionAwareModifierNode, ObserverModifierNode, Modifier.Node() {
+
+    // The layout layer observes this state; replacing a contour must refresh its clip too.
+    var shapeProvider by mutableStateOf(shapeProvider)
 
     private val effectScope =
         object : BackdropEffectScopeImpl() {
@@ -364,11 +367,9 @@ private class DrawBackdropNode(
     }
 
     private fun updateEffects() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            effectScope.apply(effects)
-            graphicsLayer?.renderEffect = effectScope.renderEffect?.asComposeRenderEffect()
-            padding = effectScope.padding
-        }
+        effectScope.apply(effects)
+        graphicsLayer?.renderEffect = effectScope.renderEffect?.asComposeRenderEffect()
+        padding = effectScope.padding
     }
 
     override fun onAttach() {

@@ -238,7 +238,9 @@ internal fun Ios27ExampleContent(
         Ios27PageTheme(dark) {
             Box(modifier.ios27AndroidPane(spec.category + " · " + spec.variant)) {
                 key(spec.key) {
-                    if (spec.key == Ios27ExampleKeys.ListInset) {
+                    if (spec.category == "Tab Bar") {
+                        MeloXTabBarExamplePage(onBack = onBack)
+                    } else if (spec.key == Ios27ExampleKeys.ListInset) {
                         ListDetailPage(dark = dark, onBack = onBack)
                     } else {
                         NativeExamplePage(

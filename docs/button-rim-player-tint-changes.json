@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User reported distorted non-Goo long button highlights and missing default 27 color on the tab bar mini-player",
+  "reason": "Use analytic capsule geometry for standalone 27 button highlights, including inverse motion transforms; share the 27 tab bar overlay with its mini-player while retaining 26 defaults",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/ButtonContour.kt",
+      "baselineSha256": "ab4b232582595fae19993160780ce448170159b20aad1bb059557623102643e9",
+      "mergedSha256": "4de55a577b5330f12dfa0a4d585efd1407eed7e8279e56133d8b1fa5a26b2af9"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassControls.kt",
+      "baselineSha256": "63bdf54ca9255adf83ad2e9954b34d5e8dc4c84f0a5849d4ffb231708854f98a",
+      "mergedSha256": "69d4cc4e2856f329f41f7a85f1062391d03d216addba3e4e600c36ece6ce2d80"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/SketchGlassBridge.kt",
+      "baselineSha256": "54b72f463f3fcb4d1d1a0efd14022b4436880c060952f6f3c548120f1e8c21a2",
+      "mergedSha256": "30b9e842a96709695697cbb6fc2ba004ab5cbecbc0260a137e5f58149e066d98"
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassEffects.kt",
+      "baselineSha256": "ca958d14b5dde7e511501efe7719ab343d6a85dc5d5174da763f361dcf79dec9",
+      "mergedSha256": "4326369af580ca63a44f2d7fe6acf41fea079099a6f896b39f4c88e77cda0e7e"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXTabBar.kt",
+      "baselineSha256": "16b9f7477fa43925fd760faac24cc66c904191d94478e023a6730c03e6852d7f",
+      "mergedSha256": "985e43c4b249e3da385634a6999b0c53e0bdf887641d39e78a36144f478251fd"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXBottomChrome.kt",
+      "baselineSha256": "1586a94a686e8c721ed1c1fc7aff53082afbbc891cae1304eb27bcfeeacd4928",
+      "mergedSha256": "f23066df2a96b8df045b5b6511368e6409b8d718af861115f69a6c37d8815f8a"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXBackdropComponents.kt",
+      "baselineSha256": "e8deefa937b575f6f694d5c64b20cf29b1b03a33bac75a94664013e0eff09c0e",
+      "mergedSha256": "bfc846dd6ba0f5162dc613e1092e7526b6513fd92f06da720f8c3775c91be7a6"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/ButtonContourRoutingTest.kt",
+      "baselineSha256": "5fa776aae8ee4a72a5c38d5637fee915286139e4a45ffcf4d99d5a2b4859d281",
+      "mergedSha256": "2cd943030f02b39e997567c93a1e87ebf35f2e34bec81b6204a55744f86c95fd"
+    }
+  ],
+  "tests": "not run; regression test source updated and compiled",
+  "frozenBaselines": "unchanged"
+}

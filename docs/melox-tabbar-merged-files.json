@@ -1,0 +1,106 @@
+{
+  "date": "2026-11-03",
+  "authorization": "User: merge both; switchable presets, default MeloX",
+  "originalManifest": "docs/melox-tabbar-extracted/manifest.json",
+  "files": [
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXBottomChrome.kt",
+      "baselineSha256": "4ac7388d686e35be565ce5451f0f455b9456aa5b4062d6e889c7de281c00ae90",
+      "beforeThisChange": "4ac7388d686e35be565ce5451f0f455b9456aa5b4062d6e889c7de281c00ae90",
+      "mergedSha256": "f23066df2a96b8df045b5b6511368e6409b8d718af861115f69a6c37d8815f8a",
+      "reason": "Use analytic capsule geometry for standalone 27 button highlights, including inverse motion transforms; share the 27 tab bar overlay with its mini-player while retaining 26 defaults",
+      "beforeLibraryApiSha256": "fddde75016230c3e13fa0a4664e830180e7dda9ed192b38d72b603b878775b8a",
+      "notes": "docs/button-rim-player-tint-changes.json",
+      "beforeDeepCleanupSha256": "5c67f97bf22d2a4c8c71323614c36a5a48072732ff26da83d788c6dee27e4895",
+      "beforeDockButtonColorSha256": "554f67f527f99e955c209d234657cc212bf487215f579ab6e86fac7763341004",
+      "beforeButtonRimPlayerTintSha256": "1586a94a686e8c721ed1c1fc7aff53082afbbc891cae1304eb27bcfeeacd4928"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXBackdropComponents.kt",
+      "baselineSha256": "cd3b483ac01d213e2edde04b66371222f176e9e9e26e891885691e09b8f493b7",
+      "beforeThisChange": "cd3b483ac01d213e2edde04b66371222f176e9e9e26e891885691e09b8f493b7",
+      "mergedSha256": "bfc846dd6ba0f5162dc613e1092e7526b6513fd92f06da720f8c3775c91be7a6",
+      "reason": "Use analytic capsule geometry for standalone 27 button highlights, including inverse motion transforms; share the 27 tab bar overlay with its mini-player while retaining 26 defaults",
+      "beforeLibraryApiSha256": "7a521d1113a43622e3e3a55419a940fb05de6a4cbc030438af96579037d39c78",
+      "notes": "docs/button-rim-player-tint-changes.json",
+      "beforeDeepCleanupSha256": "167665202b9290d49fb4bb78aac6a5d3814a993f1e91affde4c88fc8f4da6cfa",
+      "beforePressedIndicatorHighlightSha256": "ad191ccd819d85fa1cf5c2271f5d24261be0a6c9f60e22193af238019836a275",
+      "beforeButtonRimPlayerTintSha256": "e8deefa937b575f6f694d5c64b20cf29b1b03a33bac75a94664013e0eff09c0e"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/MeloXIOSNowPlayingSharedHost.kt",
+      "baselineSha256": "2f34f8ba05d2b0cbfadabf94a2410e4d36195b0784bd4b0562176b896fbd7f33",
+      "beforeThisChange": "2f34f8ba05d2b0cbfadabf94a2410e4d36195b0784bd4b0562176b896fbd7f33",
+      "mergedSha256": "9cb1de0b2654c8c5bd20d1ebc30c40a7296dc7de4c838240ff4835bba8724fc5",
+      "reason": "Merge MeloX and common navigation into one renderer; selectable presets default to MeloX, independent 26/27 highlight"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/MeloXGlassSafety.kt",
+      "baselineSha256": "1f66168115018a60602416b8382ed0e59e12e44f963722887620eb562ec8f933",
+      "beforeThisChange": "1f66168115018a60602416b8382ed0e59e12e44f963722887620eb562ec8f933",
+      "mergedSha256": "b626e5b0723da441f1b732efc41dce6def402c0740f8fda81641559e258e6f69",
+      "reason": "Deep cleanup: shared button math, shared damped motion and press highlight, unreachable pre-33 branches and unused sample functions removed",
+      "notes": "docs/deep-cleanup-changes.json",
+      "beforeDeepCleanupSha256": "85d9698ab1b79af121512439d25d69c9949a9ee53d144fba5808406ebd063137"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/GlassNavigationStyle.kt",
+      "baselineSha256": "84f47f5bc466e74fa1c492794d754f7cab3fb456345d0ec0c195bd38638ae0cb",
+      "beforeLibraryApiSha256": "84f47f5bc466e74fa1c492794d754f7cab3fb456345d0ec0c195bd38638ae0cb",
+      "mergedSha256": "5e6c684d2d389c50f7ce8e31556fd8323d15a533b88b4fb839d19a91ae94dc6c",
+      "reason": "Component library 2.0: canonical API, no compatibility aliases, one tab bar renderer, audited obsolete-code removal",
+      "notes": "docs/component-library-changes.json"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/MeloXTabBar.kt",
+      "baselineSha256": "55b79b05f6e0cdb2dd92e47cd2c4f78e30a1f9c82ac38cc34aed96c6943a4468",
+      "beforeLibraryApiSha256": "55b79b05f6e0cdb2dd92e47cd2c4f78e30a1f9c82ac38cc34aed96c6943a4468",
+      "mergedSha256": "985e43c4b249e3da385634a6999b0c53e0bdf887641d39e78a36144f478251fd",
+      "reason": "Use analytic capsule geometry for standalone 27 button highlights, including inverse motion transforms; share the 27 tab bar overlay with its mini-player while retaining 26 defaults",
+      "notes": "docs/button-rim-player-tint-changes.json",
+      "beforeDockButtonColorSha256": "dc01e462b432526962bc43e9d5dd42485539d424e229dc06c58bd7c7218e70b2",
+      "beforeButtonRimPlayerTintSha256": "16b9f7477fa43925fd760faac24cc66c904191d94478e023a6730c03e6852d7f"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/player/MeloXPlayerScaffold.kt",
+      "baselineSha256": "2c8545cf2723026c968a5780664f7b346596e0f81ca849705a26e6a4e0691dd6",
+      "beforeLibraryApiSha256": "2c8545cf2723026c968a5780664f7b346596e0f81ca849705a26e6a4e0691dd6",
+      "mergedSha256": "0c1664e28f4ec09e9156c023305c20ca7e48e16fa29a51f0399f2e3e80b5ff99",
+      "reason": "Component library 2.0: canonical API, no compatibility aliases, one tab bar renderer, audited obsolete-code removal",
+      "notes": "docs/component-library-changes.json"
+    },
+    {
+      "path": "melox-tabbar/build.gradle.kts",
+      "baselineSha256": "6a667440063ec076a755740f379dbd797b0032b8692f0b66de07b48f32cac3e8",
+      "beforeLibraryApiSha256": "6a667440063ec076a755740f379dbd797b0032b8692f0b66de07b48f32cac3e8",
+      "mergedSha256": "1baff72eb4bac7e8a19a4a0043a13da2a2c4283c35739585ec040193e5215c3a",
+      "reason": "Component library 2.0: canonical API, no compatibility aliases, one tab bar renderer, audited obsolete-code removal",
+      "notes": "docs/component-library-changes.json"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/dev/liquidglass/GlassTabBarStyle.kt",
+      "baselineSha256": null,
+      "beforeLibraryApiSha256": null,
+      "mergedSha256": "0b578dab6ad373ec86244b626631e3c85b5cc31cb6819536e20d6cef3ee155e9",
+      "reason": "Component library 2.0: canonical API, no compatibility aliases, one tab bar renderer, audited obsolete-code removal",
+      "notes": "docs/component-library-changes.json"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/publicdemo/PublicDampedDragAnimation.kt",
+      "baselineSha256": "3654aef83fd157ca144c864ecf8676f786c3dffba4c09877d58bece7e59ef0ab",
+      "mergedSha256": "a7aa193f28e0c33b9b157b396fec34e687cee7f51111413c4e10315e79c9cb49",
+      "reason": "Deep cleanup: shared button math, shared damped motion and press highlight, unreachable pre-33 branches and unused sample functions removed",
+      "notes": "docs/deep-cleanup-changes.json",
+      "beforeDeepCleanupSha256": "3654aef83fd157ca144c864ecf8676f786c3dffba4c09877d58bece7e59ef0ab"
+    },
+    {
+      "path": "melox-tabbar/src/main/kotlin/com/lladlam/melox/ui/glass/publicdemo/PublicInteractiveHighlight.kt",
+      "baselineSha256": "1fbcdefe8a8fda76f98a0728431beba0557599664b9fb9739e23ca1f3818fe7d",
+      "mergedSha256": null,
+      "reason": "Deep cleanup: shared button math, shared damped motion and press highlight, unreachable pre-33 branches and unused sample functions removed",
+      "notes": "docs/deep-cleanup-changes.json",
+      "beforeDeepCleanupSha256": "1fbcdefe8a8fda76f98a0728431beba0557599664b9fb9739e23ca1f3818fe7d",
+      "removed": true
+    }
+  ]
+}

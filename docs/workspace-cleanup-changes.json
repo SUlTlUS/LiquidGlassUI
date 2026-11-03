@@ -1,0 +1,2016 @@
+{
+  "date": "2026-11-03",
+  "scope": "Workspace hygiene; no runtime source changes",
+  "archiveRoot": "C:\\IDE\\Android\\liquidglass_sketch.cleanup-20261103",
+  "archived": [
+    {
+      "path": ".tmp",
+      "files": 4459,
+      "bytes": 337646380
+    },
+    {
+      "path": "build",
+      "files": 14,
+      "bytes": 34285541
+    },
+    {
+      "path": "androidx",
+      "files": 314,
+      "bytes": 1573769
+    },
+    {
+      "path": "META-INF",
+      "files": 2,
+      "bytes": 1480
+    },
+    {
+      "path": ".tmp-native-surface-build.log",
+      "files": 1,
+      "bytes": 6176
+    },
+    {
+      "path": "build-animation-switch-final.log",
+      "files": 1,
+      "bytes": 50981
+    },
+    {
+      "path": "build-button-drag-resistance-final.log",
+      "files": 1,
+      "bytes": 6412
+    },
+    {
+      "path": "build-button-drag-retune-final.log",
+      "files": 1,
+      "bytes": 6412
+    },
+    {
+      "path": "build-common-demos-compile.log",
+      "files": 1,
+      "bytes": 23905
+    },
+    {
+      "path": "build-common-demos-final.log",
+      "files": 1,
+      "bytes": 9424
+    },
+    {
+      "path": "build-compact-tabbar-final.log",
+      "files": 1,
+      "bytes": 8930
+    },
+    {
+      "path": "build-compact-tabbar-initial.log",
+      "files": 1,
+      "bytes": 11933
+    },
+    {
+      "path": "build-deduplicate-tabbar-final.log",
+      "files": 1,
+      "bytes": 29739
+    },
+    {
+      "path": "build-effect-switch-final.log",
+      "files": 1,
+      "bytes": 14753
+    },
+    {
+      "path": "build-gyroscope-highlight.log",
+      "files": 1,
+      "bytes": 27202
+    },
+    {
+      "path": "build-gyroscope-spec.log",
+      "files": 1,
+      "bytes": 613
+    },
+    {
+      "path": "build-ios26-all-modals-final.log",
+      "files": 1,
+      "bytes": 9032
+    },
+    {
+      "path": "build-ios26-fullscreen-context-final.log",
+      "files": 1,
+      "bytes": 9298
+    },
+    {
+      "path": "build-ios26-fullscreen-glass-final.log",
+      "files": 1,
+      "bytes": 9030
+    },
+    {
+      "path": "build-ios26-fusion-neck-final.log",
+      "files": 1,
+      "bytes": 9479
+    },
+    {
+      "path": "build-ios26-fusion-seam-final.log",
+      "files": 1,
+      "bytes": 9446
+    },
+    {
+      "path": "build-ios26-goo-return-final.log",
+      "files": 1,
+      "bytes": 6854
+    },
+    {
+      "path": "build-ios26-goo-shape-crash-final.log",
+      "files": 1,
+      "bytes": 9478
+    },
+    {
+      "path": "build-ios26-menu-no-tint-final.log",
+      "files": 1,
+      "bytes": 9458
+    },
+    {
+      "path": "build-ios26-multilevel-menu-final.log",
+      "files": 1,
+      "bytes": 27242
+    },
+    {
+      "path": "build-ios26-original-buttons-final.log",
+      "files": 1,
+      "bytes": 27565
+    },
+    {
+      "path": "build-ios26-overlay-layers-final.log",
+      "files": 1,
+      "bytes": 9193
+    },
+    {
+      "path": "build-ios26-solid-sheets-final.log",
+      "files": 1,
+      "bytes": 27437
+    },
+    {
+      "path": "build-ios27-baseline-tests.log",
+      "files": 1,
+      "bytes": 661931
+    },
+    {
+      "path": "build-ios27-button-drag26-final.log",
+      "files": 1,
+      "bytes": 9456
+    },
+    {
+      "path": "build-ios27-button-press26-final.log",
+      "files": 1,
+      "bytes": 9480
+    },
+    {
+      "path": "build-ios27-dependencies.log",
+      "files": 1,
+      "bytes": 2299862
+    },
+    {
+      "path": "build-ios27-device.log",
+      "files": 1,
+      "bytes": 403
+    },
+    {
+      "path": "build-ios27-dock-edge-final.log",
+      "files": 1,
+      "bytes": 33827
+    },
+    {
+      "path": "build-ios27-dock-edge-static.log",
+      "files": 1,
+      "bytes": 337950
+    },
+    {
+      "path": "build-ios27-dock-original-final.log",
+      "files": 1,
+      "bytes": 27243
+    },
+    {
+      "path": "build-ios27-dock-outline-final.log",
+      "files": 1,
+      "bytes": 6820
+    },
+    {
+      "path": "build-ios27-dock-popup-alignment.log",
+      "files": 1,
+      "bytes": 75086
+    },
+    {
+      "path": "build-ios27-dock-popup-compile.log",
+      "files": 1,
+      "bytes": 23586
+    },
+    {
+      "path": "build-ios27-dock-popup-final.log",
+      "files": 1,
+      "bytes": 13055
+    },
+    {
+      "path": "build-ios27-dock-popup-static.log",
+      "files": 1,
+      "bytes": 664619
+    },
+    {
+      "path": "build-ios27-dock-prewarm-final.log",
+      "files": 1,
+      "bytes": 9159
+    },
+    {
+      "path": "build-ios27-dock-rim-final.log",
+      "files": 1,
+      "bytes": 6851
+    },
+    {
+      "path": "build-ios27-examples.log",
+      "files": 1,
+      "bytes": 12229
+    },
+    {
+      "path": "build-ios27-final-static.log",
+      "files": 1,
+      "bytes": 664868
+    },
+    {
+      "path": "build-ios27-final.log",
+      "files": 1,
+      "bytes": 15464
+    },
+    {
+      "path": "build-ios27-goo-compile.log",
+      "files": 1,
+      "bytes": 5439
+    },
+    {
+      "path": "build-ios27-goo-final.log",
+      "files": 1,
+      "bytes": 15762
+    },
+    {
+      "path": "build-ios27-initial.log",
+      "files": 1,
+      "bytes": 25558
+    },
+    {
+      "path": "build-ios27-native-alignment.log",
+      "files": 1,
+      "bytes": 75086
+    },
+    {
+      "path": "build-ios27-native-compile.log",
+      "files": 1,
+      "bytes": 5149
+    },
+    {
+      "path": "build-ios27-native-final.log",
+      "files": 1,
+      "bytes": 15736
+    },
+    {
+      "path": "build-ios27-native-static.log",
+      "files": 1,
+      "bytes": 664616
+    },
+    {
+      "path": "build-ios27-native-tests.log",
+      "files": 1,
+      "bytes": 337962
+    },
+    {
+      "path": "build-ios27-package.log",
+      "files": 1,
+      "bytes": 14698
+    },
+    {
+      "path": "build-ios27-popup-text-final.log",
+      "files": 1,
+      "bytes": 15789
+    },
+    {
+      "path": "build-ios27-python.log",
+      "files": 1,
+      "bytes": 1016
+    },
+    {
+      "path": "build-ios27-validation.log",
+      "files": 1,
+      "bytes": 27792
+    },
+    {
+      "path": "build-library-api-final.log",
+      "files": 1,
+      "bytes": 14751
+    },
+    {
+      "path": "build-library-api-initial.log",
+      "files": 1,
+      "bytes": 27338
+    },
+    {
+      "path": "build-menu-shadow-bounds-final.log",
+      "files": 1,
+      "bytes": 6851
+    },
+    {
+      "path": "build-menu-source-handoff-final.log",
+      "files": 1,
+      "bytes": 6853
+    },
+    {
+      "path": "build-menu-winding-union-final.log",
+      "files": 1,
+      "bytes": 6853
+    },
+    {
+      "path": "build-mixed-goo-final.log",
+      "files": 1,
+      "bytes": 9149
+    },
+    {
+      "path": "build-modal-static-color-final.log",
+      "files": 1,
+      "bytes": 27592
+    },
+    {
+      "path": "build-nested-glass-final.log",
+      "files": 1,
+      "bytes": 27574
+    },
+    {
+      "path": "build-popup-content-backdrop-final.log",
+      "files": 1,
+      "bytes": 6853
+    },
+    {
+      "path": "build-popup-shadow-final.log",
+      "files": 1,
+      "bytes": 9458
+    },
+    {
+      "path": "build-same-tint-goo-final.log",
+      "files": 1,
+      "bytes": 9170
+    },
+    {
+      "path": "build-tabbar-controls-final.log",
+      "files": 1,
+      "bytes": 9190
+    },
+    {
+      "path": "build-tabbar-top-blur-final.log",
+      "files": 1,
+      "bytes": 9193
+    },
+    {
+      "path": "build-unified-menu-final.log",
+      "files": 1,
+      "bytes": 9192
+    },
+    {
+      "path": "build-unified-tabbar-final.log",
+      "files": 1,
+      "bytes": 11924
+    },
+    {
+      "path": "build-unified-tabbar-initial.log",
+      "files": 1,
+      "bytes": 9426
+    },
+    {
+      "path": "docs/tmp-home-compare",
+      "files": 20,
+      "bytes": 34950790
+    },
+    {
+      "path": "docs/tmp-home-compare2",
+      "files": 20,
+      "bytes": 34923362
+    },
+    {
+      "path": "docs/tmp-home-compare3",
+      "files": 20,
+      "bytes": 34935694
+    },
+    {
+      "path": "docs/tmp-home-compare4",
+      "files": 14,
+      "bytes": 24090406
+    },
+    {
+      "path": "docs/tmp-home-compare5",
+      "files": 20,
+      "bytes": 34941181
+    },
+    {
+      "path": "docs/tmp-d5.png",
+      "files": 1,
+      "bytes": 1022
+    },
+    {
+      "path": "docs/tmp-n5.png",
+      "files": 1,
+      "bytes": 1022
+    },
+    {
+      "path": "docs/tmp-r5.png",
+      "files": 1,
+      "bytes": 1022
+    },
+    {
+      "path": "docs/tmp-tree-35187.txt",
+      "files": 1,
+      "bytes": 30182
+    },
+    {
+      "path": "liquidglass/build/.transforms",
+      "files": 5731,
+      "bytes": 25006807
+    },
+    {
+      "path": "liquidglass/build/generated",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "liquidglass/build/intermediates",
+      "files": 1111,
+      "bytes": 29933128
+    },
+    {
+      "path": "liquidglass/build/kotlin",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "liquidglass/build/publications",
+      "files": 2,
+      "bytes": 6922
+    },
+    {
+      "path": "liquidglass/build/tmp",
+      "files": 2,
+      "bytes": 408
+    },
+    {
+      "path": "liquidglass-ios27/build/.transforms",
+      "files": 2466,
+      "bytes": 8985865
+    },
+    {
+      "path": "liquidglass-ios27/build/generated",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "liquidglass-ios27/build/intermediates",
+      "files": 1248,
+      "bytes": 29524282
+    },
+    {
+      "path": "liquidglass-ios27/build/kotlin",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "liquidglass-ios27/build/publications",
+      "files": 2,
+      "bytes": 9370
+    },
+    {
+      "path": "liquidglass-ios27/build/tmp",
+      "files": 2,
+      "bytes": 406
+    },
+    {
+      "path": "melox-tabbar/build/.transforms",
+      "files": 1246,
+      "bytes": 4899780
+    },
+    {
+      "path": "melox-tabbar/build/generated",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "melox-tabbar/build/intermediates",
+      "files": 514,
+      "bytes": 92430671
+    },
+    {
+      "path": "melox-tabbar/build/kotlin",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "melox-tabbar/build/publications",
+      "files": 2,
+      "bytes": 8886
+    },
+    {
+      "path": "melox-tabbar/build/tmp",
+      "files": 2,
+      "bytes": 414
+    },
+    {
+      "path": "melox-tabbar-demo/build/generated",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "melox-tabbar-demo/build/intermediates",
+      "files": 480,
+      "bytes": 56849523
+    },
+    {
+      "path": "melox-tabbar-demo/build/kotlin",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "sample/build/generated",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "sample/build/intermediates",
+      "files": 1173,
+      "bytes": 109390226
+    },
+    {
+      "path": "sample/build/kotlin",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "NUL",
+      "archivePath": "NUL-artifact",
+      "files": 1,
+      "bytes": 56
+    }
+  ],
+  "archivedTracked": [
+    {
+      "path": "androidx/compose/ui/graphics/AndroidBlendMode_androidKt.class",
+      "sha256": "a3144302de7d6a51b54d28695d6c45a0bfebd9f436edcf003473b012bd691422"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidBlendMode_androidKt$WhenMappings.class",
+      "sha256": "0cc4ed6aa25378b0616ea66c7b46e462c5761ad791c253de0ed17a015e752c8b"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidCanvas_androidKt.class",
+      "sha256": "897c455061889070d66d9299079e3fbc6295d22b6384c0f6f4a41745c8c88e80"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidCanvas.class",
+      "sha256": "7e0f95e60999204fa09cd98170687cbd53cac7b9f9e98af0bddc735f2e37940c"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidColor_androidKt.class",
+      "sha256": "2b1d8ca2a836b429ed2de947526c08f71603b84a5f9769e2f94e75221a725c0a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidColorFilter_androidKt.class",
+      "sha256": "d69257debe087923e11d52e485257af69053150dbb8edc94a764d42bc0a7003e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidColorSpace_androidKt.class",
+      "sha256": "54b11618e22522b270852d7ffe0f8a0f10ed656eff01228b76b26b7061269ae7"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidGraphicsContext_androidKt.class",
+      "sha256": "c4619d0fdd724efdf35039d94664d145eeec1e7ef7bdd023429d1a8786d2ad83"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidGraphicsContext.class",
+      "sha256": "65534007eab882ca95b716cc15cad697e4b076a3d774921cb59d990de946a7c9"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidGraphicsContext$1.class",
+      "sha256": "954adb53d0b0a316ce725ffb168ebea73b52bc06566a17abe692067604316264"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidGraphicsContext$2.class",
+      "sha256": "e2eb55932c53ced0067f4ad0a2a5278409d4e591655649e246c990064ae1e2e1"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidGraphicsContext$Companion.class",
+      "sha256": "0a47105fefcf8b569824a726fc044d03a3e7d431850a7b6c929bbafbb4689d79"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidGraphicsContext$UniqueDrawingIdApi29.class",
+      "sha256": "b8aac33897b9230e5557f78807798f2ca4c18befe29d4c61a91b97abddcbe801"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidImageBitmap_androidKt.class",
+      "sha256": "6308d95bb9c0e4534895b5378fef7c0e6eea401c2299fdfda81e92e866568d41"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidImageBitmap.class",
+      "sha256": "3707b8d1bc6c195a804b76fa38dad20d1eb30a374366d1508f4f2b6f72b65458"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidMatrixConversions_androidKt.class",
+      "sha256": "9e400d8037b0833617ab36a5ebd460c0c279b1091695bbafebe2f89f7d41f9c5"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPaint_androidKt.class",
+      "sha256": "15d5b11964bbe92ea1832347a328282434100097f5190646951e493c5f983859"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPaint_androidKt$WhenMappings.class",
+      "sha256": "7ce84efb88402f8665b2f35bc642c32caad215db40ba0f6be2484c11086969e1"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPaint.class",
+      "sha256": "fb9f4587ce7b6a8102a246045142e98fa4f51c0c863875c51461d02431e06ace"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPath_androidKt.class",
+      "sha256": "3ca9f96eadd12df93595a835c9ebc452b48fdcf9e6fda5954b23e92bf84b9652"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPath_androidKt$WhenMappings.class",
+      "sha256": "9aac4b1e84631cf050e432ee89ae8cf442721397d073efdea0f08bc513ac0518"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPath.class",
+      "sha256": "243a5705280467ff79bad11db66b3dff50e686057f55c2806b7307bc03f2b309"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPathEffect_androidKt.class",
+      "sha256": "15b3bcdc43b53b9574cd898c85cc644803678d26a58b965f43be91a0e3bd6cb2"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPathEffect.class",
+      "sha256": "97b73c8e85990ac0ca94bc3e0e29f77fe1de259795b15060c97597c2a57e347d"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPathIterator_androidKt.class",
+      "sha256": "e83c25b9d82bcbbd109579cea747962286f8f74503e6f416a38e9df6f1e6c903"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPathIterator_androidKt$WhenMappings.class",
+      "sha256": "a1c859db8d3dc9c969b5f45dfd22704162e2434e3abf9d172c17a1bf64415501"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPathIterator.class",
+      "sha256": "d077b889c5d81f42664f3b8d879682dad3ebd06f09b0e5ff736acc16284faaa4"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPathIterator$WhenMappings.class",
+      "sha256": "2bb5b54e03cc569a3ac73a797d72179dc9dc156cdddba56e97a93f1a8c7d3ab3"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPathMeasure_androidKt.class",
+      "sha256": "be46df52bc6c262b677f18628f44bb424363d9f42945c3d89c962bf74d8ac6a2"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidPathMeasure.class",
+      "sha256": "028d8a49b285660d61fcf74dcbf1f529c38d50e8ed1960f75df752cac237c8fa"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidRenderEffect_androidKt.class",
+      "sha256": "f8324be32e4fd6ec10d049aa5d5a76960d4331ca0465c14774c839b59beba9f4"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidRenderEffect.class",
+      "sha256": "0a264b2cc01d04c6a12de3a42d05d39609de39334325aa5fcf7f0f413f230bba"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidShader_androidKt.class",
+      "sha256": "b39fa7ea43a3aeef5d85ab1b9ae381c5a8bdaf26d883f5039511c0f345a96ec8"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidTileMode_androidKt.class",
+      "sha256": "b0de560f916475ef8c54d814233fd936aaa9bdf024a549dab7e1062097bd7d0c"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidTileMode_androidKt$WhenMappings.class",
+      "sha256": "9b393a0d171104ae0b094462330089688fb9e7cc3ffa0f78f3dbfc4968543fff"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/AndroidVertexMode_androidKt.class",
+      "sha256": "4f0cb84d1e6d85b1b69d5fb3054a4dcbb057f9de803741ad94072d061aee6fa8"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Api26Bitmap.class",
+      "sha256": "90d81fd66b6a2926384c7bedd26166ac38a00f935e59d030fc710f5b51f50cf0"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/BezierKt.class",
+      "sha256": "4aee4c5e286c779013ef66bd15617b3d9ba84c5d8b70623518f28f2948c5fda4"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/BezierKt$WhenMappings.class",
+      "sha256": "59f8630d35fc3b66f9fde95b1185c6cd35a11e3eee3941160cb81a8545ba3f5a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/BlendMode.class",
+      "sha256": "0e497ab3c781dbd652539cde3be83b22aad03f517e44c46c5582e9d160444f38"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/BlendMode$Companion.class",
+      "sha256": "aef4eefb752c5c5691484761ac218f322dd5d4485e83c3c7cad50caba5fd8747"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/BlendModeColorFilter.class",
+      "sha256": "0aad794c2c40685ba2ab9a97df2866abfb26614314f8ecaef2404edf5608aead"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/BlendModeColorFilterHelper.class",
+      "sha256": "a68053a2edad5f3d8eb87cc5281c85f0ae56d4ae5b18d6d0ab0d7425b6b3eaa3"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/BlurEffect.class",
+      "sha256": "9161521598d29c8103c1a510022af79543425a70ca69849fed52dc6865bb7249"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Brush.class",
+      "sha256": "52eb896ef616a0d47e52f32f2dad021160831447125aa677576dfea01dfa4caa"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Brush$Companion.class",
+      "sha256": "28eb61eff9d1c19cb15f3fe1739dc2450c596cb5a2ac078848f89f7d636980ee"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/BrushKt.class",
+      "sha256": "0a16524f6b6c0f48e68eaedea3bdc4c81aad579a42f59f674091a580932d7ad3"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/BrushKt$ShaderBrush$1.class",
+      "sha256": "04ea6492e6d250567402665f3a6d604147fb84516d935df4ac8cebfd34ee4b29"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Canvas.class",
+      "sha256": "29b2551e762fe3c45ee0d237a1eacbe4e976c53bc2b926a812a3dabbf807a875"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Canvas$DefaultImpls.class",
+      "sha256": "3f9a4bdfb93775fe13675f473c1696f48cf4e26b010805fcc345ad469e78e35c"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/CanvasHolder.class",
+      "sha256": "88def4a0582a09a35c1c6485c9552eaebf92677159b0a8a691b05dd899f1c784"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/CanvasKt.class",
+      "sha256": "71e18a3870ae50f03a17cff9c773591ec0b2e381a84b2e5e4cd7152891c88e2c"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/CanvasUtils.class",
+      "sha256": "8f501cfadcf39cad57fc9190ab6c2e1818d1c05866aa48ab79c43e73f36a93b6"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/CanvasZHelper.class",
+      "sha256": "c3e94db9ff0c1ec18daccda2af9fdf657dca5e7a3d1467e230fa052a12b2b751"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ClipOp.class",
+      "sha256": "a8ed33af002d48edb1a9e9f138de794fce7a0b219516b58b9068b0ece91e842b"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ClipOp$Companion.class",
+      "sha256": "16a0f35eed86025447b6ddf6038c433ed9f60755d2739d158a19f42a1dd3e92f"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Color.class",
+      "sha256": "c11dd91daff7dba1669577e661c3b845a162ec61b84e1186b63b9f57d9d52ccb"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Color$Companion.class",
+      "sha256": "53126eead2e1cc024e9df5d90a6629661980f4ca0e9946fa66e4b7dbc9b07b6e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ColorFilter.class",
+      "sha256": "37c12b29cab0a956ca1a6f5a0b6aa43ab70b76e9cc3387aa3eec564fb27ad8d6"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ColorFilter$Companion.class",
+      "sha256": "21b98397503f4299f119f68fcd23d6539c06409eaf559c80dacbb0f4400ade10"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ColorKt.class",
+      "sha256": "b4a7981e6269cab26fa33bccd0733468bba05b8b1c00b431096bcc6e36a9d51f"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ColorMatrix.class",
+      "sha256": "986229b28757a64ba2b33486fa4578b519e8f5d93885840e911e3baf82e70efa"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ColorMatrixColorFilter.class",
+      "sha256": "07404862830230936ba97d0a4527f5926d5228bffcc3fc3d8c9dc2121f211482"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ColorMatrixFilterHelper.class",
+      "sha256": "82ebeba821a268544198c315865155dfea0d32d93e2c3b058f552d1d31f6106d"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ColorMatrixKt.class",
+      "sha256": "54cd46c83144ab775c4135a08566adc3142408fa70ad2af5605c34a535e9d2b9"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ColorProducer.class",
+      "sha256": "af876537a6a76d3ce212bd3315540a8ab15ad8587e2c797b16aac70f11bae4d2"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ColorSpaceVerificationHelper.class",
+      "sha256": "7690c5ab68c6730db096ad62a636b01af1f7464786214f92d40d16a5208d95f1"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ColorSpaceVerificationHelperV34.class",
+      "sha256": "690a372f9510c6d0146d72e60d45145ac2faffb03537958fb353c11db3c525b8"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/CompositeShaderBrush.class",
+      "sha256": "d03c38b40d313f8762e8ac8022517697dda9f3269d601469867e54d46e551df8"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/DegreesKt.class",
+      "sha256": "15be497582cb4c29ac7a8ace03b47738c6123324d7a0f9379faad6efcef12828"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ExperimentalGraphicsApi.class",
+      "sha256": "33eecf0828425bad4d4a30b320f4415a86f3e7a72de65258aece725a4bf2f793"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/FilterQuality.class",
+      "sha256": "7ae591b116f12cb264d8a97266a05e3b06c2c9409f56a928a3d30c1a67fc7800"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/FilterQuality$Companion.class",
+      "sha256": "633ca7948b74c6b164943fe04b6a33d5e000ffadb106740794f42f4a8c93aabc"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Float16.class",
+      "sha256": "06df2e088a38c86f39f21eadb726a16c67db3e232717da4e2a485b5eb9c0229f"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Float16$Companion.class",
+      "sha256": "d44c179b4d742108b135986301450a7c4774393888ed97bcb89c5ef3a31b9454"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Float16Kt.class",
+      "sha256": "5eabbf95202c7a431a2bd351fd8dc296cf945651c94ca4c53e2d40afebdaae0d"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/GraphicsContext.class",
+      "sha256": "4ccfb9c790dd5e25d624d25a927f553fba114258429ccaceb997591c888dbd49"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/GraphicsContext$shadowContext$1.class",
+      "sha256": "610bd5d0510195f1362915656463e44fce2bcef6c31e38a27a541b92bbd8999b"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ImageBitmap.class",
+      "sha256": "2dad9ea031f8037e7c0aea91b45bbd513c7b3f22207dba438da98d4cc3de644d"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ImageBitmap$Companion.class",
+      "sha256": "8075168289ffdd8f62dcd6c5953f55d7d1c0302ce569469abf9d8ad95833d549"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ImageBitmap$DefaultImpls.class",
+      "sha256": "b0bb0e1d652085ccfdadb7a2c04d508a29eede2f8314bd26a0b6a2dad6732ef2"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ImageBitmapConfig.class",
+      "sha256": "df79ca06f1e9465043ba8895e345ea586ce19c8bb1c2afd5b64af52dd2bad6dc"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ImageBitmapConfig$Companion.class",
+      "sha256": "6e2dcc3a11ec7881ea0cac0b4b8d89b62e1f808d4bbe5d58b0997c2551b0c9ba"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ImageBitmapKt.class",
+      "sha256": "1d8659d7c81d658ad4225bdb5df980214520de6f3f9e1944319e17e7aef9c5bf"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/InlineClassHelperKt.class",
+      "sha256": "faa9aaf9db28739950ee7520f182dd8f0156e4db306074f3c2d4a0b82bb9ee7e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Interpolatable.class",
+      "sha256": "390e957fbbbafcabc9b8ee9303b08c283ad556b9d2a2cc4eea0ec26a2cdb937e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Interpolatable$Companion.class",
+      "sha256": "c0c91e423a1c9d7255816b33babcce77fc8efba4814afaea1166adbe34aa94d7"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Interval.class",
+      "sha256": "5f44552bb48d6b2fd867bf2dd39b2b24b1385f58455730eb2ff4785c045deecd"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/IntervalTree.class",
+      "sha256": "0d6bd7c8cb58fb5e90eec6ccd4ae0cc2b78909bca2ee1ba9fcf962d63d72c408"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/IntervalTree$iterator$1.class",
+      "sha256": "30014c972edf2bb78ad0505dc0c0f56afe05ed95356b401a70910d73b0fdbe40"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/IntervalTree$Node.class",
+      "sha256": "2bcb34ad15a54830a171ea0b74532079d1377818c4eb98e75e68d4f87c8a9248"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/IntervalTreeKt.class",
+      "sha256": "08cc52e9328743299e6c19c981953730fc4f142801c7dfb0b3c90814d3185038"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/LightingColorFilter.class",
+      "sha256": "5ec8e5ea3285c38739ebf5a80542ebb0580ee63b8a7e804f1fb4d60fdc4f97ab"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/LinearGradient.class",
+      "sha256": "c7c5cef5530360097b3265851e4dd2538ac92d6ce2dc9a780443b3f1a4331cfb"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Matrix.class",
+      "sha256": "9dc483d5b133d12885d2baea97190ac6dcb66a13736567723ddd83844f686310"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Matrix$Companion.class",
+      "sha256": "5fb961b52cc4656cef966221025d29a262cea2a8228c9e7e12089888244cb3b2"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/MatrixKt.class",
+      "sha256": "ee8feeaedb6e4d06a1571de74797f6d0f34ccc2404065225cfc6b2ff4ee7d98e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/OffsetEffect.class",
+      "sha256": "cb7adfa5950eea08fed7a3f896b1c01eef856356254730447656481ef9d53693"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Outline.class",
+      "sha256": "328c2c90b0ce9d8987147c2552613ba6335e3b91e559880130399cd486d90161"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Outline$Generic.class",
+      "sha256": "32401feda44dfbfb7c6a4e5418a39b329458013522fecc5427e0a480e2042d4e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Outline$Rectangle.class",
+      "sha256": "762b35d4734559462a90f94abdd297ef1e6de3ac4f92c5154255ba396be10c4d"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Outline$Rounded.class",
+      "sha256": "f49b38995ebd5eb2e08221a0c8fc98ea2ae0e2397ff0604d4dcf18ebcfb18933"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/OutlineKt.class",
+      "sha256": "2209581bf58b49aea796fd184483252b9a521a432adc5597c4999d15f4190d6f"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Paint.class",
+      "sha256": "bf0f1a238c36e21c01587fe065d9d1b2bf3c1efea8352f8185a72a5546ce039e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PaintingStyle.class",
+      "sha256": "c07868ce049efb1e8050ceab7e526faa6eca113ed4659c08cc5c8ab5a5bae4fa"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PaintingStyle$Companion.class",
+      "sha256": "7adca30a10cd240a186f0923047bc46a9ad1f0457e47a1dc8ed603c994905c88"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PaintKt.class",
+      "sha256": "a39f7c84e9c238563af494e29f6745319b3475e84508114eb7955ae3c2af24ff"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Path.class",
+      "sha256": "27b897ef3d4b835470459e161dc4822601c508208925944ea4c8f88943ccba07"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Path$Companion.class",
+      "sha256": "5f5f77a0dc2a3cc552edcb1544de9657a0439cf939c2a345190b2b6c416da77a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Path$DefaultImpls.class",
+      "sha256": "6229aaf3c112b1b5d563fa3710350234557cfa0329de8a245f396f529d64e57a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Path$Direction.class",
+      "sha256": "aa23992fb502f115cfcc4d661c3a601d928d2e948ade5a0a6a6efa2fa2286e45"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathEffect.class",
+      "sha256": "851b85ab6721e7529b60796fdd9262ecfd6e93791c65e9074141b789fede87a2"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathEffect$Companion.class",
+      "sha256": "a5359c82970c93ccceecc346bb53e28c198d0e3d616c521a642c18b837b91e38"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathFillType.class",
+      "sha256": "1730a97d66f64464dd7f362758f1f6fcc5bbe69a38d111dbb4442178ba7ba3bd"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathFillType$Companion.class",
+      "sha256": "010bdc6e24367281c550f7732b6581855e6e3603ccf41cf6a82275e86f9d7f4f"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathGeometryKt.class",
+      "sha256": "86ade007f3475ea1f061ab25542798f32845d83efeceb81f11935dbf19f0af76"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathGeometryKt$WhenMappings.class",
+      "sha256": "926f2ed053b58bfb8817977b23d7d3e50a55263705abb92544b74db76d0d4a28"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathHitTester.class",
+      "sha256": "b19a7c55d147b2e0a0e092030bd139402542bf38c9d04961a7783a229e0eca32"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathHitTester$WhenMappings.class",
+      "sha256": "c907836070e251eda5b61d873341b83e430e353c9fc0339fdbdedd6f046c13ac"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathHitTesterKt.class",
+      "sha256": "90130e059948d6f8d28abfb58e03f0d527af8d834e93f516b8dfe393c62c8d16"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathIterator.class",
+      "sha256": "6e41bdb628fee924d0c05b2b1623db5f01614951a0f7483cc6cfaafe1d6b114f"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathIterator$ConicEvaluation.class",
+      "sha256": "ca6b355295618ac69afe60bebc955c40013d71f03e2439a89ea05f821a63bbaf"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathKt.class",
+      "sha256": "bdf17d13c39bdc9743cb0d51eeed7f980097866530a7e7f59aff14728edef4f6"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathMeasure.class",
+      "sha256": "e5644fe01d653ac77b3dd9274baefcfa51048163f4305ec109da2b3a94018926"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathMeasure$DefaultImpls.class",
+      "sha256": "f418207ed68200f46041266c590ba9c38ea635a5c118afa1a28277535d7a2d77"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathOperation.class",
+      "sha256": "28528218c4e02b7d65785666872ba64861eb334de0826a4a2083f09b4971baad"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathOperation$Companion.class",
+      "sha256": "b945235dd5c77edab6436e9ab30eb5480865228b3a02ac67595c5332d615628b"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathOperationKt.class",
+      "sha256": "237ca886eabcef9d69973306dc82cfbf10cd502521bf4a2502e5430ebd3ae158"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathSegment.class",
+      "sha256": "785ed555384441c8e55801ef19346c92c8ce8256e7a932c2bc8de51cc6367a6e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathSegment$Type.class",
+      "sha256": "5cf24d57910475251dd35aff2a2551aea6a4a6d3f9f742be4976fe143fe0dc0d"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathSegmentKt.class",
+      "sha256": "17adc011575c52ae75e86d9ff4847892545ca731709bbb73cb48d99094f248df"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathSvgKt.class",
+      "sha256": "67d7134bc26d51084c48d898d5acc7071386d5c2cb262d5a0583fb220bc38c6a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PathSvgKt$WhenMappings.class",
+      "sha256": "5566e476b4f74d697ca40105cc5761ccc2a9a7a41b41f3b65fe9808134f6a7ed"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PixelMap.class",
+      "sha256": "cb858ddb1f03e7210b9dfcec6da03df4ab7b6139efe2371d3234e2559732fad6"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PointMode.class",
+      "sha256": "46208e8f75ca50d80be596c380d02d4bc0f885c90a8bfba68b75b3373402c49d"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/PointMode$Companion.class",
+      "sha256": "dfd925b0bfcb98cf5a75a74b13170822b864ed97f277fb94796a5c3b9b755682"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/RadialGradient.class",
+      "sha256": "3c398c8cc01ad656692851e6df9263088b9a095cb85bbf4317443075552dc170"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/RectangleShapeKt.class",
+      "sha256": "ef4a79030de7e061deba8ad6f1daf6ac7b88d319e5aa2ed6675168c45a0a7937"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/RectangleShapeKt$RectangleShape$1.class",
+      "sha256": "68a92b1bc052e886258c4840a9e1f6167e327d4eda0d0409bb68ec4712227c06"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/RectHelper_androidKt.class",
+      "sha256": "a392473f6455da5308ce7ea4dca69ccb334f3fb2d336680ecb3a780030505e55"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/RenderEffect.class",
+      "sha256": "212c0235d6d54cf0c89e8d662bfe305db27c62da080b76ad13123fda2443875f"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/RenderEffectKt.class",
+      "sha256": "719062b620fbcad4cd3a98114f820f570bb4abd76856f3bce92a355785a0e8fe"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/RenderEffectVerificationHelper.class",
+      "sha256": "e1291f79e4274c7097fc052a5f4275c23749ff57365c3aa89eef993da050c5ee"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ShaderBrush.class",
+      "sha256": "54c030ddbf1022e257676223a58ae643fa49bfcd6817eec284683c778f3d4bbc"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ShaderKt.class",
+      "sha256": "cc795f33e0c29cd968383cd092bf7f7c31bc8b36ed2e49b8d054625747bc0ce9"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Shadow.class",
+      "sha256": "31dc47154a1dd54a953048c80f932c528de0b6b27fa726da9f138ea1628358f9"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Shadow$Companion.class",
+      "sha256": "4f7deaa0f40dceb637e801bac22cc68a51f67742437eb58b489576c468a11ca4"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/ShadowKt.class",
+      "sha256": "aa1bf7916267754e410cdd003e4db5ebca0974439421318001688659abad6b5c"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Shape.class",
+      "sha256": "fe7563559c75996558c94273ef78ada24009eddb63900356f0f87784e4963cef"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/SolidColor.class",
+      "sha256": "517e517755dabdd5d6b2815f5bd9aa87d78880c46c3c02f91583d0cb3f836791"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/StampedPathEffectStyle.class",
+      "sha256": "ad9f56486898c68617bd403ec2da5e9195bb3ed8c963ae7fd9f724ac0900a21f"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/StampedPathEffectStyle$Companion.class",
+      "sha256": "dc1166ec5be38b66f66ba6114af91900d46645014ad919086317d175fe4ebfb1"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/StrokeCap.class",
+      "sha256": "0d92fda1de4e0065841b0b11d077e4abb1b09805587deb026b04067150cda0d6"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/StrokeCap$Companion.class",
+      "sha256": "4a320c42b97947ae0c2d7eec2f7eacd09b57e98e312ecfa65f60365d8baf148a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/StrokeJoin.class",
+      "sha256": "eacf14b899af326c2f08cd3fcbc507472df28bb15d2117e82f6ca0bbbdaa9095"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/StrokeJoin$Companion.class",
+      "sha256": "0f662bd7370d95175dd8c85e291cb7a4f623079dc49265ab3bf739400f3d5f2b"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/SweepGradient.class",
+      "sha256": "4d6a24115b4f3e709411e8419291cfc952e1482f52538b5a7f1926eb6fbb5c84"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/TileMode.class",
+      "sha256": "c694b77f4baffedeb1d488b6dac39a1562c3b33b12026a37daa2831a188e2ab4"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/TileMode$Companion.class",
+      "sha256": "9441910b6d89b630e3b39cadc53dd12bb42a47c2758c6a9b515cc957c15e39e4"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/TileModeVerificationHelper.class",
+      "sha256": "f00d26767b4cd0c80e42cb2a14f943f37bc37f03bb9e39aab5ce3778de246f16"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/TransformShader.class",
+      "sha256": "de4e9d01b2ab177a09bf94e4b05d6c700b82299d3e0f9ab178575aaa0e25e38c"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/VertexMode.class",
+      "sha256": "825bbe405da307aa2c8f8af80e156cead3c0f6688ef4239569d45d08de89f086"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/VertexMode$Companion.class",
+      "sha256": "c3525112f281421fa63b9fe43105540df671b819aa74e72a39f3661d09e87e45"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/Vertices.class",
+      "sha256": "a9af2e966ee20ace6f128cee2b2b47ea03156e2e94efea73bfe9afa5c9bd37c6"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/WrapperVerificationHelperMethods.class",
+      "sha256": "14566511189eca82dc50466e78ae9e2e05235a2dffd41d2f4b5ab87446e91823"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Adaptation.class",
+      "sha256": "76a676c461dfb96034480e3b4a6247e8308a728e5cc30b0576ca7f85d5623c18"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Adaptation$Companion.class",
+      "sha256": "c1baf230703382705c5eb3059d1e61918ccd8f6018b209cdc21a578e4f14c69d"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Adaptation$Companion$Bradford$1.class",
+      "sha256": "ee528aa42bde5b9149be43462878c5dae631005b060f05ad7226dd4cd0f865d5"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Adaptation$Companion$Ciecat02$1.class",
+      "sha256": "c057e68f9ea2d784c554752625843fb6cba8b3882861ac6db3b5d624521fa396"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Adaptation$Companion$VonKries$1.class",
+      "sha256": "de127bfa05152ef0ca098bfc4dda952fe2b5d555ad5a307e0d5cda432d793629"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/ColorModel.class",
+      "sha256": "8bef8e64e1efcdaecce05997cc4f30ccbd3d56b35c6581ce45ba53b3b7194719"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/ColorModel$Companion.class",
+      "sha256": "6e41d7272c21e1dba869763e920e1f77eee5227bbb48674220c6a7105c8a1485"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/ColorSpace.class",
+      "sha256": "e5d10d9ab01146abfbdcc8fc1843e37bfb4ff91704568e25a02b7ce9371a1345"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/ColorSpace$Companion.class",
+      "sha256": "020a24755e4908dcecf16eb1d6fefa17575e90ea5807256db42074f7395e03dc"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/ColorSpaceKt.class",
+      "sha256": "f7cf16b7c2526fdec8adae5eb47d435a6b6231ac886ca4197f2f4d796d1ce34e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/ColorSpaces.class",
+      "sha256": "fccdd0019833a94c0b7e6915ec20d4206b392ffe955aea31b0bf50eb1d852fc9"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Connector.class",
+      "sha256": "99b5017c7a2ac031d2a0998da51237fc013c7dff0e9bc09b0dea99fcd1cc7aeb"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Connector$Companion.class",
+      "sha256": "58c88561a4badf8ec04c14713bac0a2b0788492d1a3c6cc151d0f628918e99c4"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Connector$Companion$identity$1.class",
+      "sha256": "61397a24166d943b54b8fdc91bb6ad8307bafd7132240207c9688f448bb830d3"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Connector$RgbConnector.class",
+      "sha256": "a1d38825d4c2b1269ba5fda9d24926b75e476b6967bdcce3c14889d93f9e482e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/ConnectorKt.class",
+      "sha256": "e5652825e7ba6eb4d21005ec1145f4da85fbccd2ad009d60fcb7d035890fa91d"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/DoubleFunction.class",
+      "sha256": "b34234d5bc197f13d1b67fc9d12008a9cd9b6bfc877b6b53a4880ac9f9be106b"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Illuminant.class",
+      "sha256": "20e59a203edee0978e21fe81bec1c0c932def1d7c2918b416e8133995b24a5b8"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Lab.class",
+      "sha256": "0b26221b72e142782735750c1c3ed0b251648e46262b3013df77ddb8857081d4"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Lab$Companion.class",
+      "sha256": "270b5a238ab32ebe2c7215e2374a1dab455556e2a94e852adcbb23597b5d21b9"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Oklab.class",
+      "sha256": "0aa14012861a72566388aa68c3378081d2d57a8137bfc8774085535952ea8f28"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Oklab$Companion.class",
+      "sha256": "71d49ce5c7607c2ce35aa0feb39d94188a209a754ec2e00069b8486d1993c765"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/RenderIntent.class",
+      "sha256": "05360a1f0976457653999b53ed3dcd2701c7e6e57d2ec3745e7f1cc8a0dc96c9"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/RenderIntent$Companion.class",
+      "sha256": "abcd988c6847a7fee811d010d19ae7abbc2ba11ae9eec9a8383c84648234ce12"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Rgb.class",
+      "sha256": "c2a1801d9732d28d4eff0aee1f850e4bf58d191a6ac8d52080f2e42dbddc7d9a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Rgb$Companion.class",
+      "sha256": "d61d888f73d6df6a7df84005c8fe47e120e09a64a27938204281254f053de9ef"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Rgb$eotf$1.class",
+      "sha256": "67f1d53614beaca55c6cbc94c3f0a0130c02b1558db113bdf752154316470972"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Rgb$oetf$1.class",
+      "sha256": "51ca87343c356bc899f60bb5e18349e620f7500137af2eacc868c6a78eb29f5a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/TransferParameters.class",
+      "sha256": "a61a355f77f6dd3fa3d835e194f93e7d398653cbf99e720e317a102ce2b032f3"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/TransferParametersKt.class",
+      "sha256": "0d3db078f15baa8bd73515f1d9a8faffe109a4fd3490a71e8995e601adc35df4"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/WhitePoint.class",
+      "sha256": "5772566e166ad549e166207050768e585c2a08a06892ef008f4944363c671e7e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/colorspace/Xyz.class",
+      "sha256": "0dc9b8ed4ebccec8fd3fc8642d8d6955f49305c58795a9f80318773bfc46f85f"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/CanvasDrawScope.class",
+      "sha256": "e2da09d427ce042c15863068500772e5320eb43f0dda543e847932e068020ccb"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/CanvasDrawScope$drawContext$1.class",
+      "sha256": "29ce1e76a91bc06b6aad45e268fc011a1e88e31fb4dc7c3e2d241a09877b40a0"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/CanvasDrawScope$DrawParams.class",
+      "sha256": "b5a94cd6ef37ddbda6b7dab7a3c3e644daafcd1bde94a586fabd59825e4ef739"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/CanvasDrawScopeKt.class",
+      "sha256": "dfadf6ef8f6c98d92114d67b5c533ee4d017f6aacc7861bc199722912122c51c"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/CanvasDrawScopeKt$asDrawTransform$1.class",
+      "sha256": "1c2f3ec09656476cce0be5a67c4c1bac8e88bcc372332781f7ba7b75df3c52da"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/ContentDrawScope.class",
+      "sha256": "813376a3323f48334cd184bea0a74697263052f13561a3e8177d66a46891471b"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/ContentDrawScope$DefaultImpls.class",
+      "sha256": "95e1d95cec28469fd86b225348cd852dcad1b5216825bef7e75182511c4588cf"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/DrawContext.class",
+      "sha256": "010db45bb8127a9d94f9ccae74b8e34bd14315f6b4f2ea5de49e202926dea139"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/DrawContextKt.class",
+      "sha256": "c446758b50ee4f04ab895e9ade035a06ae39616d646bed506f6c759aadb5f633"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/DrawScope.class",
+      "sha256": "2a1b590404ffb2ba2fc9c67bb14f1b74e43d08f080453d1055eda75de62a0422"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/DrawScope$Companion.class",
+      "sha256": "a89fc513c3f72e26fe167802029a121fdd821a8ecaeb32538054c241db247246"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/DrawScope$DefaultImpls.class",
+      "sha256": "daa4ca79776a0f086d32e2671feb7651ed45ef6413bc9e31d23fd85e0479f922"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/DrawScope$record$1.class",
+      "sha256": "046ad0357f06a2e03d037a498c6c1e8c50e3341ee631071530dc6960e36a100e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/DrawScopeKt.class",
+      "sha256": "5e8d4abea77039f20ff391d726117bd3e7e667411601e6ac164493c1c1b62c4c"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/DrawScopeMarker.class",
+      "sha256": "1a790fc404251822fbce326e13ba127e544828c65d64289d73625602c4dc977a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/DrawStyle.class",
+      "sha256": "9110598c7784ed9ca0847c29762b0c6e433471f64168cfac72f03f31591b02de"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/DrawTransform.class",
+      "sha256": "e84eb6b968a17a8ba004693421d012508ac0a181ec94dc5fa860bdf9e6d8394e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/DrawTransform$DefaultImpls.class",
+      "sha256": "0b37d66991762718b6230cf37e06418ac7a682e6d3f263883df4ae4d08f13dcd"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/DrawTransformKt.class",
+      "sha256": "661ca02afca9fdf427b1e1653cb162bf5ddcd5145085a68901feab3f2ba23220"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/EmptyCanvas.class",
+      "sha256": "04e933514b64cd6c1acca9136fe0cfe7385f54e2e7f3521832cbb017adb157ed"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/Fill.class",
+      "sha256": "dc6e53d80b63ad8cb0880cdc98d6cfc0e7516cacfdbcb2c757445d524eda80cb"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/Stroke.class",
+      "sha256": "abe0bbb2241cf2124cc287709909c203e6a0c46993471670c621194cbadd9f3e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/drawscope/Stroke$Companion.class",
+      "sha256": "8f50f07e0820ac0ad60dcf6af3a8f95fa2730a2a455f6f75610d6e95e8a8dcb5"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/internal/JvmDefaultWithCompatibility_jvmAndroidAndroidKt.class",
+      "sha256": "371f588a3e43d9a19e6ea2b8055c4ab59f6ec74f5e17696bc3c240a86727d0e6"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/ChildLayerDependenciesTracker.class",
+      "sha256": "0f17e18c26f2ede4ecef1d8bb2fd8f83ec0e75e84f6bcc42570ea517be3931dd"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/CompositingStrategy.class",
+      "sha256": "79b6ba266f778658e083d3c991056f8e75d31dddd13cb1c784d48cd08df11fbc"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/CompositingStrategy$Companion.class",
+      "sha256": "6b152b76784c40ee5b0913f3c8d5c854029ffb9accd8293e2ae91b6f4f0a5eb7"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsLayer.class",
+      "sha256": "28945ba398854d9090017804ee0c543c2d79068b13ecbdc37e324bd09bdabbe6"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsLayer$clipDrawBlock$1.class",
+      "sha256": "6e69b548c544681015357e3a77388d65b81d0ebe5f8b73080da304fbeb9d424f"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsLayer$Companion.class",
+      "sha256": "5c793b423e4689e565995100f767c1de9976174dd490b7bf1431e2ef1bf914f4"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsLayer$drawBlock$1.class",
+      "sha256": "8ae272c6883f5f5f85eec405c6330d91dd9d6f7ab0ea300ce9ee342337329ad8"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsLayer$toImageBitmap$1.class",
+      "sha256": "a492d42cd3cd871ddda9f845ea1d06e27390592df40a4ee9a35b0539a478f3ae"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsLayerImpl.class",
+      "sha256": "1c8e0843dfe7954d66f6b65dc9488607afe6ed5a244dd81327eaaabd8f6e2ee2"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsLayerImpl$Companion.class",
+      "sha256": "2acb4abc0ba45e2ef22faedde34f6587fd10724efc9569d2d82e5f2b1e9987f4"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsLayerImpl$Companion$DefaultDrawBlock$1.class",
+      "sha256": "e20c36244f64ea8664f6f2f4a7cad81a3e3b9466a73c902442c901e0cd8fe347"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsLayerKt.class",
+      "sha256": "4fc4162af9bdef9be0e75f6f979bbfd8c97871afb3a46b13fc71c4852e8275d9"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsLayerV23.class",
+      "sha256": "a900773e238d996eba501416d21938d5829449351e36068b8b94d9b783e26db1"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsLayerV23$Companion.class",
+      "sha256": "fa679c2eff4159b2db8450dc9b01aaea9c005d93445820b80bf87c1fc9552867"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsLayerV29.class",
+      "sha256": "cb5ad7dab1ee91ba9439c109fe75ac034550da5ac3cf2ba1e93833248a0363ee"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsViewLayer.class",
+      "sha256": "74d35ca27621b2573d338ff5f08ddcee20c2481860515714f15f95814246dca1"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsViewLayer$Companion.class",
+      "sha256": "4f9efae419729b534539d1b08416c0e7deb1c77dc8fefafe494009cb34a98e5f"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/GraphicsViewLayer$Companion$PlaceholderCanvas$1.class",
+      "sha256": "81331770c6e38d3594b75d9246696190878cd45cae1b171945fa4567e9551d84"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/LayerSnapshot_androidKt.class",
+      "sha256": "a75f315436b82a61282c0e632f6c7a66410000f168adc4f26e117076c592dcbc"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/LayerSnapshotImpl.class",
+      "sha256": "30272fb5fbb15780e562acbd51afd8894a84ef08ced4e84b1f8257295f3bb9aa"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/LayerSnapshotV21.class",
+      "sha256": "14ca1a30daba33e17123db7eb8c9f8ecd195c2096a9b8014991d9f18871f497b"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/LayerSnapshotV22.class",
+      "sha256": "b785138376ae6305dcb9a7135d7bc2eb7c6b1a891c804b33d8ae61346724de48"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/LayerSnapshotV22$toBitmap$1.class",
+      "sha256": "195b0031eb15f99df888b0a0d9d647ba963754aaf3cad5867d00cb1ce4612c5b"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/LayerSnapshotV22$toBitmap$2$image$1$1.class",
+      "sha256": "ac4320c0f1b413de1ba9b30f4907ab9719832838296ad9ebec238662438dfc2a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/LayerSnapshotV28.class",
+      "sha256": "d7c317d3dbdda8cd27552c738dbc2d84ae188580f52dee7943e812fead7fa555"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/LayerSnapshotV28$GraphicsLayerPicture.class",
+      "sha256": "a608ef0953e12ced7288862212f4a39a283b218b531ad2dc92766f70b2de204d"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/OutlineUtils.class",
+      "sha256": "87655ce237900454d94d0fc142acf13cb27d933edd657dbf23a6bf41bbb6ea2f"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/OutlineVerificationHelper.class",
+      "sha256": "7bceef2a9345186dbf4c3871a8069e72eea1c55c76870782fb0c7e5478be1c80"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/RenderNodeVerificationHelper.class",
+      "sha256": "460e028ac8ec22203fb80b919236de3c2e85373fb5786d006b3684a25ab75baf"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/RenderNodeVerificationHelper23.class",
+      "sha256": "9e5757c4e253d65892ccf49daf11183fe30e4d5c8276368aa181e885df1be8a6"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/RenderNodeVerificationHelper24.class",
+      "sha256": "8b09640f002f40e1b64820b890cc1f6f394d2692ccea22dfd23e65fbb34f8807"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/RenderNodeVerificationHelper28.class",
+      "sha256": "d3098c9502d2762deac9535f15030c40b076f45d2fd1f0031d8886a2d13c62d6"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/SurfaceUtils.class",
+      "sha256": "84f0e3c7a794bbbcebcf44eafa5af3b7aa0e63c1119b2b3cacd2866d8dd32cbd"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/SurfaceVerificationHelper.class",
+      "sha256": "627f7ab076c49efdba145efbf2323ec8758964e67ed752203cef16f955d07105"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/ViewLayer.class",
+      "sha256": "9f084353091b3e1302876da40d42a3bc180d2bc53f5a15a5e59e982b7d77925e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/ViewLayer$Companion.class",
+      "sha256": "f940271f441d7ad567cd88c36ff0ebdf7e12448b97e2dfed31c9342736c5fe89"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/ViewLayer$Companion$LayerOutlineProvider$1.class",
+      "sha256": "b4b4ca2f37539af29141b1bf199f05c034e7f0df32082434204a47eb55c9e194"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/ViewLayerVerificationHelper28.class",
+      "sha256": "559a121f5b2efacb1f3bf83c371167f1f638b5ae8561d10e01154de3341a7951"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/ViewLayerVerificationHelper31.class",
+      "sha256": "ef654ce8a11744aef4fc5a5aace82ae9245106bd144bc3560b3f8daa915394c6"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/view/DrawChildContainer.class",
+      "sha256": "7b69391e9d109bd76a62062a08cdd2df1ad60b371a08e79676790bc1171edd6c"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/view/PlaceholderHardwareCanvas.class",
+      "sha256": "0aa8ef5cbc190f3db566b236285a68142a71e48a0d1cf3eeeea1c2b04edbe65e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/layer/view/ViewLayerContainer.class",
+      "sha256": "a927a0fe8f2e86a53fd4de836183db5d901fab37febad3ea1ba0f85f8cf5da7a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/painter/BitmapPainter.class",
+      "sha256": "bbe0184215bd87f9176f4a0121f3bd28661e000610c3b81d039b9ad6f63bf3c6"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/painter/BitmapPainterKt.class",
+      "sha256": "e0e382477eca090ef3526662c8b20fac83f980f3c399e6482c427dcad3b57533"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/painter/BrushPainter.class",
+      "sha256": "4a1b4d97dd32e79ccc5b2d3b0534e09954f03f2063a340cf3e6add91a301b049"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/painter/ColorPainter.class",
+      "sha256": "cb1a05d0434e1230c20e541e1ddadee91a81052eaa9b2b9d0bcdcf16e2f54452"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/painter/Painter.class",
+      "sha256": "2b311ac32e2a5660830455e5f2c3fcc9f80432fbf59ec824a22f78251aa2dfa0"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/painter/Painter$drawLambda$1.class",
+      "sha256": "2c336ec09bb3f24a93ca9d98993e0d30f7bdb7561e839d81b92273e7b2bcfb99"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/AndroidShadowContext_androidKt.class",
+      "sha256": "bb408c0a30558504a27461b4c0d6542943c220410d3806b3af2a37f632907576"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/AndroidShadowContext.class",
+      "sha256": "e1d844e163560f4b9abbdc573f93a76fde467f823657cbc48cd9eb66ae2f1a59"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/AndroidShadowContext$ShadowKey.class",
+      "sha256": "79b8929e21968b5b89b0d0ac3ff23e01c4d4bff59d61716a598466e4887e7a0d"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/Blur_androidKt.class",
+      "sha256": "fdd9d9d8aa788d4d3232775af5400eb124bf485374e0bb86761c492bad45a461"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/BlurKt.class",
+      "sha256": "3c1fe530e85eb1906ca4a8e9f26b1a12154f0632a3a874b1d4707473386edc48"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/DropShadowPainter.class",
+      "sha256": "54deb6c7020e22a345de61739a0ff7affe471cc257a8e060d70a0f1225cc5793"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/DropShadowRenderer.class",
+      "sha256": "19fba33da79cb7e44826873b0aca823a5d6ba1f18cda47365c56dd91238961c9"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/DropShadowRendererProvider.class",
+      "sha256": "f8148e864b6c5cf2a28f55c35d421d690f8a13dae1f81c5370368051c8a3e2bf"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/DropShadowRendererProvider$Companion.class",
+      "sha256": "e66aef76474a4e707b4f52cbece1b36460575abafae49288fa76d2f8458f3f98"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/DropShadowRendererProvider$Companion$Default$1.class",
+      "sha256": "f7fa1ed54af7db6a618c827f893f1e69fd3f258ce1a55cad9e3243c735cb452a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/InnerShadowPainter.class",
+      "sha256": "4ad416ffb4b120d51f6fff3e38ba975a13024fc7e1da603692ede2d77b3dea87"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/InnerShadowRenderer.class",
+      "sha256": "82a17560453ad12d1bfb3de604d1e8d1b0e65efc645fea29b61c9caa2c4b71c6"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/InnerShadowRendererProvider.class",
+      "sha256": "ba962cef389e8f81812e4fd6f26560864149d3b567c3d50eb50baa7ee2aa02d0"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/InnerShadowRendererProvider$Companion.class",
+      "sha256": "4e29e3dad4e44784326111e3f73917130cde85917dd720d81299df3e97c9a6ca"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/InnerShadowRendererProvider$Companion$Default$1.class",
+      "sha256": "561ce6e547e961ac777840248de0b7f1557735092f83e7d24327440aed0e9cd9"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/PlatformShadowContext.class",
+      "sha256": "0443fa4d51af2c55c8793c4d24f17f2b4d299c3ade522ccd7da291dc8815eac2"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/Shadow.class",
+      "sha256": "f7793d6388891443dee151cfa11a740f56e6c63a27925be7913b74e57b8df98a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/ShadowContext.class",
+      "sha256": "53944752599240c70b870a8f35206c3c5095d15fce46145d56fb092634513348"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/ShadowKt.class",
+      "sha256": "47fb30a5b81a3423d76738b6b01bd81c9958cc64fc4a410729cb909b46c8583d"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/shadow/ShadowRenderer.class",
+      "sha256": "f8eec95c4852cf12ad0b63e78ab194d99dc30d3ac46eaab7bd844cff133111f9"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/FastFloatParserKt.class",
+      "sha256": "aef15d78077fb9dde7d2e340e90f23e6bf6da8a873571abe7f5d3bf6c46ee768"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathBuilder.class",
+      "sha256": "03f14786d1a53f10cdc53941e01981ab4278cc7193cb3f0ba33fd6fb5f3f5f13"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode.class",
+      "sha256": "223c5b6b3a02b5ede336c8ef4f0f8d339422956a673b1105408b3b20b5802da4"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$ArcTo.class",
+      "sha256": "b652e7fd7f2daf880e5e76b565a4d8bbb47cd3329b26432f4f9c8162814d1944"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$Close.class",
+      "sha256": "20f3af0da6ef379bcc4d9ec508b786b23c174214fb9297a2a687946c2173df1d"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$CurveTo.class",
+      "sha256": "2289adaa8065666acea34fcaa253e18b752119b84f4b7c87317722e61828c000"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$HorizontalTo.class",
+      "sha256": "e23ae798b7d7142d44200b030efc12d7ad4a88c65d1e07af4923a7a0fb18767e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$LineTo.class",
+      "sha256": "ed6f6c18575fe4e3968e935006d080a85141d2e0bca02ec15a40a40cb9a6349a"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$MoveTo.class",
+      "sha256": "1987440ac8ed94a655c9c031899fcaa465a7f822421b7869ef0cbd2cfdb16055"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$QuadTo.class",
+      "sha256": "99ebb6609ba9f59fbeac7093db3c63d02ce7d28c070f986c74baa96d3a485bb4"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$ReflectiveCurveTo.class",
+      "sha256": "07571731963b2cf9a20243410acef8f7865f53648a70128e0c3a7673d3fcb7c0"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$ReflectiveQuadTo.class",
+      "sha256": "87bc19ae6b7379b558c9f4245c6356d932e0d7c4de07747cebc0e641c62a708b"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$RelativeArcTo.class",
+      "sha256": "2147434a7bce7df08038b9d8003d54b0f558e723643a0c5828fc507f1ba4659e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$RelativeCurveTo.class",
+      "sha256": "41de2b25e89ba2fab03eab74c59c64d2f64f651df707e19e09d191a35fdf5107"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$RelativeHorizontalTo.class",
+      "sha256": "7a9fd642daf830e396c824e399e9d860a197b9c0c0241644744f0aa0bbc2aa42"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$RelativeLineTo.class",
+      "sha256": "e272e7557bde6257c6a344d291c51611a369bd30eff88844149dc3b5c8e098b3"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$RelativeMoveTo.class",
+      "sha256": "b96702f466bc4fd9ba01d5edf6c7c0f97c45f70cb8e413542dac6a29dd72ff7e"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$RelativeQuadTo.class",
+      "sha256": "a384f3de85871f29107aa7c7cfac6fcc6735b939e73318666776b89d03215dd1"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$RelativeReflectiveCurveTo.class",
+      "sha256": "7d62955c4111f2f69d68423b0b73e4f1eb299d417cb65009366efa1c59128222"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$RelativeReflectiveQuadTo.class",
+      "sha256": "ab13c0b58b9eca3c80c9e86c18d5f3af4257fa67f4fd1ae5776ccdbe7002d04f"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$RelativeVerticalTo.class",
+      "sha256": "bd670d462d4d471cabd1ad3126c31fe2a9f7076be401f3cc25e0e1d2ad8fe711"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNode$VerticalTo.class",
+      "sha256": "4b856b74b1c075df070c808e0e4e19095cb219b6debf647ef90c42ef0af48d41"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathNodeKt.class",
+      "sha256": "b514a8d4769d3b39b29b71d28795c21e0e88e16a5c443b974860b2c159991a47"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathParser.class",
+      "sha256": "08acb67ed18b261045f6b13db072fedce155d98e93b26b32beaefeee6b874f34"
+    },
+    {
+      "path": "androidx/compose/ui/graphics/vector/PathParserKt.class",
+      "sha256": "06563592e14711f0524947ae835a9864be3d223b6c5835efc136513275a0d5a9"
+    },
+    {
+      "path": "META-INF/androidx.compose.ui_ui-graphics.version",
+      "sha256": "79ea1b5b251f3bf7e847a39e5723f6606ce22c8edef3115d9368d267382ae7e1"
+    },
+    {
+      "path": "META-INF/ui-graphics.kotlin_module",
+      "sha256": "effddb5f5ae14531628fbc75a3f8fb2f3436a328d7014559cbe68b92ab724529"
+    },
+    {
+      "path": ".tmp-native-surface-build.log",
+      "sha256": "9ba64946d3f2d156e15aeb38eb773b7ddc72fc5d4a3fc4967d85522e49d46709"
+    },
+    {
+      "path": "build-button-drag-resistance-final.log",
+      "sha256": "4a46f80b0d5fc95fac5a60f516135eda2fd858939f076a5187e9dc506a8e724e"
+    },
+    {
+      "path": "build-button-drag-retune-final.log",
+      "sha256": "4413d55c973431a190214083b549b24d79b4c149d558e28acc1fe27f7149ecd5"
+    },
+    {
+      "path": "build-common-demos-compile.log",
+      "sha256": "c812a000779b6635b89471dacdb6ab3c1f6e4dd057789d5fb6a9e3aee745d073"
+    },
+    {
+      "path": "build-common-demos-final.log",
+      "sha256": "10e88aaa2f178a30c03b98c44f9eb780e86c2cced380ef5aa9e2a19a46939cbd"
+    },
+    {
+      "path": "build-compact-tabbar-final.log",
+      "sha256": "a8dfa2d246684b20ce434c22a09ed95b885c787310324ead12fc1680c0bb85fb"
+    },
+    {
+      "path": "build-compact-tabbar-initial.log",
+      "sha256": "77798a04863a1e07af9b0b0bbef0f2ea91e5e21327c08954c5268961e9e06eab"
+    },
+    {
+      "path": "build-deduplicate-tabbar-final.log",
+      "sha256": "77d0db1c01504d315cccabe115d614ff8da059d7959ce9f9c4b3829aae93982a"
+    },
+    {
+      "path": "build-gyroscope-highlight.log",
+      "sha256": "f7fe397c38cabf197ba06ea58dbc6d4340fe337c933e3effcf34018ae662b099"
+    },
+    {
+      "path": "build-gyroscope-spec.log",
+      "sha256": "383167be591c587e47fe0e7e1f839491477a1d3a85b40b245fe8ba0608908409"
+    },
+    {
+      "path": "build-ios26-all-modals-final.log",
+      "sha256": "ceaba2db06a88fa6b6408569c51446e91bc4ba0e2bfd0478c9c60cec361f1734"
+    },
+    {
+      "path": "build-ios26-fullscreen-context-final.log",
+      "sha256": "cfcd3b5b0d9c04455afd110f56cdee3c53e707e710ffccc0a678624b2d1e8024"
+    },
+    {
+      "path": "build-ios26-fullscreen-glass-final.log",
+      "sha256": "e05c3cb992f798d82ac70498cb7c4664370884f394ffd86c2813dd899f3a9a58"
+    },
+    {
+      "path": "build-ios26-fusion-neck-final.log",
+      "sha256": "940ead222a00587b01eee480f3e906f05016a42522f3600ef48b3cd3d311087d"
+    },
+    {
+      "path": "build-ios26-fusion-seam-final.log",
+      "sha256": "c0fb5d7e4aac7d713f76a952bef763d8d86ca1918f59387c5812a36aa24f51cb"
+    },
+    {
+      "path": "build-ios26-goo-return-final.log",
+      "sha256": "6eb2e84b9fcbd53dcad26290599f58927edb4f7c677d8713e0b0a7c8ef1673df"
+    },
+    {
+      "path": "build-ios26-goo-shape-crash-final.log",
+      "sha256": "a085451fba154d1eb333907e82e927c4a78633dc63310bdc5bce815e6f6f3904"
+    },
+    {
+      "path": "build-ios26-menu-no-tint-final.log",
+      "sha256": "357762f12e4a532ee8247ad718eff7b08e50d5a9b32617b61effdc0b2b3d9b76"
+    },
+    {
+      "path": "build-ios26-multilevel-menu-final.log",
+      "sha256": "1255d1694be0b03eefd2085836ff3d5b434055d6a29f04357e2017f3a843f0d5"
+    },
+    {
+      "path": "build-ios26-original-buttons-final.log",
+      "sha256": "073c80884278659d3b65864d1c15d2fe624bd279151e5839e963417fc9385f5f"
+    },
+    {
+      "path": "build-ios26-overlay-layers-final.log",
+      "sha256": "eb6a34eaf0593b2baeef1dae60902e67c9908c2aed5adfde7cc64192f7b206f4"
+    },
+    {
+      "path": "build-ios26-solid-sheets-final.log",
+      "sha256": "f575a6c1bfa266841d6af950ecc6bbdc7da24f959bbaf930a325f4e91d16d82b"
+    },
+    {
+      "path": "build-menu-shadow-bounds-final.log",
+      "sha256": "704f8aafffc5036423d8dba6bc242516ff5f10568625f3c8ac43060be14371cc"
+    },
+    {
+      "path": "build-menu-source-handoff-final.log",
+      "sha256": "e80e1a0bb22b20fe1f4ed482065fb0ee09e47235d4ed29d1640c201bab2e17a9"
+    },
+    {
+      "path": "build-menu-winding-union-final.log",
+      "sha256": "4924d0040b2bfa368a7df0f5af827e66c2812c62bfa722838e59f477136d4ba2"
+    },
+    {
+      "path": "build-mixed-goo-final.log",
+      "sha256": "6ab66674b0913ed1e1c3cf2c2b95bcdd0b8a463416da67ea998f7a558f4e8404"
+    },
+    {
+      "path": "build-modal-static-color-final.log",
+      "sha256": "2f2af1741e94f10b416711ab3d5144b5bdaecc7d3c1685bb9da75c4613d90fbe"
+    },
+    {
+      "path": "build-nested-glass-final.log",
+      "sha256": "30b4d609237f960f56bcae00195275ff063c7335cfe669e48238f8308f7e58f0"
+    },
+    {
+      "path": "build-popup-content-backdrop-final.log",
+      "sha256": "6f2528eb897a438e6f472b486a53f29a4319d2b3c4f76c69180d8933cfbb32bb"
+    },
+    {
+      "path": "build-popup-shadow-final.log",
+      "sha256": "41a7687010f5e923e1d71f9df9751d985d8cd1bb98685dd592f2075ac6698e2a"
+    },
+    {
+      "path": "build-same-tint-goo-final.log",
+      "sha256": "185fed3d372bebc2bbb1846240099b2dfe889cea8e417ed9dd85e4aab6ae0b47"
+    },
+    {
+      "path": "build-tabbar-controls-final.log",
+      "sha256": "3da09bb022d52651a2c25fbaffc16e00be0a28b7ed97dcd306f38d3438c9b36b"
+    },
+    {
+      "path": "build-tabbar-top-blur-final.log",
+      "sha256": "25dd99d9183c8c3a3c03e893bcd3a1bf2c051862d3ba7cc9ff268eb46c65813b"
+    },
+    {
+      "path": "build-unified-menu-final.log",
+      "sha256": "d829d59f086fe8415eb0ef67c1f954b9b558127c3db103e7c235ce6c9db917ea"
+    },
+    {
+      "path": "build-unified-tabbar-final.log",
+      "sha256": "c2c6c100abb4ce88617b56ac78a50dd8d2268e09a43c8daeec41b1ae04fbc44a"
+    },
+    {
+      "path": "build-unified-tabbar-initial.log",
+      "sha256": "5f7dcbb0e26655296f2382b30c4c12eec9f8b7857cc9758d39ca649a4493bf0e"
+    }
+  ],
+  "moved": [
+    {
+      "from": "build-fullwidth-action3.png",
+      "to": "docs/screenshots/fullwidth/build-fullwidth-action3.png",
+      "sha256": "84a27618b4d89fe4f439dfa324761a687a0eb5baa273aa2f82e86e24483fc0f1"
+    },
+    {
+      "from": "build-fullwidth-detail.png",
+      "to": "docs/screenshots/fullwidth/build-fullwidth-detail.png",
+      "sha256": "9c52e667cc54e360092932ea6dab2915a1399f64c09bd85844950d57911ad31a"
+    },
+    {
+      "from": "build-fullwidth-final.png",
+      "to": "docs/screenshots/fullwidth/build-fullwidth-final.png",
+      "sha256": "7aa1ba7d251b264aa4af593c299770064712e786eeb738f517dedfeceea2a810"
+    },
+    {
+      "from": "build-fullwidth-library.png",
+      "to": "docs/screenshots/fullwidth/build-fullwidth-library.png",
+      "sha256": "4f2d9a7f5ce4ebcfc087cea9f56b5e8a269d90559eab8e00d230ace82f292600"
+    },
+    {
+      "from": "build-fullwidth-opaque-mask.png",
+      "to": "docs/screenshots/fullwidth/build-fullwidth-opaque-mask.png",
+      "sha256": "e5ae9f0638016b6f373d5a9c4fa0040391771693b5b2605c3fed27e3bf92bf8a"
+    },
+    {
+      "from": "build-fullwidth-page.png",
+      "to": "docs/screenshots/fullwidth/build-fullwidth-page.png",
+      "sha256": "88c8fad7c521a5d660aaf99844c8787563125fbe98bf29d75a9bdbb74cf0a4ef"
+    },
+    {
+      "from": "build-fullwidth-start.png",
+      "to": "docs/screenshots/fullwidth/build-fullwidth-start.png",
+      "sha256": "dbaef8be03217a564429c9d43dcd85e3a8cf31d7daa30c04e6667efe7e144655"
+    }
+  ],
+  "preserved": [
+    "dist/",
+    ".tools/",
+    ".codegraph/",
+    ".gradle/",
+    ".kotlin/",
+    "module build/outputs, reports, test-results",
+    "source, vendor and frozen baselines",
+    "existing untracked NativeGlassControlSurfaceTest.kt"
+  ],
+  "verification": [
+    "Resolved source and destination paths checked; reparse points rejected",
+    "No tests, Lint, build, installation or device interaction run",
+    "All 352 archived tracked files and 7 relocated screenshots verified against recorded SHA-256",
+    "Every archived target confirmed absent from workspace and present in archive"
+  ],
+  "note": "Permanent deletion rejected by automatic approval; scratch artifacts archived reversibly instead.",
+  "totals": {
+    "files": 18939,
+    "bytes": 901066446
+  }
+}

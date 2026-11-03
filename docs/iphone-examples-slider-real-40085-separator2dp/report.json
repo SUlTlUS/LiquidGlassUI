@@ -1,0 +1,18 @@
+{
+  "device": "192.168.1.247:40085",
+  "checkedAt": "2026-09-15T17:01:52.813Z",
+  "apkSha256": "7387854541dd33cb4164fb7f10b39af9dcbcc5ac2a076895a3eb34523f094d58",
+  "completed": true,
+  "expected": 1,
+  "note": "Similarity = percentage of pixels with max RGB delta <=24 against local FigmaSceneView. Includes system bars; blank background can inflate scores. Not official Figma fidelity or interaction acceptance.",
+  "results": [
+    {
+      "key": "12740-35186",
+      "category": "Slider",
+      "variant": "Default",
+      "meanDiff": 3.57,
+      "changedPercent": 2.49,
+      "similarity": 97.51
+    }
+  ]
+}

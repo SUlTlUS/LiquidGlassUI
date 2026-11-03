@@ -1,6 +1,5 @@
 package dev.liquidglass.sample
 
-import android.os.Build
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -101,7 +100,7 @@ internal fun ColorOs17ExamplePage(spec: ColorOs17ComponentSpec, onBack: () -> Un
             }
         }
         ExampleTopChrome(backdrop, isLightTheme = !dark, appBarHeight = topInset + 48.dp)
-        Ios27BackButton(onBack, if (Build.VERSION.SDK_INT >= 33) backdrop else null,
+        Ios27BackButton(onBack, backdrop,
             Modifier.align(Alignment.TopStart).padding(start = 16.dp, top = topInset + 4.dp))
     }
 }

@@ -3,6 +3,16 @@ package com.lladlam.melox.ui
 import org.junit.Test
 
 class MeloXTabBarTest {
+    @Test fun indexedHostTabsKeepSeparateActionAndArbitrarySlotCount() {
+        val tabs = List(9) { AppTab.custom(it.toString()) }
+        validateMeloXTabs(tabs, tabs.last())
+        validateMeloXTabs(tabs, AppTab.Search)
+    }
+    @Test(expected = IllegalArgumentException::class)
+    fun repeatedHostSlotKeysAreRejected() {
+        val slot = AppTab.custom("publish")
+        validateMeloXTabs(listOf(slot, AppTab.custom("publish")), slot)
+    }
     @Test fun originalTabsAndSeparateSearchAreValid() {
         validateMeloXTabs(MeloXDefaultTabs, AppTab.Home)
         validateMeloXTabs(MeloXDefaultTabs, AppTab.Search)
