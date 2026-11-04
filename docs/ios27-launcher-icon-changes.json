@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-04",
+  "authorization": "Use the iOS 27 system version icon bearing the number 27 as the app icon.",
+  "source": "https://developer.apple.com/assets/elements/icons/ios-27-num/ios-27-num-256x256_2x.png",
+  "reason": "Use Apple's original artwork in an Android adaptive launcher icon, shared by normal and round icon entries. A 12dp foreground inset keeps the number within launcher masks.",
+  "files": [
+    {
+      "path": "sample/src/main/AndroidManifest.xml",
+      "baselineSha256": "0edf8b96155d390dcf7468337dbe2c83a8f062f9fd9824dcf3622fa0e4652d3f",
+      "mergedSha256": "9dd39ae832291dd022654c7633303f3bd66cdbedfb568f50b1b01c539520e2a4"
+    },
+    {
+      "path": "sample/src/main/res/drawable-nodpi/ios27_system_icon.png",
+      "baselineSha256": null,
+      "mergedSha256": "7ad3745fa4b3d25cb06552379023e1e5615c84c0d34acac7bb2765939e1e8770"
+    },
+    {
+      "path": "sample/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "baselineSha256": null,
+      "mergedSha256": "b69fdd7cb02097d11718cf2fe81a3ce10b7f34388744690035242b00f2c5aebc"
+    },
+    {
+      "path": "sample/src/main/res/drawable/ic_launcher_foreground.xml",
+      "baselineSha256": null,
+      "mergedSha256": "aa12ed700bb3f40e354e69c164f3b04edc11b7c1cc7bd0a2fc32dd3a2acdd123"
+    },
+    {
+      "path": "sample/src/main/res/values/launcher_icon.xml",
+      "baselineSha256": null,
+      "mergedSha256": "82bc2cad6eb34c378b56c96c268c9e8302aadcc04b4ddeb5be8d5cbff512d4c9"
+    }
+  ],
+  "tests": "No test sources needed for this resource-only change. Tests, lint, verification scripts and device interactions are excluded by current project instructions.",
+  "validation": ":sample:assembleDebug succeeded. adb install -r returned Success on PLQ110. No device UI interactions performed; launcher appearance is for user acceptance.",
+  "frozenBaselines": "unchanged"
+}

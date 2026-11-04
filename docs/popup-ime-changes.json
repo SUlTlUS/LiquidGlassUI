@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-04",
+  "authorization": "Fix Popup keyboard avoidance reported with keyboard-hidden and keyboard-visible screenshots.",
+  "reason": "The old helper subtracted window IME insets from an already resized or padded host. Compute the safe rectangle against LocalWindowInfo.containerSize, intersect it with the actual host rectangle in window coordinates, then translate to host coordinates. Popup content retains its existing bounded scrolling and shared menu motion/material.",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassPopup.kt",
+      "baselineSha256": "78d0ba05ee1e033f367fb88dde8300c6ae58760855938ab0c543395d84e59726",
+      "mergedSha256": "942ffe67ba8869afcd04ac931ae4aa6fc0b02d539cdc008d69a996cd9bfd4641",
+      "change": "Track the overlay host origin in window coordinates for safe-area conversion."
+    },
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassPopupAnchor.kt",
+      "baselineSha256": "d0a1a537cc1a33fd8f6dd7b981765df7c42eb0cd967d18833b40a757b868062d",
+      "mergedSha256": "171d9d4091ab4fa15799715f8021483c62c35fd8716c5e339bbd0f4225f55632",
+      "change": "Apply safeDrawing/IME union once in window coordinates and clamp its intersection to the host; the shared menu helper also benefits for root-aligned resized hosts."
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/PopupImeBoundsTest.kt",
+      "baselineSha256": null,
+      "mergedSha256": "6fa04fcba66ac0198fd1ce865db0c0f4b4889dc84104c94bf4d1d334336b025f",
+      "change": "Five regression cases cover a full window, an IME-resized host, consumed edge insets, control placement above the keyboard, keyboard dismissal and an entirely covered host."
+    }
+  ],
+  "validation": {
+    "build": ":sample:assembleDebug --no-daemon --console=plain succeeded.",
+    "installation": "adb install -r returned Success on the connected PLQ110.",
+    "apk": "sample/build/outputs/apk/debug/sample-debug.apk",
+    "apkSha256": "e2f28a53b1e8ef26ba49caf9649199383ac952ea7064347dc6c9188da031cb74",
+    "tests": "Regression source added; tests, lint and verification scripts not executed under current AGENTS.md constraints.",
+    "deviceAcceptance": "No device UI interactions performed. Keyboard animation, save/cancel visibility, short-screen scrolling and keyboard-hide placement require user acceptance."
+  },
+  "frozenBaselines": "unchanged"
+}

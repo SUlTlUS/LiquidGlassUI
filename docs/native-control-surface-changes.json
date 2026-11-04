@@ -1,0 +1,17 @@
+{
+  "reason": "LiquidTab native header complete style integration; expose existing contour, regular tint and control lighting without duplicating rendering algorithms.",
+  "frozenBaselines": "unchanged",
+  "files": [
+    {
+      "path": "liquidglass-ios27/src/main/java/dev/liquidglass/NativeGlassControlSurface.kt",
+      "baselineSha256": null,
+      "mergedSha256": "8cf40338b3408f0add941b64f52eb8b8ee9544aed1ba5332dc916a72a1d0626e"
+    },
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/NativeGlassControlSurfaceTest.kt",
+      "baselineSha256": null,
+      "mergedSha256": "8a8bda1a722517302e5fd4eb0a53439ff02a883fc0529ef813d16b487e414199"
+    }
+  ],
+  "validation": "packageLibrary passed; native bridge contract test source added. No upstream tests, lint, verification scripts or device interactions run under current upstream instructions. Consumer compilation and tests recorded in LiquidTab."
+}

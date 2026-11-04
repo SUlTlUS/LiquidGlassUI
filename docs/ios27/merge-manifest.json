@@ -311,7 +311,8 @@
       "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassPopup.kt",
       "baselineSha256": "2f70279b060b5a61dfe5b1042e0560774a98a80e8f2ebc552e68b1630c15d7b8",
       "reason": "API annotations and user-authorized popup correction: shared menu surface/corners/light and uniform content transforms.",
-      "mergedSha256": "78d0ba05ee1e033f367fb88dde8300c6ae58760855938ab0c543395d84e59726",
+      "mergedSha256": "942ffe67ba8869afcd04ac931ae4aa6fc0b02d539cdc008d69a996cd9bfd4641",
+      "popupImeReview": "docs/popup-ime-changes.json",
       "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassPopup.kt",
       "beforeLibraryApiSha256": "99e58355b60d06e379d804aaeab8944bb987fcfdac00d09c18dcc2020061600c",
       "libraryApiReview": "docs/component-library-changes.json"
@@ -321,7 +322,8 @@
       "path": "liquidglass-ios27/src/main/java/dev/liquidglass/GlassPopupAnchor.kt",
       "baselineSha256": "5863b731267775e06c9b9bb3b62b59a66b5cebb93c79e7e756c07ef062177195",
       "reason": "Complete mechanism import; RequiresApi(33) rendering contracts added where needed; optical, geometry, animation and cache logic unchanged.",
-      "mergedSha256": "d0a1a537cc1a33fd8f6dd7b981765df7c42eb0cd967d18833b40a757b868062d",
+      "mergedSha256": "171d9d4091ab4fa15799715f8021483c62c35fd8716c5e339bbd0f4225f55632",
+      "popupImeReview": "docs/popup-ime-changes.json",
       "previousPath": "liquidglass-ios27/src/main/java/dev/liquidglass27/glass/GlassPopupAnchor.kt",
       "beforeLibraryApiSha256": "1fb0f426a9b9617f5b5e0a82d5016251733c24ed3ca35000365707d7c981811c",
       "libraryApiReview": "docs/component-library-changes.json"
@@ -1470,7 +1472,8 @@
     },
     {
       "path": "sample/src/main/AndroidManifest.xml",
-      "mergedSha256": "0edf8b96155d390dcf7468337dbe2c83a8f062f9fd9824dcf3622fa0e4652d3f",
+      "mergedSha256": "9dd39ae832291dd022654c7633303f3bd66cdbedfb568f50b1b01c539520e2a4",
+      "launcherIconReview": "docs/ios27-launcher-icon-changes.json",
       "reason": "User authorized all iOS26 popup/modal hosts to use iOS27 framework and iOS26 highlight; minimum Android13",
       "baselineSha256": "40245b194155eaa01ad819b40e516a41e7881db24fff4bddc5e1d87866415e4a",
       "baselineReference": "Repository HEAD, not a pre-turn snapshot; existing dirty work retained"
@@ -1946,6 +1949,12 @@
   ],
   "demoFiles": [],
   "addedFiles": [
+    {
+      "path": "liquidglass-ios27/src/test/java/dev/liquidglass/PopupImeBoundsTest.kt",
+      "baselineSha256": null,
+      "mergedSha256": "6fa04fcba66ac0198fd1ce865db0c0f4b4889dc84104c94bf4d1d334336b025f",
+      "reason": "Regression source for window-relative IME avoidance across full-window, resized and inset hosts; see docs/popup-ime-changes.json."
+    },
     {
       "path": "liquidglass-ios27/build.gradle.kts",
       "baselineSha256": null,

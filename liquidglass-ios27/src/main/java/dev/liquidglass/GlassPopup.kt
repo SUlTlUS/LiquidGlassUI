@@ -30,6 +30,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.input.pointer.*
 import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.*
@@ -186,6 +188,7 @@ fun <T> GlassPopup(state: GlassPopupState<T>, anchor: GlassPopupAnchor, dark: Bo
     val colors = glassColors(dark)
     val density = LocalDensity.current
     var contentSize by remember { mutableStateOf(IntSize.Zero) }
+    var hostOffset by remember { mutableStateOf(Offset.Zero) }
     val clock = remember { Animatable(0f) }
     var latestFrame by remember { mutableStateOf<MenuMorphFrame?>(null) }
     var closingFrame by remember { mutableStateOf<MenuMorphFrame?>(null) }
@@ -208,11 +211,12 @@ fun <T> GlassPopup(state: GlassPopupState<T>, anchor: GlassPopupAnchor, dark: Bo
     }
     BackHandler(enabled = properties.dismissOnBackPress) { state.dismiss() }
     BoxWithConstraints(Modifier.fillMaxSize()
+        .onGloballyPositioned { hostOffset = it.positionInWindow() }
         // Sharing must also reach the scene's direct child, not just the barrier.
         .expandedTouchInput(0.dp, properties.modal, shareWithSiblings = !properties.modal) {}
         .glassPopupFocus(properties.focusable, title)) {
         val w = constraints.maxWidth.toFloat(); val h = constraints.maxHeight.toFloat()
-        val safe = popupSafeBounds(w, h)
+        val safe = popupSafeBounds(w, h, hostOffset)
         val origin = anchor.bounds.takeIf { it.width > 0f && it.height > 0f }
             ?: Rect(w / 2, h / 2, w / 2 + 1, h / 2 + 1)
         val position = menuPopupPosition(origin, contentSize.width.toFloat(), contentSize.height.toFloat(),
